@@ -1,0 +1,107 @@
+# Policy: Task Completion
+
+## Purpose
+
+トラックのタスクが「完了した」と言える条件と、その完了状態が merge に到達するまでに満たしていなければならないことを定める。機械的に強制されるのは merge の一点、しかも「全タスクが解決済みであること」だけである — 完了に伴う残り（commit_hash の記録とその review refresh）を検査するゲートはどこにも無い。したがって規律が担保する範囲は、ゲートの手前ではなく最後まで続く。
+
+## Scope
+
+- 適用対象: タスク状態遷移を誰が実行してよいか、完了状態が commit / push を経て merge ガードに届くための条件、ガードを回避する操作の禁止。
+- 適用外:
+  - バッチごとの実装 → DFP → done 遷移 → review → commit の実行順序と、commit 後の commit_hash 埋め戻し（lifecycle tail） — `.harness/workflows/track/full-cycle.md`
+  - `todo` → `in_progress` 遷移の dispatch 手順 — `.harness/workflows/track/implement.md`
+  - commit 時のゲート構成 — `.harness/workflows/track/commit.md`
+  - 各 capability の遷移権限の有無 — `.harness/capabilities/*.md`
+  - タスク状態の表現（`DonePending` / `DoneTraced` の区別と再 backfill の拒否） — `bin/sotp track transition`
+
+## Rules
+
+### 遷移の実行主体
+
+タスク状態遷移は **orchestrator の専管**である。実装 capability は自分のタスクを遷移させず、完了を orchestrator に報告する。実装 capability からは review / obligation gate / CI / commit の成否が見えないため、そこで打たれた `done` は根拠を持たない。
+
+遷移は `bin/sotp track transition` に限る。`impl-plan.json` を直接編集して状態を書き換えてはならない。
+
+### 親セッション更新後のタスク状態
+
+`adr2pr` の親セッションは、計画成果物コミットが成功した後（Step 9 の開始前）、Step 9 の最初の実装バッチが完了した後（残りのバッチを続ける前）、および Step 10 の PR レーン開始時（`pr-review` の呼出し前）に更新する。host が親セッションを自動更新できない場合は、同じ `track/<id>` ブランチで新しいセッションを再入させるよう user に要求してよい。
+
+これらの境界では親コンテキストをタスク状態として扱わず、`bin/sotp track resolve`、`bin/sotp track task-counts`、`bin/sotp track next-task`、review summary、宣言済みの batch / task state、および read-only git state を根拠に最初の未完了 lifecycle boundary を再構成する。`impl-plan.json` が task-state の SSoT であり、生成された `plan.md` は独立した状態根拠ではない。CLI summary に差分または blocker が現れた場合だけ、該当する永続 artifact body を開いて確認する。部分完了した step は最初の未完了 sub-step から再開し、曖昧または相反する証拠がある場合は task を `done` / `skipped` と推定せず、再実行や skip をせず停止して報告する。セッションの再入は状態遷移の権限を変更せず、`done` / `skipped` の遷移は引き続き orchestrator が `bin/sotp track transition` で行う。
+
+これは orchestrator の session boundary だけを定める規律であり、host 固有の backgrounding threshold、通知形式、または compaction timing は定めない。
+
+### PR finding の修正主体
+
+PR review の actionable finding が編集を要求する場合、orchestrator は finding ごとに `dispatch_mode: delegated-pr-finding`、comment、対象 path / line、track context、requested correction を含む focused briefing を作成し、対象 artifact の owner に委譲する。実装変更と implementer の boundary 内の通常の policy / documentation は `implementer`、spec / catalogue / plan の SoT artifacts はそれぞれ `spec-designer` / `type-designer` / `impl-planner` の通常 writer workflow が扱う。writer-owned artifact を implementer の focused dispatch に入れてはならない。`review-fix-lead` は通常の `scope-review` 専用であり、wrapper が typed focused mode をサポートするまでは PR finding の transport として使用しない。writer-owned artifact の修正後は完了した owner workflow を影響フェーズの dispatch とみなし、workflow SSoT の partial-reentry / post-routing descent でそのフェーズを再収束させてから downstream まで完了させ、生成された plan view を sanctioned views-sync operation で更新する。再収束後に未完了 task が 1 件でも残る場合（新規 residual task だけでなく、修正前から represented だった task を含む）は、shared `full-cycle` の通常 mode を terminal implementation、obligation verification、review、commit、lifecycle tail まで完了させてから PR review を再実行する。未完了 task がない場合だけ local review を `zero_findings` まで収束させ、`commit` workflow を完了して PR review を再実行する。委譲が失敗した場合だけ親の直接編集を recovery として行えるが、これは implementer-owned non-ADR finding に限る。`knowledge/adr/*.md` の編集を要する finding は親も `review-fix-lead` も決して適用せず、review workflow SSoT の `ADR-scope repair lane` section に従って guardian lane へ route する。その lane の完了後は、まず workflow SSoT の partial-reentry / post-routing descent を spec、types、plan の downstream phases まで完了させてから task summary を再導出し、未完了 task があれば shared `full-cycle` の通常 mode を terminal implementation、obligation verification、review、commit、lifecycle tail まで完了させてから PR review を再実行する。未完了 task がない場合だけ local review と `commit` workflow を完了して PR review を再実行する。
+
+タスク状態の変更や完了報告はこの修正経路を代替せず、状態遷移は引き続き orchestrator が専管する。
+
+### Open-PR residual-work recovery
+
+実在する残作業を Done 後の同一 track に戻す必要がある場合でも、既存 task の完了履歴は
+書き換えない。`pr-review` workflow が、現在の `track/<id>` branch に対応する remote の
+`OPEN` PR を確認した場合に限り、orchestrator は未登録の残作業を
+`bin/sotp track add-task "<description>"` で正規 task として追加できる。これは既存の
+`Done` / `Skipped` を reopen する `bin/sotp track transition` の代替ではなく、dummy task
+や無意味な status toggle も許可しない。Archived track、`MERGED` / `CLOSED` PR、または
+照会できない・branch が一致しない PR は既存 track を変更せず corrective track または
+原因報告へ送る。
+
+追加後は task 群から状態を再導出し、通常の Phase 3 re-plan と義務 `derive` を完了する。
+成功した `track add-task` で登録した residual task は、その後も未完了として存在しなければ
+ならず、消失または完了済みになっていれば recovery failure として停止する。登録 task が
+未完了であることを確認した後は、通常の `full-cycle` を完了してから PR を再審査する。
+通常の PR 作成前の task authoring / plan / derive に PR 照会を要求してはならない。Done /
+Archived の freeze はこの recovery rule でも解除されない。
+
+### アーキテクチャ変更を含むタスク
+
+ワークスペースのレイヤ構成に触れるタスクは、完了を報告する前に `.claude/skills/architecture-customizer/SKILL.md` の Documentation 更新対象を同期する。同期対象の列挙は skill 側が所有する。
+
+### merge ガードが検査するもの
+
+タスク完了は merge の一点でのみ強制される。`bin/sotp pr wait-and-merge` は、PR head が指す **remote ref 上の** `track/items/<id>/impl-plan.json` を読み、全タスクが解決済み（done または skipped）であることを要求する。`bin/sotp pr push` と `bin/sotp pr review-cycle` はタスク完了を要求しない — 中間 push や PR review は未完了タスクがあっても実行できる。
+
+ガードが見ているのは遷移だけである。commit_hash が埋め戻されていない done タスク（`DonePending`）もガードは解決済みとして通す — 埋め戻しを要求するのは merge ガードではなく full-cycle の lifecycle tail であり、その impl-plan review refresh である。この二つを同一視すると、埋め戻し漏れが merge で止まると誤って期待することになる。実際には止まらず、hash 未記録のまま merge が成立する。
+
+### 長時間 merge gate の待機
+
+`bin/sotp pr wait-and-merge` のような長時間 gate wrapper は 1 回の blocking call として実行し、terminal result を 1 回だけ読む。host が call を background 化した場合は、1 回の完了通知後に result を読む。ログの polling、PR status の定期的な再確認、fire-and-forget launch、timeout 後の自動再実行は行わない。`bin/sotp test-obligation evaluate` は merge / commit completion の前提ではなく、obligation repair における orchestrator host の同期 step に限る。
+
+### commit_hash 埋め戻しの未強制 — エスカレーション済みの未解決事項
+
+これは「mechanism 整備の cost が benefit を上回るので規律で代替する」と整理できる状態ではない。drift が実測されているためである: merge 済み 102 トラックのうち **24 トラック** が、commit_hash を持たない done タスクを含んだまま merge されている（うち 7 トラックは全タスクが未記録、直近は 2026-07-19。2026-07-28 時点の計測）。規律だけでは保てていない、というのが観測結果であって、想定される穴ではない。
+
+したがってこれは容認された例外ではなく、**エスカレーション済みの未解決事項**である。mechanism 昇格の再検討条件は既に満たされており、ゲートを設ける決定は commit / merge lifecycle を所有する別 ADR に委ねられている — どこで検査するか（merge ガードで `DoneTraced` を要求する、lifecycle tail の完了を commit gate で見る、等）はその ADR の設計判断であって、本書はそれを先取りしない。
+
+決定が入るまで merge は permissive なままであり、下記の禁止事項と Review Checklist が唯一の担保になる。実測が示すとおり、それは十分な担保ではない。**この状態は「許容されている」のではなく「未解決のまま既知である」と読むこと** — 現に 24 件が通り抜けている以上、ここを規律で守れている前提で他の判断を組み立ててはならない。
+
+### 禁止事項
+
+- タスク状態遷移を未コミット・未 push のまま merge してはならない。ガードは remote ref を読むため、worktree だけの遷移は存在しないのと同じである
+- commit_hash 埋め戻しを未コミットのまま PR / merge へ進めてはならない。埋め戻しは `impl-plan.json` を再び変更するため、full-cycle の lifecycle tail が impl-plan scope の review refresh と tail コミットを要求する（上記のとおり、この禁止事項を機械的に止めるものは無い）
+- `impl-plan.json` を削除・除外・空タスク化してガードを回避してはならない。不在・取得失敗・タスク 0 件はいずれも fail-closed で BLOCKED になる
+- マージ後に merge target ブランチ上でタスク状態を直接編集してコミットしてはならない（PR ワークフローそのものをバイパスする）
+
+## Examples
+
+- Good: 実装 → CI → DFP → orchestrator が done 遷移 → review → コミット（実装 + タスク状態）→ hash 埋め戻し → 埋め戻し diff の impl-plan review refresh → lifecycle tail コミット → PR → merge（ガードが通る）
+- Bad: review を通してからタスクを done に遷移する（遷移 diff が承認済み round を stale にし、再レビューが要る）
+- Bad: 実装 capability にタスク遷移をさせる
+- Bad: 実装コミット後、タスク遷移を push せずに merge を試みる（ガードでブロックされる。push と PR review 自体は途中でも走らせられる）
+- Bad: 最終バッチのコミット後、hash を埋め戻したまま lifecycle tail の review refresh と tail コミットを飛ばして PR へ進む（`git status` に `impl-plan.json` / `plan.md` の変更が残ったまま merge が成立し、hash が記録されないまま履歴が閉じる。実測 24 件はこの形である）
+- Bad: マージ後に merge target 上で `impl-plan.json` を編集してタスクを done に変更する
+
+## Review Checklist
+
+- [ ] merge 前に全タスクが done/skipped になっているか
+- [ ] その遷移が push 済みか（worktree だけの遷移は ref に反映されない）
+- [ ] commit_hash 埋め戻しの diff が lifecycle tail としてコミット済みか。ガードは通ってしまうので、ここは機械に頼らず自分で確認する
+- [ ] 親セッション更新後のタスク状態を、親コンテキストではなく永続した track / git state から再構成しているか
+- [ ] merge target 上での直接 `impl-plan.json` 編集が含まれていないか
+
+## Decision Reference
+
+- [knowledge/adr/README.md](../../knowledge/adr/README.md) — ADR 索引。本書の原典となる ADR はこの索引から辿る
+- [.harness/workflows/track/full-cycle.md](../workflows/track/full-cycle.md) — バッチ実行順序と commit_hash 埋め戻しの手順 SSoT
+- [.harness/policies/track-lifecycle.md](./track-lifecycle.md) — タスク状態遷移と SSoT 維持

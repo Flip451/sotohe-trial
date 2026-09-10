@@ -1,0 +1,60 @@
+---
+name: track-pr-review
+description: Use when Codex is asked to run the GitHub PR-based review cycle — push the current branch, create or reuse a PR, and trigger a PR-level review.
+---
+
+# Track-Pr-Review (Codex skill)
+
+**Operational SSoT:** read and follow `.harness/workflows/track/pr-review.md` — the provider-agnostic
+workflow contract for this skill. Do not duplicate step sequence, gate conditions, state transitions,
+or failure-recovery procedures here.
+
+## Codex-skill notes
+
+### (1) Invocation surface
+
+- Triggered via `$track-pr-review` in a Codex skill mention surface.
+- Can also be force-loaded with `codex exec` by referencing this skill file.
+
+### (2) Sandbox constraint
+
+- Requires `--sandbox workspace-write`: the workflow pushes the branch to origin and
+  interacts with the GitHub API via `gh` / `bin/sotp pr` wrappers.
+- Branch push uses `bin/sotp pr push`; PR creation uses `bin/sotp pr ensure-pr`.
+- Do not run `git push` directly.
+
+### (3) Sub-workflow and capability invocation
+
+- PR creation and push are performed via `bin/sotp pr push` and `bin/sotp pr ensure-pr`.
+- PR-level review is triggered via `bin/sotp pr review-cycle` (which dispatches `@codex review`).
+- Codex-specific prerequisite: the **Codex Cloud GitHub App** must be installed on the
+  repository so `@codex review` is acted upon.
+
+### (4) Finding fixes are delegated
+
+- Follow Step 3 of the workflow SSoT for the finding-fix procedure (briefing contents,
+  capability routing, local convergence, commit, re-run, recovery). Codex-specific dispatch
+  forms only:
+  - implementer-owned corrections (source and every non-ADR artifact not owned by a phase
+    writer — policies, documentation, harness configuration, settings, manifests, build files):
+    `bin/sotp capability exec implementer --briefing-file <path>` with `--host` omitted, so
+    the dispatcher runs the provider subprocess itself (dispatcher-owned sandbox / model /
+    effort flags); never pass `--host codex` and never hand-assemble a `codex exec` command.
+  - writer-owned artifacts go to their phase writers through phase entry, as the workflow SSoT
+    routes them: prepare the configured briefing, then `bin/sotp phase enter spec-design`
+    (`spec.json` and its view), `bin/sotp phase enter type-design` (`<layer>-types.json` and
+    its views), or `bin/sotp phase enter impl-plan` (`impl-plan.json`, `task-coverage.json`,
+    `task-contract.json`, `batch-plan.json`).
+- Do not route a focused PR finding through `cargo make track-local-review-fix`: that
+  wrapper always injects the scope-wide reviewer loop and is not a delegated-PR-finding
+  transport.
+- local convergence and commit use `$track-review` and `$track-commit`.
+
+### (5) Reporting format
+
+- On an explicit zero-findings terminal signal per the workflow SSoT, print:
+  `PR_REVIEW_STATUS: completed — PR <url> machine PASS — zero findings`
+- On an Accepted Deviations exception explicitly approved by the user per the workflow SSoT,
+  print: `PR_REVIEW_STATUS: completed — PR <url> user-approved Accepted Deviations — not zero findings`
+  Include the user's approval citation; reviewer approval alone is not user approval.
+- On failure or block, print: `PR_REVIEW_STATUS: blocked — <reason>`

@@ -1,0 +1,84 @@
+---
+name: architecture-customizer
+description: Customize or migrate the Rust workspace architecture (layer names, crate boundaries, dependency direction) safely. Use when users want to change layered architecture structure, rename/move crates, switch architecture style, or update enforcement rules across architecture-rules.json, Cargo.toml, deny.toml, Makefile tasks, and track docs.
+---
+
+# /architecture-customizer — Workspace Architecture Migration Workflow
+
+Use this workflow when architecture changes are requested.
+
+## Workflow
+
+1. Clarify target architecture in the user's preferred or project language with a concrete crate map.
+2. Translate target architecture into explicit dependency rules and deny reasons.
+3. Update enforcement first, then code layout, then docs.
+4. Run architecture checks and stop if any gate fails.
+
+## Step 1: Define Target Crate Map
+
+Write the target map before any edits using workspace member paths:
+
+```text
+<root-a>/<crate-a>
+<root-a>/<crate-b>
+<root-b>/<crate-c>
+...
+```
+
+Default template examples often use `apps/<entry>` and `libs/<layer>`, but other roots are allowed if `architecture-rules.json`, enforcement, and docs are updated together.
+
+Define which crates may depend on which crates.
+
+## Step 2: Update Enforcement Rules
+
+1. Update workspace members in `Cargo.toml`.
+2. Update `architecture-rules.json` first (this is the SSoT consumed by `bin/sotp verify layers`).
+3. Update layer policy in `deny.toml` (`deny = [...]` wrappers).
+4. Update `Makefile.toml` task names if any crates were renamed.
+5. Update the layer ids in `.harness/catalogue-lint/config.json` and
+   `.harness/catalogue-lint/presets/ddd-strict.json` together. Every role carries a
+   `KindLayerConstraint` whose `permitted_layers` matches layer ids literally, so a rename
+   leaves every role permitting only the old ids and `bin/sotp catalogue-lint
+   check-active-track` rejects valid entries across the whole matrix. The two files must stay
+   structurally equal.
+
+## Step 3: Update Crates
+
+1. Create/move/rename crate directories.
+2. Update each crate `Cargo.toml` dependency edges.
+3. Ensure composition root crate wires dependencies.
+
+## Step 4: Update Documentation
+
+1. Record the architecture decision in a pre-track ADR under `knowledge/adr/`.
+2. Update `Makefile.toml` `ci-local` / `ci-container` dependencies if quality gates change, and ensure `sotp verify layers` still reflects the new architecture rules.
+3. Update `knowledge/conventions/coding-principles.md` module layout example if module conventions change.
+4. Synchronize the live architecture-document set: `CLAUDE.md`, `AGENTS.md`,
+   this skill,
+   `.harness/capabilities/{implementer,dry-fix-lead,review-fix-lead,rollback-diagnoser}.md`,
+   `.harness/custom/review-prompts/{cli,cli_composition,cli_driver,domain,infrastructure,types,usecase}.md`,
+   and applicable `knowledge/conventions/` references (especially
+   `coding-principles.md` and `type-designer-kind-selection.md`).
+
+## Step 5: Validation Gates
+
+Run in this order:
+
+```bash
+cargo fmt --all -- --check
+cargo make check-layers       # internally calls bin/sotp verify layers against architecture-rules.json
+cargo make verify-arch-docs
+cargo deny check -D warnings
+cargo make ci                 # runs the shipped catalogue-lint configuration regression tests
+```
+
+If any command fails, fix architecture rules before implementation work.
+
+## Output Contract
+
+Report with:
+
+1. New crate map
+2. Enforced dependency rules
+3. Files changed
+4. Validation results

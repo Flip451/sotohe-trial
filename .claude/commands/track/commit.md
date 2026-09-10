@@ -1,0 +1,39 @@
+---
+description: Stage review is complete and create a guarded commit, then attach a git note.
+---
+
+> Operational SSoT: `.harness/workflows/track/commit.md` — provider 非依存 workflow logic はそちらを参照。本ファイルは Claude Code 固有 adapter として、起動形態 / Tool 制約 / 報告形式のみを残す。
+
+## Invocation
+
+User invokes this command as `/track:commit`. Use `$ARGUMENTS` as the commit message. If empty, inspect the current track and propose 2–3 commit message candidates, then stop.
+
+## Claude Code invocation constraints
+
+This command runs directly — no subagents. Key wrappers used:
+
+- `git diff --cached --stat` (read-only — verify staged scope)
+- `git show HEAD --stat` (read-only — changed files for git note)
+- Write commit message to `tmp/track-commit/commit-message.txt` (Read + Edit preferred)
+- `cargo make track-commit-message` — guarded commit (CI, ADR-baseline check, + commit)
+- Write note to `tmp/track-commit/note.md`, then `bin/sotp git note-from-file tmp/track-commit/note.md --cleanup`
+
+`track/registry.md` is gitignored — do NOT stage or commit it.
+
+### Gate waiting
+
+- `cargo make track-commit-message` is a long-running gate: run it as one blocking call and read
+  its exit status once. Do not poll its log, re-run status probes, or add periodic re-checks; if
+  the host backgrounds the call, read the result once after the single completion notification.
+- Do not launch `bin/sotp test-obligation evaluate` around the commit: the commit gate runs
+  `check`, and `evaluate` is only a synchronous step inside repair work on the orchestrator host.
+
+## Report format
+
+After execution, report:
+
+1. Commit result (success/failure) and commit hash.
+2. Commit message used.
+3. `track/registry.md` status: regenerated locally / already current / skipped (gitignored).
+4. Git note status: applied or skipped (reason).
+5. Next recommended action.

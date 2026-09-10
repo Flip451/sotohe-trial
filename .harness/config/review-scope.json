@@ -1,0 +1,119 @@
+{
+  "version": 2,
+  "default_diff_ceiling_lines": 500,
+  "groups": {
+    "domain": {
+      "patterns": [
+        "libs/domain/**"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/domain.md"
+    },
+    "usecase": {
+      "patterns": [
+        "libs/usecase/**"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/usecase.md"
+    },
+    "infrastructure": {
+      "patterns": [
+        "libs/infrastructure/**"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/infrastructure.md"
+    },
+    "cli": {
+      "patterns": [
+        "apps/cli/**"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/cli.md"
+    },
+    "cli_composition": {
+      "patterns": [
+        "apps/cli-composition/**"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/cli_composition.md"
+    },
+    "cli_driver": {
+      "patterns": [
+        "apps/cli-driver/**"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/cli_driver.md"
+    },
+    "adr": {
+      "patterns": [
+        "knowledge/adr/**",
+        "knowledge/research/**"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/adr.md"
+    },
+    "spec": {
+      "patterns": [
+        "track/items/<track-id>/spec.json"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/spec.md"
+    },
+    "types": {
+      "patterns": [
+        "track/items/<track-id>/*-types.json",
+        "track/items/<track-id>/tddd-features.json"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/types.md"
+    },
+    "impl-plan": {
+      "patterns": [
+        "track/items/<track-id>/impl-plan.json",
+        "track/items/<track-id>/task-coverage.json",
+        "track/items/<track-id>/task-contract.json",
+        "track/items/<track-id>/observations.md",
+        "track/items/<track-id>/batch-plan.json"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/impl-plan.md"
+    },
+    "harness-policy": {
+      "patterns": [
+        ".claude/commands/**",
+        ".claude/rules/**",
+        ".claude/agents/**",
+        ".claude/skills/**",
+        ".agents/**",
+        ".grok/**",
+        ".harness/**",
+        ".codex/**",
+        ".claude/settings*.json",
+        ".claude/permission-extensions.json",
+        "knowledge/conventions/**",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "README.md",
+        "Makefile.toml"
+      ],
+      "briefing_file": ".harness/custom/review-prompts/harness-policy.md"
+    }
+  },
+  "review_operational": [
+    "track/items/<track-id>/review.json",
+    "track/items/<track-id>/spec.md",
+    "track/items/<track-id>/plan.md",
+    "track/items/<track-id>/contract-map.md",
+    "track/items/<track-id>/dry-check.json",
+    "track/items/<track-id>/dry-check-corpus-root.json",
+    "track/items/<track-id>/dry-check-coverage.json",
+    "track/items/<track-id>/metadata.json",
+    "track/items/<track-id>/*-types.md",
+    "track/items/<track-id>/*-types-baseline.json",
+    "track/items/<track-id>/*-type-signals.json",
+    "track/items/<track-id>/*-catalogue-spec-signals.json",
+    "track/items/<track-id>/spec-adr-verify-cache.json",
+    "track/items/<track-id>/spec-adr-verify-cache.json.lock",
+    "track/items/<track-id>/*-catalogue-spec-verify-cache.json",
+    "track/items/<track-id>/*-catalogue-spec-verify-cache.json.lock",
+    "track/items/<track-id>/.provider-sessions/**",
+    "track/items/<track-id>/obligations.json",
+    "track/items/<track-id>/obligation-fulfillment-cache.json",
+    "track/items/<track-id>/waiver-cache.json",
+    "track/items/<track-id>/adr-baseline/**"
+  ],
+  "other_track": [
+    "track/items/<other-track>/**",
+    "track/archive/**"
+  ]
+}

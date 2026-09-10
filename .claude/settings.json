@@ -1,0 +1,192 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${SOTP_CLI_BINARY:-}\" ]; then \"$SOTP_CLI_BINARY\" hook dispatch --host claude skill-compliance || exit 0; elif [ -x \"$CLAUDE_PROJECT_DIR/bin/sotp\" ]; then \"$CLAUDE_PROJECT_DIR/bin/sotp\" hook dispatch --host claude skill-compliance || exit 0; elif command -v sotp >/dev/null 2>&1; then sotp hook dispatch --host claude skill-compliance || exit 0; else exit 0; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${SOTP_CLI_BINARY:-}\" ]; then \"$SOTP_CLI_BINARY\" hook dispatch --host claude hooks-path-setup || exit 2; elif [ -x \"$CLAUDE_PROJECT_DIR/bin/sotp\" ]; then \"$CLAUDE_PROJECT_DIR/bin/sotp\" hook dispatch --host claude hooks-path-setup || exit 2; elif command -v sotp >/dev/null 2>&1; then sotp hook dispatch --host claude hooks-path-setup || exit 2; else echo '[Git Policy] sotp CLI is not available. Install sotp or set SOTP_CLI_BINARY, then configure hooks with `git config --local core.hooksPath .githooks`.' >&2; exit 2; fi",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${SOTP_CLI_BINARY:-}\" ]; then \"$SOTP_CLI_BINARY\" hook dispatch --host claude block-direct-git-ops || exit 2; elif [ -x \"$CLAUDE_PROJECT_DIR/bin/sotp\" ]; then \"$CLAUDE_PROJECT_DIR/bin/sotp\" hook dispatch --host claude block-direct-git-ops || exit 2; elif command -v sotp >/dev/null 2>&1; then sotp hook dispatch --host claude block-direct-git-ops || exit 2; else echo '[Git Policy] sotp CLI is not available. Install sotp or set SOTP_CLI_BINARY before running Bash commands.' >&2; exit 2; fi",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -n \"${SOTP_CLI_BINARY:-}\" ]; then \"$SOTP_CLI_BINARY\" hook dispatch --host claude block-test-file-deletion || exit 2; elif [ -x \"$CLAUDE_PROJECT_DIR/bin/sotp\" ]; then \"$CLAUDE_PROJECT_DIR/bin/sotp\" hook dispatch --host claude block-test-file-deletion || exit 2; elif command -v sotp >/dev/null 2>&1; then sotp hook dispatch --host claude block-test-file-deletion || exit 2; else echo '[Git Policy] sotp CLI is not available. Install sotp or set SOTP_CLI_BINARY before running Bash or Write guard checks.' >&2; exit 2; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\": {\"feedback\": \"Before going idle: (1) Check the shared task list for pending tasks. If all tasks are complete, verify results. (2) IMPORTANT: Write your work log to .claude/logs/agent-teams/{team-name}/{your-teammate-name}.md. Use available tools (Write or Edit) to create the parent directory first if it does not exist, then write the file. The work log must include: Summary, Tasks Completed, Files Modified, Key Decisions, and Issues Encountered. (3) Report to the team lead.\"}}'"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"hookSpecificOutput\": {\"additionalContext\": \"Context compaction triggered. Resume from durable repository state, not remembered session text. Follow .claude/rules/orchestrator.md and the provider-neutral workflow SSoT under .harness/workflows/track/. Resolve the active track with bin/sotp track resolve, task progress with bin/sotp track task-counts and bin/sotp track next-task, and gate state with bin/sotp review results, bin/sotp test-obligation results, bin/sotp catalog check, and bin/sotp ref-verify results. Read only the exact artifact paths in the current workflow or briefing; do not bulk-read track artifacts or conventions. Continue from durable state and use .harness/config/agent-profiles.json for provider routing.\"}}}'"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "A Bash command requires user permission: $ARGUMENTS\n\nAnalyze the command and decide (check in order, return at first match):\n\n0. **PRIORITY: Chain operators (&&, ;)**\n   If the command contains `&&` or `;` joining multiple commands, ALWAYS deny.\n   Each subcommand is likely individually allowed — split into separate Bash calls.\n   Respond: {\"hookSpecificOutput\":{\"hookEventName\":\"PermissionRequest\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Split chained commands into separate Bash calls\",\"additionalContext\":\"This command chains multiple commands with && or ;. Split into separate Bash calls — each individual command is likely already in permissions.allow.\"}}\n\n1. Can this be done with a dedicated Claude Code tool instead?\n   - File reading (cat, head, tail, less, more) → Use the Read tool\n   - File searching (grep, rg, ag) → Use the Grep tool\n   - File finding (find, ls, tree) → Use the Glob tool\n   - File writing (cat >, echo >) → Use the Write or Edit tool\n\n2. Is this a direct `bin/sotp` call that has a `cargo make` wrapper?\n   - `bin/sotp make ...` → Use `cargo make ...` (the wrapper calls sotp make internally)\n   - `bin/sotp review check-approved`, `bin/sotp review results`, and `bin/sotp capability exec` intentionally have no cargo make wrapper in this workflow; do not suggest `track-check-approved`, `track-review-results`, or a capability-exec wrapper.\n   - If a `cargo make` wrapper exists, deny and suggest it.\n\n3. If a dedicated tool or cargo make wrapper CAN replace this command, respond with JSON:\n   {\"hookSpecificOutput\":{\"hookEventName\":\"PermissionRequest\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"Use cargo make wrapper or dedicated tool instead\",\"additionalContext\":\"This command can be replaced by [ALTERNATIVE]. Use [SPECIFIC_COMMAND] instead.\"}}\n\n4. If the command genuinely needs Bash (no dedicated tool, no cargo make wrapper, no chain), respond with JSON:\n   {\"hookSpecificOutput\":{\"hookEventName\":\"PermissionRequest\",\"permissionDecision\":\"ask\",\"permissionDecisionReason\":\"No dedicated tool or wrapper alternative\"}}",
+            "timeout": 15,
+            "statusMessage": "Evaluating if dedicated tool can replace Bash command..."
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Read(./**)",
+      "Edit(./**)",
+      "Grep(./**)",
+      "Task(*)",
+      "Skill(*)",
+      "TodoWrite(*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git branch --list:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git show:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git notes show:*)",
+      "Bash(git notes list:*)",
+      "Bash(cargo make bootstrap)",
+      "Bash(cargo make fmt-check)",
+      "Bash(cargo make clippy)",
+      "Bash(cargo make test)",
+      "Bash(cargo make test-doc)",
+      "Bash(cargo make deny)",
+      "Bash(cargo make check-layers)",
+      "Bash(cargo make verify-arch-docs)",
+      "Bash(cargo make verify-track-metadata)",
+      "Bash(cargo make verify-latest-track)",
+      "Bash(cargo make ci-rust)",
+      "Bash(cargo make ci)",
+      "Bash(cargo make track-commit-message)",
+      "Bash(gemini:*)",
+      "Bash(codex:*)",
+      "Bash(tree:*)",
+      "Bash(which:*)",
+      "Bash(bin/sotp arch:*)",
+      "Bash(bin/sotp conventions:*)",
+      "Bash(bin/sotp review:*)",
+      "Bash(bin/sotp signal:*)",
+      "Bash(bin/sotp phase:*)",
+      "Bash(bin/sotp test-obligation:*)",
+      "Bash(bin/sotp catalog:*)",
+      "Bash(bin/sotp ref-verify:*)",
+      "Bash(bin/sotp track:*)",
+      "Bash(bin/sotp dry:*)",
+      "Bash(bin/sotp capability:*)",
+      "Bash(bin/sotp git add-all)",
+      "Bash(bin/sotp git add-from-file:*)",
+      "Bash(bin/sotp git sync)",
+      "Bash(bin/sotp git note-from-file:*)",
+      "Bash(bin/sotp pr:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh repo view:*)",
+      "Bash(cargo make pr-audit-comment:*)",
+      "Bash(cargo make verify-plan-artifact-refs)",
+      "Bash(cargo make track-local-review)",
+      "Bash(cargo make track-local-review:*)",
+      "Bash(cargo make track-local-review-fix:*)",
+      "Bash(cargo make track-local-dry-fix:*)",
+      "Bash(true)",
+      "Bash(head :*)",
+      "Bash(tail :*)",
+      "Bash(wc :*)",
+      "Bash(grep:*)",
+      "Bash(uniq:*)",
+      "Bash(diff:*)",
+      "Bash(jq:*)",
+      "Bash(pwd:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git status:*)",
+      "Bash(git branch --show-current)"
+    ],
+    "deny": [
+      "Read(./track/archive/**)",
+      "Grep(./track/archive/**)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./.cache/cargo/**)",
+      "Grep(./.cache/cargo/**)",
+      "Read(./.cache/home/**)",
+      "Grep(./.cache/home/**)",
+      "Read(./.cache/sccache/**)",
+      "Grep(./.cache/sccache/**)",
+      "Read(./**/*.db)",
+      "Grep(./**/*.db)",
+      "Read(./**/*.sqlite)",
+      "Grep(./**/*.sqlite)",
+      "Read(./**/*.pem)",
+      "Read(./**/*.key)",
+      "Read(./**/credentials*)",
+      "Read(./**/*secret*)",
+      "Read(./private/**)",
+      "Grep(./private/**)",
+      "Read(./config/secrets/**)",
+      "Grep(./config/secrets/**)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(cargo make --allow-private:*)",
+      "Bash(install :*)",
+      "Bash(chmod :*)",
+      "Bash(chown :*)"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  }
+}

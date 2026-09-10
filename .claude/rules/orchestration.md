@@ -1,0 +1,142 @@
+---
+paths:
+  - ".harness/**"
+  - "track/**"
+  - ".claude/commands/**"
+  - ".claude/agents/**"
+  - ".codex/**"
+  - ".agents/**"
+---
+
+# Orchestration
+
+This conditionally loaded document is the detailed Claude-side orchestration reference. The
+concise always-applied root rule surface is `.claude/rules/orchestrator.md`; this file is read
+when workflow control or capability routing is in scope, and is not a PR-review briefing.
+
+The root orchestrator is selected by `.harness/config/agent-profiles.json` at
+`capabilities.orchestrator.provider`. Claude Code and Codex CLI are both permanent template
+choices. This file describes the Claude-side operating rules while preserving the same `/track:*`
+workflow for either root host.
+
+- User-facing interface: `/track:*`
+- Context management: `track/`
+- Capability routing: `.harness/config/agent-profiles.json`
+- Provider authority: each capability resolves through `capabilities.<name>.provider`; the
+  config file is the source of truth for every capability, and no provider is assumed from the
+  host session — dispatch through `bin/sotp capability exec` and let it resolve.
+- Parallel execution: Agent Teams
+
+Host orchestration may run in Claude Code or Codex depending on `capabilities.orchestrator.provider`.
+Specialist capabilities may switch as models evolve, but the public `/track:*` interface should remain stable.
+Codex root orchestration uses tracked `.codex` config, rules, hooks, agents, and repo-scoped
+`.agents/skills`; those project-local surfaces require a trusted checkout before they can be treated
+as active guardrails.
+
+Terms:
+
+- `track`: `metadata.json` (identity SSoT) / `spec.json` (Phase 1 behavioral contract SSoT) / `<layer>-types.json` (Phase 2 type-contract SSoT) / `impl-plan.json` + `task-coverage.json` + `task-contract.json` + `batch-plan.json` (Phase 3 implementation plan SSoT) / `spec.md` / `plan.md` (read-only rendered views) / `observations.md` (optional manual observation log) / progress management layer
+
+## Summary-first context intake
+
+Before planning or implementation, collect the summaries needed for the current workflow:
+
+- `bin/sotp track resolve`, `bin/sotp track task-counts`, and `bin/sotp track next-task` for phase
+  and progress;
+- `bin/sotp review results` for scopes that need review;
+- `bin/sotp test-obligation results` for enrollment and fulfillment state when the track is enrolled;
+  and
+- `bin/sotp catalog check` plus `bin/sotp ref-verify results --chain 2 --filter all` for catalogue
+  completion and catalogue-to-specification state.
+
+Treat CLI output and the delegated task briefing as primary. Do not bulk-read track artifacts,
+review or binding JSON, full workflow texts, or convention lists during intake. Open an artifact
+body only for a targeted diff or a blocker investigation. The dispatcher supplies resolved
+convention paths in each capability briefing; the delegated capability reads those paths, while
+the orchestrator does not enumerate or read conventions itself. The typed-pipeline local
+reviewer and review-fix-lead routes are a bounded exception: the review workflow itself resolves
+the applicable paths from the track's convention references and the consumer-owned
+`knowledge/conventions/README.md` `Current Files` index while preparing their briefings.
+
+The `adr2pr` workflow's mandatory Step 0 is a bounded exception: before executing that workflow,
+read each sub-workflow definition it enumerates to build the required execution plan. This is
+required workflow planning, not general bulk intake.
+
+The track artifacts, ADR index, policies, architecture rules, and provider-specific rules remain
+the applicable sources of truth. Read only the specific path required by the current workflow
+step or blocker, after the summary intake, and keep the provider-neutral workflow SSoT under
+`.harness/workflows/track/` authoritative for shared behavior.
+
+Operational split:
+
+- `README.md`: user-facing entry point (value proposition / prerequisites / getting started / free-form request examples)
+- `CLAUDE.md`: maintainer/reference guide
+- `knowledge/conventions/`: project-specific engineering rules, day-to-day workflow rules, and implementation policies
+- `architecture-rules.json`: machine-readable layer dependency source of truth for `deny.toml` and `sotp verify layers`
+- `.harness/config/agent-profiles.json`: capability-to-provider mapping source of truth
+
+## Planning Gate (Mandatory)
+
+Complete Phase 0–3 planning before implementation, regardless of task difficulty: `/track:plan` orchestrates init → spec → design → impl-plan and back-and-forth escalation when downstream signals fail, and end-to-end workflows such as `/track:adr2pr` own the equivalent sequencing on an initialized track (do not invoke `/track:plan` on a `track/<id>` branch it already initialized). Skipping design entirely causes expensive downstream review loops (historical lesson: 15+ review rounds from skipped design).
+
+## Delegation Rules
+
+Use the minimum capable capability first, then dispatch it through the CLI or wrapper that
+resolves its profile internally.
+
+### Capability session resume (caller-side decision)
+
+The continuation/fresh decision belongs to the dispatching orchestrator, BEFORE dispatch.
+Session reuse applies only when the dispatcher invokes a provider subprocess:
+
+- Pass `--resume` to `bin/sotp capability exec` when the dispatch continues the SAME
+  assignment for the same track and capability (a follow-up round on the same briefing, a
+  retry after an incomplete round, resuming interrupted work). Outside a track add
+  `--target-artifact <repo-relative-path>` for each target; a track-external dispatch with
+  no determined target must stay fresh.
+- A Claude-root dispatch that also resolves to the Claude provider returns a
+  `delegate-in-host` instruction before the session cache is consulted. Its native Claude Agent
+  invocation always starts fresh; do not pass `--resume` expecting it to reuse a session.
+- Do NOT pass `--resume` on a first dispatch or when the assignment's concern changes
+  (new task, new briefing subject) — those run as new sessions.
+- Resume never needs manual cache management: provider/model mismatch, resume failure, or
+  expiry falls back to a fresh session without aborting the dispatch, and all execution
+  flags are explicitly re-specified either way. Reviewer rounds resume automatically inside
+  `bin/sotp review local`; no caller flag exists there.
+
+- Claude Code or Codex (`orchestrator` host):
+  - normal edits
+  - workflow control
+  - file synchronization
+  - user interaction
+- specialist capabilities:
+  - `orchestrator`: overall coordination (Claude Code or Codex, resolved from `capabilities.orchestrator.provider`)
+  - `spec-designer`: behavioral contract authoring (Phase 1 spec.json writer)
+  - `type-designer`: type-level contract authoring (Phase 2 `<layer>-types.json` writer, TDDD workflow)
+  - `impl-planner`: implementation plan authoring (Phase 3 impl-plan.json + task-coverage.json + task-contract.json + batch-plan.json writer)
+  - `adr-editor`: ADR back-and-forth modification (invoked by `/track:plan` when spec → ADR signal turns 🔴)
+  - `implementer`: difficult Rust implementation, refactoring, performance-oriented edits
+  - `reviewer`: code review, correctness analysis, idiomatic Rust checks
+  - `researcher`: crate research, codebase-wide analysis, external research
+- provider-routing SSoT (`.harness/config/agent-profiles.json`; resolved internally by the
+  relevant CLI or dispatcher):
+  - `orchestrator` → `capabilities.orchestrator.provider`
+  - `spec-designer` / `type-designer` / `impl-planner` / `adr-editor` / `implementer` → their own capability provider entries
+  - `reviewer` / `review-fix-lead` / `dry-checker` / `dry-fix-lead` → their own capability provider entries
+  - `researcher` → its own capability provider entry
+- Agent Teams:
+  - `/track:implement`
+  - `/track:review`
+
+If unsure:
+
+1. Workflow control or user interaction -> active root orchestrator
+2. Research need -> `researcher`
+3. Behavioral spec authoring -> `spec-designer`
+4. Type catalogue authoring -> `type-designer`
+5. Implementation plan authoring -> `impl-planner`
+6. ADR back-and-forth modification -> `adr-editor`
+7. Review need -> `reviewer`
+8. Implementation work -> `implementer`
+
+If stuck for 3+ iterations, use `researcher` to diagnose the root cause before escalating.

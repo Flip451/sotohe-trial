@@ -1,0 +1,8 @@
+# Ignore all skills by default.
+# Only skills explicitly negated below are distributed with the template.
+*
+
+# Template-distributed skills
+!.gitignore
+!architecture-customizer/
+!architecture-customizer/**
