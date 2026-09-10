@@ -65,11 +65,13 @@
   "schema_version": 2,
   "tasks": [
     {
+      "commit_hash": "6062f10fb38b2fa249d1c7706b9de6369518c530",
       "description": "Implement the domain entries `PasswordHash`, `PasswordHashError`, `OpaqueAccessToken`, `OpaqueAccessTokenError`, `User`, `AccessTokenRecord`, `UserRepository`, `AccessTokenRepository`, `UserRepositoryError`, `AccessTokenRepositoryError`, and `UserLookupError`, plus focused boundary and contract tests (IN-001, IN-002, CN-001, CN-002, AC-001, AC-002, AC-003).",
       "id": "T001",
       "status": "done"
     },
     {
+      "commit_hash": "6062f10fb38b2fa249d1c7706b9de6369518c530",
       "description": "Implement the usecase entries `PlaintextPassword`, `PasswordInputError`, `CredentialParseError`, `RegisterUserCommand`, `LoginCommand`, `PasswordHashingError`, `PasswordVerificationError`, `TokenIssuanceError`, `PasswordHasher`, `PasswordVerifier`, and `OpaqueTokenIssuer`, plus focused boundary tests (IN-001, IN-002, CN-001, CN-005, AC-001, AC-002, AC-003).",
       "id": "T002",
       "status": "done"
@@ -80,11 +82,13 @@
       "status": "todo"
     },
     {
+      "commit_hash": "6062f10fb38b2fa249d1c7706b9de6369518c530",
       "description": "Implement the usecase entries `LoginService`, `LoginInteractor`, `LoginError`, and `IssuedAccessToken`, plus result tests (IN-002, CN-001, CN-002, CN-005, AC-002).",
       "id": "T004",
       "status": "done"
     },
     {
+      "commit_hash": "6062f10fb38b2fa249d1c7706b9de6369518c530",
       "description": "Implement the infrastructure entries `InMemoryUserRepository`, `InMemoryAccessTokenRepository`, `Argon2PasswordAdapter`, and `RandomOpaqueTokenIssuer`, plus repository and port-conformance tests (IN-001, IN-002, CN-001, CN-002, AC-001, AC-002, AC-003).",
       "id": "T005",
       "status": "done"
