@@ -1,0 +1,13 @@
+{
+  "schema_version": 6,
+  "id": "2026-09-10-minimal-auth-api",
+  "title": "最小認証API",
+  "branch": "track/2026-09-10-minimal-auth-api",
+  "created_at": "2026-09-10T12:17:23Z",
+  "updated_at": "2026-09-10T12:17:23Z",
+  "branch_strategy_snapshot": {
+    "base_branch": "main",
+    "merge_target": "main",
+    "merge_method": "merge"
+  }
+}
