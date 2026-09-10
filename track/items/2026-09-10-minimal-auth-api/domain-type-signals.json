@@ -1,10 +1,10 @@
 {
   "baseline_hash": "657ba136276be9c39c319d4b5cc3c233b87b3fb6194280bfd3b51eb39ad40de7",
   "declaration_hash": "8d31754935200a67bbe4ce71013233863e3a1e72e3c53f61ed83ec645d78e39f",
-  "generated_at": "2026-09-10T19:19:44Z",
-  "head_commit": "adb822e2d21d747795926b34565c6a8bc86d48d1",
-  "implementation_fingerprint": "15bb377f7e6d376670aa20add00c3141cfec3f588775883fe6a7b565bb4e0635",
-  "resolution_fingerprint": "8a7ffe6f8588fe5a9a4a41ddafdb06eb795bf0d14cf6f49dd3a1372daec7d63a",
+  "generated_at": "2026-09-10T22:21:11Z",
+  "head_commit": "e8f4a66c9f9b311b13afeb16164350e40f5026fa",
+  "implementation_fingerprint": "09e3e42f0bfb2383ea4c6be31eba92d4298f1e101e1c5a7bca44326c1f484cbc",
+  "resolution_fingerprint": "9a65506bc198aaf51595b3f2a5373be3b181e4c8a0c28f6411e89fb5c1c084cd",
   "rustdoc_execution_identity": {
     "crate_name": "domain",
     "expected_json_path": "target/.sotp-rustdoc/8fc3fc37b933fc99a0351936fa4f365a9cd7e3f8517138bbb2389a99a0c40502/doc/domain.json",
@@ -15,135 +15,135 @@
   "schema_version": 6,
   "signals": [
     {
-      "found_type": false,
-      "kind_tag": "value_object",
-      "missing_items": [
+      "found_items": [
         "core::clone::Clone",
         "core::cmp::Eq",
         "core::cmp::PartialEq"
       ],
+      "found_type": true,
+      "kind_tag": "value_object",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "AccessTokenRecord"
     },
     {
-      "found_type": false,
+      "found_type": true,
       "kind_tag": "secondary_port",
       "namespace": "trait",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "AccessTokenRepository"
     },
     {
-      "found_type": false,
-      "kind_tag": "error_type",
-      "missing_items": [
+      "found_items": [
         "core::cmp::Eq",
         "core::cmp::PartialEq",
         "core::error::Error",
         "core::fmt::Debug",
         "core::fmt::Display"
       ],
+      "found_type": true,
+      "kind_tag": "error_type",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "AccessTokenRepositoryError"
     },
     {
-      "found_type": false,
-      "kind_tag": "value_object",
-      "missing_items": [
+      "found_items": [
         "core::clone::Clone",
         "core::cmp::Eq",
         "core::cmp::PartialEq"
       ],
+      "found_type": true,
+      "kind_tag": "value_object",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "OpaqueAccessToken"
     },
     {
-      "found_type": false,
-      "kind_tag": "error_type",
-      "missing_items": [
+      "found_items": [
         "core::cmp::Eq",
         "core::cmp::PartialEq",
         "core::error::Error",
         "core::fmt::Debug",
         "core::fmt::Display"
       ],
+      "found_type": true,
+      "kind_tag": "error_type",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "OpaqueAccessTokenError"
     },
     {
-      "found_type": false,
-      "kind_tag": "value_object",
-      "missing_items": [
+      "found_items": [
         "core::clone::Clone",
         "core::cmp::Eq",
         "core::cmp::PartialEq"
       ],
+      "found_type": true,
+      "kind_tag": "value_object",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "PasswordHash"
     },
     {
-      "found_type": false,
-      "kind_tag": "error_type",
-      "missing_items": [
+      "found_items": [
         "core::cmp::Eq",
         "core::cmp::PartialEq",
         "core::error::Error",
         "core::fmt::Debug",
         "core::fmt::Display"
       ],
+      "found_type": true,
+      "kind_tag": "error_type",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "PasswordHashError"
     },
     {
-      "found_type": false,
-      "kind_tag": "value_object",
-      "missing_items": [
+      "found_items": [
         "core::clone::Clone",
         "core::cmp::Eq",
         "core::cmp::PartialEq"
       ],
+      "found_type": true,
+      "kind_tag": "value_object",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "User"
     },
     {
-      "found_type": false,
-      "kind_tag": "error_type",
-      "missing_items": [
+      "found_items": [
         "core::cmp::Eq",
         "core::cmp::PartialEq",
         "core::error::Error",
         "core::fmt::Debug",
         "core::fmt::Display"
       ],
+      "found_type": true,
+      "kind_tag": "error_type",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "UserLookupError"
     },
     {
-      "found_type": false,
+      "found_type": true,
       "kind_tag": "secondary_port",
       "namespace": "trait",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "UserRepository"
     },
     {
-      "found_type": false,
-      "kind_tag": "error_type",
-      "missing_items": [
+      "found_items": [
         "core::cmp::Eq",
         "core::cmp::PartialEq",
         "core::error::Error",
         "core::fmt::Debug",
         "core::fmt::Display"
       ],
+      "found_type": true,
+      "kind_tag": "error_type",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "UserRepositoryError"
     },
     {

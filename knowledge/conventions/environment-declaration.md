@@ -1,0 +1,30 @@
+# Project Environment Declaration
+
+この文書は **本プロジェクト（consumer）が所有する**環境前提の記入インスタンスである。
+枠と記入指針は `environment-assumptions.md` が提供し、ここにはその宣言欄の実値のみを置く。
+
+> **強制先**: review 観点 — harness-policy scope
+
+## Supported Platforms
+
+- 対応する platform、architecture、runtime: Linux (kernel 5.x+), `x86_64-unknown-linux-gnu`, Rust edition 2024 / rust-toolchain channel `1.94.0`, host process (no WASM / no bare-metal). OS CSPRNG via `getrandom`/`OsRng` must be available for Argon2 salt and opaque-token issuance.
+- 対応外または条件付きの範囲: Windows / macOS / non-x86_64 / no-std / browser Wasm は未検証。コンテナは上記 Linux ABI と同等の CSPRNG を提供する場合に限り可。
+- platform 差が入力、ファイル、時刻、プロセス、または終了処理に与える条件: 認証アダプタは時刻やファイル I/O に依存しない。CSPRNG 失敗は hashing / token issuance を fail-closed (`Unavailable`) にする。
+
+## Input-Encoding Policy
+
+- 受け付ける入力経路と encoding: REST JSON bodies は UTF-8 (CN-004)。平文パスワードは UTF-8 バイト列として application boundary (`PlaintextPassword`) で受け取り、格納パスワードハッシュは PHC 文字列 (`$argon2id$v=19$m=…,t=…,p=…$<salt>$<digest>`) で salt/digest は Base64 unpadded。
+- decode、正規化、改行や byte order などの扱い: JSON 文字列値は UTF-8 decode 後に Unicode 正規化しない (CN-004)。パスワードバイトは受け取りどおり保持する。PHC の salt/digest は Base64 unpadded のみ受理する。
+- encoding が不正、未指定、または判定できない場合の扱い: 不正 UTF-8 / 不正 JSON は HTTP 400、非 `application/json` は HTTP 415 (CN-004)。PHC/Base64 不正または非 argon2id ハッシュは verification `Unavailable`。空パスワードは `PasswordInputError::Empty` (CN-005)。超過長は `PasswordInputError::TooLong`。
+
+## Resource Limits
+
+- 入力サイズ、メモリ、保存領域、処理時間、同時実行数などの上限: (1) 平文パスワード最大 1024 UTF-8 バイト (`PlaintextPassword::parse`)。(2) Argon2id パラメータ上限は hashing 既定と同一: `m≤19456` KiB、`t≤2`、`p≤1`、出力長 32 バイト、salt 16 バイト。PHC 全文は最大 256 UTF-8 バイト。verify は格納ハッシュの PHC 長・パラメータまたは salt/digest 長がこの上限を超える場合に割り当て/走査前に拒否する。(3) インメモリ User/AccessToken リポジトリの件数上限は設けない（プロセスメモリが境界）。
+- 上限の単位、適用範囲、超過時の失敗動作: パスワード超過は `PasswordInputError::TooLong`。Argon2 パラメータ超過・salt/digest 過長または不正 PHC は `PasswordVerificationError::Unavailable`。CSPRNG 失敗は hashing/issuance `Unavailable`。
+- 上限を設けない項目がある場合の理由と、代わりに置く境界: インメモリ件数は置換可能な repository port (CN-002) の責務とし、本トラックではプロセスメモリを事実上の境界とする。HTTP リクエストボディ上限は delivery 層 (後続バッチ) で扱う。
+
+## Concurrency Model
+
+- thread、task、process などの実行単位と、同時実行の上限: 同期 API (`Send + Sync` ports)。インメモリリポジトリはプロセス内共有。HTTP/Tokio 同時実行上限は delivery 層で後続宣言する。Argon2 `p` は 1 に固定。
+- shared state の所有、同期、順序、再入可能性: `InMemoryUserRepository` / `InMemoryAccessTokenRepository` は `std::sync::RwLock` で HashMap を保護。ロック毒は repository `Unavailable`。同一 username の二重 save は `DuplicateUser`。順序保証はリポジトリ操作単位。
+- cancellation、shutdown、失敗時の処理: 同期呼び出しのため協調 cancellation なし。プロセス終了でインメモリ状態は消える。部分失敗は型付きエラーで fail-closed（トークン発行後の persist 失敗は `LoginError::Persistence`）。

@@ -47,6 +47,131 @@
         }
       ]
     },
+    "domain": {
+      "rounds": [
+        {
+          "at": "2026-09-10T20:27:45Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "Unable to perform the required review because the read-only execution sandbox fails before every shell command with `failed to open synthetic bubblewrap mount registry lock ... Read-only file system`; therefore the briefing, severity policy, current diff, and target file could not be read.",
+              "severity": "high"
+            }
+          ],
+          "hash": "rvw1:sha256:077393197a06c74a03f079606251234c56d4195e781f7a59c82aa5c691fd6dad",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T20:45:39Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "Review blocked: the sandbox fails before executing every repository read command because its synthetic bubblewrap mount registry is read-only. The required briefing, severity policy, current diff, and target file could not be inspected.",
+              "severity": "high"
+            }
+          ],
+          "hash": "rvw1:sha256:077393197a06c74a03f079606251234c56d4195e781f7a59c82aa5c691fd6dad",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T20:51:27Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/domain/src/lib.rs",
+              "line": 94,
+              "message": "`PasswordHash::new` validates only the `$argon2id$` prefix, so values such as `$argon2id$` or `$argon2id$garbage` become a `PasswordHash` even though the declared stored format is a complete PHC argon2id encoding with valid version/parameters/salt/digest. This breaks the newtype's documented validated-encoding invariant and lets malformed persisted hashes cross the domain boundary; validate the full PHC representation or reject malformed encodings.",
+              "severity": "medium"
+            }
+          ],
+          "hash": "rvw1:sha256:077393197a06c74a03f079606251234c56d4195e781f7a59c82aa5c691fd6dad",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T20:57:29Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/domain/src/lib.rs",
+              "line": 133,
+              "message": "`is_complete_argon2id_phc` checks only that salt and digest are non-empty; it accepts malformed PHC payloads such as `$argon2id$v=19$m=19456,t=2,p=1$%%%$%%%`. The project’s declared encoding policy requires salt and digest to be unpadded Base64, so `PasswordHash::new` still admits an invalid stored hash. Validate the salt and digest encoding before constructing the value.",
+              "severity": "medium"
+            }
+          ],
+          "hash": "rvw1:sha256:47e5c16ae091c3e23bf39966a1cbc5fb354a9d341161979f8eacc1e8162a7ed9",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:08:24Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cf3bc5cb70ea1c7ca4f5538881cc8db582b40bb92157730c932541ea872f3964",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:18:16Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cf3bc5cb70ea1c7ca4f5538881cc8db582b40bb92157730c932541ea872f3964",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "harness-policy": {
+      "rounds": [
+        {
+          "at": "2026-09-10T21:01:56Z",
+          "findings": [
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/environment-assumptions.md",
+              "line": 33,
+              "message": "This template distribution file now ships consumer-specific platform, protocol, Argon2, repository, and concurrency defaults, contradicting its own consumer-ownership rules at lines 20, 75, and 117. Keep these values in the consumer-owned declaration instance, or separately record and implement an explicit decision to promote them to shared template defaults.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:38ef6f157899fa9d1f04d4ab346b7aa33ada530ae162f09bb7fe47b9e5a490ff",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:12:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:452ae40486f4dce3df5425442e42fce0a28ea70dd72b1b63ea6cd4fb1d9c995f",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:35:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:452ae40486f4dce3df5425442e42fce0a28ea70dd72b1b63ea6cd4fb1d9c995f",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:57:51Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3ab9313f0391763417a7b3df545efb9c644941b913e1f5ca0ecc98f905bf0f3d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:03:06Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3ab9313f0391763417a7b3df545efb9c644941b913e1f5ca0ecc98f905bf0f3d",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
     "impl-plan": {
       "rounds": [
         {
@@ -261,6 +386,140 @@
           "hash": "rvw1:sha256:9842408c639a25c1d3fae2d86ec90d9f5cd6b2546d8528e6dbb75e0ae7ab36bf",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T20:25:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e01ed64398cf0dfccc7a429ed23766e8ee9e13c3759bae800386ed08722a9c1b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:03:41Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e01ed64398cf0dfccc7a429ed23766e8ee9e13c3759bae800386ed08722a9c1b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:39:46Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e01ed64398cf0dfccc7a429ed23766e8ee9e13c3759bae800386ed08722a9c1b",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "infrastructure": {
+      "rounds": [
+        {
+          "at": "2026-09-10T20:27:13Z",
+          "findings": [
+            {
+              "category": "resource-limit / external-boundary assumption",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 214,
+              "message": "`verify` accepts attacker-/storage-controlled Argon2 parameters and allocates `params.block_count()` blocks without an application-level bound. A hash containing an extreme `m` value can trigger multi-terabyte allocation/OOM during login. Enforce a bounded parameter policy before allocation and reject hashes outside it.",
+              "severity": "P1"
+            },
+            {
+              "category": "external-boundary assumptions",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 159,
+              "message": "This adapter newly depends on undeclared external assumptions: OS CSPRNG availability, PHC/base64 encoding details, Argon2 memory/time limits, and the `RwLock` concurrency model. `knowledge/conventions/environment-assumptions.md` still contains TODO declarations, while neither the spec nor an environment declaration records these assumptions. Declare the applicable platform, encoding, resource, and concurrency constraints.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:e5a4f4ea74882713bd7f5a2e890d9ce82e3d13b501fc797b539c1b312ff1d393",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:00:48Z",
+          "findings": [
+            {
+              "category": "resource-limit / external-boundary assumption",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 253,
+              "message": "The Argon2 parameter cap does not bound the PHC digest length. `decode_vec` and the subsequent `vec![0; parsed.digest.len()]` accept an arbitrarily large stored hash payload, allowing memory exhaustion before Argon2 runs. Enforce the declared 32-byte digest (and 16-byte salt) limits before decoding/allocation.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:5ec28f3173cbdbc6cb635e05e610ae66fc2321bed30aba079793c100c0ddd287",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:11:41Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5f335daea88b9ef1660fb676dbfe4b2bca06c9fda26ed20f333260a4b814bc38",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:26:14Z",
+          "findings": [
+            {
+              "category": "resource-limit / boundary validation",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 257,
+              "message": "The pre-decode limits use padded-Base64 lengths, but the fields are decoded as unpadded Base64. A 23-character salt decodes to 17 bytes yet passes the 24-character guard, and a 44-character digest decodes to 33 bytes yet passes the 44-character guard. `decode_vec` therefore allocates oversized fields before the later byte-length check rejects them, contrary to the briefing and environment declaration. Use the exact unpadded maxima (22 and 43 characters) and test these boundary cases.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:5f335daea88b9ef1660fb676dbfe4b2bca06c9fda26ed20f333260a4b814bc38",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:45:06Z",
+          "findings": [],
+          "hash": "rvw1:sha256:38b38861957246c0b7f32934fbd5c96c367729d05a0f3e4585bba1147f604c5b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:49:22Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存 / unbounded encoding parse",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 233,
+              "message": "`parse_encoded_hash` has no total PHC or parameter-field length guard before splitting and parsing the stored encoding. For example, an otherwise valid `m` value can contain arbitrarily many leading zeroes, forcing unbounded scans on every verification while still parsing below the numeric cap. The environment declaration bounds numeric parameters and salt/digest sizes but does not declare a bound for their textual PHC representation. Add a fail-closed encoded-length bound before parsing, or declare and enforce an equivalent input boundary.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:38b38861957246c0b7f32934fbd5c96c367729d05a0f3e4585bba1147f604c5b",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:57:10Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bd9872a0ce83cb758a3bbadf7487fe5f4f7a82220611551f7c933cd06b8adab6",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:59:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bd9872a0ce83cb758a3bbadf7487fe5f4f7a82220611551f7c933cd06b8adab6",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:18:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:243a44e6cbba85c17a9344b97080c2e78a0a44750441bac63b7c0d08c0954944",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:20:26Z",
+          "findings": [],
+          "hash": "rvw1:sha256:243a44e6cbba85c17a9344b97080c2e78a0a44750441bac63b7c0d08c0954944",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -277,6 +536,116 @@
           "at": "2026-09-10T18:33:46Z",
           "findings": [],
           "hash": "rvw1:sha256:3534e585a4d1742df09723f1414fe22100e086c309d3fdd90f65026e28ebae6b",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T20:26:24Z",
+          "findings": [
+            {
+              "category": "test coverage gap",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 519,
+              "message": "The voluntary binding for `LoginError` points to a test that only covers the successful `Ok` path and never produces or checks a `LoginError`. Bind it to an error-path test or add suitable coverage.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:f7abf6e271c5c126f6367661cc419635ff433905b8fc3149f53aaba7943b2356",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:01:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f4252654430373131a584d918f995512d80a453f34f4cb475ffe8058142c814d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:31:37Z",
+          "findings": [
+            {
+              "category": "correctness",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 445,
+              "message": "The `CredentialParseError`→IN-001 edge is still a `voluntary_binding`, but its cited test only verifies empty-password parse rejection and cannot prove IN-001's success promise (“Register a user through the API”). Convert this error-type edge to a waiver with a non-empty ownership reason; CN-005 remains directly covered by the `PasswordInputError` binding.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:f4252654430373131a584d918f995512d80a453f34f4cb475ffe8058142c814d",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:45:43Z",
+          "findings": [
+            {
+              "category": "test coverage gap",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 363,
+              "message": "`PasswordHashError` is recorded as a voluntary binding for CN-001, but it only represents invalid password-hash construction. CN-001's success promise is Argon2id password-hash storage, which is covered by `PasswordHash`, `PasswordHasher`, and `Argon2PasswordAdapter`; this error edge should be a waiver with a non-empty reason.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:ae352f73e0203b75cc45194194040774d5098942fb6daf9dce40832809a746f4",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:51:14Z",
+          "findings": [
+            {
+              "category": "test-obligation",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 445,
+              "message": "The new `CredentialParseError`→IN-001 waiver is rejected by the current obligation evaluator, and `bin/sotp test-obligation check` exits 1 for this edge. The declared error specifically covers registration credential parsing, so this reason does not establish that the edge has no verifiable IN-001 behavior. Bind the relevant behavior or correct the upstream edge; the current record leaves the track gate failing.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:ae352f73e0203b75cc45194194040774d5098942fb6daf9dce40832809a746f4",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:57:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:61eb2abd1edca346ded51e40f48dff1af22239f571629424e010513cb0e1a01b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:01:18Z",
+          "findings": [
+            {
+              "category": "test-obligation",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 361,
+              "message": "`PasswordHashError`→CN-001 is recorded as a waiver even though `InvalidEncoding` has directly verifiable behavior against CN-001's argon2id requirement. The obligation evaluator rejects this waiver and the required check fails. Restore a voluntary binding to the existing non-argon2id rejection test or correct the upstream edge.",
+              "severity": "P1"
+            },
+            {
+              "category": "test-obligation",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 439,
+              "message": "The `CredentialParseError`→IN-001 voluntary binding cites only a command-parsing test and never exercises registration through the API, so it does not verify IN-001's central behavior. The evaluator reports `CentralUnverified`, leaving the DonePending obligation gate failing. Add API-level evidence or correct/refine the upstream edge instead of treating this parsing test as fulfillment.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:61eb2abd1edca346ded51e40f48dff1af22239f571629424e010513cb0e1a01b",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T22:10:26Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bfc5b247569ca6916299a7d1af78a88f4f1e9b49ecca58b8ec69c9b41bb2229a",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:13:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bfc5b247569ca6916299a7d1af78a88f4f1e9b49ecca58b8ec69c9b41bb2229a",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -572,6 +941,82 @@
           "at": "2026-09-10T18:17:03Z",
           "findings": [],
           "hash": "rvw1:sha256:b41ecc36cda74bc133c00b348cdc068bc1399fa8e7a3c294a985716d95a143e6",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:03:18Z",
+          "findings": [
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 766,
+              "message": "`usecase::PasswordInputError` docs restate the upstream password-length behavior in prose (`empty or exceeds the declared UTF-8 byte limit`) instead of using an anchor cite, violating the no-upstream-restatement policy. Keep the docs as an anchor-based type-purpose reference.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:20dcfe9e38f16adb1656a94570a266c355e612525963ba7138dec637ef739338",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:12:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:84d1f41d6225d14c5c80a8dd6a0eb0bd5c6dfeefd3a7c304665592ae4cfccf88",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:38:28Z",
+          "findings": [],
+          "hash": "rvw1:sha256:84d1f41d6225d14c5c80a8dd6a0eb0bd5c6dfeefd3a7c304665592ae4cfccf88",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "usecase": {
+      "rounds": [
+        {
+          "at": "2026-09-10T20:28:02Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "libs/usecase/src/lib.rs",
+              "line": 135,
+              "message": "`PlaintextPassword::parse` copies the entire caller-provided password into a `String` without any size bound or defined excess behavior. Both registration and login therefore depend on an undeclared input/resource limit; `knowledge/conventions/environment-assumptions.md` still leaves resource limits as TODO, so oversized requests can cause unbounded allocation before hashing or verification.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:d7d3ada3ac61bbdfc80e4869feca51dcd4f2b9855f2c92421fcc4322b5b85712",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:10:07Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eff88ea91c6db71496337f88000d43a0dee42a34e6e5be584409a3686c9c6b73",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:21:50Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eff88ea91c6db71496337f88000d43a0dee42a34e6e5be584409a3686c9c6b73",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:10:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3e9d0d50cf18e03172a8c1407f2e7eed6626d9df95eb82cbe2a11fa02140cd83",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:12:40Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3e9d0d50cf18e03172a8c1407f2e7eed6626d9df95eb82cbe2a11fa02140cd83",
           "type": "final",
           "verdict": "zero_findings"
         }

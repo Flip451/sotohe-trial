@@ -1,5 +1,5 @@
 {
-  "catalogue_declaration_hash": "48d9af7246eab4514de52f12d918be07d9e5e3a8ca86f9566a5f85046c943cc6",
+  "catalogue_declaration_hash": "83ceef60ebd9c6a04ef122a59795c9ed627c6a92ebfb915abed4d4dead90ece7",
   "schema_version": 1,
   "signals": [
     {
@@ -33,7 +33,7 @@
       "type_name": "PasswordHashingError"
     },
     {
-      "entry_hash": "951ccf06814dbb5f2d4b6495dc0c23c7ce445560eff277d7fe9b778ea6de4795",
+      "entry_hash": "287296af0dc2a73e0974b3e4c367d7f0d351bf5b17a98b3563e046bc316aa814",
       "signal": "blue",
       "type_name": "PasswordInputError"
     },

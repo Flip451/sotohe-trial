@@ -763,13 +763,19 @@
     },
     "PasswordInputError": {
       "action": "add",
-      "docs": "Failure returned when an application-boundary password is empty.",
+      "docs": "Application-boundary password input error (CN-005).",
       "informal_grounds": [],
       "kind": {
         "kind": "enum",
         "variants": [
           {
             "name": "Empty",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "TooLong",
             "payload": {
               "kind": "unit"
             }

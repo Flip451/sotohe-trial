@@ -95,3 +95,571 @@ mod tests {
         assert_eq!(interactor.execute(&user), Err(GreetError::Unavailable));
     }
 }
+
+/// Authentication application commands, ports, and interactors.
+pub mod auth {
+    use std::sync::Arc;
+
+    use thiserror::Error;
+
+    use domain::auth::{
+        AccessTokenRecord, AccessTokenRepository, AccessTokenRepositoryError, OpaqueAccessToken,
+        PasswordHash, UserLookupError, UserRepository,
+    };
+    use domain::{Username, UsernameError};
+
+    /// Maximum accepted UTF-8 byte length for an application-boundary password.
+    pub const MAX_PLAINTEXT_PASSWORD_BYTES: usize = 1024;
+
+    /// Failure returned when an application-boundary password is empty or too long.
+    #[derive(Debug, Error, PartialEq, Eq)]
+    pub enum PasswordInputError {
+        /// The password input was empty.
+        #[error("password must not be empty")]
+        Empty,
+        /// The password exceeded [`MAX_PLAINTEXT_PASSWORD_BYTES`].
+        #[error("password must be at most {MAX_PLAINTEXT_PASSWORD_BYTES} UTF-8 bytes")]
+        TooLong,
+    }
+
+    /// A transient, non-empty password accepted at the application boundary.
+    #[derive(PartialEq, Eq)]
+    pub struct PlaintextPassword {
+        value: String,
+    }
+
+    impl PlaintextPassword {
+        /// Parses a raw password without changing its contents.
+        ///
+        /// # Errors
+        ///
+        /// Returns [`PasswordInputError::Empty`] when `raw` is empty, or
+        /// [`PasswordInputError::TooLong`] when `raw` exceeds
+        /// [`MAX_PLAINTEXT_PASSWORD_BYTES`] UTF-8 bytes.
+        pub fn parse(raw: &str) -> Result<Self, PasswordInputError> {
+            if raw.is_empty() {
+                return Err(PasswordInputError::Empty);
+            }
+            if raw.len() > MAX_PLAINTEXT_PASSWORD_BYTES {
+                return Err(PasswordInputError::TooLong);
+            }
+            Ok(Self { value: raw.to_owned() })
+        }
+
+        /// Exposes the password only to a hashing or verification port.
+        #[must_use]
+        pub fn expose_secret(&self) -> &str {
+            &self.value
+        }
+
+        /// Reports whether the password is non-empty.
+        #[must_use]
+        pub fn is_non_empty(&self) -> bool {
+            !self.value.is_empty()
+        }
+    }
+
+    /// Failure produced while parsing registration or login credentials.
+    #[derive(Debug, Error, PartialEq, Eq)]
+    pub enum CredentialParseError {
+        /// The username could not be parsed as a domain username.
+        #[error("invalid username: {0}")]
+        InvalidUsername(#[from] UsernameError),
+        /// The password could not be parsed at the application boundary.
+        #[error("invalid password: {0}")]
+        InvalidPassword(#[from] PasswordInputError),
+    }
+
+    /// Validated registration input owned by the application boundary.
+    #[derive(PartialEq, Eq)]
+    pub struct RegisterUserCommand {
+        username: Username,
+        password: PlaintextPassword,
+    }
+
+    impl RegisterUserCommand {
+        /// Parses a registration request into typed credentials.
+        ///
+        /// # Errors
+        ///
+        /// Returns [`CredentialParseError`] when either credential is invalid.
+        pub fn parse(username: &str, password: &str) -> Result<Self, CredentialParseError> {
+            let username = Username::new(username).map_err(CredentialParseError::from)?;
+            let password =
+                PlaintextPassword::parse(password).map_err(CredentialParseError::from)?;
+            Ok(Self { username, password })
+        }
+
+        /// Returns the validated username.
+        #[must_use]
+        pub fn username(&self) -> &Username {
+            &self.username
+        }
+
+        /// Returns the transient password for port consumption.
+        #[must_use]
+        pub fn password(&self) -> &PlaintextPassword {
+            &self.password
+        }
+    }
+
+    /// Validated login input owned by the application boundary.
+    #[derive(PartialEq, Eq)]
+    pub struct LoginCommand {
+        username: Username,
+        password: PlaintextPassword,
+    }
+
+    impl LoginCommand {
+        /// Parses a login request into typed credentials.
+        ///
+        /// # Errors
+        ///
+        /// Returns [`CredentialParseError`] when either credential is invalid.
+        pub fn parse(username: &str, password: &str) -> Result<Self, CredentialParseError> {
+            let username = Username::new(username).map_err(CredentialParseError::from)?;
+            let password =
+                PlaintextPassword::parse(password).map_err(CredentialParseError::from)?;
+            Ok(Self { username, password })
+        }
+
+        /// Returns the validated username.
+        #[must_use]
+        pub fn username(&self) -> &Username {
+            &self.username
+        }
+
+        /// Returns the transient password for port consumption.
+        #[must_use]
+        pub fn password(&self) -> &PlaintextPassword {
+            &self.password
+        }
+    }
+
+    /// Failure returned by the password-hashing port.
+    #[derive(Debug, Error, PartialEq, Eq)]
+    pub enum PasswordHashingError {
+        /// Hashing was unavailable.
+        #[error("password hashing is unavailable")]
+        Unavailable,
+    }
+
+    /// Failure returned by the password-verification port.
+    #[derive(Debug, Error, PartialEq, Eq)]
+    pub enum PasswordVerificationError {
+        /// Verification was unavailable.
+        #[error("password verification is unavailable")]
+        Unavailable,
+    }
+
+    /// Failure returned by the opaque-token issuance port.
+    #[derive(Debug, Error, PartialEq, Eq)]
+    pub enum TokenIssuanceError {
+        /// Token issuance was unavailable.
+        #[error("token issuance is unavailable")]
+        Unavailable,
+    }
+
+    /// Port that converts a transient plaintext password into a stored hash.
+    pub trait PasswordHasher: Send + Sync {
+        /// Hashes a validated password.
+        ///
+        /// # Errors
+        ///
+        /// Returns [`PasswordHashingError::Unavailable`] when hashing cannot
+        /// be completed.
+        fn hash(&self, password: &PlaintextPassword) -> Result<PasswordHash, PasswordHashingError>;
+    }
+
+    /// Port that checks a transient password against a stored hash.
+    pub trait PasswordVerifier: Send + Sync {
+        /// Verifies a password against a stored hash.
+        ///
+        /// # Errors
+        ///
+        /// Returns [`PasswordVerificationError::Unavailable`] when the
+        /// verification operation cannot be completed.
+        fn verify(
+            &self,
+            password: &PlaintextPassword,
+            hash: &PasswordHash,
+        ) -> Result<bool, PasswordVerificationError>;
+    }
+
+    /// Port that issues unpredictable opaque access tokens.
+    pub trait OpaqueTokenIssuer: Send + Sync {
+        /// Issues a new opaque access token.
+        ///
+        /// # Errors
+        ///
+        /// Returns [`TokenIssuanceError::Unavailable`] when issuance cannot be
+        /// completed.
+        fn issue(&self) -> Result<OpaqueAccessToken, TokenIssuanceError>;
+    }
+
+    /// Application response containing an issued opaque access token.
+    #[derive(Clone, PartialEq, Eq)]
+    pub struct IssuedAccessToken {
+        value: String,
+    }
+
+    impl IssuedAccessToken {
+        /// Converts a domain token into the application response form.
+        #[must_use]
+        pub fn from_domain(token: OpaqueAccessToken) -> Self {
+            Self { value: token.as_str().to_owned() }
+        }
+
+        /// Returns the token representation for presentation.
+        #[must_use]
+        pub fn as_str(&self) -> &str {
+            &self.value
+        }
+    }
+
+    /// Failure returned by the login interactor.
+    #[derive(Debug, Error, PartialEq, Eq)]
+    pub enum LoginError {
+        /// No user matched the requested username.
+        #[error("user not found")]
+        UserNotFound,
+        /// The supplied password did not match the stored hash.
+        #[error("invalid credentials")]
+        InvalidCredentials,
+        /// User lookup failed.
+        #[error("user lookup failed: {0}")]
+        Lookup(#[from] UserLookupError),
+        /// Password verification failed.
+        #[error("password verification failed: {0}")]
+        Verification(#[from] PasswordVerificationError),
+        /// Token issuance failed.
+        #[error("token issuance failed: {0}")]
+        TokenIssuance(#[from] TokenIssuanceError),
+        /// Token persistence failed.
+        #[error("token persistence failed: {0}")]
+        Persistence(#[from] AccessTokenRepositoryError),
+    }
+
+    /// Structure-required inbound port for login.
+    pub trait LoginService: Send + Sync {
+        /// Authenticates a login command and issues an access token.
+        ///
+        /// # Errors
+        ///
+        /// Returns [`LoginError`] when lookup, verification, issuance, or
+        /// token persistence fails.
+        fn execute(&self, command: LoginCommand) -> Result<IssuedAccessToken, LoginError>;
+    }
+
+    /// Login interactor coordinating repositories and authentication ports.
+    pub struct LoginInteractor {
+        users: Arc<dyn UserRepository>,
+        verifier: Arc<dyn PasswordVerifier>,
+        token_issuer: Arc<dyn OpaqueTokenIssuer>,
+        tokens: Arc<dyn AccessTokenRepository>,
+    }
+
+    impl LoginInteractor {
+        /// Builds a login interactor from its collaborators.
+        #[must_use]
+        pub fn new(
+            users: Arc<dyn UserRepository>,
+            verifier: Arc<dyn PasswordVerifier>,
+            token_issuer: Arc<dyn OpaqueTokenIssuer>,
+            tokens: Arc<dyn AccessTokenRepository>,
+        ) -> Self {
+            Self { users, verifier, token_issuer, tokens }
+        }
+    }
+
+    impl LoginService for LoginInteractor {
+        fn execute(&self, command: LoginCommand) -> Result<IssuedAccessToken, LoginError> {
+            let user =
+                self.users.find_by_username(command.username())?.ok_or(LoginError::UserNotFound)?;
+            let verified = self.verifier.verify(command.password(), user.password_hash())?;
+            if !verified {
+                return Err(LoginError::InvalidCredentials);
+            }
+
+            let token = self.token_issuer.issue()?;
+            let record = AccessTokenRecord::new(token.clone(), user.username().clone());
+            self.tokens.save(record)?;
+
+            Ok(IssuedAccessToken::from_domain(token))
+        }
+    }
+
+    #[cfg(test)]
+    #[allow(clippy::unwrap_used)]
+    mod tests {
+        use std::sync::{Arc, Mutex};
+
+        use super::*;
+        use domain::auth::User;
+
+        fn valid_hash() -> PasswordHash {
+            PasswordHash::new("$argon2id$v=19$m=19456,t=2,p=1$salt$hash".to_owned()).unwrap()
+        }
+
+        fn valid_command() -> LoginCommand {
+            LoginCommand::parse("ada", "correct horse").unwrap()
+        }
+
+        fn valid_user() -> User {
+            User::new(Username::new("ada").unwrap(), valid_hash())
+        }
+
+        #[test]
+        fn test_plaintext_password_empty_input_returns_empty_error() {
+            assert!(matches!(PlaintextPassword::parse(""), Err(PasswordInputError::Empty)));
+
+            let password = PlaintextPassword::parse(" secret ").unwrap();
+            assert!(password.is_non_empty());
+            assert_eq!(password.expose_secret(), " secret ");
+        }
+
+        #[test]
+        fn test_plaintext_password_too_long_input_returns_too_long_error() {
+            let too_long = "a".repeat(MAX_PLAINTEXT_PASSWORD_BYTES + 1);
+            assert!(matches!(
+                PlaintextPassword::parse(&too_long),
+                Err(PasswordInputError::TooLong)
+            ));
+
+            let at_limit = "a".repeat(MAX_PLAINTEXT_PASSWORD_BYTES);
+            assert!(PlaintextPassword::parse(&at_limit).is_ok());
+        }
+
+        #[test]
+        fn test_register_user_command_empty_password_returns_invalid_password_error() {
+            assert!(matches!(
+                RegisterUserCommand::parse("ada", ""),
+                Err(CredentialParseError::InvalidPassword(PasswordInputError::Empty))
+            ));
+        }
+
+        #[test]
+        fn test_register_user_command_invalid_username_returns_invalid_username_error() {
+            assert!(matches!(
+                RegisterUserCommand::parse("   ", "secret"),
+                Err(CredentialParseError::InvalidUsername(_))
+            ));
+        }
+
+        #[test]
+        fn test_register_user_command_valid_credentials_returns_typed_command() {
+            let command = RegisterUserCommand::parse(" ada ", " secret ").unwrap();
+
+            assert_eq!(command.username().as_str(), "ada");
+            assert_eq!(command.password().expose_secret(), " secret ");
+        }
+
+        #[test]
+        fn test_login_command_empty_password_returns_invalid_password_error() {
+            assert!(matches!(
+                LoginCommand::parse("ada", ""),
+                Err(CredentialParseError::InvalidPassword(PasswordInputError::Empty))
+            ));
+        }
+
+        #[test]
+        fn test_login_command_valid_credentials_returns_typed_command() {
+            let command = LoginCommand::parse(" ada ", " secret ").unwrap();
+
+            assert_eq!(command.username().as_str(), "ada");
+            assert_eq!(command.password().expose_secret(), " secret ");
+        }
+
+        struct FixedUserRepository {
+            user: Option<User>,
+            unavailable: bool,
+        }
+
+        impl UserRepository for FixedUserRepository {
+            fn find_by_username(
+                &self,
+                _username: &Username,
+            ) -> Result<Option<User>, UserLookupError> {
+                if self.unavailable {
+                    Err(UserLookupError::Unavailable)
+                } else {
+                    Ok(self.user.clone())
+                }
+            }
+
+            fn save(&self, _user: User) -> Result<(), domain::auth::UserRepositoryError> {
+                Ok(())
+            }
+        }
+
+        struct FixedVerifier {
+            result: Result<bool, PasswordVerificationError>,
+        }
+
+        impl PasswordVerifier for FixedVerifier {
+            fn verify(
+                &self,
+                _password: &PlaintextPassword,
+                _hash: &PasswordHash,
+            ) -> Result<bool, PasswordVerificationError> {
+                match &self.result {
+                    Ok(value) => Ok(*value),
+                    Err(_) => Err(PasswordVerificationError::Unavailable),
+                }
+            }
+        }
+
+        struct FailingHasher;
+
+        impl PasswordHasher for FailingHasher {
+            fn hash(
+                &self,
+                _password: &PlaintextPassword,
+            ) -> Result<PasswordHash, PasswordHashingError> {
+                Err(PasswordHashingError::Unavailable)
+            }
+        }
+
+        #[test]
+        fn test_password_hasher_unavailable_error_is_returned_through_port() {
+            let password = PlaintextPassword::parse("correct horse").unwrap();
+
+            assert!(matches!(
+                FailingHasher.hash(&password),
+                Err(PasswordHashingError::Unavailable)
+            ));
+        }
+
+        struct FixedIssuer {
+            token: Option<OpaqueAccessToken>,
+        }
+
+        impl OpaqueTokenIssuer for FixedIssuer {
+            fn issue(&self) -> Result<OpaqueAccessToken, TokenIssuanceError> {
+                self.token.clone().ok_or(TokenIssuanceError::Unavailable)
+            }
+        }
+
+        struct RecordingTokenRepository {
+            saved: Mutex<Option<AccessTokenRecord>>,
+            unavailable: bool,
+        }
+
+        impl AccessTokenRepository for RecordingTokenRepository {
+            fn save(&self, token: AccessTokenRecord) -> Result<(), AccessTokenRepositoryError> {
+                if self.unavailable {
+                    return Err(AccessTokenRepositoryError::Unavailable);
+                }
+                *self.saved.lock().unwrap() = Some(token);
+                Ok(())
+            }
+
+            fn find(
+                &self,
+                _token: &OpaqueAccessToken,
+            ) -> Result<Option<AccessTokenRecord>, AccessTokenRepositoryError> {
+                Ok(self.saved.lock().unwrap().clone())
+            }
+        }
+
+        fn interactor(
+            user: Option<User>,
+            verifier_result: Result<bool, PasswordVerificationError>,
+            token: Option<OpaqueAccessToken>,
+            token_unavailable: bool,
+            lookup_unavailable: bool,
+        ) -> (LoginInteractor, Arc<RecordingTokenRepository>) {
+            let tokens = Arc::new(RecordingTokenRepository {
+                saved: Mutex::new(None),
+                unavailable: token_unavailable,
+            });
+            let interactor = LoginInteractor::new(
+                Arc::new(FixedUserRepository { user, unavailable: lookup_unavailable }),
+                Arc::new(FixedVerifier { result: verifier_result }),
+                Arc::new(FixedIssuer { token }),
+                tokens.clone(),
+            );
+            (interactor, tokens)
+        }
+
+        #[test]
+        fn test_login_interactor_valid_credentials_issues_and_persists_access_token() {
+            let token = OpaqueAccessToken::new("issued-token".to_owned()).unwrap();
+            let (interactor, tokens) =
+                interactor(Some(valid_user()), Ok(true), Some(token.clone()), false, false);
+
+            let result = interactor.execute(valid_command()).unwrap();
+
+            assert_eq!(result.as_str(), "issued-token");
+            assert_eq!(
+                tokens.saved.lock().unwrap().as_ref().map(|record| record.token().as_str()),
+                Some(token.as_str())
+            );
+        }
+
+        #[test]
+        fn test_login_interactor_missing_user_returns_user_not_found_error() {
+            let (interactor, _) = interactor(None, Ok(true), None, false, false);
+
+            assert!(matches!(interactor.execute(valid_command()), Err(LoginError::UserNotFound)));
+        }
+
+        #[test]
+        fn test_login_interactor_wrong_password_returns_invalid_credentials_error() {
+            let (interactor, _) = interactor(Some(valid_user()), Ok(false), None, false, false);
+
+            assert!(matches!(
+                interactor.execute(valid_command()),
+                Err(LoginError::InvalidCredentials)
+            ));
+        }
+
+        #[test]
+        fn test_login_interactor_lookup_failure_returns_lookup_error() {
+            let (interactor, _) = interactor(Some(valid_user()), Ok(true), None, false, true);
+
+            assert!(matches!(
+                interactor.execute(valid_command()),
+                Err(LoginError::Lookup(UserLookupError::Unavailable))
+            ));
+        }
+
+        #[test]
+        fn test_login_interactor_verification_failure_returns_verification_error() {
+            let (interactor, _) = interactor(
+                Some(valid_user()),
+                Err(PasswordVerificationError::Unavailable),
+                None,
+                false,
+                false,
+            );
+
+            assert!(matches!(
+                interactor.execute(valid_command()),
+                Err(LoginError::Verification(PasswordVerificationError::Unavailable))
+            ));
+        }
+
+        #[test]
+        fn test_login_interactor_issuance_failure_returns_token_issuance_error() {
+            let (interactor, _) = interactor(Some(valid_user()), Ok(true), None, false, false);
+
+            assert!(matches!(
+                interactor.execute(valid_command()),
+                Err(LoginError::TokenIssuance(TokenIssuanceError::Unavailable))
+            ));
+        }
+
+        #[test]
+        fn test_login_interactor_persistence_failure_returns_persistence_error() {
+            let token = OpaqueAccessToken::new("issued-token".to_owned()).unwrap();
+            let (interactor, _) =
+                interactor(Some(valid_user()), Ok(true), Some(token), true, false);
+
+            assert!(matches!(
+                interactor.execute(valid_command()),
+                Err(LoginError::Persistence(AccessTokenRepositoryError::Unavailable))
+            ));
+        }
+    }
+}

@@ -1,4 +1,317 @@
 {
-  "entries": [],
+  "entries": [
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AccessTokenRepositoryError"
+      },
+      "key": {
+        "anchor_text_hash": "dc842b396cebbe662f0c64ded0e55ba947e22288b0209450a685a48883ac2d46",
+        "declaration_hash": "9d7dc8da7a27b0965b3e8c60e6cf852a1b8aac6eed619c71ce46d9baff1aa13d",
+        "waived_reason_hash": "17fe2e7950cda7c1fe87cdd2727c69d45a8910347abbe210b6f01da6d4e1d86f"
+      },
+      "obligation_id": {
+        "entry_key": "AccessTokenRepositoryError",
+        "item_identifier": "voluntary:CN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Failure returned by the access-token repository boundary.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "OpaqueAccessTokenError"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "declaration_hash": "bd4442a54181b58d074498da394efa4170cd28c8731970ff8929d9fdb32a119b",
+        "waived_reason_hash": "5fca0e633c41b368d586f5ce46276bdb8f63749bf1b8b479b7b30bdb2efa2747"
+      },
+      "obligation_id": {
+        "entry_key": "OpaqueAccessTokenError",
+        "item_identifier": "voluntary:AC-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Successful login through the REST API issues an opaque access token for client proof after authentication.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "UserLookupError"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "declaration_hash": "9bbfc82e7e0ee1c9ce4efd8f37298be621ad0463ee4fd8581b26a904636a41bd",
+        "waived_reason_hash": "c7025eceeaffd9306b050eb4a350c7d4a9d83075aa419f221469281b452f7b25"
+      },
+      "obligation_id": {
+        "entry_key": "UserLookupError",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "UserLookupError"
+      },
+      "key": {
+        "anchor_text_hash": "dc842b396cebbe662f0c64ded0e55ba947e22288b0209450a685a48883ac2d46",
+        "declaration_hash": "d1e2cffecc4f1a2b0909a93cfecc608702ed961b5a68d01fe1523835e3e48462",
+        "waived_reason_hash": "540a7471d778d480ec2edf2d152b2391862d0b06ffe63b0273466e0b90b353fb"
+      },
+      "obligation_id": {
+        "entry_key": "UserLookupError",
+        "item_identifier": "voluntary:CN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Failure returned by user-repository lookup operations.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "UserRepositoryError"
+      },
+      "key": {
+        "anchor_text_hash": "dc842b396cebbe662f0c64ded0e55ba947e22288b0209450a685a48883ac2d46",
+        "declaration_hash": "91d5608da022fcd8edf461483fa13fea5431de6df41066ce743129bfe722653d",
+        "waived_reason_hash": "5899ec6a4dffe052c3cd7298942993769c7205f4f33788f82a04ec90f1fda9e9"
+      },
+      "obligation_id": {
+        "entry_key": "UserRepositoryError",
+        "item_identifier": "voluntary:CN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Failure returned by the user repository boundary without leaking storage-specific detail.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "CredentialParseError"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "declaration_hash": "79ee6df628ac2732759d430c089d2e88f6ffb6866281a84a2f220bde96f01b95",
+        "waived_reason_hash": "709f2a7b693f4b82eac8fdb5412862b728c0eb6c91f1bc4d1ed648e14db9054d"
+      },
+      "obligation_id": {
+        "entry_key": "CredentialParseError",
+        "item_identifier": "voluntary:IN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Shared validation failure produced while parsing login or registration credentials.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "LoginError"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "declaration_hash": "412736f4a48dc2d2bfe8d83ce9ec7dd576f58796fa5c18d9622065df7cb3d9a9",
+        "waived_reason_hash": "444ce0ab34f8bf196cbbd3207db35f295f192cd3494de1113ebcff45d04b12b5"
+      },
+      "obligation_id": {
+        "entry_key": "LoginError",
+        "item_identifier": "voluntary:IN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Login failure preserving typed user-lookup, verification, token-issuance, and token-persistence causes.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordHashingError"
+      },
+      "key": {
+        "anchor_text_hash": "43bbb84e0d240fd514d133051b4bae1660660865884e54a9723279affba58d2a",
+        "declaration_hash": "3beb95e76162520fb51688b106ae33c0fa4be430bcc7bd44134db1793b9e42fb",
+        "waived_reason_hash": "c94cfa44824e36718f7669af50af7b31bea69923886e6c322f1df700ce3f16cc"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordHashingError",
+        "item_identifier": "voluntary:CN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Failure returned by the password-hashing port.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordInputError"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "declaration_hash": "02850225c3c9555a86ec30c12856cef60ea18faedaaa1fd4ae512e2e8d91c932",
+        "waived_reason_hash": "e7f54e7f35bc2e1b4a28e1f1666966bc6d71ae213c4de9faa531546991dba8da"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordInputError",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "\"Application-boundary password input error (CN-005).\"",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordInputError"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "declaration_hash": "cc0923c8a4beb75b8a3b2b38e01bd4ae2f52e6c1c702e6979ab3ea800b8c9859",
+        "waived_reason_hash": "eb322f21689a197be633680d1ead39f24945541fa2d9572676f1afadced4b603"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordInputError",
+        "item_identifier": "voluntary:IN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Application-boundary password input error (CN-005).",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordVerificationError"
+      },
+      "key": {
+        "anchor_text_hash": "43bbb84e0d240fd514d133051b4bae1660660865884e54a9723279affba58d2a",
+        "declaration_hash": "06ba01195f271b38ab181ea9708b7b85a178d83db56cdb1511d363a87e8b205a",
+        "waived_reason_hash": "65d28247919ace0061a576197d54da0f72178fa7b30b5b228826fe9c2f3e1801"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordVerificationError",
+        "item_identifier": "voluntary:CN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Failure returned by the password-verification port.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterUserCommand"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "declaration_hash": "5811854ddbbe6255c914197d8a398eceec302be55c36af036ff56dccfb6e7558",
+        "waived_reason_hash": "c82479a16b704baa87a785c1766221853174cf2be7dd6cc6fc23941ef83bd221"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterUserCommand",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Validated registration input owned by the application boundary; raw strings exist only during its parse step.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "TokenIssuanceError"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "declaration_hash": "db0ed92947ccb3c03dea7fc916dec353b07bc08e90bbd6383637d999dd55c952",
+        "waived_reason_hash": "139104eebb1c9850a1d4242ead17eb6c58bdd4bac9cc0b4de191962b7a3b38d8"
+      },
+      "obligation_id": {
+        "entry_key": "TokenIssuanceError",
+        "item_identifier": "voluntary:AC-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Failure returned by the opaque-token issuance port.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    }
+  ],
   "track_id": "2026-09-10-minimal-auth-api"
 }

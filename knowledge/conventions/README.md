@@ -78,6 +78,7 @@
 - `coding-principles.md`: Coding Principles Convention
 - `enforce-by-mechanism.md`: Enforce by Mechanism Convention
 - `environment-assumptions.md`: Environment Assumptions Convention
+- `environment-declaration.md`: Project Environment Declaration
 - `prefer-type-safe-abstractions.md`: Prefer Type-Safe Abstractions Convention
 - `security.md`: Security Convention
 - `type-designer-kind-selection.md`: Type-Designer Kind Selection Convention

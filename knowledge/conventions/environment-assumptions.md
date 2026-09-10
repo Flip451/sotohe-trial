@@ -26,6 +26,10 @@
 「適用外」とその理由を記入する。空欄や、判断を先送りする `TODO` を残したまま、前提に
 依存する設計や実装を追加してはならない。
 
+本リポジトリでは、記入済みの consumer インスタンスを
+`knowledge/conventions/environment-declaration.md` に置く。下の 4 欄は枠のまま残し、
+実装が依存する実値はそちらを正とする（テンプレート枠へ project 固有値を埋め込まない）。
+
 > **強制先**: review 観点 — harness-policy scope（宣言欄の編集は `knowledge/conventions/**` として harness-policy scope が審査する）/ spec scope（宣言に依存する仕様変更）
 
 ### 対応プラットフォーム (Supported Platforms)

@@ -42,3 +42,484 @@ mod tests {
         assert_eq!(adapter.salutation().unwrap(), "Hi");
     }
 }
+
+/// Authentication infrastructure adapters.
+pub mod auth {
+    use std::collections::HashMap;
+    use std::sync::RwLock;
+
+    use argon2::{Algorithm, Argon2, Block, Params, Version};
+    use base64ct::{Base64Unpadded, Encoding};
+    use domain::auth::{
+        AccessTokenRecord, AccessTokenRepository, AccessTokenRepositoryError, OpaqueAccessToken,
+        PasswordHash, User, UserLookupError, UserRepository, UserRepositoryError,
+    };
+    use rand::{TryRngCore, rngs::OsRng as RandomOsRng};
+    use usecase::auth::{
+        OpaqueTokenIssuer, PasswordHasher, PasswordHashingError, PasswordVerificationError,
+        PasswordVerifier, PlaintextPassword, TokenIssuanceError,
+    };
+
+    /// In-memory user-repository adapter.
+    pub struct InMemoryUserRepository {
+        users: RwLock<HashMap<String, User>>,
+    }
+
+    impl InMemoryUserRepository {
+        /// Creates an empty in-memory user repository.
+        #[must_use]
+        pub fn new() -> Self {
+            Self { users: RwLock::new(HashMap::new()) }
+        }
+    }
+
+    impl Default for InMemoryUserRepository {
+        fn default() -> Self {
+            Self::new()
+        }
+    }
+
+    impl UserRepository for InMemoryUserRepository {
+        fn find_by_username(
+            &self,
+            username: &domain::Username,
+        ) -> Result<Option<User>, UserLookupError> {
+            let users = self.users.read().map_err(|_| UserLookupError::Unavailable)?;
+            Ok(users.get(username.as_str()).cloned())
+        }
+
+        fn save(&self, user: User) -> Result<(), UserRepositoryError> {
+            let mut users = self.users.write().map_err(|_| UserRepositoryError::Unavailable)?;
+            if users.contains_key(user.username().as_str()) {
+                return Err(UserRepositoryError::DuplicateUser);
+            }
+            users.insert(user.username().as_str().to_owned(), user);
+            Ok(())
+        }
+    }
+
+    /// In-memory access-token repository adapter.
+    pub struct InMemoryAccessTokenRepository {
+        tokens: RwLock<HashMap<String, AccessTokenRecord>>,
+    }
+
+    impl InMemoryAccessTokenRepository {
+        /// Creates an empty in-memory access-token repository.
+        #[must_use]
+        pub fn new() -> Self {
+            Self { tokens: RwLock::new(HashMap::new()) }
+        }
+    }
+
+    impl Default for InMemoryAccessTokenRepository {
+        fn default() -> Self {
+            Self::new()
+        }
+    }
+
+    impl AccessTokenRepository for InMemoryAccessTokenRepository {
+        fn save(&self, token: AccessTokenRecord) -> Result<(), AccessTokenRepositoryError> {
+            let mut tokens =
+                self.tokens.write().map_err(|_| AccessTokenRepositoryError::Unavailable)?;
+            tokens.insert(token.token().as_str().to_owned(), token);
+            Ok(())
+        }
+
+        fn find(
+            &self,
+            token: &OpaqueAccessToken,
+        ) -> Result<Option<AccessTokenRecord>, AccessTokenRepositoryError> {
+            let tokens = self.tokens.read().map_err(|_| AccessTokenRepositoryError::Unavailable)?;
+            Ok(tokens.get(token.as_str()).cloned())
+        }
+    }
+
+    /// Argon2id adapter for password hashing and verification.
+    #[derive(Default)]
+    pub struct Argon2PasswordAdapter;
+
+    const ARGON2_MEMORY_COST: u32 = Params::DEFAULT_M_COST;
+    const ARGON2_TIME_COST: u32 = Params::DEFAULT_T_COST;
+    const ARGON2_PARALLELISM: u32 = Params::DEFAULT_P_COST;
+    const ARGON2_OUTPUT_LENGTH: usize = Params::DEFAULT_OUTPUT_LEN;
+    const ARGON2_SALT_LENGTH: usize = 16;
+    const ARGON2_MAX_MEMORY_COST: u32 = ARGON2_MEMORY_COST;
+    const ARGON2_MAX_TIME_COST: u32 = ARGON2_TIME_COST;
+    const ARGON2_MAX_PARALLELISM: u32 = ARGON2_PARALLELISM;
+
+    impl Argon2PasswordAdapter {
+        /// Creates an Argon2id password adapter.
+        #[must_use]
+        pub fn new() -> Self {
+            Self
+        }
+    }
+
+    impl PasswordHasher for Argon2PasswordAdapter {
+        fn hash(&self, password: &PlaintextPassword) -> Result<PasswordHash, PasswordHashingError> {
+            let mut salt = [0_u8; ARGON2_SALT_LENGTH];
+            let mut rng = RandomOsRng;
+            rng.try_fill_bytes(&mut salt).map_err(|_| PasswordHashingError::Unavailable)?;
+
+            let params = Params::new(
+                ARGON2_MEMORY_COST,
+                ARGON2_TIME_COST,
+                ARGON2_PARALLELISM,
+                Some(ARGON2_OUTPUT_LENGTH),
+            )
+            .map_err(|_| PasswordHashingError::Unavailable)?;
+            let mut digest = vec![0_u8; ARGON2_OUTPUT_LENGTH];
+            hash_into(password.expose_secret().as_bytes(), &salt, &params, &mut digest)
+                .map_err(|_| PasswordHashingError::Unavailable)?;
+
+            let encoded = format!(
+                "$argon2id$v=19$m={ARGON2_MEMORY_COST},t={ARGON2_TIME_COST},p={ARGON2_PARALLELISM}${}${}",
+                Base64Unpadded::encode_string(&salt),
+                Base64Unpadded::encode_string(&digest)
+            );
+            PasswordHash::new(encoded).map_err(|_| PasswordHashingError::Unavailable)
+        }
+    }
+
+    impl PasswordVerifier for Argon2PasswordAdapter {
+        fn verify(
+            &self,
+            password: &PlaintextPassword,
+            hash: &PasswordHash,
+        ) -> Result<bool, PasswordVerificationError> {
+            let parsed =
+                parse_encoded_hash(hash.as_str()).ok_or(PasswordVerificationError::Unavailable)?;
+            let mut digest = vec![0_u8; parsed.digest.len()];
+            hash_into(
+                password.expose_secret().as_bytes(),
+                &parsed.salt,
+                &parsed.params,
+                &mut digest,
+            )
+            .map_err(|_| PasswordVerificationError::Unavailable)?;
+
+            Ok(constant_time_equal(&digest, &parsed.digest))
+        }
+    }
+
+    struct ParsedPasswordHash {
+        params: Params,
+        salt: Vec<u8>,
+        digest: Vec<u8>,
+    }
+
+    fn params_within_limits(params: &Params) -> bool {
+        params.m_cost() <= ARGON2_MAX_MEMORY_COST
+            && params.t_cost() <= ARGON2_MAX_TIME_COST
+            && params.p_cost() <= ARGON2_MAX_PARALLELISM
+    }
+
+    fn hash_into(
+        password: &[u8],
+        salt: &[u8],
+        params: &Params,
+        digest: &mut [u8],
+    ) -> Result<(), argon2::Error> {
+        // Application-level bound: never allocate Argon2 memory for out-of-policy params,
+        // even if a caller constructed Params outside parse_encoded_hash.
+        if !params_within_limits(params) {
+            return Err(argon2::Error::MemoryTooLittle);
+        }
+        let mut memory = vec![Block::default(); params.block_count()];
+        Argon2::new(Algorithm::Argon2id, Version::V0x13, params.clone())
+            .hash_password_into_with_memory(password, salt, digest, &mut memory)
+    }
+
+    /// Fail-closed upper bound on the full PHC encoding length before any parse/scan work.
+    const MAX_PHC_ENCODED_BYTES: usize = 256;
+
+    fn parse_encoded_hash(encoded: &str) -> Option<ParsedPasswordHash> {
+        if encoded.len() > MAX_PHC_ENCODED_BYTES {
+            return None;
+        }
+        let mut fields = encoded.split('$');
+        if fields.next() != Some("") || fields.next() != Some("argon2id") {
+            return None;
+        }
+        if fields.next() != Some("v=19") {
+            return None;
+        }
+        let params_field = fields.next()?;
+        let salt_field = fields.next()?;
+        let digest_field = fields.next()?;
+        if fields.next().is_some() {
+            return None;
+        }
+
+        let (memory_cost, time_cost, parallelism) = parse_params(params_field)?;
+        if memory_cost > ARGON2_MAX_MEMORY_COST
+            || time_cost > ARGON2_MAX_TIME_COST
+            || parallelism > ARGON2_MAX_PARALLELISM
+        {
+            return None;
+        }
+        // Reject oversized encoded salt/digest before Base64 decode / heap allocation.
+        // Unpadded Base64 length for N bytes is 4*ceil(N/3) minus padding chars:
+        // 16 bytes -> 22 chars; 32 bytes -> 43 chars.
+        const MAX_SALT_CHARS: usize = 22;
+        const MAX_DIGEST_CHARS: usize = 43;
+        if salt_field.len() > MAX_SALT_CHARS || digest_field.len() > MAX_DIGEST_CHARS {
+            return None;
+        }
+        let salt = Base64Unpadded::decode_vec(salt_field).ok()?;
+        let digest = Base64Unpadded::decode_vec(digest_field).ok()?;
+        if salt.len() > ARGON2_SALT_LENGTH || digest.len() > ARGON2_OUTPUT_LENGTH {
+            return None;
+        }
+        let params = Params::new(memory_cost, time_cost, parallelism, Some(digest.len())).ok()?;
+
+        Some(ParsedPasswordHash { params, salt, digest })
+    }
+
+    fn parse_params(params: &str) -> Option<(u32, u32, u32)> {
+        let mut memory_cost = None;
+        let mut time_cost = None;
+        let mut parallelism = None;
+        for pair in params.split(',') {
+            let (name, value) = pair.split_once('=')?;
+            let value = value.parse().ok()?;
+            match name {
+                "m" if memory_cost.is_none() => memory_cost = Some(value),
+                "t" if time_cost.is_none() => time_cost = Some(value),
+                "p" if parallelism.is_none() => parallelism = Some(value),
+                _ => return None,
+            }
+        }
+        Some((memory_cost?, time_cost?, parallelism?))
+    }
+
+    fn constant_time_equal(left: &[u8], right: &[u8]) -> bool {
+        if left.len() != right.len() {
+            return false;
+        }
+        let mut difference = 0_u8;
+        for (left_byte, right_byte) in left.iter().zip(right) {
+            difference |= left_byte ^ right_byte;
+        }
+        difference == 0
+    }
+
+    /// OS-random adapter for opaque access-token issuance.
+    #[derive(Default)]
+    pub struct RandomOpaqueTokenIssuer;
+
+    impl RandomOpaqueTokenIssuer {
+        /// Creates a random opaque-token issuer.
+        #[must_use]
+        pub fn new() -> Self {
+            Self
+        }
+    }
+
+    impl OpaqueTokenIssuer for RandomOpaqueTokenIssuer {
+        fn issue(&self) -> Result<OpaqueAccessToken, TokenIssuanceError> {
+            let mut bytes = [0_u8; 32];
+            let mut rng = RandomOsRng;
+            rng.try_fill_bytes(&mut bytes).map_err(|_| TokenIssuanceError::Unavailable)?;
+
+            let mut encoded = String::with_capacity(bytes.len() * 2);
+            for byte in bytes {
+                encoded.push(hex_digit(byte >> 4));
+                encoded.push(hex_digit(byte & 0x0f));
+            }
+            OpaqueAccessToken::new(encoded).map_err(|_| TokenIssuanceError::Unavailable)
+        }
+    }
+
+    fn hex_digit(value: u8) -> char {
+        match value {
+            0..=9 => char::from(b'0' + value),
+            10..=15 => char::from(b'a' + value - 10),
+            _ => '0',
+        }
+    }
+
+    #[cfg(test)]
+    #[allow(clippy::unwrap_used)]
+    mod tests {
+        use super::*;
+        use domain::Username;
+
+        fn valid_hash() -> PasswordHash {
+            PasswordHash::new("$argon2id$v=19$m=19456,t=2,p=1$salt$hash".to_owned()).unwrap()
+        }
+
+        fn valid_user() -> User {
+            User::new(Username::new("ada").unwrap(), valid_hash())
+        }
+
+        #[test]
+        fn test_in_memory_user_repository_save_then_find_returns_user() {
+            let repository = InMemoryUserRepository::new();
+            let user = valid_user();
+
+            repository.save(user.clone()).unwrap();
+
+            let found = repository.find_by_username(user.username()).unwrap();
+            assert_eq!(found.as_ref().map(User::username), Some(user.username()));
+        }
+
+        #[test]
+        fn test_in_memory_user_repository_missing_username_returns_none() {
+            let repository = InMemoryUserRepository::new();
+            let username = Username::new("ada").unwrap();
+
+            assert!(repository.find_by_username(&username).unwrap().is_none());
+        }
+
+        #[test]
+        fn test_in_memory_user_repository_duplicate_username_returns_duplicate_error() {
+            let repository = InMemoryUserRepository::new();
+            let user = valid_user();
+            repository.save(user.clone()).unwrap();
+
+            assert_eq!(repository.save(user), Err(UserRepositoryError::DuplicateUser));
+        }
+
+        #[test]
+        fn test_in_memory_access_token_repository_save_then_find_returns_record() {
+            let repository = InMemoryAccessTokenRepository::new();
+            let record = AccessTokenRecord::new(
+                OpaqueAccessToken::new("opaque".to_owned()).unwrap(),
+                Username::new("ada").unwrap(),
+            );
+            let token = record.token().clone();
+
+            repository.save(record.clone()).unwrap();
+
+            let found = repository.find(&token).unwrap();
+            assert_eq!(
+                found.as_ref().map(|stored| stored.subject().as_str()),
+                Some(record.subject().as_str())
+            );
+        }
+
+        #[test]
+        fn test_in_memory_access_token_repository_missing_token_returns_none() {
+            let repository = InMemoryAccessTokenRepository::new();
+            let token = OpaqueAccessToken::new("missing".to_owned()).unwrap();
+
+            assert!(repository.find(&token).unwrap().is_none());
+        }
+
+        #[test]
+        fn test_argon2_password_adapter_hash_returns_argon2id_hash() {
+            let adapter = Argon2PasswordAdapter::new();
+            let password = PlaintextPassword::parse("correct horse").unwrap();
+
+            let hash = adapter.hash(&password).unwrap();
+
+            assert!(hash.is_argon2id());
+            assert_ne!(hash.as_str(), password.expose_secret());
+        }
+
+        #[test]
+        fn test_argon2_password_adapter_verify_matching_password_returns_true() {
+            let adapter = Argon2PasswordAdapter::new();
+            let password = PlaintextPassword::parse("correct horse").unwrap();
+            let hash = adapter.hash(&password).unwrap();
+
+            assert!(adapter.verify(&password, &hash).unwrap());
+        }
+
+        #[test]
+        fn test_argon2_password_adapter_verify_wrong_password_returns_false() {
+            let adapter = Argon2PasswordAdapter::new();
+            let password = PlaintextPassword::parse("correct horse").unwrap();
+            let wrong_password = PlaintextPassword::parse("wrong horse").unwrap();
+            let hash = adapter.hash(&password).unwrap();
+
+            assert!(!adapter.verify(&wrong_password, &hash).unwrap());
+        }
+
+        #[test]
+        fn test_argon2_password_adapter_verify_rejects_unbounded_parameters() {
+            let adapter = Argon2PasswordAdapter::new();
+            let password = PlaintextPassword::parse("correct horse").unwrap();
+            let hash =
+                PasswordHash::new("$argon2id$v=19$m=4294967295,t=2,p=1$c2FsdA$aGFzaA".to_owned())
+                    .unwrap();
+
+            assert_eq!(
+                adapter.verify(&password, &hash),
+                Err(PasswordVerificationError::Unavailable)
+            );
+        }
+
+        #[test]
+        fn test_argon2_password_adapter_verify_rejects_oversized_digest_field() {
+            let adapter = Argon2PasswordAdapter::new();
+            let password = PlaintextPassword::parse("correct horse").unwrap();
+            let oversized = "A".repeat(128);
+            let encoded = format!("$argon2id$v=19$m=19456,t=2,p=1$c2FsdA${oversized}");
+            let hash = PasswordHash::new(encoded).unwrap();
+
+            assert_eq!(
+                adapter.verify(&password, &hash),
+                Err(PasswordVerificationError::Unavailable)
+            );
+        }
+
+        #[test]
+        fn test_argon2_password_adapter_verify_rejects_oversized_phc_encoding() {
+            let adapter = Argon2PasswordAdapter::new();
+            let password = PlaintextPassword::parse("correct horse").unwrap();
+            // Domain accepts long base64-alphabet salt segments; infrastructure rejects PHC encodings
+            // longer than MAX_PHC_ENCODED_BYTES before decode/scan work.
+            let long_salt = "A".repeat(220);
+            let encoded = format!(
+                "$argon2id$v=19$m=19456,t=2,p=1${long_salt}$aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            );
+            assert!(encoded.len() > 256);
+            let hash = PasswordHash::new(encoded).unwrap();
+            assert_eq!(
+                adapter.verify(&password, &hash),
+                Err(PasswordVerificationError::Unavailable)
+            );
+        }
+
+        #[test]
+        fn test_argon2_password_adapter_verify_rejects_unpadded_length_boundary_overflows() {
+            let adapter = Argon2PasswordAdapter::new();
+            let password = PlaintextPassword::parse("correct horse").unwrap();
+            // 23-char salt decodes to 17 bytes under unpadded Base64; must fail before decode alloc.
+            let long_salt = "A".repeat(23);
+            let hash = PasswordHash::new(format!(
+                "$argon2id$v=19$m=19456,t=2,p=1${long_salt}$aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            ))
+            .unwrap();
+            assert_eq!(
+                adapter.verify(&password, &hash),
+                Err(PasswordVerificationError::Unavailable)
+            );
+
+            // 44-char digest decodes to 33 bytes; must fail the unpadded 43-char guard.
+            let long_digest = "A".repeat(44);
+            let hash = PasswordHash::new(format!(
+                "$argon2id$v=19$m=19456,t=2,p=1$c2FsdGhlc2FsdHZhbA${long_digest}"
+            ))
+            .unwrap();
+            assert_eq!(
+                adapter.verify(&password, &hash),
+                Err(PasswordVerificationError::Unavailable)
+            );
+        }
+
+        #[test]
+        fn test_random_opaque_token_issuer_issue_returns_non_empty_unique_tokens() {
+            let issuer = RandomOpaqueTokenIssuer::new();
+
+            let first = issuer.issue().unwrap();
+            let second = issuer.issue().unwrap();
+
+            assert!(first.is_non_empty());
+            assert!(second.is_non_empty());
+            assert_ne!(first.as_str(), second.as_str());
+        }
+    }
+}

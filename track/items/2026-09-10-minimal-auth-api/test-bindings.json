@@ -1,1 +1,655 @@
-{"track_id":"2026-09-10-minimal-auth-api","records":[]}
+{
+  "track_id": "2026-09-10-minimal-auth-api",
+  "records": [
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "OpaqueAccessToken",
+        "obligation_kind": "boundary",
+        "item_identifier": "invariant:non_empty"
+      },
+      "tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_opaque_access_token_empty_input_returns_empty_error"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "PasswordHash",
+        "obligation_kind": "boundary",
+        "item_identifier": "invariant:argon2id_encoding"
+      },
+      "tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_password_hash_non_argon2id_input_returns_invalid_encoding_error"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "AccessTokenRepository",
+        "obligation_kind": "contract",
+        "item_identifier": "trait_method:save"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_save_then_find_returns_record"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "AccessTokenRepository",
+        "obligation_kind": "contract",
+        "item_identifier": "trait_method:find"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_save_then_find_returns_record"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_missing_token_returns_none"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "UserRepository",
+        "obligation_kind": "contract",
+        "item_identifier": "trait_method:find_by_username"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_save_then_find_returns_user"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_missing_username_returns_none"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "UserRepository",
+        "obligation_kind": "contract",
+        "item_identifier": "trait_method:save"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_save_then_find_returns_user"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_duplicate_username_returns_duplicate_error"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "LoginInteractor",
+        "obligation_kind": "result",
+        "item_identifier": "entry"
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_valid_credentials_issues_and_persists_access_token"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_missing_user_returns_user_not_found_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_wrong_password_returns_invalid_credentials_error"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "PlaintextPassword",
+        "obligation_kind": "boundary",
+        "item_identifier": "invariant:non_empty"
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_plaintext_password_empty_input_returns_empty_error"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "LoginService",
+        "obligation_kind": "result",
+        "item_identifier": "trait_method:execute"
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_valid_credentials_issues_and_persists_access_token"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "OpaqueTokenIssuer",
+        "obligation_kind": "contract",
+        "item_identifier": "trait_method:issue"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_random_opaque_token_issuer_issue_returns_non_empty_unique_tokens"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "PasswordHasher",
+        "obligation_kind": "contract",
+        "item_identifier": "trait_method:hash"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "PasswordVerifier",
+        "obligation_kind": "contract",
+        "item_identifier": "trait_method:verify"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_verify_matching_password_returns_true"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_verify_wrong_password_returns_false"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "InMemoryUserRepository",
+        "obligation_kind": "contract_conformance",
+        "item_identifier": "trait_impl:domain::auth::UserRepository"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_save_then_find_returns_user"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_duplicate_username_returns_duplicate_error"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "InMemoryAccessTokenRepository",
+        "obligation_kind": "contract_conformance",
+        "item_identifier": "trait_impl:domain::auth::AccessTokenRepository"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_save_then_find_returns_record"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_missing_token_returns_none"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "Argon2PasswordAdapter",
+        "obligation_kind": "contract_conformance",
+        "item_identifier": "trait_impl:usecase::auth::PasswordHasher"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "Argon2PasswordAdapter",
+        "obligation_kind": "contract_conformance",
+        "item_identifier": "trait_impl:usecase::auth::PasswordVerifier"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_verify_matching_password_returns_true"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_verify_wrong_password_returns_false"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "RandomOpaqueTokenIssuer",
+        "obligation_kind": "contract_conformance",
+        "item_identifier": "trait_impl:usecase::auth::OpaqueTokenIssuer"
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_random_opaque_token_issuer_issue_returns_non_empty_unique_tokens"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "AccessTokenRecord",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "AC-002"
+        }
+      },
+      "tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_access_token_record_construction_preserves_token_and_subject"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "AccessTokenRecord",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-002"
+        }
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_save_then_find_returns_record"
+        }
+      ]
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "AccessTokenRepositoryError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-002"
+        }
+      },
+      "reason": "AccessTokenRepositoryError only classifies repository failures; the replaceable in-memory persistence behavior in CN-002 is owned and tested by the AccessTokenRepository port and InMemoryAccessTokenRepository adapter."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "OpaqueAccessTokenError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "AC-002"
+        }
+      },
+      "reason": "OpaqueAccessTokenError only classifies invalid opaque-token construction; the successful token issuance behavior in AC-002 is owned and tested by the login interactor and issued-token result."
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "PasswordHashError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-001"
+        }
+      },
+      "tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_password_hash_non_argon2id_input_returns_invalid_encoding_error"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "User",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-001"
+        }
+      },
+      "tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_user_aggregate_construction_preserves_validated_values"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "User",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-001"
+        }
+      },
+      "tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_user_aggregate_construction_preserves_validated_values"
+        }
+      ]
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "UserLookupError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-001"
+        }
+      },
+      "reason": "UserLookupError only classifies lookup failures and does not own API registration behavior; registration service behavior belongs to the pending T003 implementation."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "UserLookupError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-002"
+        }
+      },
+      "reason": "UserLookupError only classifies lookup failures; the replaceable in-memory persistence behavior in CN-002 is owned and tested by the UserRepository port and InMemoryUserRepository adapter."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "UserRepositoryError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-002"
+        }
+      },
+      "reason": "UserRepositoryError only classifies repository failures; the replaceable in-memory persistence behavior in CN-002 is owned and tested by the UserRepository port and InMemoryUserRepository adapter."
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "CredentialParseError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-001"
+        }
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_command_empty_password_returns_invalid_password_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_command_invalid_username_returns_invalid_username_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_command_valid_credentials_returns_typed_command"
+        }
+      ]
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "CredentialParseError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-002"
+        }
+      },
+      "reason": "CredentialParseError only classifies invalid credential parsing; the successful authentication and token issuance behavior in IN-002 is owned and tested by LoginInteractor."
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "IssuedAccessToken",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "AC-002"
+        }
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_valid_credentials_issues_and_persists_access_token"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "LoginCommand",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-002"
+        }
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_valid_credentials_issues_and_persists_access_token"
+        }
+      ]
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "LoginError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-002"
+        }
+      },
+      "reason": "LoginError only classifies login failure modes; successful authentication and opaque-token issuance in IN-002 are owned and tested by LoginInteractor and IssuedAccessToken."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "PasswordHashingError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-001"
+        }
+      },
+      "reason": "PasswordHashingError only classifies hashing failures; the argon2id storage behavior in CN-001 is owned and tested by PasswordHash, PasswordHasher, and Argon2PasswordAdapter."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "PasswordInputError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-001"
+        }
+      },
+      "reason": "PasswordInputError only classifies invalid password input at the application boundary; registering a user through the API in IN-001 is owned by RegisterUserCommand/RegisterUserService (T003) and HTTP delivery tasks."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "PasswordInputError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-002"
+        }
+      },
+      "reason": "PasswordInputError only classifies invalid password input; the successful authentication and token issuance behavior in IN-002 is owned and tested by LoginInteractor."
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "PasswordInputError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-005"
+        }
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_command_empty_password_returns_invalid_password_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_command_empty_password_returns_invalid_password_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_plaintext_password_empty_input_returns_empty_error"
+        }
+      ]
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "PasswordVerificationError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-001"
+        }
+      },
+      "reason": "PasswordVerificationError only classifies verification failures; the argon2id storage behavior in CN-001 is owned and tested by PasswordHash, PasswordHasher, and Argon2PasswordAdapter."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "RegisterUserCommand",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-001"
+        }
+      },
+      "reason": "RegisterUserCommand only validates and carries registration input; end-to-end registration behavior belongs to the pending T003 registration interactor and API implementation."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "TokenIssuanceError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "AC-002"
+        }
+      },
+      "reason": "TokenIssuanceError represents the opaque-token issuer's failure outcome, while AC-002 specifies successful login token issuance; AC-002's success behavior is therefore proven by the successful login interactor and issued-token tests, not by this error type."
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "PasswordHasher",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-001"
+        }
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "PasswordHasher",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "AC-003"
+        }
+      },
+      "tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ]
+    }
+  ]
+}
