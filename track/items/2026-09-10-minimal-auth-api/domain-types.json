@@ -1,0 +1,892 @@
+{
+  "crate_name": "domain",
+  "functions": {},
+  "layer": "domain",
+  "schema_version": 5,
+  "trait_impls": [
+    {
+      "for_type": "PasswordHash",
+      "trait_ref": "core::clone::Clone"
+    },
+    {
+      "for_type": "PasswordHash",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "PasswordHash",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "PasswordHashError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "PasswordHashError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "PasswordHashError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "PasswordHashError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "PasswordHashError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "OpaqueAccessToken",
+      "trait_ref": "core::clone::Clone"
+    },
+    {
+      "for_type": "OpaqueAccessToken",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "OpaqueAccessToken",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "OpaqueAccessTokenError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "OpaqueAccessTokenError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "OpaqueAccessTokenError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "OpaqueAccessTokenError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "OpaqueAccessTokenError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "User",
+      "trait_ref": "core::clone::Clone"
+    },
+    {
+      "for_type": "User",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "User",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "AccessTokenRecord",
+      "trait_ref": "core::clone::Clone"
+    },
+    {
+      "for_type": "AccessTokenRecord",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "AccessTokenRecord",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "UserRepositoryError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "UserRepositoryError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "UserRepositoryError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "UserRepositoryError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "UserRepositoryError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "AccessTokenRepositoryError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "AccessTokenRepositoryError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "AccessTokenRepositoryError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "AccessTokenRepositoryError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "AccessTokenRepositoryError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "UserLookupError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "UserLookupError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "UserLookupError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "UserLookupError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "UserLookupError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "Username",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "Username",
+      "trait_ref": "core::clone::Clone"
+    },
+    {
+      "action": "reference",
+      "for_type": "Username",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "Username",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "UsernameError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "UsernameError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "action": "reference",
+      "for_type": "UsernameError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "action": "reference",
+      "for_type": "UsernameError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "UsernameError",
+      "trait_ref": "core::cmp::Eq"
+    }
+  ],
+  "traits": {
+    "AccessTokenRepository": {
+      "action": "add",
+      "docs": "Replaceable persistence port (CN-002); intentionally synchronous contract.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "save",
+          "params": [
+            {
+              "name": "token",
+              "ty": "AccessTokenRecord"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<(), AccessTokenRepositoryError>",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "CN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "find",
+          "params": [
+            {
+              "name": "token",
+              "ty": "&OpaqueAccessToken"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<Option<AccessTokenRecord>, AccessTokenRepositoryError>",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Repository": {
+          "aggregate": "AccessTokenRecord"
+        }
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "UserRepository": {
+      "action": "add",
+      "docs": "Replaceable persistence port (CN-002); intentionally synchronous contract.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "find_by_username",
+          "params": [
+            {
+              "name": "username",
+              "ty": "&Username"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<Option<User>, UserLookupError>",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "save",
+          "params": [
+            {
+              "name": "user",
+              "ty": "User"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<(), UserRepositoryError>",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "CN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Repository": {
+          "aggregate": "User"
+        }
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    }
+  },
+  "types": {
+    "AccessTokenRecord": {
+      "action": "add",
+      "docs": "Persisted opaque access-token aggregate identified by its token and associated with a validated username.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "token",
+              "ty": "OpaqueAccessToken"
+            },
+            {
+              "name": "subject",
+              "ty": "Username"
+            }
+          ],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "token",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&OpaqueAccessToken",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "subject",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&Username",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "AggregateRoot": {
+          "identity": {
+            "method_name": "token"
+          },
+          "shared_value_objects": [
+            "OpaqueAccessToken",
+            "Username"
+          ]
+        }
+      },
+      "spec_refs": [
+        {
+          "anchor": "AC-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "AccessTokenRepositoryError": {
+      "action": "add",
+      "docs": "Failure returned by the access-token repository boundary.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "OpaqueAccessToken": {
+      "action": "add",
+      "docs": "Domain ValueObject; its String constructor input is an opaque representation, not a separate domain concept. See AC-002.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "raw",
+              "ty": "String"
+            }
+          ],
+          "returns": "Result<Self, OpaqueAccessTokenError>",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "as_str",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&str",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "is_non_empty",
+          "params": [],
+          "receiver": "&self",
+          "returns": "bool",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "ValueObject": {
+          "invariants": [
+            {
+              "name": "non_empty",
+              "predicate": {
+                "SelfMethod": "is_non_empty"
+              }
+            }
+          ]
+        }
+      },
+      "spec_refs": [
+        {
+          "anchor": "AC-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "OpaqueAccessTokenError": {
+      "action": "add",
+      "docs": "Failure returned when an opaque access token is empty.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Empty",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "AC-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "PasswordHash": {
+      "action": "add",
+      "docs": "Domain ValueObject; its String constructor input is an opaque encoding, not a separate domain concept. See CN-001 and AC-003.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "encoded",
+              "ty": "String"
+            }
+          ],
+          "returns": "Result<Self, PasswordHashError>",
+          "spec_refs": [
+            {
+              "anchor": "CN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "as_str",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&str",
+          "spec_refs": [
+            {
+              "anchor": "CN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "is_argon2id",
+          "params": [],
+          "receiver": "&self",
+          "returns": "bool",
+          "spec_refs": [
+            {
+              "anchor": "CN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "ValueObject": {
+          "invariants": [
+            {
+              "name": "argon2id_encoding",
+              "predicate": {
+                "SelfMethod": "is_argon2id"
+              }
+            }
+          ]
+        }
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "AC-003",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "PasswordHashError": {
+      "action": "add",
+      "docs": "Failure returned when a stored password hash is not an argon2id encoding.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "InvalidEncoding",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "User": {
+      "action": "add",
+      "docs": "Aggregate root; see IN-001 and CN-001.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "username",
+              "ty": "Username"
+            },
+            {
+              "name": "password_hash",
+              "ty": "PasswordHash"
+            }
+          ],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "username",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&Username",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "password_hash",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&PasswordHash",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "AggregateRoot": {
+          "identity": {
+            "method_name": "username"
+          },
+          "shared_value_objects": [
+            "Username",
+            "PasswordHash"
+          ]
+        }
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "UserLookupError": {
+      "action": "add",
+      "docs": "Failure returned by user-repository lookup operations.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "UserRepositoryError": {
+      "action": "add",
+      "docs": "Failure returned by the user repository boundary without leaking storage-specific detail.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "DuplicateUser",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "domain::Username": {
+      "action": "reference",
+      "docs": "Existing validated non-empty username reused as the user aggregate identity.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "tuple"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "raw",
+              "ty": "impl Into<String>"
+            }
+          ],
+          "returns": "Result<Self, UsernameError>"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "as_str",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&str"
+        }
+      ],
+      "module_path": "",
+      "role": {
+        "ValueObject": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "domain::UsernameError": {
+      "action": "reference",
+      "docs": "Existing username validation failure carried for the registration and login command boundaries.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Empty",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    }
+  }
+}

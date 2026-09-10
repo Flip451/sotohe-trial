@@ -1,0 +1,558 @@
+{
+  "entries": [
+    {
+      "claim_hash": "3005fe9ed65dd08b8e56c72716622aad497c9e5c119b3b02bf2893444bacaf94",
+      "claim_origin": {
+        "data": {
+          "entry_key": "CredentialParseError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "3005fe9ed65dd08b8e56c72716622aad497c9e5c119b3b02bf2893444bacaf94",
+      "claim_origin": {
+        "data": {
+          "entry_key": "CredentialParseError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "411984153e9f7ad02531cc375e97f7e1e68a6c7079ee1dc5c3172587633f9ddd",
+      "claim_origin": {
+        "data": {
+          "entry_key": "IssuedAccessToken",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9101a7e0ccd64f2570fdb12d2ab71dfc70e1134f599f412afdd25b7b6ab4f4",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-002",
+          "section": "acceptance_criteria",
+          "text_label": "Successful login through the REST API issues an opaque access token for client proof after authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Successful login through the REST API issues an opaque access token for client proof after authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "5d097749ca92b3b84f88e82a36c96d984f9a5779a61ff8392434253cde992558",
+      "claim_origin": {
+        "data": {
+          "entry_key": "LoginCommand",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "9d21e558e554ca07a66b12161673b60e1aaf1b76d10c5e3b606d48400b714834",
+      "claim_origin": {
+        "data": {
+          "entry_key": "LoginError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "72ddf64b6618583542cf35d16ce0b72f28fc94f0bcf00e3d0488a82a03cb6dc7",
+      "claim_origin": {
+        "data": {
+          "entry_key": "LoginInteractor",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "88832c45ccc199ae20a326e90197a704d1e3b9a668130f504eb3bc355a304c27",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordHashingError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bde69405dfcc62d00893515e521b3b1ba25646fb02cabdaab7d86e2c472c75ca",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-001",
+          "section": "constraint",
+          "text_label": "Passwords are never persisted in plaintext and are stored using argon2id hashing."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Passwords are never persisted in plaintext and are stored using argon2id hashing.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "951ccf06814dbb5f2d4b6495dc0c23c7ce445560eff277d7fe9b778ea6de4795",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordInputError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "951ccf06814dbb5f2d4b6495dc0c23c7ce445560eff277d7fe9b778ea6de4795",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordInputError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "951ccf06814dbb5f2d4b6495dc0c23c7ce445560eff277d7fe9b778ea6de4795",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordInputError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "8842f47b7ea8aafdd697bc6d6c29e81b2750372aac8ae91ed723e1715cb2f209",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-005",
+          "section": "constraint",
+          "text_label": "At the application boundary, registration and login reject a request whose presented password is empty."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "At the application boundary, registration and login reject a request whose presented password is empty.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "970439dd0d05025b76698afbb474bbeb659328d88785b668695012002d788ce7",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordVerificationError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bde69405dfcc62d00893515e521b3b1ba25646fb02cabdaab7d86e2c472c75ca",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-001",
+          "section": "constraint",
+          "text_label": "Passwords are never persisted in plaintext and are stored using argon2id hashing."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Passwords are never persisted in plaintext and are stored using argon2id hashing.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "e9a051cbdc29d1914894194462f8ce281a0487417b110c05cf90b3753ceb39a5",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PlaintextPassword",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "8842f47b7ea8aafdd697bc6d6c29e81b2750372aac8ae91ed723e1715cb2f209",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-005",
+          "section": "constraint",
+          "text_label": "At the application boundary, registration and login reject a request whose presented password is empty."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "At the application boundary, registration and login reject a request whose presented password is empty.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "80a5bbdfaad479344d1c302c48f2db73bdf37a2dcbeed79a0bf51f8ec7b6f90f",
+      "claim_origin": {
+        "data": {
+          "entry_key": "RegisterUserCommand",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "d1569661835d7489613ae14f5e75780fdec8ef8b546c0acff161779ce7fe59d7",
+      "claim_origin": {
+        "data": {
+          "entry_key": "RegisterUserError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "4f9f9c6be00ac2fc4eb8f43a2e0b3864f4e20e44c9a4d3a8d3e2418cdb6b677d",
+      "claim_origin": {
+        "data": {
+          "entry_key": "RegisterUserInteractor",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "ce62564a61b87e781c005f125065f7bd5e8f736b77e8a7ee614ce117a9062796",
+      "claim_origin": {
+        "data": {
+          "entry_key": "TokenIssuanceError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9101a7e0ccd64f2570fdb12d2ab71dfc70e1134f599f412afdd25b7b6ab4f4",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-002",
+          "section": "acceptance_criteria",
+          "text_label": "Successful login through the REST API issues an opaque access token for client proof after authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Successful login through the REST API issues an opaque access token for client proof after authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "af57e7dcaaceb6bea8d887a868770a52a3d4026090efb1387925de7df8b5db44",
+      "claim_origin": {
+        "data": {
+          "entry_key": "LoginService",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "a8388c6cc8a4e7fc849cbd0896fadce96dfe4f318f3d623cfc52d776aa054a89",
+      "claim_origin": {
+        "data": {
+          "entry_key": "OpaqueTokenIssuer",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9101a7e0ccd64f2570fdb12d2ab71dfc70e1134f599f412afdd25b7b6ab4f4",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-002",
+          "section": "acceptance_criteria",
+          "text_label": "Successful login through the REST API issues an opaque access token for client proof after authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Successful login through the REST API issues an opaque access token for client proof after authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "a2f25bef5542fb111058f3705418bb9288c21cde14741aa888c1fe7d50552df8",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordHasher",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "a2f25bef5542fb111058f3705418bb9288c21cde14741aa888c1fe7d50552df8",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordHasher",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bde69405dfcc62d00893515e521b3b1ba25646fb02cabdaab7d86e2c472c75ca",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-001",
+          "section": "constraint",
+          "text_label": "Passwords are never persisted in plaintext and are stored using argon2id hashing."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Passwords are never persisted in plaintext and are stored using argon2id hashing.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "a2f25bef5542fb111058f3705418bb9288c21cde14741aa888c1fe7d50552df8",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordHasher",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "d88c78536fe9407852b6e963df040ad5be1c82ec51d6f2cb77c7468fe38d7d94",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-003",
+          "section": "acceptance_criteria",
+          "text_label": "A registered user's password is retained only as an argon2id hash, never in plaintext."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "A registered user's password is retained only as an argon2id hash, never in plaintext.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "947510b4d09dce94e77e6d430f1de3d550eae763850acf8064b0bb3bf67d5575",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordVerifier",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bde69405dfcc62d00893515e521b3b1ba25646fb02cabdaab7d86e2c472c75ca",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-001",
+          "section": "constraint",
+          "text_label": "Passwords are never persisted in plaintext and are stored using argon2id hashing."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Passwords are never persisted in plaintext and are stored using argon2id hashing.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "7ba017cf6338e746475619694090c4c234a2290f3451e92146b427b62b90a774",
+      "claim_origin": {
+        "data": {
+          "entry_key": "RegisterUserService",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    }
+  ],
+  "layer": "usecase",
+  "schema_version": 1
+}

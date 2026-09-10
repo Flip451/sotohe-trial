@@ -1,0 +1,54 @@
+{
+  "entries": [
+    {
+      "claim_hash": "7bc05487bd32f7d580cb2a46a601a6491b883f6bb7dd18ae710aa08febba95e0",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AuthCompositionRoot",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_composition-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "d0459f6c0f0c540a1e4124ba29d8a3b7375e4382ffc58fd561812f46f642e709",
+      "evidence_origin": {
+        "data": {
+          "element_id": "GO-001",
+          "section": "goal",
+          "text_label": "Provide a minimal HTTP API foundation for user registration and issuance of opaque access tokens after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Provide a minimal HTTP API foundation for user registration and issuance of opaque access tokens after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "7bc05487bd32f7d580cb2a46a601a6491b883f6bb7dd18ae710aa08febba95e0",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AuthCompositionRoot",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_composition-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9e988777332b275bc0b796f0edbf155c5cdaba74615be5817cc840ecd8e060",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-003",
+          "section": "constraint",
+          "text_label": "The HTTP surface is an axum REST API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "The HTTP surface is an axum REST API.",
+        "kind": "pass"
+      }
+    }
+  ],
+  "layer": "cli_composition",
+  "schema_version": 1
+}

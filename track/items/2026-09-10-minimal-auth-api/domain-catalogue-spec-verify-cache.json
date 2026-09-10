@@ -1,0 +1,414 @@
+{
+  "entries": [
+    {
+      "claim_hash": "501331b92cc2e2215d951d11a3f8398890ab180ee65d90dfb1e0aa176df34c74",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AccessTokenRecord",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9101a7e0ccd64f2570fdb12d2ab71dfc70e1134f599f412afdd25b7b6ab4f4",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-002",
+          "section": "acceptance_criteria",
+          "text_label": "Successful login through the REST API issues an opaque access token for client proof after authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Successful login through the REST API issues an opaque access token for client proof after authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "501331b92cc2e2215d951d11a3f8398890ab180ee65d90dfb1e0aa176df34c74",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AccessTokenRecord",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6b8345226196247d2ec383d02c29d41cfc83838f02c0b8e0ed620a668abcb8fa",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-002",
+          "section": "constraint",
+          "text_label": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "87720b718b40a012e9cd80f3fd0d1e400471835ceb4436fbcce52ffbaa5190db",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AccessTokenRepositoryError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6b8345226196247d2ec383d02c29d41cfc83838f02c0b8e0ed620a668abcb8fa",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-002",
+          "section": "constraint",
+          "text_label": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "f56aa3cdd1e4c367e1e4e43c523ad9f31662ec568afe817d3311a48cb4e3e2f5",
+      "claim_origin": {
+        "data": {
+          "entry_key": "OpaqueAccessToken",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9101a7e0ccd64f2570fdb12d2ab71dfc70e1134f599f412afdd25b7b6ab4f4",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-002",
+          "section": "acceptance_criteria",
+          "text_label": "Successful login through the REST API issues an opaque access token for client proof after authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Successful login through the REST API issues an opaque access token for client proof after authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "cc31a78f5d0113c3ec6c2fc62f5c7f1911d7f1fe69ea5e155646440eb5b9cbea",
+      "claim_origin": {
+        "data": {
+          "entry_key": "OpaqueAccessTokenError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9101a7e0ccd64f2570fdb12d2ab71dfc70e1134f599f412afdd25b7b6ab4f4",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-002",
+          "section": "acceptance_criteria",
+          "text_label": "Successful login through the REST API issues an opaque access token for client proof after authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Successful login through the REST API issues an opaque access token for client proof after authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "915f9ac86a25e32aac229c7672b2f516c930d46fe5c4271ec01df8b48ef83d95",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordHash",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bde69405dfcc62d00893515e521b3b1ba25646fb02cabdaab7d86e2c472c75ca",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-001",
+          "section": "constraint",
+          "text_label": "Passwords are never persisted in plaintext and are stored using argon2id hashing."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Passwords are never persisted in plaintext and are stored using argon2id hashing.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "915f9ac86a25e32aac229c7672b2f516c930d46fe5c4271ec01df8b48ef83d95",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordHash",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "d88c78536fe9407852b6e963df040ad5be1c82ec51d6f2cb77c7468fe38d7d94",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-003",
+          "section": "acceptance_criteria",
+          "text_label": "A registered user's password is retained only as an argon2id hash, never in plaintext."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "A registered user's password is retained only as an argon2id hash, never in plaintext.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "1027da8dfdf00e72e0b4e6fceb01c456ebb46657e68ff77489a51fe39fcaadad",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordHashError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bde69405dfcc62d00893515e521b3b1ba25646fb02cabdaab7d86e2c472c75ca",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-001",
+          "section": "constraint",
+          "text_label": "Passwords are never persisted in plaintext and are stored using argon2id hashing."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Passwords are never persisted in plaintext and are stored using argon2id hashing.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "91100407b8616c27c048c2791d906424d54ac18e786975a91fc9a83d57184413",
+      "claim_origin": {
+        "data": {
+          "entry_key": "User",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "91100407b8616c27c048c2791d906424d54ac18e786975a91fc9a83d57184413",
+      "claim_origin": {
+        "data": {
+          "entry_key": "User",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bde69405dfcc62d00893515e521b3b1ba25646fb02cabdaab7d86e2c472c75ca",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-001",
+          "section": "constraint",
+          "text_label": "Passwords are never persisted in plaintext and are stored using argon2id hashing."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Passwords are never persisted in plaintext and are stored using argon2id hashing.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "d1f33d3cc3c457668771941f87789b438e82464e86c33bf3241cf2ff91e58721",
+      "claim_origin": {
+        "data": {
+          "entry_key": "UserLookupError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "d1f33d3cc3c457668771941f87789b438e82464e86c33bf3241cf2ff91e58721",
+      "claim_origin": {
+        "data": {
+          "entry_key": "UserLookupError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6b8345226196247d2ec383d02c29d41cfc83838f02c0b8e0ed620a668abcb8fa",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-002",
+          "section": "constraint",
+          "text_label": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "85ed604c640d0e1e021ecf0ec13d0ebd2b2023e1680d4722bd4b9d2f48aa27ec",
+      "claim_origin": {
+        "data": {
+          "entry_key": "UserRepositoryError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6b8345226196247d2ec383d02c29d41cfc83838f02c0b8e0ed620a668abcb8fa",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-002",
+          "section": "constraint",
+          "text_label": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "188de63977fcf1fb10da0690d222c8bfdd94392369a43f83a176b30691526c68",
+      "claim_origin": {
+        "data": {
+          "entry_key": "domain::Username",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "3ac37df81e41c4a5c0eab26e623020ba30bc4629123861ba08b6bd3eef54adb0",
+      "claim_origin": {
+        "data": {
+          "entry_key": "domain::UsernameError",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "d61d2e43d19963f3a7feb6d0cabdc6c888edc4803968bc1e730eb3e829831b19",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AccessTokenRepository",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6b8345226196247d2ec383d02c29d41cfc83838f02c0b8e0ed620a668abcb8fa",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-002",
+          "section": "constraint",
+          "text_label": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "795a524ad8055f423b4b355624289557c33c165daf5dcaad4bd3d544f252fae2",
+      "claim_origin": {
+        "data": {
+          "entry_key": "UserRepository",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6b8345226196247d2ec383d02c29d41cfc83838f02c0b8e0ed620a668abcb8fa",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-002",
+          "section": "constraint",
+          "text_label": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later.",
+        "kind": "pass"
+      }
+    }
+  ],
+  "layer": "domain",
+  "schema_version": 1
+}

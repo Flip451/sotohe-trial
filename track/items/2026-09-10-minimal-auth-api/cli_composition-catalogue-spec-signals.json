@@ -1,0 +1,11 @@
+{
+  "catalogue_declaration_hash": "e5834f3290082289331e1c7e0dc1d9d8cc96bf8da53660b3b5ecd8de6445b0a7",
+  "schema_version": 1,
+  "signals": [
+    {
+      "entry_hash": "7bc05487bd32f7d580cb2a46a601a6491b883f6bb7dd18ae710aa08febba95e0",
+      "signal": "blue",
+      "type_name": "AuthCompositionRoot"
+    }
+  ]
+}

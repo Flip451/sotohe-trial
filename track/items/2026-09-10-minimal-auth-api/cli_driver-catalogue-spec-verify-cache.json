@@ -1,0 +1,246 @@
+{
+  "entries": [
+    {
+      "claim_hash": "6a3393d4ee10f6fa9154d2a6300ce75e0f7d9f297540e0f86db3231aa29490a4",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AccessTokenResponse",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9101a7e0ccd64f2570fdb12d2ab71dfc70e1134f599f412afdd25b7b6ab4f4",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-002",
+          "section": "acceptance_criteria",
+          "text_label": "Successful login through the REST API issues an opaque access token for client proof after authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Successful login through the REST API issues an opaque access token for client proof after authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "bc8e8ef9bab055b8dcbe07b7aaa776e2ba7e11244fd7e91c6aac64b5fc524698",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AuthHttpApi",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "bc8e8ef9bab055b8dcbe07b7aaa776e2ba7e11244fd7e91c6aac64b5fc524698",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AuthHttpApi",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "bc8e8ef9bab055b8dcbe07b7aaa776e2ba7e11244fd7e91c6aac64b5fc524698",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AuthHttpApi",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9e988777332b275bc0b796f0edbf155c5cdaba74615be5817cc840ecd8e060",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-003",
+          "section": "constraint",
+          "text_label": "The HTTP surface is an axum REST API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "The HTTP surface is an axum REST API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "bc8e8ef9bab055b8dcbe07b7aaa776e2ba7e11244fd7e91c6aac64b5fc524698",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AuthHttpApi",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9c46aceb1e0fbefdc6cbef9949bb8fc28fdc9cf0d3ebda8e705ecb7219444c46",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-004",
+          "section": "constraint",
+          "text_label": "REST API requests use UTF-8 encoded JSON bodies. After UTF-8 decoding, JSON string values are used as received without Unicode normalization. A body with invalid UTF-8 or malformed JSON is rejected with HTTP 400, and a request with a media type other than application/json is rejected with HTTP 415."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "REST API requests use UTF-8 encoded JSON bodies. After UTF-8 decoding, JSON string values are used as received without Unicode normalization. A body with invalid UTF-8 or malformed JSON is rejected with HTTP 400, and a request with a media type other than application/json is rejected with HTTP 415.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "3ab30920e29edb26e6382f3580edfb924d0c98caca9575d50860ac80eca673ca",
+      "claim_origin": {
+        "data": {
+          "entry_key": "HttpServerOutcome",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9a9e988777332b275bc0b796f0edbf155c5cdaba74615be5817cc840ecd8e060",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-003",
+          "section": "constraint",
+          "text_label": "The HTTP surface is an axum REST API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "The HTTP surface is an axum REST API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "588149a3e6a8e25ecb3cf3808b326260d7e8c6cfa5a46fc4f444f669adeeaed8",
+      "claim_origin": {
+        "data": {
+          "entry_key": "LoginRequest",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "588149a3e6a8e25ecb3cf3808b326260d7e8c6cfa5a46fc4f444f669adeeaed8",
+      "claim_origin": {
+        "data": {
+          "entry_key": "LoginRequest",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9c46aceb1e0fbefdc6cbef9949bb8fc28fdc9cf0d3ebda8e705ecb7219444c46",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-004",
+          "section": "constraint",
+          "text_label": "REST API requests use UTF-8 encoded JSON bodies. After UTF-8 decoding, JSON string values are used as received without Unicode normalization. A body with invalid UTF-8 or malformed JSON is rejected with HTTP 400, and a request with a media type other than application/json is rejected with HTTP 415."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "After UTF-8 decoding, JSON string values are used as received without Unicode normalization.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "8f78e9b34bed7fd028c0371b9b7fba58c85b2e93573bf817b35e883ad9b70d34",
+      "claim_origin": {
+        "data": {
+          "entry_key": "RegisterRequest",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Register a user through the API."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Register a user through the API.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "8f78e9b34bed7fd028c0371b9b7fba58c85b2e93573bf817b35e883ad9b70d34",
+      "claim_origin": {
+        "data": {
+          "entry_key": "RegisterRequest",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "9c46aceb1e0fbefdc6cbef9949bb8fc28fdc9cf0d3ebda8e705ecb7219444c46",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-004",
+          "section": "constraint",
+          "text_label": "REST API requests use UTF-8 encoded JSON bodies. After UTF-8 decoding, JSON string values are used as received without Unicode normalization. A body with invalid UTF-8 or malformed JSON is rejected with HTTP 400, and a request with a media type other than application/json is rejected with HTTP 415."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "REST API requests use UTF-8 encoded JSON bodies.",
+        "kind": "pass"
+      }
+    }
+  ],
+  "layer": "cli_driver",
+  "schema_version": 1
+}

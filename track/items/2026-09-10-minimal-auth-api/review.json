@@ -16,6 +16,564 @@
           "hash": "rvw1:sha256:d2eae8ccad11f5dfa9077fec89c17fa87482b7c212058651d29a8a91b66c42f0",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T12:43:53Z",
+          "findings": [],
+          "hash": "rvw1:sha256:de3b93636b3763a18aef95de98e78a289ff90a8524ee54f18db40d8faa96e44e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T12:48:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:de3b93636b3763a18aef95de98e78a289ff90a8524ee54f18db40d8faa96e44e",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:24:45Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6375bbd270f81dfdf662f5a67b266062bc6f1fd8d6d73073dadf9a8456c68ed1",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:27:18Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6375bbd270f81dfdf662f5a67b266062bc6f1fd8d6d73073dadf9a8456c68ed1",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "impl-plan": {
+      "rounds": [
+        {
+          "at": "2026-09-10T18:30:20Z",
+          "findings": [
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 6,
+              "message": "T001 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 12,
+              "message": "T002 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 18,
+              "message": "T003 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 24,
+              "message": "T004 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 30,
+              "message": "T005 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 36,
+              "message": "T006 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 42,
+              "message": "T007 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 6,
+              "message": "T001 restates upstream behavior in prose — “validated password-hash and opaque-token values, user and token aggregates, typed repository failures” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 12,
+              "message": "T002 restates upstream boundary and port behavior in prose — “typed parse and collaborator failures” and “password hashing, verification, and opaque-token issuance” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 18,
+              "message": "T003 restates registration behavior in prose — “duplicate-user detection, argon2id hashing orchestration, typed failure mapping” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 24,
+              "message": "T004 restates login behavior in prose — “credential lookup and verification, opaque-token issuance and persistence, typed failure mapping, response conversion” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 30,
+              "message": "T005 restates adapter behavior in prose — “argon2id password adapter” and “random opaque-token issuer” with repository conformance — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 36,
+              "message": "T006 restates HTTP contract behavior in prose — “media-type and malformed-body rejection” and “application-error translation” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 42,
+              "message": "T007 restates the shared-adapter ownership behavior in prose — “shares the in-memory repositories” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 53,
+              "message": "Section domain-foundation restates sequencing and domain behavior — “Establish validated authentication values, aggregates, and persistence boundaries before application orchestration” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 63,
+              "message": "Section application-services restates ownership and sequencing — “Build shared credential boundaries and then the independently owned registration and login services” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 75,
+              "message": "Section secondary-adapters restates implementation behavior — “in-memory persistence, argon2id hashing and verification, and opaque-token generation” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 85,
+              "message": "Section http-delivery restates the HTTP behavior contract — “typed axum JSON handling and stable HTTP outcomes” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 95,
+              "message": "Section composition restates shared ownership behavior — “Wire the complete authentication API with shared adapter ownership” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "avoidable batch serialization",
+              "file": "track/items/2026-09-10-minimal-auth-api/batch-plan.json",
+              "line": 83,
+              "message": "T003 and T004 are both ready at the T002 dependency frontier, have distinct usecase ownership, and their combined estimate is 400 lines (180 + 220), within the 500-line ceiling. Splitting them across B001 and B002 is avoidable: T004 can replace T003 in B001 and T003 can run before T006 in B002, preserving dependencies and leaving each batch within scope ceilings.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:a2b695612e358321bdeeb5fb337fd1a4f2c3cbcb1da2d4bcd7718740555afec6",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T18:41:34Z",
+          "findings": [],
+          "hash": "rvw1:sha256:65575c98a0f67e8ee729a1483d0bdc33c1b19998b3fb3a98a7a1ef369f109f35",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T18:55:11Z",
+          "findings": [
+            {
+              "category": "task-coverage gap",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 47,
+              "message": "The `plan` object has no `summary`, leaving GO-001 without the required plan-owned goal-to-task traceability. Add a target + operation + GO-001 summary linking the contributing tasks, including `composition`/T007, without restating upstream behavior.",
+              "severity": "P1"
+            },
+            {
+              "category": "task-contract attribution mismatch",
+              "file": "track/items/2026-09-10-minimal-auth-api/task-contract.json",
+              "line": 5,
+              "message": "T001's attribution list omits the reference catalogue entries `domain::Username` and `domain::UsernameError`; both remain orphaned even though reference entries require an owner. Attribute them to an appropriate convergence task such as T001 without implying that the task modifies them.",
+              "severity": "P1"
+            },
+            {
+              "category": "pre-implementation split proposal",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 36,
+              "message": "T006 bundles two independently verifiable behavior units while still `todo`: the registration HTTP slice (`RegisterRequest`, IN-001/AC-001) and the login/token HTTP slice (`LoginRequest`, `AccessTokenResponse`, IN-002/AC-002). Split these into dependent executable tasks, assigning the shared `AuthHttpApi`/`HttpServerOutcome` foundation once and retaining the applicable CN-003/CN-004/CN-005 anchors.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:65575c98a0f67e8ee729a1483d0bdc33c1b19998b3fb3a98a7a1ef369f109f35",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T19:07:17Z",
+          "findings": [
+            {
+              "category": "dependency cycle or wrong ordering",
+              "file": "track/items/2026-09-10-minimal-auth-api/batch-plan.json",
+              "line": 105,
+              "message": "T006 is ordered in B001 before T003, but T006 implements `AuthHttpApi`, whose catalogued constructor requires `RegisterUserService`; that service is created by T003 in later B002. The batch order therefore requires T006 to refer to an artifact not yet created. Move T006 after T003 (while preserving the ceiling split).",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:70cbe5c579df2a960b660b66d181ba6ebc13dd1624e3994aca6ad5603310f2d6",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T19:11:43Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9842408c639a25c1d3fae2d86ec90d9f5cd6b2546d8528e6dbb75e0ae7ab36bf",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T19:16:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9842408c639a25c1d3fae2d86ec90d9f5cd6b2546d8528e6dbb75e0ae7ab36bf",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "other": {
+      "rounds": [
+        {
+          "at": "2026-09-10T18:28:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3534e585a4d1742df09723f1414fe22100e086c309d3fdd90f65026e28ebae6b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T18:33:46Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3534e585a4d1742df09723f1414fe22100e086c309d3fdd90f65026e28ebae6b",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "spec": {
+      "rounds": [
+        {
+          "at": "2026-09-10T12:53:21Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3fa1c28661e9ec152779772eccdd5ade734319cc50adab32cf67eb6443ea59e6",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T13:16:27Z",
+          "findings": [
+            {
+              "category": "goal not anchored to a decision",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 75,
+              "message": "GO-001 combines registration, credential authentication, and token issuance, but its sole cited decision only selects opaque tokens after authentication. The separate registration ADR is not cited here, and no cited decision establishes login-attempt authentication as a capability, so the goal exceeds its decision anchors.",
+              "severity": "P1"
+            },
+            {
+              "category": "missing AC coverage for a stated goal",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 75,
+              "message": "GO-001 requires authenticating login attempts, but AC-002 only checks token issuance once a login is already described as successful. No acceptance criterion deterministically proves that supplied credentials are verified or that invalid credentials are rejected, leaving the authentication part of the goal uncovered.",
+              "severity": "P1"
+            },
+            {
+              "category": "未宣言の前提への依存",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 63,
+              "message": "CN-003 introduces an external HTTP boundary for registration and login, while the project-owned environment declaration still contains TODOs for accepted input encoding, resource limits, and concurrency behavior, and the spec records none of those assumptions. Downstream design would have to invent boundary behavior for malformed/oversized inputs and concurrent access.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:3fa1c28661e9ec152779772eccdd5ade734319cc50adab32cf67eb6443ea59e6",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T13:23:03Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 53,
+              "message": "CN-002 keeps every user and token in process memory, but CN-005 and CN-006 limit only individual request bodies and concurrent requests. Sequential registrations and token issuances can therefore grow retained state without any declared capacity/retention boundary or defined failure behavior when memory is exhausted; the project environment declaration still leaves resource limits as TODO.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:a0e393440eb95ea1a0d3df4cb91680423ae63b50fe725aa9f1bd42bc0039fa81",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T13:25:17Z",
+          "findings": [
+            {
+              "category": "scope / acceptance_criteria contradiction",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 111,
+              "message": "CN-007 contradicts IN-002 and AC-002: those elements require token issuance after successful authentication/login, while CN-007 says a successful login is rejected at token capacity and no token is written. The contract therefore gives mutually exclusive outcomes for the same successful-authentication case.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:c9c0e8ba485a86af6f6bc0a4c571adbc630d500283e5dfe29c3664d27eb67356",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T13:27:18Z",
+          "findings": [],
+          "hash": "rvw1:sha256:943688951d9290c087e13233297bc0f32a5317a9ee05ccf9cc06ffe9da73c385",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T13:33:07Z",
+          "findings": [],
+          "hash": "rvw1:sha256:fda9de00ccc4d19873409d87fcb7beef0e39280f3b5cfbfd439c0312fd1c9bd2",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T13:36:32Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 73,
+              "message": "CN-004 defines UTF-8 decoding and malformed-input handling but leaves Unicode normalization unspecified while the project environment declaration’s normalization field remains TODO. Registration and authentication can therefore disagree across downstream implementations about whether canonically equivalent credential strings are identical, so the external input contract still depends on an undeclared normalization policy.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:fda9de00ccc4d19873409d87fcb7beef0e39280f3b5cfbfd439c0312fd1c9bd2",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T13:41:07Z",
+          "findings": [],
+          "hash": "rvw1:sha256:073a7905f1d511b046f0d72ad508d8ead9d359a9ffa32f250c1e99d0dbefdc27",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:30:59Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ba66b9f582e2111cab841d4958f8255b4a6b304367304be3d4e2b223a4c8fc4e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:33:06Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ba66b9f582e2111cab841d4958f8255b4a6b304367304be3d4e2b223a4c8fc4e",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "types": {
+      "rounds": [
+        {
+          "at": "2026-09-10T16:09:12Z",
+          "findings": [
+            {
+              "category": "unsupported semantic placement",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 452,
+              "message": "`usecase::IssuedAccessToken` is declared as a `ValueObject`, but its contract only describes an application-boundary serialization proof and declares no invariant, ubiquitous-language meaning, or invariant ownership. This supports a DTO/boundary-carrier role, not a usecase value-object role.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 385,
+              "message": "`domain::OpaqueAccessToken` docs restate the upstream opaque/non-empty token behavior contract instead of referring to the governing spec anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 492,
+              "message": "`domain::PasswordHash` docs restate the upstream argon2id password-storage contract instead of referring to the governing spec anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 603,
+              "message": "`domain::User` docs restate the upstream registered-user/password-hash behavior contract instead of referring to the governing spec anchors.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+              "line": 48,
+              "message": "`infrastructure::Argon2PasswordAdapter` docs restate the ADR/spec choice of argon2id rather than referring to the upstream anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+              "line": 84,
+              "message": "`infrastructure::InMemoryAccessTokenRepository` docs restate the upstream in-memory/repository design contract rather than referring to the governing spec anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+              "line": 122,
+              "message": "`infrastructure::InMemoryUserRepository` docs restate the upstream in-memory persistence and argon2id-storage behavior contract rather than referring to the governing spec anchors.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+              "line": 160,
+              "message": "`infrastructure::RandomOpaqueTokenIssuer` docs restate the upstream opaque-token behavior contract rather than referring to the governing spec anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+              "line": 53,
+              "message": "`cli_driver::AuthHttpApi` docs restate the detailed UTF-8, malformed-JSON, and media-type rejection contract from CN-004 rather than referring to the upstream anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 819,
+              "message": "`usecase::PlaintextPassword` docs restate the upstream secret-retention and exposure behavior contract rather than referring to the governing spec/convention anchor.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:7262cc1ced9d08e3e530c2aa0c9745b73de7f4e27f5984bc12592eb7ab995b2c",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T16:27:05Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4b3099e6a4e4cdc49e696b17d11a471905f3509d4a98289a5f11fa733ebd202e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T16:44:46Z",
+          "findings": [
+            {
+              "category": "sync/async color mismatch",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 137,
+              "message": "`domain::AccessTokenRepository` (`save`, `find`) and `domain::UserRepository` (`find_by_username`, `save`) declare every persistence operation as synchronous. Because CN-002 explicitly makes these ports replaceable, a future database-backed adapter would have to block or change the port and propagate that change through the usecase layer; neither entry documents or justifies this synchronous contract.",
+              "severity": "P2"
+            },
+            {
+              "category": "per-method error imprecision",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 207,
+              "message": "`domain::UserRepository::find_by_username` returns the shared `UserRepositoryError`, including `DuplicateUser`, even though that write-conflict variant cannot arise from a lookup. The entry does not document a producible subset, so every lookup caller must handle a write-only error variant.",
+              "severity": "P2"
+            },
+            {
+              "category": "spec_refs missing or off-topic",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 324,
+              "message": "`usecase::PasswordHasher` cites only IN-002, but its `hash` method creates a stored password hash and correctly cites CN-001; registration is the consuming operation, while login uses `PasswordVerifier`. The entry-level IN-002 reference is therefore off-topic and should be replaced with the registration/hashing anchors.",
+              "severity": "P2"
+            },
+            {
+              "category": "duplicated structural declaration",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 582,
+              "message": "`usecase::LoginCommandError` and `usecase::RegisterUserCommandError` independently declare the identical `InvalidUsername(domain::UsernameError)` and `InvalidPassword(PasswordInputError)` shape. Neither is shared or references a common declaration, so the same credential-parsing error contract must be maintained twice.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 139,
+              "message": "The docs for `domain::AccessTokenRepository` and `domain::UserRepository` paraphrase CN-002's in-memory-behind-a-replaceable-port decision (`the in-memory implementation is replaceable`) instead of limiting themselves to the type purpose and an anchor citation. This violates `.harness/policies/no-upstream-restatement.md`.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:4b3099e6a4e4cdc49e696b17d11a471905f3509d4a98289a5f11fa733ebd202e",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T17:48:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2eccdaec06e68d99733375194d1d64ad2492551e0b43d7c26f7a069dce2f12ee",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:56:41Z",
+          "findings": [
+            {
+              "category": "Liskov violation in trait design",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 229,
+              "message": "`usecase::LoginService` and `usecase::RegisterUserService` declare async `execute` methods but `cli_driver::AuthHttpApi::new` requires them as `Arc<dyn …>`; likewise `domain::UserRepository` and `domain::AccessTokenRepository` declare async methods while both interactors require `Arc<dyn …>`. An async trait method has an opaque future return and is not dyn-compatible, so these declared object types cannot be constructed. An `async_trait`-style transformation would instead expose a boxed-future signature not represented by this catalogue. Use static dispatch or declare an object-safe future-returning contract. See the [Rust Reference](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility).",
+              "severity": "P1"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 828,
+              "message": "`usecase::PlaintextPassword` repeats CN-005's behavior as prose—“empty input is rejected”—even though its invariant and methods already carry the CN-005 references. `.harness/policies/no-upstream-restatement.md` requires an anchor citation or short identifying noun phrase instead of restating the behavioral contract.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:2eccdaec06e68d99733375194d1d64ad2492551e0b43d7c26f7a069dce2f12ee",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T18:12:45Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b41ecc36cda74bc133c00b348cdc068bc1399fa8e7a3c294a985716d95a143e6",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T18:17:03Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b41ecc36cda74bc133c00b348cdc068bc1399fa8e7a3c294a985716d95a143e6",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     }

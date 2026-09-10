@@ -1,0 +1,160 @@
+{
+  "acceptance_criteria": [
+    {
+      "adr_refs": [
+        {
+          "anchor": "D1",
+          "file": "knowledge/adr/2026-09-10-1238-minimal-auth-registration-capability.md"
+        }
+      ],
+      "id": "AC-001",
+      "text": "A user can be registered through the REST API."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D1",
+          "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        }
+      ],
+      "id": "AC-002",
+      "text": "Successful login through the REST API issues an opaque access token for client proof after authentication."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D2",
+          "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        }
+      ],
+      "id": "AC-003",
+      "text": "A registered user's password is retained only as an argon2id hash, never in plaintext."
+    }
+  ],
+  "constraints": [
+    {
+      "adr_refs": [
+        {
+          "anchor": "D2",
+          "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        }
+      ],
+      "id": "CN-001",
+      "text": "Passwords are never persisted in plaintext and are stored using argon2id hashing."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D3",
+          "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        }
+      ],
+      "id": "CN-002",
+      "text": "User and token persistence uses an in-memory implementation behind a repository port so it can be replaced later."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D4",
+          "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        }
+      ],
+      "id": "CN-003",
+      "text": "The HTTP surface is an axum REST API."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D4",
+          "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        }
+      ],
+      "id": "CN-004",
+      "text": "REST API requests use UTF-8 encoded JSON bodies. After UTF-8 decoding, JSON string values are used as received without Unicode normalization. A body with invalid UTF-8 or malformed JSON is rejected with HTTP 400, and a request with a media type other than application/json is rejected with HTTP 415."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D1",
+          "file": "knowledge/adr/2026-09-10-1716-minimal-auth-empty-password-rejection.md"
+        }
+      ],
+      "id": "CN-005",
+      "text": "At the application boundary, registration and login reject a request whose presented password is empty."
+    }
+  ],
+  "goal": [
+    {
+      "adr_refs": [
+        {
+          "anchor": "D1",
+          "file": "knowledge/adr/2026-09-10-1238-minimal-auth-registration-capability.md"
+        },
+        {
+          "anchor": "D4",
+          "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        },
+        {
+          "anchor": "D1",
+          "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        }
+      ],
+      "id": "GO-001",
+      "text": "Provide a minimal HTTP API foundation for user registration and issuance of opaque access tokens after successful authentication."
+    }
+  ],
+  "related_conventions": [
+    {
+      "anchor": "purpose",
+      "file": "knowledge/conventions/coding-principles.md"
+    },
+    {
+      "anchor": "rule",
+      "file": "knowledge/conventions/prefer-type-safe-abstractions.md"
+    }
+  ],
+  "schema_version": 2,
+  "scope": {
+    "in_scope": [
+      {
+        "adr_refs": [
+          {
+            "anchor": "D1",
+            "file": "knowledge/adr/2026-09-10-1238-minimal-auth-registration-capability.md"
+          }
+        ],
+        "id": "IN-001",
+        "text": "Register a user through the API."
+      },
+      {
+        "adr_refs": [
+          {
+            "anchor": "D1",
+            "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+          }
+        ],
+        "id": "IN-002",
+        "text": "Authenticate a user login attempt and issue an access token after successful authentication."
+      }
+    ],
+    "out_of_scope": [
+      {
+        "adr_refs": [
+          {
+            "anchor": "D1",
+            "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+          }
+        ],
+        "id": "OS-001",
+        "text": "Refresh tokens are not provided."
+      }
+    ]
+  },
+  "signals": {
+    "blue": 12,
+    "red": 0,
+    "yellow": 0
+  },
+  "title": "最小認証API",
+  "version": "1.0.0"
+}

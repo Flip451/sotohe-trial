@@ -1,0 +1,63 @@
+{
+  "baseline_hash": "05fde51fe5cef6e1f0eb646792cb63012b3a2d47cd9de6d8a5bb5862ff0b4296",
+  "declaration_hash": "2843a0be83801635d45882661b55b6d15d18a787e77d5ff56cbc814a454ed7f5",
+  "generated_at": "2026-09-10T19:20:04Z",
+  "head_commit": "adb822e2d21d747795926b34565c6a8bc86d48d1",
+  "implementation_fingerprint": "15bb377f7e6d376670aa20add00c3141cfec3f588775883fe6a7b565bb4e0635",
+  "resolution_fingerprint": "8a7ffe6f8588fe5a9a4a41ddafdb06eb795bf0d14cf6f49dd3a1372daec7d63a",
+  "rustdoc_execution_identity": {
+    "crate_name": "infrastructure",
+    "expected_json_path": "target/.sotp-rustdoc/3752fba856c64f53fab38cbd30956ae144b497d94fbc78ab984a39cf81654280/doc/infrastructure.json",
+    "features": [],
+    "profile": "dev",
+    "target_directory": "target/.sotp-rustdoc/3752fba856c64f53fab38cbd30956ae144b497d94fbc78ab984a39cf81654280"
+  },
+  "schema_version": 6,
+  "signals": [
+    {
+      "found_type": false,
+      "kind_tag": "secondary_adapter",
+      "missing_items": [
+        "core::default::Default",
+        "usecase::auth::PasswordHasher",
+        "usecase::auth::PasswordVerifier"
+      ],
+      "namespace": "type",
+      "signal": "yellow",
+      "type_name": "Argon2PasswordAdapter"
+    },
+    {
+      "found_type": false,
+      "kind_tag": "secondary_adapter",
+      "missing_items": [
+        "core::default::Default",
+        "domain::auth::AccessTokenRepository"
+      ],
+      "namespace": "type",
+      "signal": "yellow",
+      "type_name": "InMemoryAccessTokenRepository"
+    },
+    {
+      "found_type": false,
+      "kind_tag": "secondary_adapter",
+      "missing_items": [
+        "core::default::Default",
+        "domain::auth::UserRepository"
+      ],
+      "namespace": "type",
+      "signal": "yellow",
+      "type_name": "InMemoryUserRepository"
+    },
+    {
+      "found_type": false,
+      "kind_tag": "secondary_adapter",
+      "missing_items": [
+        "core::default::Default",
+        "usecase::auth::OpaqueTokenIssuer"
+      ],
+      "namespace": "type",
+      "signal": "yellow",
+      "type_name": "RandomOpaqueTokenIssuer"
+    }
+  ]
+}

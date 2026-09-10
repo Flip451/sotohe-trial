@@ -1,0 +1,1110 @@
+{
+  "crate_name": "usecase",
+  "functions": {},
+  "layer": "usecase",
+  "schema_version": 5,
+  "trait_impls": [
+    {
+      "for_type": "PlaintextPassword",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "PlaintextPassword",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "RegisterUserCommand",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "RegisterUserCommand",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "LoginCommand",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "LoginCommand",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "IssuedAccessToken",
+      "trait_ref": "core::clone::Clone"
+    },
+    {
+      "for_type": "IssuedAccessToken",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "IssuedAccessToken",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "RegisterUserInteractor",
+      "trait_ref": "RegisterUserService"
+    },
+    {
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::convert::From<PasswordHashingError>"
+    },
+    {
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::convert::From<domain::auth::UserRepositoryError>"
+    },
+    {
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::convert::From<domain::auth::UserLookupError>"
+    },
+    {
+      "for_type": "LoginInteractor",
+      "trait_ref": "LoginService"
+    },
+    {
+      "for_type": "LoginError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "LoginError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "LoginError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "LoginError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "LoginError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "LoginError",
+      "trait_ref": "core::convert::From<PasswordVerificationError>"
+    },
+    {
+      "for_type": "LoginError",
+      "trait_ref": "core::convert::From<TokenIssuanceError>"
+    },
+    {
+      "for_type": "LoginError",
+      "trait_ref": "core::convert::From<domain::auth::AccessTokenRepositoryError>"
+    },
+    {
+      "for_type": "LoginError",
+      "trait_ref": "core::convert::From<domain::auth::UserLookupError>"
+    },
+    {
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::convert::From<domain::UsernameError>"
+    },
+    {
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::convert::From<PasswordInputError>"
+    }
+  ],
+  "traits": {
+    "LoginService": {
+      "action": "add",
+      "docs": "Structure-required inbound port for the single login operation; intentionally synchronous contract.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "execute",
+          "params": [
+            {
+              "name": "command",
+              "ty": "LoginCommand"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<IssuedAccessToken, LoginError>",
+          "spec_refs": [
+            {
+              "anchor": "IN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "ApplicationService": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "OpaqueTokenIssuer": {
+      "action": "add",
+      "docs": "Structure-required driven port for generating unpredictable opaque access tokens.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "issue",
+          "params": [],
+          "receiver": "&self",
+          "returns": "Result<domain::auth::OpaqueAccessToken, TokenIssuanceError>",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryPort": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "AC-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "PasswordHasher": {
+      "action": "add",
+      "docs": "Structure-required driven port that converts a transient plaintext password into a validated stored hash.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "hash",
+          "params": [
+            {
+              "name": "password",
+              "ty": "&PlaintextPassword"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<domain::auth::PasswordHash, PasswordHashingError>",
+          "spec_refs": [
+            {
+              "anchor": "CN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryPort": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "AC-003",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "PasswordVerifier": {
+      "action": "add",
+      "docs": "Structure-required driven port for checking a transient password against a stored argon2id hash.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "verify",
+          "params": [
+            {
+              "name": "password",
+              "ty": "&PlaintextPassword"
+            },
+            {
+              "name": "hash",
+              "ty": "&domain::auth::PasswordHash"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<bool, PasswordVerificationError>",
+          "spec_refs": [
+            {
+              "anchor": "CN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryPort": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "RegisterUserService": {
+      "action": "add",
+      "docs": "Structure-required inbound port for the single user-registration operation; intentionally synchronous contract.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "execute",
+          "params": [
+            {
+              "name": "command",
+              "ty": "RegisterUserCommand"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<(), RegisterUserError>",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "ApplicationService": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    }
+  },
+  "types": {
+    "CredentialParseError": {
+      "action": "add",
+      "docs": "Shared validation failure produced while parsing login or registration credentials.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "InvalidUsername",
+            "payload": {
+              "fields": [
+                "domain::UsernameError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "InvalidPassword",
+            "payload": {
+              "fields": [
+                "PasswordInputError"
+              ],
+              "kind": "tuple"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "IN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "IssuedAccessToken": {
+      "action": "add",
+      "docs": "Application response DTO; its &str accessor is presentation encoding only. See AC-002.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "from_domain",
+          "params": [
+            {
+              "name": "token",
+              "ty": "domain::auth::OpaqueAccessToken"
+            }
+          ],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "as_str",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&str",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "AC-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "LoginCommand": {
+      "action": "add",
+      "docs": "Validated login input owned by the application boundary; raw strings exist only during its parse step.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "parse",
+          "params": [
+            {
+              "name": "username",
+              "ty": "&str"
+            },
+            {
+              "name": "password",
+              "ty": "&str"
+            }
+          ],
+          "returns": "Result<Self, CredentialParseError>",
+          "spec_refs": [
+            {
+              "anchor": "IN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "username",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&domain::Username",
+          "spec_refs": [
+            {
+              "anchor": "IN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "password",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&PlaintextPassword",
+          "spec_refs": [
+            {
+              "anchor": "IN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Command": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "LoginError": {
+      "action": "add",
+      "docs": "Login failure preserving typed user-lookup, verification, token-issuance, and token-persistence causes.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "UserNotFound",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "InvalidCredentials",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "Lookup",
+            "payload": {
+              "fields": [
+                "domain::auth::UserLookupError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "Verification",
+            "payload": {
+              "fields": [
+                "PasswordVerificationError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "TokenIssuance",
+            "payload": {
+              "fields": [
+                "TokenIssuanceError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "Persistence",
+            "payload": {
+              "fields": [
+                "domain::auth::AccessTokenRepositoryError"
+              ],
+              "kind": "tuple"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "LoginInteractor": {
+      "action": "add",
+      "docs": "Interactor implementing the structure-required login port with repository, verification, issuance, and token-storage collaborators.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "users",
+              "ty": "std::sync::Arc<dyn domain::auth::UserRepository>"
+            },
+            {
+              "name": "verifier",
+              "ty": "std::sync::Arc<dyn PasswordVerifier>"
+            },
+            {
+              "name": "token_issuer",
+              "ty": "std::sync::Arc<dyn OpaqueTokenIssuer>"
+            },
+            {
+              "name": "tokens",
+              "ty": "std::sync::Arc<dyn domain::auth::AccessTokenRepository>"
+            }
+          ],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "IN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Interactor": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "PasswordHashingError": {
+      "action": "add",
+      "docs": "Failure returned by the password-hashing port.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "PasswordInputError": {
+      "action": "add",
+      "docs": "Failure returned when an application-boundary password is empty.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Empty",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "IN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-005",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "PasswordVerificationError": {
+      "action": "add",
+      "docs": "Failure returned by the password-verification port.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "PlaintextPassword": {
+      "action": "add",
+      "docs": "Application-boundary credential value (CN-005); raw &str exists only during construction.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "parse",
+          "params": [
+            {
+              "name": "raw",
+              "ty": "&str"
+            }
+          ],
+          "returns": "Result<Self, PasswordInputError>",
+          "spec_refs": [
+            {
+              "anchor": "CN-005",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "expose_secret",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&str",
+          "spec_refs": [
+            {
+              "anchor": "CN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "is_non_empty",
+          "params": [],
+          "receiver": "&self",
+          "returns": "bool",
+          "spec_refs": [
+            {
+              "anchor": "CN-005",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "ValueObject": {
+          "invariants": [
+            {
+              "name": "non_empty",
+              "predicate": {
+                "SelfMethod": "is_non_empty"
+              }
+            }
+          ]
+        }
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-005",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "RegisterUserCommand": {
+      "action": "add",
+      "docs": "Validated registration input owned by the application boundary; raw strings exist only during its parse step.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "parse",
+          "params": [
+            {
+              "name": "username",
+              "ty": "&str"
+            },
+            {
+              "name": "password",
+              "ty": "&str"
+            }
+          ],
+          "returns": "Result<Self, CredentialParseError>",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "username",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&domain::Username",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "password",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&PlaintextPassword",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Command": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "RegisterUserError": {
+      "action": "add",
+      "docs": "Registration failure preserving typed user-lookup, password-hashing, and user-persistence causes.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "UserAlreadyExists",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "Lookup",
+            "payload": {
+              "fields": [
+                "domain::auth::UserLookupError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "Hashing",
+            "payload": {
+              "fields": [
+                "PasswordHashingError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "Persistence",
+            "payload": {
+              "fields": [
+                "domain::auth::UserRepositoryError"
+              ],
+              "kind": "tuple"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "RegisterUserInteractor": {
+      "action": "add",
+      "docs": "Interactor implementing the structure-required registration port with user-repository and password-hashing collaborators.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "users",
+              "ty": "std::sync::Arc<dyn domain::auth::UserRepository>"
+            },
+            {
+              "name": "hasher",
+              "ty": "std::sync::Arc<dyn PasswordHasher>"
+            }
+          ],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Interactor": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "TokenIssuanceError": {
+      "action": "add",
+      "docs": "Failure returned by the opaque-token issuance port.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "AC-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    }
+  }
+}

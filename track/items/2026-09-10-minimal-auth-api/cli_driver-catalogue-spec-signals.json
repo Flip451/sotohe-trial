@@ -1,0 +1,31 @@
+{
+  "catalogue_declaration_hash": "d4a6c7aa5a431e8841b424dc50d68865e0b163a905903db622a9bc954a066b8a",
+  "schema_version": 1,
+  "signals": [
+    {
+      "entry_hash": "6a3393d4ee10f6fa9154d2a6300ce75e0f7d9f297540e0f86db3231aa29490a4",
+      "signal": "blue",
+      "type_name": "AccessTokenResponse"
+    },
+    {
+      "entry_hash": "bc8e8ef9bab055b8dcbe07b7aaa776e2ba7e11244fd7e91c6aac64b5fc524698",
+      "signal": "blue",
+      "type_name": "AuthHttpApi"
+    },
+    {
+      "entry_hash": "3ab30920e29edb26e6382f3580edfb924d0c98caca9575d50860ac80eca673ca",
+      "signal": "blue",
+      "type_name": "HttpServerOutcome"
+    },
+    {
+      "entry_hash": "588149a3e6a8e25ecb3cf3808b326260d7e8c6cfa5a46fc4f444f669adeeaed8",
+      "signal": "blue",
+      "type_name": "LoginRequest"
+    },
+    {
+      "entry_hash": "8f78e9b34bed7fd028c0371b9b7fba58c85b2e93573bf817b35e883ad9b70d34",
+      "signal": "blue",
+      "type_name": "RegisterRequest"
+    }
+  ]
+}

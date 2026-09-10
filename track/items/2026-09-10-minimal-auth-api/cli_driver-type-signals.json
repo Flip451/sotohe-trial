@@ -1,0 +1,53 @@
+{
+  "baseline_hash": "812444f6a6df2941efd3f38b571e4ff7ea114613c3a565d160fc4122212cf028",
+  "declaration_hash": "d4a6c7aa5a431e8841b424dc50d68865e0b163a905903db622a9bc954a066b8a",
+  "generated_at": "2026-09-10T19:20:09Z",
+  "head_commit": "adb822e2d21d747795926b34565c6a8bc86d48d1",
+  "implementation_fingerprint": "15bb377f7e6d376670aa20add00c3141cfec3f588775883fe6a7b565bb4e0635",
+  "resolution_fingerprint": "8a7ffe6f8588fe5a9a4a41ddafdb06eb795bf0d14cf6f49dd3a1372daec7d63a",
+  "rustdoc_execution_identity": {
+    "crate_name": "cli_driver",
+    "expected_json_path": "target/.sotp-rustdoc/95a4b68af0afc4b43a270ed2d8b87618673abb66281f314f09d0e0b454b15f3d/doc/cli_driver.json",
+    "features": [],
+    "profile": "dev",
+    "target_directory": "target/.sotp-rustdoc/95a4b68af0afc4b43a270ed2d8b87618673abb66281f314f09d0e0b454b15f3d"
+  },
+  "schema_version": 6,
+  "signals": [
+    {
+      "found_type": false,
+      "kind_tag": "dto",
+      "namespace": "type",
+      "signal": "yellow",
+      "type_name": "AccessTokenResponse"
+    },
+    {
+      "found_type": false,
+      "kind_tag": "primary_adapter",
+      "namespace": "type",
+      "signal": "yellow",
+      "type_name": "AuthHttpApi"
+    },
+    {
+      "found_type": false,
+      "kind_tag": "enum",
+      "namespace": "type",
+      "signal": "yellow",
+      "type_name": "HttpServerOutcome"
+    },
+    {
+      "found_type": false,
+      "kind_tag": "dto",
+      "namespace": "type",
+      "signal": "yellow",
+      "type_name": "LoginRequest"
+    },
+    {
+      "found_type": false,
+      "kind_tag": "dto",
+      "namespace": "type",
+      "signal": "yellow",
+      "type_name": "RegisterRequest"
+    }
+  ]
+}

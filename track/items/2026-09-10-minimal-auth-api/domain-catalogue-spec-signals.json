@@ -1,0 +1,71 @@
+{
+  "catalogue_declaration_hash": "8d31754935200a67bbe4ce71013233863e3a1e72e3c53f61ed83ec645d78e39f",
+  "schema_version": 1,
+  "signals": [
+    {
+      "entry_hash": "501331b92cc2e2215d951d11a3f8398890ab180ee65d90dfb1e0aa176df34c74",
+      "signal": "blue",
+      "type_name": "AccessTokenRecord"
+    },
+    {
+      "entry_hash": "87720b718b40a012e9cd80f3fd0d1e400471835ceb4436fbcce52ffbaa5190db",
+      "signal": "blue",
+      "type_name": "AccessTokenRepositoryError"
+    },
+    {
+      "entry_hash": "f56aa3cdd1e4c367e1e4e43c523ad9f31662ec568afe817d3311a48cb4e3e2f5",
+      "signal": "blue",
+      "type_name": "OpaqueAccessToken"
+    },
+    {
+      "entry_hash": "cc31a78f5d0113c3ec6c2fc62f5c7f1911d7f1fe69ea5e155646440eb5b9cbea",
+      "signal": "blue",
+      "type_name": "OpaqueAccessTokenError"
+    },
+    {
+      "entry_hash": "915f9ac86a25e32aac229c7672b2f516c930d46fe5c4271ec01df8b48ef83d95",
+      "signal": "blue",
+      "type_name": "PasswordHash"
+    },
+    {
+      "entry_hash": "1027da8dfdf00e72e0b4e6fceb01c456ebb46657e68ff77489a51fe39fcaadad",
+      "signal": "blue",
+      "type_name": "PasswordHashError"
+    },
+    {
+      "entry_hash": "91100407b8616c27c048c2791d906424d54ac18e786975a91fc9a83d57184413",
+      "signal": "blue",
+      "type_name": "User"
+    },
+    {
+      "entry_hash": "d1f33d3cc3c457668771941f87789b438e82464e86c33bf3241cf2ff91e58721",
+      "signal": "blue",
+      "type_name": "UserLookupError"
+    },
+    {
+      "entry_hash": "85ed604c640d0e1e021ecf0ec13d0ebd2b2023e1680d4722bd4b9d2f48aa27ec",
+      "signal": "blue",
+      "type_name": "UserRepositoryError"
+    },
+    {
+      "entry_hash": "188de63977fcf1fb10da0690d222c8bfdd94392369a43f83a176b30691526c68",
+      "signal": "blue",
+      "type_name": "domain::Username"
+    },
+    {
+      "entry_hash": "3ac37df81e41c4a5c0eab26e623020ba30bc4629123861ba08b6bd3eef54adb0",
+      "signal": "blue",
+      "type_name": "domain::UsernameError"
+    },
+    {
+      "entry_hash": "d61d2e43d19963f3a7feb6d0cabdc6c888edc4803968bc1e730eb3e829831b19",
+      "signal": "blue",
+      "type_name": "AccessTokenRepository"
+    },
+    {
+      "entry_hash": "795a524ad8055f423b4b355624289557c33c165daf5dcaad4bd3d544f252fae2",
+      "signal": "blue",
+      "type_name": "UserRepository"
+    }
+  ]
+}
