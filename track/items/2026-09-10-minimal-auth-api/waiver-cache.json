@@ -311,6 +311,78 @@
         "kind": "waived"
       },
       "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "declaration_hash": "2e08b3037e4efbb6b4f0a315483d30d892a57447f5eea4e367351638b8d09ada",
+        "waived_reason_hash": "26bbe1d3012a208cb376281dd22beca6517d814a941dcec585942c73fda5c29e"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "ParamDeclaration { name: ParamName(Identifier(\"register\")), ty: TypeRef(\"std::sync::Arc<dyn usecase::auth::RegisterUserService>\") }",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "HttpServerOutcome"
+      },
+      "key": {
+        "anchor_text_hash": "31b67e94d7c37b14642283acfc1a085810673715abe3ed3894965580b60d9491",
+        "declaration_hash": "c0b1a66d32d92f665ef6137a49b2ea8887da31ae7a47d4203816a9a85cd9ffcd",
+        "waived_reason_hash": "c908ec9029a258d7a6bb06ffedf7cdffd12673fec64e7aa969083fa21c0d2fef"
+      },
+      "obligation_id": {
+        "entry_key": "HttpServerOutcome",
+        "item_identifier": "voluntary:CN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Delivery-bound server lifecycle DTO used internally before rendering to CommandOutcome",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "declaration_hash": "61514be17e10601ee266bf85dbc0a089df71de85e5e59c24b3eefad06c5c42f2",
+        "waived_reason_hash": "50a61d3e45a539818d7d3da4de57b6034fc163a6ef30532d15dee353bad713b1"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:IN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Login/token route ownership is T009.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
     }
   ],
   "track_id": "2026-09-10-minimal-auth-api"

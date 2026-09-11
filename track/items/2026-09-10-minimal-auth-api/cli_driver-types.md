@@ -4,7 +4,7 @@
 
 | Name | Kind | Action | Details | Signal | Cat-Spec |
 |------|------|--------|---------|--------|----------|
-| HttpServerOutcome | enum | add | Stopped, Failed | 🟡 | 🔵 |
+| HttpServerOutcome | enum | add | Stopped, Failed | 🔵 | 🔵 |
 
 ## DTOs
 
@@ -18,5 +18,5 @@
 
 | Name | Kind | Action | Details | Signal | Cat-Spec |
 |------|------|--------|---------|--------|----------|
-| AuthHttpApi | primary_adapter | add | — | 🟡 | 🔵 |
+| AuthHttpApi | primary_adapter | add | — | 🔵 | 🔵 |
 

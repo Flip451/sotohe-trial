@@ -1092,6 +1092,241 @@
         "kind": "fulfilled"
       },
       "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_valid_credentials_hashes_and_persists_user"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_existing_user_returns_duplicate_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_lookup_failure_returns_lookup_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_hashing_failure_returns_hashing_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_persistence_failure_returns_persistence_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_save_race_returns_duplicate_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterUserInteractor"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "99ff6dba5c9574c821bd601a41866c3865e4bb155e1cbeb39d1db6f2848c4bbf",
+        "declaration_hash": "1d1dc9117745e51ccb3b03de9ecc3dee229ae45413f62428f591b52009e895e0"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterUserInteractor",
+        "item_identifier": "entry",
+        "obligation_kind": "result"
+      },
+      "verdict": {
+        "citation": "service.execute(valid_registration_command()).unwrap();\n\n            let saved = users.saved.lock().unwrap();\n            let user = saved.as_ref().unwrap();\n            assert_eq!(user.username().as_str(), \"ada\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_valid_credentials_hashes_and_persists_user"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_existing_user_returns_duplicate_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_lookup_failure_returns_lookup_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_hashing_failure_returns_hashing_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_persistence_failure_returns_persistence_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_save_race_returns_duplicate_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterUserService"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "99ff6dba5c9574c821bd601a41866c3865e4bb155e1cbeb39d1db6f2848c4bbf",
+        "declaration_hash": "2256a87ced188895e036a5cdee0903bb58173727f3e798299b492e798c0346f8"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterUserService",
+        "item_identifier": "trait_method:execute",
+        "obligation_kind": "result"
+      },
+      "verdict": {
+        "citation": "service.execute(valid_registration_command()).unwrap();\n\n            let saved = users.saved.lock().unwrap();\n            let user = saved.as_ref().unwrap();",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_existing_user_returns_duplicate_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_lookup_failure_returns_lookup_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_hashing_failure_returns_hashing_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_persistence_failure_returns_persistence_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterUserError"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "ed8a251152b7a6bf39a61a258973023a0431dc6c0585ffddf9b627422cc2c14b",
+        "declaration_hash": "21afdd1c307f5e43cf0a20df2660ecd57af84249c16b3af8c3c02760ae7406ce"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterUserError",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "interactor.execute(valid_registration_command()),\n                Err(RegisterUserError::UserAlreadyExists)",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_router_is_axum_router"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_server_lifecycle_maps_graceful_stop"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_serve_maps_bind_failure"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "31b67e94d7c37b14642283acfc1a085810673715abe3ed3894965580b60d9491",
+        "bound_tests_set_hash": "2b5cb87fc7ff6c7812f158065a944083747994c2e3dc3e9489befdf4753f5ff1",
+        "declaration_hash": "1ec4501c75eb910b1564b13482cd1d36bc5441a661bb1815f62abe10d4e69a53"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:CN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let _typed: Router = router; ... assert!(response.starts_with(\"HTTP/1.1\"), \"unexpected response: {response:?}\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_json_strings_are_not_unicode_normalized"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-004",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "f0717e77895fcf228f2d466ee3c0286a18de7d496962e6964c5c0078de5638e8",
+        "bound_tests_set_hash": "e14fd79009427cef240b458cd6379b525fadf8c361d88330be7ce52992b9cd67",
+        "declaration_hash": "51829ce1d5b7c7c795ad8b6bd16b4a3bfe92b96427f1d3252c368b07bd253a60"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:CN-004",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert_eq!(response.status(), StatusCode::BAD_REQUEST); ... assert_eq!(response.status(), StatusCode::BAD_REQUEST); ... assert_eq!(response.status(), StatusCode::UNSUPPORTED_MEDIA_TYPE); ... assert_ne!(values[0], values[1]);",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
     }
   ],
   "track_id": "2026-09-10-minimal-auth-api"

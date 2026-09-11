@@ -47,6 +47,155 @@
         }
       ]
     },
+    "cli_driver": {
+      "rounds": [
+        {
+          "at": "2026-09-10T23:15:45Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 33,
+              "message": "`serve` hard-codes the OS bind endpoint to `127.0.0.1:3000`, but neither the spec nor the project environment declaration records the required loopback/port assumption or its configuration policy. This makes deployment depend on an undeclared address and port-availability contract; declare the endpoint or inject/configure it before binding.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:038cb1bd135b479a4662e4d8fe0dc551882731eff75de2151c6f0607ec9b4031",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:18:08Z",
+          "findings": [],
+          "hash": "rvw1:sha256:038cb1bd135b479a4662e4d8fe0dc551882731eff75de2151c6f0607ec9b4031",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:30:22Z",
+          "findings": [
+            {
+              "category": "non-CommandOutcome return",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 57,
+              "message": "`AuthHttpApi::serve` is the public driver entrypoint but returns `HttpServerOutcome`, directly violating the cli_driver rule that public `handle` or equivalent operations render to `CommandOutcome`. This leaves lifecycle errors outside the primary-adapter rendering boundary; return a `CommandOutcome` with failure/exit semantics or move server lifecycle ownership to the appropriate composition boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "server lifecycle correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 71,
+              "message": "The real server cannot produce the lifecycle outcomes this code claims to map. Axum 0.8.9 documents that `axum::serve` without graceful shutdown never completes or returns an error, so `map_server_result` is only exercised by the synthetic ready-future test; after a successful bind, `serve` can return neither `Stopped` nor `Failed`. Add an actual shutdown future/configurable runner and test the integrated path. See the [axum 0.8.9 serve contract](https://docs.rs/axum/0.8.9/axum/fn.serve.html).",
+              "severity": "P1"
+            },
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 140,
+              "message": "The test treats any 100 ms timeout as proof that binding succeeded and the Axum serve loop began. It also passes when the future was not polled far enough or bind/setup has not completed, so its conclusion depends on an undeclared scheduler and loopback-bind timing assumption. Signal readiness after a successful bind, or inject a pre-bound listener, before applying the timeout to the serve loop.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:038cb1bd135b479a4662e4d8fe0dc551882731eff75de2151c6f0607ec9b4031",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:36:30Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e1bd0b9dd9f15814f20adc1a14d81bb17419af884c23ecacc35c4b10d1266863",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:41:16Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 78,
+              "message": "The shutdown future discards `tokio::signal::ctrl_c()`'s `Result`. If signal-listener registration fails, the future completes immediately, Axum interprets that as a graceful-shutdown request, and `serve` returns a successful `CommandOutcome` instead of reporting the infrastructure failure. This depends on the undeclared assumption that signal registration is infallible; preserve the error and map it to `HttpServerOutcome::Failed`. The [Tokio API](https://docs.rs/tokio/1.52.3/tokio/signal/fn.ctrl_c.html) explicitly returns `io::Result<()>`.",
+              "severity": "P1"
+            },
+            {
+              "category": "test correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 189,
+              "message": "A successful `TcpStream::connect` does not prove that Axum accepted the connection: the listener is already bound before the server task starts, so the kernel can complete and queue the connection while the task has not reached `accept`. The test then drops the stream and requests shutdown, allowing it to pass without exercising Axum's accept/request path. Send a request and await its response, or instrument server-side acceptance, before signaling shutdown. Tokio's listener documentation notes that connections can wait in the [accept queue](https://docs.rs/tokio/1.52.3/tokio/net/struct.TcpListener.html).",
+              "severity": "P2"
+            },
+            {
+              "category": "boundary exposure violation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 38,
+              "message": "`HttpServerOutcome` is described by the briefing as an internal lifecycle DTO and is no longer returned by any public operation, but it remains publicly exported as `cli_driver::auth::HttpServerOutcome`. This exposes an adapter-internal transport lifecycle type and permits consumers to couple to or construct it despite the public `CommandOutcome` boundary. Make it private or `pub(crate)`.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:e1bd0b9dd9f15814f20adc1a14d81bb17419af884c23ecacc35c4b10d1266863",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:52:19Z",
+          "findings": [],
+          "hash": "rvw1:sha256:978ac04a0902d77ed9631a0b4e6cfba25cbde0f087abd538e86b24b03ac0d4f1",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:55:15Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 229,
+              "message": "The readiness test assumes one TCP `read` returns the complete `HTTP/1.1` prefix. `AsyncReadExt::read` only promises to pull some available bytes, so a valid response fragmented before the eighth byte makes this test fail nondeterministically. This transport-boundary assumption is undeclared; use `read_exact` for the fixed prefix or accumulate through the header terminator. See Tokio’s [`AsyncReadExt`](https://docs.rs/tokio/1.52.3/tokio/io/trait.AsyncReadExt.html).",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:978ac04a0902d77ed9631a0b4e6cfba25cbde0f087abd538e86b24b03ac0d4f1",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:58:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4181c385caa90ad0313611dac243f7c85017836c546e6405376028979d55b69e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:01:24Z",
+          "findings": [
+            {
+              "category": "CI formatting gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 45,
+              "message": "`cargo fmt --check -p cli_driver` exits 1 and reports multiple formatting differences in this file, so the repository's `fmt-check` dependency causes `cargo make ci-rust` to fail. Run rustfmt on the scoped source before approval.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:4181c385caa90ad0313611dac243f7c85017836c546e6405376028979d55b69e",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T00:03:11Z",
+          "findings": [],
+          "hash": "rvw1:sha256:61d70c049f97fd0128648060b2f1f04b3ce4fbca7b826f94b54fb78fd7f525ac",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:05:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:61d70c049f97fd0128648060b2f1f04b3ce4fbca7b826f94b54fb78fd7f525ac",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
     "domain": {
       "rounds": [
         {
@@ -167,6 +316,64 @@
           "at": "2026-09-10T22:03:06Z",
           "findings": [],
           "hash": "rvw1:sha256:3ab9313f0391763417a7b3df545efb9c644941b913e1f5ca0ecc98f905bf0f3d",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:16:50Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec4a7a0b91eab4de8539f9bd809debf91954f08ad7d31f0fde67e97914e79d83",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:27:43Z",
+          "findings": [
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/environment-declaration.md",
+              "line": 30,
+              "message": "The declared lifecycle does not match the current `AuthHttpApi::serve` path. It awaits bare axum 0.8 `serve`, whose future never completes or returns an error after a successful bind; accept errors are retried internally. Consequently this path cannot produce `Stopped` or a serve-time `Failed`, and cancellation/process termination drops the future without returning either outcome. Describe the actual lifecycle (with only bind failure returned), or wire an explicit graceful-shutdown/fallible serving mechanism before declaring these outcomes.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:ec4a7a0b91eab4de8539f9bd809debf91954f08ad7d31f0fde67e97914e79d83",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:35:15Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5feb5841eb0160c76af3759f60065bd5140d46132a2a17bbf7e05be8870f495d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:38:41Z",
+          "findings": [
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/environment-declaration.md",
+              "line": 30,
+              "message": "The declared Ctrl-C lifecycle still does not match `AuthHttpApi::serve`: the shutdown future discards the `io::Result` from `tokio::signal::ctrl_c()`, so signal-listener setup failure completes the shutdown future immediately and is rendered as `Stopped` / `CommandOutcome { success: true }` without any Ctrl-C. Conversely, axum 0.8's `with_graceful_shutdown` future does not return a serve error, so the documented serve-error-to-`Failed` path is not real. Handle signal setup failure as `Failed` and describe the reachable failure sources accurately, or revise the declaration to state the actual behavior.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:5feb5841eb0160c76af3759f60065bd5140d46132a2a17bbf7e05be8870f495d",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:46:48Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eb7bc6d191b7458f7ce2eedce26bb9a2def801f650d13e0a2a8d4b45ee6eda46",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:49:02Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eb7bc6d191b7458f7ce2eedce26bb9a2def801f650d13e0a2a8d4b45ee6eda46",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -421,6 +628,20 @@
           "hash": "rvw1:sha256:32a2830d68ca937878a9d2b98a7cedcf389fbbc860729fc37ee75949793c4de6",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:13:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:006e2524e29ef82d8556186c11bf401b4744c6b3b0797ead20f21a46950a03d0",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:17:26Z",
+          "findings": [],
+          "hash": "rvw1:sha256:006e2524e29ef82d8556186c11bf401b4744c6b3b0797ead20f21a46950a03d0",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -660,6 +881,63 @@
           "at": "2026-09-10T22:13:37Z",
           "findings": [],
           "hash": "rvw1:sha256:bfc5b247569ca6916299a7d1af78a88f4f1e9b49ecca58b8ec69c9b41bb2229a",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:14:42Z",
+          "findings": [],
+          "hash": "rvw1:sha256:302ebeee94a8305225da67b0ae35fe79710b20a4675fe29ae4d2ef6a4bdaab0e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:20:06Z",
+          "findings": [],
+          "hash": "rvw1:sha256:302ebeee94a8305225da67b0ae35fe79710b20a4675fe29ae4d2ef6a4bdaab0e",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:25:51Z",
+          "findings": [],
+          "hash": "rvw1:sha256:1c82347be38bf04e202c9d5563bbed74b9d08482f3fe924f090b44d05afeb831",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:35:07Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7e30218452a48feffa78edc4b1d8dda2f7dc460d105c33abc74393fb9a521107",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:38:30Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7e30218452a48feffa78edc4b1d8dda2f7dc460d105c33abc74393fb9a521107",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:51:58Z",
+          "findings": [
+            {
+              "category": "test-obligation / stale verdict",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 778,
+              "message": "The AuthHttpApi→CN-003 binding has a stale fulfillment verdict after its bound test bodies changed. `bin/sotp test-obligation check` now exits 1 with `TestChanged` drift (and results reports one stale Done obligation), so the required obligation gate is no longer green. Re-run the canonical obligation evaluation for the changed tests and ensure `check` passes, repairing the binding if the verifier rejects it.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:ffe0ddda78451f42aafd65e9c37b64bc29e727f9a32cbee88c6cc7d57b5a9b85",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:57:40Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ffe0ddda78451f42aafd65e9c37b64bc29e727f9a32cbee88c6cc7d57b5a9b85",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -986,6 +1264,56 @@
           "hash": "rvw1:sha256:84d1f41d6225d14c5c80a8dd6a0eb0bd5c6dfeefd3a7c304665592ae4cfccf88",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:14:32Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2c11a055bba51b13fd3f0de9358f4f2b909a2476a73b0b2efc4498c6d3f836ac",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:19:32Z",
+          "findings": [
+            {
+              "category": "spec_refs missing or off-topic",
+              "file": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+              "line": 79,
+              "message": "`cli_driver::AuthHttpApi::new` still declares `login: Arc<dyn usecase::auth::LoginService>`, but its sole method-level reference is IN-001, which concerns registration. Removing IN-002 from this method leaves the login dependency without a relevant spec trace; the briefing only justifies removing the deferred reference at entry level. Restore IN-002 on `new` (or remove the login dependency from the declared foundation shape until T009).",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:2c11a055bba51b13fd3f0de9358f4f2b909a2476a73b0b2efc4498c6d3f836ac",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:25:00Z",
+          "findings": [],
+          "hash": "rvw1:sha256:526cdf16ba90fdabfecaea09c39a856be001df169ebaa0fc505c5c711d6431f5",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:25:55Z",
+          "findings": [],
+          "hash": "rvw1:sha256:526cdf16ba90fdabfecaea09c39a856be001df169ebaa0fc505c5c711d6431f5",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:35:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bdd156246c6abfdeee52efad3c097dda1e7d8bb7b4681efce2a3ab6625fc2c3b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:38:12Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bdd156246c6abfdeee52efad3c097dda1e7d8bb7b4681efce2a3ab6625fc2c3b",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -1031,6 +1359,20 @@
           "at": "2026-09-10T22:12:40Z",
           "findings": [],
           "hash": "rvw1:sha256:3e9d0d50cf18e03172a8c1407f2e7eed6626d9df95eb82cbe2a11fa02140cd83",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:15:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:431b1576375d773860eed822e3e3256d2a341e2dea85ec63bc7df89f50906cd1",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:21:03Z",
+          "findings": [],
+          "hash": "rvw1:sha256:431b1576375d773860eed822e3e3256d2a341e2dea85ec63bc7df89f50906cd1",
           "type": "final",
           "verdict": "zero_findings"
         }

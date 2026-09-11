@@ -104,7 +104,7 @@ pub mod auth {
 
     use domain::auth::{
         AccessTokenRecord, AccessTokenRepository, AccessTokenRepositoryError, OpaqueAccessToken,
-        PasswordHash, UserLookupError, UserRepository,
+        PasswordHash, User, UserLookupError, UserRepository, UserRepositoryError,
     };
     use domain::{Username, UsernameError};
 
@@ -297,6 +297,71 @@ pub mod auth {
         fn issue(&self) -> Result<OpaqueAccessToken, TokenIssuanceError>;
     }
 
+    /// Failure returned by the user-registration interactor.
+    #[derive(Debug, Error, PartialEq, Eq)]
+    pub enum RegisterUserError {
+        /// A user with the requested username is already stored.
+        #[error("user already exists")]
+        UserAlreadyExists,
+        /// User lookup failed before registration could proceed.
+        #[error("user lookup failed: {0}")]
+        Lookup(#[from] UserLookupError),
+        /// Password hashing failed before the user could be persisted.
+        #[error("password hashing failed: {0}")]
+        Hashing(#[from] PasswordHashingError),
+        /// User persistence failed.
+        #[error("user persistence failed: {0}")]
+        Persistence(UserRepositoryError),
+    }
+
+    impl From<UserRepositoryError> for RegisterUserError {
+        fn from(error: UserRepositoryError) -> Self {
+            match error {
+                UserRepositoryError::DuplicateUser => Self::UserAlreadyExists,
+                unavailable @ UserRepositoryError::Unavailable => Self::Persistence(unavailable),
+            }
+        }
+    }
+
+    /// Structure-required inbound port for user registration.
+    pub trait RegisterUserService: Send + Sync {
+        /// Registers a validated user command.
+        ///
+        /// # Errors
+        ///
+        /// Returns [`RegisterUserError`] when lookup, hashing, or persistence
+        /// fails, or when the username is already registered.
+        fn execute(&self, command: RegisterUserCommand) -> Result<(), RegisterUserError>;
+    }
+
+    /// Registration interactor coordinating user lookup, password hashing, and persistence.
+    pub struct RegisterUserInteractor {
+        users: Arc<dyn UserRepository>,
+        hasher: Arc<dyn PasswordHasher>,
+    }
+
+    impl RegisterUserInteractor {
+        /// Builds a registration interactor from its collaborators.
+        #[must_use]
+        pub fn new(users: Arc<dyn UserRepository>, hasher: Arc<dyn PasswordHasher>) -> Self {
+            Self { users, hasher }
+        }
+    }
+
+    impl RegisterUserService for RegisterUserInteractor {
+        fn execute(&self, command: RegisterUserCommand) -> Result<(), RegisterUserError> {
+            if self.users.find_by_username(command.username())?.is_some() {
+                return Err(RegisterUserError::UserAlreadyExists);
+            }
+
+            let password_hash = self.hasher.hash(command.password())?;
+            let user = User::new(command.username().clone(), password_hash);
+            self.users.save(user)?;
+
+            Ok(())
+        }
+    }
+
     /// Application response containing an issued opaque access token.
     #[derive(Clone, PartialEq, Eq)]
     pub struct IssuedAccessToken {
@@ -407,6 +472,164 @@ pub mod auth {
 
         fn valid_user() -> User {
             User::new(Username::new("ada").unwrap(), valid_hash())
+        }
+
+        struct RegistrationUserRepository {
+            existing: Option<User>,
+            lookup_unavailable: bool,
+            save_unavailable: bool,
+            duplicate_on_save: bool,
+            saved: Mutex<Option<User>>,
+        }
+
+        impl RegistrationUserRepository {
+            fn empty() -> Self {
+                Self {
+                    existing: None,
+                    lookup_unavailable: false,
+                    save_unavailable: false,
+                    duplicate_on_save: false,
+                    saved: Mutex::new(None),
+                }
+            }
+        }
+
+        impl UserRepository for RegistrationUserRepository {
+            fn find_by_username(
+                &self,
+                _username: &Username,
+            ) -> Result<Option<User>, UserLookupError> {
+                if self.lookup_unavailable {
+                    Err(UserLookupError::Unavailable)
+                } else {
+                    Ok(self.existing.clone())
+                }
+            }
+
+            fn save(&self, user: User) -> Result<(), domain::auth::UserRepositoryError> {
+                if self.duplicate_on_save {
+                    return Err(domain::auth::UserRepositoryError::DuplicateUser);
+                }
+                if self.save_unavailable {
+                    return Err(domain::auth::UserRepositoryError::Unavailable);
+                }
+                *self.saved.lock().unwrap() = Some(user);
+                Ok(())
+            }
+        }
+
+        struct RegistrationPasswordHasher {
+            unavailable: bool,
+        }
+
+        impl PasswordHasher for RegistrationPasswordHasher {
+            fn hash(
+                &self,
+                _password: &PlaintextPassword,
+            ) -> Result<PasswordHash, PasswordHashingError> {
+                if self.unavailable {
+                    Err(PasswordHashingError::Unavailable)
+                } else {
+                    Ok(valid_hash())
+                }
+            }
+        }
+
+        fn registration_interactor(
+            users: Arc<RegistrationUserRepository>,
+            hasher_unavailable: bool,
+        ) -> RegisterUserInteractor {
+            RegisterUserInteractor::new(
+                users,
+                Arc::new(RegistrationPasswordHasher { unavailable: hasher_unavailable }),
+            )
+        }
+
+        fn valid_registration_command() -> RegisterUserCommand {
+            RegisterUserCommand::parse("ada", "correct horse").unwrap()
+        }
+
+        #[test]
+        fn test_register_user_interactor_valid_credentials_hashes_and_persists_user() {
+            let users = Arc::new(RegistrationUserRepository::empty());
+            let interactor = registration_interactor(users.clone(), false);
+            let service: &dyn RegisterUserService = &interactor;
+
+            service.execute(valid_registration_command()).unwrap();
+
+            let saved = users.saved.lock().unwrap();
+            let user = saved.as_ref().unwrap();
+            assert_eq!(user.username().as_str(), "ada");
+            assert_ne!(user.password_hash().as_str(), "correct horse");
+            assert!(user.password_hash().is_argon2id());
+        }
+
+        #[test]
+        fn test_register_user_interactor_existing_user_returns_duplicate_error() {
+            let users = Arc::new(RegistrationUserRepository {
+                existing: Some(valid_user()),
+                ..RegistrationUserRepository::empty()
+            });
+            let interactor = registration_interactor(users, false);
+
+            assert_eq!(
+                interactor.execute(valid_registration_command()),
+                Err(RegisterUserError::UserAlreadyExists)
+            );
+        }
+
+        #[test]
+        fn test_register_user_interactor_lookup_failure_returns_lookup_error() {
+            let users = Arc::new(RegistrationUserRepository {
+                lookup_unavailable: true,
+                ..RegistrationUserRepository::empty()
+            });
+            let interactor = registration_interactor(users, false);
+
+            assert_eq!(
+                interactor.execute(valid_registration_command()),
+                Err(RegisterUserError::Lookup(UserLookupError::Unavailable))
+            );
+        }
+
+        #[test]
+        fn test_register_user_interactor_hashing_failure_returns_hashing_error() {
+            let users = Arc::new(RegistrationUserRepository::empty());
+            let interactor = registration_interactor(users.clone(), true);
+
+            assert_eq!(
+                interactor.execute(valid_registration_command()),
+                Err(RegisterUserError::Hashing(PasswordHashingError::Unavailable))
+            );
+            assert!(users.saved.lock().unwrap().is_none());
+        }
+
+        #[test]
+        fn test_register_user_interactor_persistence_failure_returns_persistence_error() {
+            let users = Arc::new(RegistrationUserRepository {
+                save_unavailable: true,
+                ..RegistrationUserRepository::empty()
+            });
+            let interactor = registration_interactor(users, false);
+
+            assert_eq!(
+                interactor.execute(valid_registration_command()),
+                Err(RegisterUserError::Persistence(domain::auth::UserRepositoryError::Unavailable))
+            );
+        }
+
+        #[test]
+        fn test_register_user_interactor_save_race_returns_duplicate_error() {
+            let users = Arc::new(RegistrationUserRepository {
+                duplicate_on_save: true,
+                ..RegistrationUserRepository::empty()
+            });
+            let interactor = registration_interactor(users, false);
+
+            assert_eq!(
+                interactor.execute(valid_registration_command()),
+                Err(RegisterUserError::UserAlreadyExists)
+            );
         }
 
         #[test]

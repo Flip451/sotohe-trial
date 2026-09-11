@@ -15,7 +15,7 @@
 | PasswordHashingError | error_type | add | Unavailable | 🔵 | 🔵 |
 | PasswordInputError | error_type | add | Empty, TooLong | 🔵 | 🔵 |
 | PasswordVerificationError | error_type | add | Unavailable | 🔵 | 🔵 |
-| RegisterUserError | error_type | add | UserAlreadyExists, Lookup, Hashing, Persistence | 🟡 | 🔵 |
+| RegisterUserError | error_type | add | UserAlreadyExists, Lookup, Hashing, Persistence | 🔵 | 🔵 |
 | TokenIssuanceError | error_type | add | Unavailable | 🔵 | 🔵 |
 
 ## Secondary Ports
@@ -31,14 +31,14 @@
 | Name | Kind | Action | Details | Signal | Cat-Spec |
 |------|------|--------|---------|--------|----------|
 | LoginService | application_service | add | fn execute(&self, command: LoginCommand) -> Result<IssuedAccessToken, LoginError> | 🔵 | 🔵 |
-| RegisterUserService | application_service | add | fn execute(&self, command: RegisterUserCommand) -> Result<(), RegisterUserError> | 🟡 | 🔵 |
+| RegisterUserService | application_service | add | fn execute(&self, command: RegisterUserCommand) -> Result<(), RegisterUserError> | 🔵 | 🔵 |
 
 ## Interactors
 
 | Name | Kind | Action | Details | Signal | Cat-Spec |
 |------|------|--------|---------|--------|----------|
 | LoginInteractor | interactor | add | — | 🔵 | 🔵 |
-| RegisterUserInteractor | interactor | add | — | 🟡 | 🔵 |
+| RegisterUserInteractor | interactor | add | — | 🔵 | 🔵 |
 
 ## DTOs
 

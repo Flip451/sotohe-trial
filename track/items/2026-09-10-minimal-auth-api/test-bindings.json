@@ -650,6 +650,200 @@
           "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
         }
       ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "RegisterUserInteractor",
+        "item_identifier": "entry",
+        "obligation_kind": "result"
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_valid_credentials_hashes_and_persists_user"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_existing_user_returns_duplicate_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_lookup_failure_returns_lookup_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_hashing_failure_returns_hashing_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_persistence_failure_returns_persistence_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_save_race_returns_duplicate_error"
+        }
+      ]
+    },
+    {
+      "kind": "fulfillment",
+      "obligation_id": {
+        "entry_key": "RegisterUserService",
+        "item_identifier": "trait_method:execute",
+        "obligation_kind": "result"
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_valid_credentials_hashes_and_persists_user"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_existing_user_returns_duplicate_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_lookup_failure_returns_lookup_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_hashing_failure_returns_hashing_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_persistence_failure_returns_persistence_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_save_race_returns_duplicate_error"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "RegisterUserError",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-001"
+        }
+      },
+      "tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_existing_user_returns_duplicate_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_lookup_failure_returns_lookup_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_hashing_failure_returns_hashing_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_persistence_failure_returns_persistence_error"
+        }
+      ]
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "AuthHttpApi",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-001"
+        }
+      },
+      "reason": "The shared HTTP foundation only injects the registration service; registration request extraction and route behavior belong to the pending T008 implementation."
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "AuthHttpApi",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-003"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_router_is_axum_router"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_server_lifecycle_maps_graceful_stop"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_serve_maps_bind_failure"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "AuthHttpApi",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-004"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_json_strings_are_not_unicode_normalized"
+        }
+      ]
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "HttpServerOutcome",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-003"
+        }
+      },
+      "reason": "HttpServerOutcome is a delivery-bound lifecycle DTO whose only variants are Stopped and Failed(String). It does not declare routes, handlers, HTTP methods, media types, or axum types, so CN-003's axum REST-surface promise creates no independently verifiable behavioral obligation on this entry alone."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "AuthHttpApi",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-002"
+        }
+      },
+      "reason": "The shared HTTP foundation only injects the login service; login request extraction, token response mapping, and route behavior belong to the pending T009 implementation."
     }
   ]
 }
