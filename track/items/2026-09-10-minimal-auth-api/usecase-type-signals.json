@@ -1,0 +1,225 @@
+{
+  "baseline_hash": "d015698b368317e11cd4d850336a17e5969f318c83349e1fd436cea248beae74",
+  "declaration_hash": "83ceef60ebd9c6a04ef122a59795c9ed627c6a92ebfb915abed4d4dead90ece7",
+  "generated_at": "2026-09-11T18:39:10Z",
+  "head_commit": "1fed3d5aefe35877691e827d24031b43113ceee0",
+  "implementation_fingerprint": "927533a277fc11f6b660c94d004860fd1a2152f29fb548fb001686c369e12214",
+  "resolution_fingerprint": "8438d1c346e064b4a9db847786475d6b325327d71e968a41f9a0645210b17089",
+  "rustdoc_execution_identity": {
+    "crate_name": "usecase",
+    "expected_json_path": "target/.sotp-rustdoc/e628769f9a4ea87a1f5d8e3f944995bd645c18ef405a9158ed78355225fd68af/doc/usecase.json",
+    "features": [],
+    "profile": "dev",
+    "target_directory": "target/.sotp-rustdoc/e628769f9a4ea87a1f5d8e3f944995bd645c18ef405a9158ed78355225fd68af"
+  },
+  "schema_version": 6,
+  "signals": [
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq",
+        "core::convert::From<domain::UsernameError>",
+        "core::convert::From<usecase::auth::PasswordInputError>",
+        "core::error::Error",
+        "core::fmt::Debug",
+        "core::fmt::Display"
+      ],
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "CredentialParseError"
+    },
+    {
+      "found_items": [
+        "core::clone::Clone",
+        "core::cmp::Eq",
+        "core::cmp::PartialEq"
+      ],
+      "found_type": true,
+      "kind_tag": "dto",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "IssuedAccessToken"
+    },
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq"
+      ],
+      "found_type": true,
+      "kind_tag": "command",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "LoginCommand"
+    },
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq",
+        "core::convert::From<domain::auth::AccessTokenRepositoryError>",
+        "core::convert::From<domain::auth::UserLookupError>",
+        "core::convert::From<usecase::auth::PasswordVerificationError>",
+        "core::convert::From<usecase::auth::TokenIssuanceError>",
+        "core::error::Error",
+        "core::fmt::Debug",
+        "core::fmt::Display"
+      ],
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "LoginError"
+    },
+    {
+      "found_items": [
+        "LoginService"
+      ],
+      "found_type": true,
+      "kind_tag": "interactor",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "LoginInteractor"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "application_service",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "LoginService"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_port",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "OpaqueTokenIssuer"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_port",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "PasswordHasher"
+    },
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq",
+        "core::error::Error",
+        "core::fmt::Debug",
+        "core::fmt::Display"
+      ],
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "PasswordHashingError"
+    },
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq",
+        "core::error::Error",
+        "core::fmt::Debug",
+        "core::fmt::Display"
+      ],
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "PasswordInputError"
+    },
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq",
+        "core::error::Error",
+        "core::fmt::Debug",
+        "core::fmt::Display"
+      ],
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "PasswordVerificationError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_port",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "PasswordVerifier"
+    },
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq"
+      ],
+      "found_type": true,
+      "kind_tag": "value_object",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "PlaintextPassword"
+    },
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq"
+      ],
+      "found_type": true,
+      "kind_tag": "command",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "RegisterUserCommand"
+    },
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq",
+        "core::convert::From<domain::auth::UserLookupError>",
+        "core::convert::From<domain::auth::UserRepositoryError>",
+        "core::convert::From<usecase::auth::PasswordHashingError>",
+        "core::error::Error",
+        "core::fmt::Debug",
+        "core::fmt::Display"
+      ],
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "RegisterUserError"
+    },
+    {
+      "found_items": [
+        "RegisterUserService"
+      ],
+      "found_type": true,
+      "kind_tag": "interactor",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "RegisterUserInteractor"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "application_service",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "RegisterUserService"
+    },
+    {
+      "found_items": [
+        "core::cmp::Eq",
+        "core::cmp::PartialEq",
+        "core::error::Error",
+        "core::fmt::Debug",
+        "core::fmt::Display"
+      ],
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "TokenIssuanceError"
+    }
+  ]
+}

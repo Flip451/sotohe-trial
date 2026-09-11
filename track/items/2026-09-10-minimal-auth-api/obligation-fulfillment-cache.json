@@ -1,0 +1,1657 @@
+{
+  "entries": [
+    {
+      "bound_tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_opaque_access_token_empty_input_returns_empty_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "OpaqueAccessToken"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "bound_tests_set_hash": "57bbbdcb05dae272705f26b8cb906c18ac0efad9cbac69f49f2380cf60ab4965",
+        "declaration_hash": "b0dd4a6e50424f23f4c45bd02c590a7e5737d239559e6ea3f65ea5bf89c1505c"
+      },
+      "obligation_id": {
+        "entry_key": "OpaqueAccessToken",
+        "item_identifier": "invariant:non_empty",
+        "obligation_kind": "boundary"
+      },
+      "verdict": {
+        "citation": "assert!(matches!(\n                OpaqueAccessToken::new(String::new()),\n                Err(OpaqueAccessTokenError::Empty)\n            ));\n\n            let token = OpaqueAccessToken::new(\"opaque\".to_owned()).unwrap();\n            assert!(token.is_non_empty());\n            assert_eq!(token.as_str(), \"opaque\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_password_hash_non_argon2id_input_returns_invalid_encoding_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordHash"
+      },
+      "key": {
+        "anchor_text_hash": "43bbb84e0d240fd514d133051b4bae1660660865884e54a9723279affba58d2a",
+        "bound_tests_set_hash": "5dae6f32b8ef83fc11a8c9383ce23cf56642a2c24f121ecf30664d7d65dcc2d4",
+        "declaration_hash": "47f9d9e579e01880c71c53c350494d32a5710268a9bc8af66bdca7cfe277b173"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordHash",
+        "item_identifier": "invariant:argon2id_encoding",
+        "obligation_kind": "boundary"
+      },
+      "verdict": {
+        "citation": "assert!(matches!(\n                PasswordHash::new(\"plaintext\".to_owned()),\n                Err(PasswordHashError::InvalidEncoding)\n            ));\n            assert!(matches!(\n                PasswordHash::new(\"$argon2i$v=19$invalid\".to_owned()),\n                Err(PasswordHashError::InvalidEncoding)\n            ));\n            let hash = valid_hash();\n            assert!(hash.is_argon2id());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_password_hash_non_argon2id_input_returns_invalid_encoding_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordHash"
+      },
+      "key": {
+        "anchor_text_hash": "d6390588266fad391d67b62b033de4d19443fc0a618d0c38697989af91085dc4",
+        "bound_tests_set_hash": "5dae6f32b8ef83fc11a8c9383ce23cf56642a2c24f121ecf30664d7d65dcc2d4",
+        "declaration_hash": "47f9d9e579e01880c71c53c350494d32a5710268a9bc8af66bdca7cfe277b173"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordHash",
+        "item_identifier": "invariant:argon2id_encoding",
+        "obligation_kind": "boundary"
+      },
+      "verdict": {
+        "citation": "assert!(matches!(\n                PasswordHash::new(\"plaintext\".to_owned()),\n                Err(PasswordHashError::InvalidEncoding)\n            ));\n            let hash = valid_hash();\n            assert!(hash.is_argon2id());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_save_then_find_returns_record"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AccessTokenRepository"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "bound_tests_set_hash": "7efe6f21ac5b78082bba5fc2eb34ae8a297c676700df96bc90039b3b0c17812f",
+        "declaration_hash": "9b8efbffed2247c18699d06e57e9ad744393e62b529c7fd43fd79e28aa71e9dc"
+      },
+      "obligation_id": {
+        "entry_key": "AccessTokenRepository",
+        "item_identifier": "trait_method:save",
+        "obligation_kind": "contract"
+      },
+      "verdict": {
+        "citation": "repository.save(record.clone()).unwrap();\n\n            let found = repository.find(&token).unwrap();\n            assert_eq!(\n                found.as_ref().map(|stored| stored.subject().as_str()),\n                Some(record.subject().as_str())\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_save_then_find_returns_record"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AccessTokenRepository"
+      },
+      "key": {
+        "anchor_text_hash": "dc842b396cebbe662f0c64ded0e55ba947e22288b0209450a685a48883ac2d46",
+        "bound_tests_set_hash": "7efe6f21ac5b78082bba5fc2eb34ae8a297c676700df96bc90039b3b0c17812f",
+        "declaration_hash": "9b8efbffed2247c18699d06e57e9ad744393e62b529c7fd43fd79e28aa71e9dc"
+      },
+      "obligation_id": {
+        "entry_key": "AccessTokenRepository",
+        "item_identifier": "trait_method:save",
+        "obligation_kind": "contract"
+      },
+      "verdict": {
+        "citation": "repository.save(record.clone()).unwrap();\n\n            let found = repository.find(&token).unwrap();\n            assert_eq!(\n                found.as_ref().map(|stored| stored.subject().as_str()),\n                Some(record.subject().as_str())\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_save_then_find_returns_record"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_missing_token_returns_none"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AccessTokenRepository"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "bound_tests_set_hash": "249bfc2748512366c974bc33d55840206b113127e63d8ab5447ac1f96d2a7a23",
+        "declaration_hash": "5416efeae63f821de4cdac84993351260cf2f3b1e75a9ccc2a7668f8edb4caa6"
+      },
+      "obligation_id": {
+        "entry_key": "AccessTokenRepository",
+        "item_identifier": "trait_method:find",
+        "obligation_kind": "contract"
+      },
+      "verdict": {
+        "citation": "repository.save(record.clone()).unwrap();\n\n            let found = repository.find(&token).unwrap();\n            assert_eq!(\n                found.as_ref().map(|stored| stored.subject().as_str()),\n                Some(record.subject().as_str())\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_save_then_find_returns_user"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_missing_username_returns_none"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "UserRepository"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "2549ec3c484a3b4ffa15632ece37dbdeb865b512dab837c372d2d3b4ad879733",
+        "declaration_hash": "94198eb213397d8cdd8fdc3a5c36dc733feb8684aaad16abe14714580c1676f6"
+      },
+      "obligation_id": {
+        "entry_key": "UserRepository",
+        "item_identifier": "trait_method:find_by_username",
+        "obligation_kind": "contract"
+      },
+      "verdict": {
+        "citation": "repository.save(user.clone()).unwrap();\n\n            let found = repository.find_by_username(user.username()).unwrap();\n            assert_eq!(found.as_ref().map(User::username), Some(user.username()));\n        }\n{\n            let repository = InMemoryUserRepository::new();\n            let username = Username::new(\"ada\").unwrap();\n\n            assert!(repository.find_by_username(&username).unwrap().is_none());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_save_then_find_returns_user"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_duplicate_username_returns_duplicate_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "UserRepository"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "9bef54dfb239500605311f93663fb31439af082fc2bf6e730cbbf03418b231ec",
+        "declaration_hash": "806dd96fb6c4243d99921b2f8801bf03c11a6ab675b1fe700796b7d2c2ab680f"
+      },
+      "obligation_id": {
+        "entry_key": "UserRepository",
+        "item_identifier": "trait_method:save",
+        "obligation_kind": "contract"
+      },
+      "verdict": {
+        "citation": "repository.save(user.clone()).unwrap();\n\n            let found = repository.find_by_username(user.username()).unwrap();\n            assert_eq!(found.as_ref().map(User::username), Some(user.username()));",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_save_then_find_returns_user"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_duplicate_username_returns_duplicate_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "UserRepository"
+      },
+      "key": {
+        "anchor_text_hash": "dc842b396cebbe662f0c64ded0e55ba947e22288b0209450a685a48883ac2d46",
+        "bound_tests_set_hash": "9bef54dfb239500605311f93663fb31439af082fc2bf6e730cbbf03418b231ec",
+        "declaration_hash": "806dd96fb6c4243d99921b2f8801bf03c11a6ab675b1fe700796b7d2c2ab680f"
+      },
+      "obligation_id": {
+        "entry_key": "UserRepository",
+        "item_identifier": "trait_method:save",
+        "obligation_kind": "contract"
+      },
+      "verdict": {
+        "citation": "repository.save(user.clone()).unwrap();\n\n            let found = repository.find_by_username(user.username()).unwrap();\n            assert_eq!(found.as_ref().map(User::username), Some(user.username()));",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_valid_credentials_issues_and_persists_access_token"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_missing_user_returns_user_not_found_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_wrong_password_returns_invalid_credentials_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "LoginInteractor"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "bound_tests_set_hash": "2fd5e53013beeef7aa2a6c7160ac2ad4e4a8582b479c2872433676db4688b728",
+        "declaration_hash": "93dc417b46d805e78b6fb0b37d1a5fc0294b1aba3114d03df57303408699ae10"
+      },
+      "obligation_id": {
+        "entry_key": "LoginInteractor",
+        "item_identifier": "entry",
+        "obligation_kind": "result"
+      },
+      "verdict": {
+        "citation": "let result = interactor.execute(valid_command()).unwrap();\n\n            assert_eq!(result.as_str(), \"issued-token\");\n            assert_eq!(\n                tokens.saved.lock().unwrap().as_ref().map(|record| record.token().as_str()),\n                Some(token.as_str())\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_plaintext_password_empty_input_returns_empty_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-005",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PlaintextPassword"
+      },
+      "key": {
+        "anchor_text_hash": "f28a740fe2b386dac227cef23f515380eb9c2a2efdaf0bec8b32335907e4286f",
+        "bound_tests_set_hash": "42900d90ff1d72db30021aab0f4b481eb03fa373b77a47c4da87a5bffce93098",
+        "declaration_hash": "c66dc84c2a23f401ce0529a4c4000ce066df28f69848e41d829d25982ec91161"
+      },
+      "obligation_id": {
+        "entry_key": "PlaintextPassword",
+        "item_identifier": "invariant:non_empty",
+        "obligation_kind": "boundary"
+      },
+      "verdict": {
+        "citation": "assert!(matches!(PlaintextPassword::parse(\"\"), Err(PasswordInputError::Empty)));",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_valid_credentials_issues_and_persists_access_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "LoginService"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "bound_tests_set_hash": "0d09850a3ecd96af804695e32e4aa8f355c9095471e7cf3cb048d4b14d4d037e",
+        "declaration_hash": "fcecc1a38be8ecd976de240ce2196c727634b2077a36964c816076798d82aacb"
+      },
+      "obligation_id": {
+        "entry_key": "LoginService",
+        "item_identifier": "trait_method:execute",
+        "obligation_kind": "result"
+      },
+      "verdict": {
+        "citation": "let result = interactor.execute(valid_command()).unwrap();\n\n            assert_eq!(result.as_str(), \"issued-token\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_random_opaque_token_issuer_issue_returns_non_empty_unique_tokens"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "OpaqueTokenIssuer"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "bound_tests_set_hash": "a95829b604dd928523d1fdf92dd93f3eb23a34bd5a908b9349e333affabefa2e",
+        "declaration_hash": "c91fff37e8a1aa577a786ead740c09ac082f1c2af9ea8134765696aba2d89957"
+      },
+      "obligation_id": {
+        "entry_key": "OpaqueTokenIssuer",
+        "item_identifier": "trait_method:issue",
+        "obligation_kind": "contract"
+      },
+      "verdict": {
+        "citation": "let first = issuer.issue().unwrap();\n            let second = issuer.issue().unwrap();\n\n            assert!(first.is_non_empty());\n            assert!(second.is_non_empty());\n            assert_ne!(first.as_str(), second.as_str());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordHasher"
+      },
+      "key": {
+        "anchor_text_hash": "43bbb84e0d240fd514d133051b4bae1660660865884e54a9723279affba58d2a",
+        "bound_tests_set_hash": "9b4aa15b5c6c6453d7021146670c5e0464ac64958361078e4ed5b19db5122560",
+        "declaration_hash": "b2d0b40feabd9c5ebf22ebb4b341bdc9d351ed9eae65a4aae16e6c764a3a297e"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordHasher",
+        "item_identifier": "trait_method:hash",
+        "obligation_kind": "contract"
+      },
+      "verdict": {
+        "citation": "let hash = adapter.hash(&password).unwrap();\n\n            assert!(hash.is_argon2id());\n            assert_ne!(hash.as_str(), password.expose_secret());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_verify_matching_password_returns_true"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_verify_wrong_password_returns_false"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordVerifier"
+      },
+      "key": {
+        "anchor_text_hash": "43bbb84e0d240fd514d133051b4bae1660660865884e54a9723279affba58d2a",
+        "bound_tests_set_hash": "c5745765c18c987774af231481d2286e6d4d16bd6a7b3fefd2210be615199719",
+        "declaration_hash": "114d88b6680e85bccfc0242abe05f42150b0caa29f4d225b37af70dbc59f5ce8"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordVerifier",
+        "item_identifier": "trait_method:verify",
+        "obligation_kind": "contract"
+      },
+      "verdict": {
+        "citation": "assert!(adapter.verify(&password, &hash).unwrap());\n\nassert!(!adapter.verify(&wrong_password, &hash).unwrap());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_save_then_find_returns_user"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_user_repository_duplicate_username_returns_duplicate_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "InMemoryUserRepository"
+      },
+      "key": {
+        "anchor_text_hash": "dc842b396cebbe662f0c64ded0e55ba947e22288b0209450a685a48883ac2d46",
+        "bound_tests_set_hash": "9bef54dfb239500605311f93663fb31439af082fc2bf6e730cbbf03418b231ec",
+        "declaration_hash": "dab43ba416bfa79c6610af478af35d73f8278319a51867712d731005551c877e"
+      },
+      "obligation_id": {
+        "entry_key": "InMemoryUserRepository",
+        "item_identifier": "trait_impl:domain::auth::UserRepository",
+        "obligation_kind": "contract_conformance"
+      },
+      "verdict": {
+        "citation": "let repository = InMemoryUserRepository::new();\n            let user = valid_user();\n\n            repository.save(user.clone()).unwrap();\n\n            let found = repository.find_by_username(user.username()).unwrap();\n            assert_eq!(found.as_ref().map(User::username), Some(user.username()));",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_save_then_find_returns_record"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_missing_token_returns_none"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "InMemoryAccessTokenRepository"
+      },
+      "key": {
+        "anchor_text_hash": "dc842b396cebbe662f0c64ded0e55ba947e22288b0209450a685a48883ac2d46",
+        "bound_tests_set_hash": "249bfc2748512366c974bc33d55840206b113127e63d8ab5447ac1f96d2a7a23",
+        "declaration_hash": "040ab2f89730314dd62af16d75e60587c2605d3c6e5e033a7fef5748d84295f8"
+      },
+      "obligation_id": {
+        "entry_key": "InMemoryAccessTokenRepository",
+        "item_identifier": "trait_impl:domain::auth::AccessTokenRepository",
+        "obligation_kind": "contract_conformance"
+      },
+      "verdict": {
+        "citation": "repository.save(record.clone()).unwrap();\n\n            let found = repository.find(&token).unwrap();\n            assert_eq!(\n                found.as_ref().map(|stored| stored.subject().as_str()),\n                Some(record.subject().as_str())\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "Argon2PasswordAdapter"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "9b4aa15b5c6c6453d7021146670c5e0464ac64958361078e4ed5b19db5122560",
+        "declaration_hash": "04c287a0099bd13ba8124c434df9bb92efe2758a28fa6dd97641fe5bb4cd466f"
+      },
+      "obligation_id": {
+        "entry_key": "Argon2PasswordAdapter",
+        "item_identifier": "trait_impl:usecase::auth::PasswordHasher",
+        "obligation_kind": "contract_conformance"
+      },
+      "verdict": {
+        "citation": "let hash = adapter.hash(&password).unwrap();\n\n            assert!(hash.is_argon2id());\n            assert_ne!(hash.as_str(), password.expose_secret());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "Argon2PasswordAdapter"
+      },
+      "key": {
+        "anchor_text_hash": "43bbb84e0d240fd514d133051b4bae1660660865884e54a9723279affba58d2a",
+        "bound_tests_set_hash": "9b4aa15b5c6c6453d7021146670c5e0464ac64958361078e4ed5b19db5122560",
+        "declaration_hash": "04c287a0099bd13ba8124c434df9bb92efe2758a28fa6dd97641fe5bb4cd466f"
+      },
+      "obligation_id": {
+        "entry_key": "Argon2PasswordAdapter",
+        "item_identifier": "trait_impl:usecase::auth::PasswordHasher",
+        "obligation_kind": "contract_conformance"
+      },
+      "verdict": {
+        "citation": "let adapter = Argon2PasswordAdapter::new();\n            let password = PlaintextPassword::parse(\"correct horse\").unwrap();\n\n            let hash = adapter.hash(&password).unwrap();\n\n            assert!(hash.is_argon2id());\n            assert_ne!(hash.as_str(), password.expose_secret());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "Argon2PasswordAdapter"
+      },
+      "key": {
+        "anchor_text_hash": "d6390588266fad391d67b62b033de4d19443fc0a618d0c38697989af91085dc4",
+        "bound_tests_set_hash": "9b4aa15b5c6c6453d7021146670c5e0464ac64958361078e4ed5b19db5122560",
+        "declaration_hash": "04c287a0099bd13ba8124c434df9bb92efe2758a28fa6dd97641fe5bb4cd466f"
+      },
+      "obligation_id": {
+        "entry_key": "Argon2PasswordAdapter",
+        "item_identifier": "trait_impl:usecase::auth::PasswordHasher",
+        "obligation_kind": "contract_conformance"
+      },
+      "verdict": {
+        "citation": "let hash = adapter.hash(&password).unwrap();\n\n            assert!(hash.is_argon2id());\n            assert_ne!(hash.as_str(), password.expose_secret());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_verify_matching_password_returns_true"
+        },
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_verify_wrong_password_returns_false"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "Argon2PasswordAdapter"
+      },
+      "key": {
+        "anchor_text_hash": "43bbb84e0d240fd514d133051b4bae1660660865884e54a9723279affba58d2a",
+        "bound_tests_set_hash": "c5745765c18c987774af231481d2286e6d4d16bd6a7b3fefd2210be615199719",
+        "declaration_hash": "e40f1c3f4cd8fea1282076b0501814701a4fbc5c6fd09fd3f26ea90e1ee932b6"
+      },
+      "obligation_id": {
+        "entry_key": "Argon2PasswordAdapter",
+        "item_identifier": "trait_impl:usecase::auth::PasswordVerifier",
+        "obligation_kind": "contract_conformance"
+      },
+      "verdict": {
+        "citation": "let hash = adapter.hash(&password).unwrap();\n\n            assert!(adapter.verify(&password, &hash).unwrap());\n        }\n{\n            let adapter = Argon2PasswordAdapter::new();\n            let password = PlaintextPassword::parse(\"correct horse\").unwrap();\n            let wrong_password = PlaintextPassword::parse(\"wrong horse\").unwrap();\n            let hash = adapter.hash(&password).unwrap();\n\n            assert!(!adapter.verify(&wrong_password, &hash).unwrap());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_random_opaque_token_issuer_issue_returns_non_empty_unique_tokens"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RandomOpaqueTokenIssuer"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "bound_tests_set_hash": "a95829b604dd928523d1fdf92dd93f3eb23a34bd5a908b9349e333affabefa2e",
+        "declaration_hash": "9c69f75b646420493f816af9323b3c467eb5e357046bce89f97d43a4247b1a93"
+      },
+      "obligation_id": {
+        "entry_key": "RandomOpaqueTokenIssuer",
+        "item_identifier": "trait_impl:usecase::auth::OpaqueTokenIssuer",
+        "obligation_kind": "contract_conformance"
+      },
+      "verdict": {
+        "citation": "let first = issuer.issue().unwrap();\n            let second = issuer.issue().unwrap();\n\n            assert!(first.is_non_empty());\n            assert!(second.is_non_empty());\n            assert_ne!(first.as_str(), second.as_str());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_access_token_record_construction_preserves_token_and_subject"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AccessTokenRecord"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "bound_tests_set_hash": "ff0acaa60b4139bd9d0399da3326d777653b762306954cb0d7e2991d2ef83af9",
+        "declaration_hash": "4b86fce5dc797d333fb0ae08c47225a8335362652984dcd2b2537163467fcd3f"
+      },
+      "obligation_id": {
+        "entry_key": "AccessTokenRecord",
+        "item_identifier": "voluntary:AC-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let record = AccessTokenRecord::new(\n                OpaqueAccessToken::new(\"opaque\".to_owned()).unwrap(),\n                valid_username(),\n            );\n\n            assert_eq!(record.token().as_str(), \"opaque\");\n            assert_eq!(record.subject().as_str(), \"ada\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_in_memory_access_token_repository_save_then_find_returns_record"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AccessTokenRecord"
+      },
+      "key": {
+        "anchor_text_hash": "dc842b396cebbe662f0c64ded0e55ba947e22288b0209450a685a48883ac2d46",
+        "bound_tests_set_hash": "7efe6f21ac5b78082bba5fc2eb34ae8a297c676700df96bc90039b3b0c17812f",
+        "declaration_hash": "9d3835383729e2b474635707e518c96099653e873d2ae9f420bfc62ec2d63dca"
+      },
+      "obligation_id": {
+        "entry_key": "AccessTokenRecord",
+        "item_identifier": "voluntary:CN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let repository = InMemoryAccessTokenRepository::new();\n            let record = AccessTokenRecord::new(\n                OpaqueAccessToken::new(\"opaque\".to_owned()).unwrap(),\n                Username::new(\"ada\").unwrap(),\n            );\n            let token = record.token().clone();\n\n            repository.save(record.clone()).unwrap();\n\n            let found = repository.find(&token).unwrap();\n            assert_eq!(\n                found.as_ref().map(|stored| stored.subject().as_str()),\n                Some(record.subject().as_str())\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_password_hash_non_argon2id_input_returns_invalid_encoding_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordHashError"
+      },
+      "key": {
+        "anchor_text_hash": "43bbb84e0d240fd514d133051b4bae1660660865884e54a9723279affba58d2a",
+        "bound_tests_set_hash": "5dae6f32b8ef83fc11a8c9383ce23cf56642a2c24f121ecf30664d7d65dcc2d4",
+        "declaration_hash": "10dea5ad34166c1b850995aa0f368cf13f6230f3e1d25c1452a850f48a341c0f"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordHashError",
+        "item_identifier": "voluntary:CN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert!(matches!(\n                PasswordHash::new(\"plaintext\".to_owned()),\n                Err(PasswordHashError::InvalidEncoding)\n            ));\n            assert!(matches!(\n                PasswordHash::new(\"$argon2i$v=19$invalid\".to_owned()),\n                Err(PasswordHashError::InvalidEncoding)\n            ));\n            let hash = valid_hash();\n            assert!(hash.is_argon2id());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_user_aggregate_construction_preserves_validated_values"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "User"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "6caab6903f8d6fcd669692591205c74ba21f4732080b56224e6734b83a0f3267",
+        "declaration_hash": "71e23d712cf982b14ab7d1490d40695fca0c338a7acbc2a81f48d0fa5ea79241"
+      },
+      "obligation_id": {
+        "entry_key": "User",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let user = User::new(valid_username(), valid_hash());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "domain",
+          "module_path": "domain::auth::tests",
+          "test_name": "test_user_aggregate_construction_preserves_validated_values"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "User"
+      },
+      "key": {
+        "anchor_text_hash": "43bbb84e0d240fd514d133051b4bae1660660865884e54a9723279affba58d2a",
+        "bound_tests_set_hash": "6caab6903f8d6fcd669692591205c74ba21f4732080b56224e6734b83a0f3267",
+        "declaration_hash": "23eeaccbd036a6a7a510c72e5b79abd1b10010e80c11b426033ace32dca7a1db"
+      },
+      "obligation_id": {
+        "entry_key": "User",
+        "item_identifier": "voluntary:CN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert!(user.password_hash().is_argon2id());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_command_empty_password_returns_invalid_password_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_command_invalid_username_returns_invalid_username_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_command_valid_credentials_returns_typed_command"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "CredentialParseError"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "427a73c3c611b8b7f6ae7551cbf70d27e7a512d087e4b784a59fd18a4ef715cd",
+        "declaration_hash": "746094b6649aa068e48b35e6b213e3d61a7aebf69f0e57d30f028e1e0fcd63ef"
+      },
+      "obligation_id": {
+        "entry_key": "CredentialParseError",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert!(matches!(\n                RegisterUserCommand::parse(\"ada\", \"\"),\n                Err(CredentialParseError::InvalidPassword(PasswordInputError::Empty))\n            ));\n        }\n{\n            assert!(matches!(\n                RegisterUserCommand::parse(\"   \", \"secret\"),\n                Err(CredentialParseError::InvalidUsername(_))\n            ));",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_valid_credentials_issues_and_persists_access_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "IssuedAccessToken"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "bound_tests_set_hash": "0d09850a3ecd96af804695e32e4aa8f355c9095471e7cf3cb048d4b14d4d037e",
+        "declaration_hash": "5b98c7c9313c0b76597f6fb0c554648f24d73de710f36e0b30b27aad4c901c88"
+      },
+      "obligation_id": {
+        "entry_key": "IssuedAccessToken",
+        "item_identifier": "voluntary:AC-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let result = interactor.execute(valid_command()).unwrap();\n\n            assert_eq!(result.as_str(), \"issued-token\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_interactor_valid_credentials_issues_and_persists_access_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "LoginCommand"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "bound_tests_set_hash": "0d09850a3ecd96af804695e32e4aa8f355c9095471e7cf3cb048d4b14d4d037e",
+        "declaration_hash": "0490530098f277b1f3a8204778ddc5545bfb2d0f43a1936e79b8a2afb9273ad8"
+      },
+      "obligation_id": {
+        "entry_key": "LoginCommand",
+        "item_identifier": "voluntary:IN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let result = interactor.execute(valid_command()).unwrap();\n\n            assert_eq!(result.as_str(), \"issued-token\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_command_empty_password_returns_invalid_password_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_login_command_empty_password_returns_invalid_password_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_plaintext_password_empty_input_returns_empty_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-005",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordInputError"
+      },
+      "key": {
+        "anchor_text_hash": "f28a740fe2b386dac227cef23f515380eb9c2a2efdaf0bec8b32335907e4286f",
+        "bound_tests_set_hash": "038685b8e04b31d7d2c72fe20cc5b3cd6c42db7dcbc98755d18110c7c93ab5bd",
+        "declaration_hash": "54a8af3f51531a0b2aac1594a7814c2cde9d67550c06d52dd9598f40a6bd2df1"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordInputError",
+        "item_identifier": "voluntary:CN-005",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert!(matches!(\n    RegisterUserCommand::parse(\"ada\", \"\"),\n    Err(CredentialParseError::InvalidPassword(PasswordInputError::Empty))\n));\n\nassert!(matches!(\n    LoginCommand::parse(\"ada\", \"\"),\n    Err(CredentialParseError::InvalidPassword(PasswordInputError::Empty))\n));",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordHasher"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "9b4aa15b5c6c6453d7021146670c5e0464ac64958361078e4ed5b19db5122560",
+        "declaration_hash": "2ecd4d28e13269d12b3eabfa81d1850874834371284888b82c597aae481ccd9c"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordHasher",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let hash = adapter.hash(&password).unwrap();\n\n            assert!(hash.is_argon2id());\n            assert_ne!(hash.as_str(), password.expose_secret());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "infrastructure",
+          "module_path": "infrastructure::auth::tests",
+          "test_name": "test_argon2_password_adapter_hash_returns_argon2id_hash"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "PasswordHasher"
+      },
+      "key": {
+        "anchor_text_hash": "d6390588266fad391d67b62b033de4d19443fc0a618d0c38697989af91085dc4",
+        "bound_tests_set_hash": "9b4aa15b5c6c6453d7021146670c5e0464ac64958361078e4ed5b19db5122560",
+        "declaration_hash": "0f0437ed6882c4bdbedc4abf157ef6659b6d24fe4772ff96e7c07fc2d712971a"
+      },
+      "obligation_id": {
+        "entry_key": "PasswordHasher",
+        "item_identifier": "voluntary:AC-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let hash = adapter.hash(&password).unwrap();\n\n            assert!(hash.is_argon2id());\n            assert_ne!(hash.as_str(), password.expose_secret());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_valid_credentials_hashes_and_persists_user"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_existing_user_returns_duplicate_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_lookup_failure_returns_lookup_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_hashing_failure_returns_hashing_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_persistence_failure_returns_persistence_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_save_race_returns_duplicate_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterUserInteractor"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "99ff6dba5c9574c821bd601a41866c3865e4bb155e1cbeb39d1db6f2848c4bbf",
+        "declaration_hash": "1d1dc9117745e51ccb3b03de9ecc3dee229ae45413f62428f591b52009e895e0"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterUserInteractor",
+        "item_identifier": "entry",
+        "obligation_kind": "result"
+      },
+      "verdict": {
+        "citation": "service.execute(valid_registration_command()).unwrap();\n\n            let saved = users.saved.lock().unwrap();\n            let user = saved.as_ref().unwrap();\n            assert_eq!(user.username().as_str(), \"ada\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_valid_credentials_hashes_and_persists_user"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_existing_user_returns_duplicate_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_lookup_failure_returns_lookup_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_hashing_failure_returns_hashing_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_persistence_failure_returns_persistence_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_save_race_returns_duplicate_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterUserService"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "99ff6dba5c9574c821bd601a41866c3865e4bb155e1cbeb39d1db6f2848c4bbf",
+        "declaration_hash": "2256a87ced188895e036a5cdee0903bb58173727f3e798299b492e798c0346f8"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterUserService",
+        "item_identifier": "trait_method:execute",
+        "obligation_kind": "result"
+      },
+      "verdict": {
+        "citation": "service.execute(valid_registration_command()).unwrap();\n\n            let saved = users.saved.lock().unwrap();\n            let user = saved.as_ref().unwrap();",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_existing_user_returns_duplicate_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_lookup_failure_returns_lookup_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_hashing_failure_returns_hashing_error"
+        },
+        {
+          "layer": "usecase",
+          "module_path": "usecase::auth::tests",
+          "test_name": "test_register_user_interactor_persistence_failure_returns_persistence_error"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterUserError"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "ed8a251152b7a6bf39a61a258973023a0431dc6c0585ffddf9b627422cc2c14b",
+        "declaration_hash": "21afdd1c307f5e43cf0a20df2660ecd57af84249c16b3af8c3c02760ae7406ce"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterUserError",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "interactor.execute(valid_registration_command()),\n                Err(RegisterUserError::UserAlreadyExists)",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_register_route_registers_user"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "f9437c3ac6e9acad01012756432c23e7fa97b4597558e7682f42e2301dec0b4c",
+        "declaration_hash": "c88fe5b32bda73a568bfdac2cfc7ccfcdb6357eb0a31873d301fd72226af0a47"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert_eq!(response.status(), StatusCode::CREATED);\n            assert_eq!(\n                *received.lock().unwrap(),\n                vec![(\"ada\".to_owned(), \"correct horse\".to_owned())]\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_register_route_registers_user"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_router_is_axum_router"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_server_lifecycle_maps_graceful_stop"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_serve_maps_bind_failure"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "31b67e94d7c37b14642283acfc1a085810673715abe3ed3894965580b60d9491",
+        "bound_tests_set_hash": "e4fbeac2e95a3c0ad6bf295bf1ec76fe6791e00465ffb8d38970d3cc04aea90a",
+        "declaration_hash": "fa2b82cfee0c252c659d2e6cd55c76e25f3a7cebfe1216b6c269423ca2de5c10"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:CN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let _typed: Router = router;",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_register_request_json_strings_preserve_normalization_sensitive_values"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_login_request_json_strings_preserve_normalization_sensitive_values"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-004",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "f0717e77895fcf228f2d466ee3c0286a18de7d496962e6964c5c0078de5638e8",
+        "bound_tests_set_hash": "a538d25ae34040aaeabc141dab22ba2a3cc1e2ded36c740e24c3436a0b5ace80",
+        "declaration_hash": "f798ae18bdf1adc038eda5d385565a817a803c0a8d108e61bf8db2f8584603b1"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:CN-004",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let invalid_utf8 = Request::builder()\n                .method(\"POST\")\n                .uri(\"/register\")\n                .header(\"content-type\", \"application/json\")\n                .body(Body::from(vec![0xff]))\n                .unwrap();\n            let response = app.clone().oneshot(invalid_utf8).await.unwrap();\n            assert_eq!(response.status(), StatusCode::BAD_REQUEST);\n\n            let malformed_json = Request::builder()\n                .method(\"POST\")\n                .uri(\"/register\")\n                .header(\"content-type\", \"application/json\")\n                .body(Body::from(\"{\"))\n                .unwrap();\n            let response = app.clone().oneshot(malformed_json).await.unwrap();\n            assert_eq!(response.status(), StatusCode::BAD_REQUEST);\n\n            let unsupported_media_type = Request::builder()\n                .method(\"POST\")\n                .uri(\"/register\")\n                .header(\"content-type\", \"text/plain\")\n                .body(Body::from(\"{}\"))\n                .unwrap();\n            let response = app.clone().oneshot(unsupported_media_type).await.unwrap();\n            assert_eq!(response.status(), StatusCode::UNSUPPORTED_MEDIA_TYPE);",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_register_request_into_command_preserves_validated_credentials"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_register_route_registers_user"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterRequest"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "e9932df8e20ff53882e8422b61ce8a9674024518992ba17471edc2db647dec45",
+        "declaration_hash": "0b2469db060ea3f2651eb1e8b691431ae188bf38a3adf5f3c8e4eec1889c6811"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterRequest",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let payload: RegisterRequestPayload =\n                serde_json::from_str(r#\"{\"username\":\" ada \",\"password\":\" secret \"}\"#).unwrap();\n            let command = RegisterRequest::from_payload(payload).unwrap().into_command();\n\n            assert_eq!(command.username().as_str(), \"ada\");\n            assert_eq!(command.password().expose_secret(), \" secret \");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_register_request_json_strings_preserve_normalization_sensitive_values"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-004",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterRequest"
+      },
+      "key": {
+        "anchor_text_hash": "f0717e77895fcf228f2d466ee3c0286a18de7d496962e6964c5c0078de5638e8",
+        "bound_tests_set_hash": "288d0aa7640d8f0ddb9d9172dcd1d77bc8b55cff122b38ea5f208969c820b430",
+        "declaration_hash": "e64c6bfc13612bd94f3d4e8a151c75552bb7640ae258a79bb959458eb2e8ad89"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterRequest",
+        "item_identifier": "voluntary:CN-004",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "`.body(Body::from(vec![0xff]))` ... `assert_eq!(response.status(), StatusCode::BAD_REQUEST);` ... `.body(Body::from(\"{\"))` ... `assert_eq!(response.status(), StatusCode::BAD_REQUEST);` ... `.header(\"content-type\", \"text/plain\")` ... `assert_eq!(response.status(), StatusCode::UNSUPPORTED_MEDIA_TYPE);` ... `// NFC vs NFD usernames must remain distinct after JSON decode into RegisterRequest.` ... `assert_ne!(nfc.0, nfd.0);` ... `assert_ne!(nfc.1, nfd.1);`",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_returns_access_token"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_maps_invalid_credentials_to_unauthorized"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "bound_tests_set_hash": "a895841a5577c6c1c552eb1a934610bf64ad4ed955e3ae34615d6c0191f79114",
+        "declaration_hash": "a01f1028d7fd8811b7c6fdc535e4848695a4d2698593a2120d505387e47da0fd"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:IN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert_eq!(response.status(), StatusCode::OK);\n            let bytes = axum::body::to_bytes(response.into_body(), usize::MAX).await.unwrap();\n            let body: serde_json::Value = serde_json::from_slice(&bytes).unwrap();\n            assert_eq!(\n                body.get(\"access_token\").and_then(|v| v.as_str()),\n                Some(\"issued-opaque-token\")\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_login_request_into_command_preserves_validated_credentials"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_returns_access_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "LoginRequest"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "bound_tests_set_hash": "bacb9bc64bff8a8e8c00dbabeaf6574dc0077552079406822fbf01be14b5814a",
+        "declaration_hash": "277820e2f957acfd71436639b9a60f55d68a7a8c64c86039a86ebe0924f02040"
+      },
+      "obligation_id": {
+        "entry_key": "LoginRequest",
+        "item_identifier": "voluntary:IN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let command = LoginRequest::from_payload(payload).unwrap().into_command();\n\nassert_eq!(command.username().as_str(), \"ada\");\nassert_eq!(command.password().expose_secret(), \" secret \");\n\nassert_eq!(response.status(), StatusCode::OK);\nassert_eq!(\n    body.get(\"access_token\").and_then(|v| v.as_str()),\n    Some(\"issued-opaque-token\")\n);",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_login_request_json_strings_preserve_normalization_sensitive_values"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-004",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "LoginRequest"
+      },
+      "key": {
+        "anchor_text_hash": "f0717e77895fcf228f2d466ee3c0286a18de7d496962e6964c5c0078de5638e8",
+        "bound_tests_set_hash": "266ad4a8d27a7b81aab97888bb4338d6b66f273849f380225bcf6e1eff3730e7",
+        "declaration_hash": "f3a825d9ae11d55c9737b06f5a6c011a7c2f339bc06b4f8f25387d6735b17e71"
+      },
+      "obligation_id": {
+        "entry_key": "LoginRequest",
+        "item_identifier": "voluntary:CN-004",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert_eq!(\n                app.clone().oneshot(invalid_utf8).await.unwrap().status(),\n                StatusCode::BAD_REQUEST\n            );\nassert_eq!(\n                app.clone().oneshot(unsupported).await.unwrap().status(),\n                StatusCode::UNSUPPORTED_MEDIA_TYPE\n            );\nassert_eq!(app.oneshot(malformed).await.unwrap().status(), StatusCode::BAD_REQUEST);\nassert_ne!(nfc.0, nfd.0);\nassert_eq!(nfc.0.chars().count(), 4);\nassert_eq!(nfd.0.chars().count(), 5);\nassert_ne!(nfc.1, nfd.1);\nassert_eq!(nfc.1.chars().count(), 6);\nassert_eq!(nfd.1.chars().count(), 7);",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_access_token_response_new_preserves_issued_token_for_wire"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_returns_access_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AccessTokenResponse"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "bound_tests_set_hash": "4093e3b2ad5f473654b2b62d3d6c5633d557a466bab6b29bb16f7b42e12c3296",
+        "declaration_hash": "a89d6c6b36866a57c044ede87f224993905d9ad785cef107b17b61fc3b8c31ef"
+      },
+      "obligation_id": {
+        "entry_key": "AccessTokenResponse",
+        "item_identifier": "voluntary:AC-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let wire = AccessTokenResponse::new(issued).into_wire();\n            assert_eq!(wire.access_token, \"opaque-token-value\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_composition",
+          "module_path": "cli_composition::auth::tests",
+          "test_name": "test_auth_composition_root_register_then_login_issues_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "GO-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthCompositionRoot"
+      },
+      "key": {
+        "anchor_text_hash": "cdf602b0542158184fe5e8dbd9a7ef61bca67643ecdf03e2450554c77a3a3763",
+        "bound_tests_set_hash": "6485ae8eaf02c76d5bf9c7c6d146e65fca227208fef14d9e597b91e9d77100d3",
+        "declaration_hash": "37455740ad71814f9ef6a310b904df2d7b4bc5b52c2c9f14f920e478deb5c04d"
+      },
+      "obligation_id": {
+        "entry_key": "AuthCompositionRoot",
+        "item_identifier": "voluntary:GO-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert_eq!(response.status(), StatusCode::OK);\n            let bytes = axum::body::to_bytes(response.into_body(), usize::MAX).await.unwrap();\n            let body: serde_json::Value = serde_json::from_slice(&bytes).unwrap();\n            let token = body.get(\"access_token\").and_then(|v| v.as_str()).unwrap();\n            assert!(!token.is_empty());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_composition",
+          "module_path": "cli_composition::auth::tests",
+          "test_name": "test_auth_composition_root_register_then_login_issues_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthCompositionRoot"
+      },
+      "key": {
+        "anchor_text_hash": "31b67e94d7c37b14642283acfc1a085810673715abe3ed3894965580b60d9491",
+        "bound_tests_set_hash": "6485ae8eaf02c76d5bf9c7c6d146e65fca227208fef14d9e597b91e9d77100d3",
+        "declaration_hash": "c8743b46fd1ced088178a6b700a692aa37082f3725722e5dad6c284ae2fab9c8"
+      },
+      "obligation_id": {
+        "entry_key": "AuthCompositionRoot",
+        "item_identifier": "voluntary:CN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let app = AuthCompositionRoot::new().auth_http_api().router();\n\n            let register = Request::builder()\n                .method(\"POST\")\n                .uri(\"/register\")\n                .header(\"content-type\", \"application/json\")\n                .body(Body::from(r#\"{\"username\":\"ada\",\"password\":\"correct horse\"}\"#))\n                .unwrap();\n            assert_eq!(app.clone().oneshot(register).await.unwrap().status(), StatusCode::CREATED);",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    }
+  ],
+  "track_id": "2026-09-10-minimal-auth-api"
+}

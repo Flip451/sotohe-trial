@@ -1,0 +1,2355 @@
+{
+  "schema_version": 2,
+  "scopes": {
+    "adr": {
+      "rounds": [
+        {
+          "at": "2026-09-10T12:20:22Z",
+          "findings": [],
+          "hash": "rvw1:sha256:d2eae8ccad11f5dfa9077fec89c17fa87482b7c212058651d29a8a91b66c42f0",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T12:23:59Z",
+          "findings": [],
+          "hash": "rvw1:sha256:d2eae8ccad11f5dfa9077fec89c17fa87482b7c212058651d29a8a91b66c42f0",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T12:43:53Z",
+          "findings": [],
+          "hash": "rvw1:sha256:de3b93636b3763a18aef95de98e78a289ff90a8524ee54f18db40d8faa96e44e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T12:48:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:de3b93636b3763a18aef95de98e78a289ff90a8524ee54f18db40d8faa96e44e",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:24:45Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6375bbd270f81dfdf662f5a67b266062bc6f1fd8d6d73073dadf9a8456c68ed1",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:27:18Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6375bbd270f81dfdf662f5a67b266062bc6f1fd8d6d73073dadf9a8456c68ed1",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T18:08:51Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eaa6bb97aae11a010dedc6a02ac7c0eec26ec7f64b85034c26cd2a5ac53e6d28",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T18:11:18Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eaa6bb97aae11a010dedc6a02ac7c0eec26ec7f64b85034c26cd2a5ac53e6d28",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "cli": {
+      "rounds": [
+        {
+          "at": "2026-09-11T15:36:55Z",
+          "findings": [
+            {
+              "category": "environment",
+              "file": null,
+              "line": null,
+              "message": "Unable to perform the requested review: the read-only command runner fails during sandbox initialization because it cannot create its synthetic mount registry lock under /tmp. The briefing, severity policy, current files, and diff could not be read, so no code-level adjudication is possible.",
+              "severity": "blocking"
+            }
+          ],
+          "hash": "rvw1:sha256:b50a18c2e33f56a227efe9f5b71d2a25542a158aebbd665219f5bcf5c6a35a73",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:37:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b50a18c2e33f56a227efe9f5b71d2a25542a158aebbd665219f5bcf5c6a35a73",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:42:31Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b50a18c2e33f56a227efe9f5b71d2a25542a158aebbd665219f5bcf5c6a35a73",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:45:08Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b50a18c2e33f56a227efe9f5b71d2a25542a158aebbd665219f5bcf5c6a35a73",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "cli_composition": {
+      "rounds": [
+        {
+          "at": "2026-09-11T02:21:21Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9257786c032c605e1e96a60b80c20e1d304ebcb28a71a7ad6dae48c10140d1fe",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:50:49Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2af1d5b1ccce7bdafc865aa8406ac11a3467d359ebd63b21b4cf366a1a0bab35",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:19:43Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec878e442003b2b2f5fb5ba8ca8267bf0975bb43d8a2d2164a30ae599b75e07a",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:22:35Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec878e442003b2b2f5fb5ba8ca8267bf0975bb43d8a2d2164a30ae599b75e07a",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "cli_driver": {
+      "rounds": [
+        {
+          "at": "2026-09-10T23:15:45Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 33,
+              "message": "`serve` hard-codes the OS bind endpoint to `127.0.0.1:3000`, but neither the spec nor the project environment declaration records the required loopback/port assumption or its configuration policy. This makes deployment depend on an undeclared address and port-availability contract; declare the endpoint or inject/configure it before binding.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:038cb1bd135b479a4662e4d8fe0dc551882731eff75de2151c6f0607ec9b4031",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:18:08Z",
+          "findings": [],
+          "hash": "rvw1:sha256:038cb1bd135b479a4662e4d8fe0dc551882731eff75de2151c6f0607ec9b4031",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:30:22Z",
+          "findings": [
+            {
+              "category": "non-CommandOutcome return",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 57,
+              "message": "`AuthHttpApi::serve` is the public driver entrypoint but returns `HttpServerOutcome`, directly violating the cli_driver rule that public `handle` or equivalent operations render to `CommandOutcome`. This leaves lifecycle errors outside the primary-adapter rendering boundary; return a `CommandOutcome` with failure/exit semantics or move server lifecycle ownership to the appropriate composition boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "server lifecycle correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 71,
+              "message": "The real server cannot produce the lifecycle outcomes this code claims to map. Axum 0.8.9 documents that `axum::serve` without graceful shutdown never completes or returns an error, so `map_server_result` is only exercised by the synthetic ready-future test; after a successful bind, `serve` can return neither `Stopped` nor `Failed`. Add an actual shutdown future/configurable runner and test the integrated path. See the [axum 0.8.9 serve contract](https://docs.rs/axum/0.8.9/axum/fn.serve.html).",
+              "severity": "P1"
+            },
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 140,
+              "message": "The test treats any 100 ms timeout as proof that binding succeeded and the Axum serve loop began. It also passes when the future was not polled far enough or bind/setup has not completed, so its conclusion depends on an undeclared scheduler and loopback-bind timing assumption. Signal readiness after a successful bind, or inject a pre-bound listener, before applying the timeout to the serve loop.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:038cb1bd135b479a4662e4d8fe0dc551882731eff75de2151c6f0607ec9b4031",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:36:30Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e1bd0b9dd9f15814f20adc1a14d81bb17419af884c23ecacc35c4b10d1266863",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:41:16Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 78,
+              "message": "The shutdown future discards `tokio::signal::ctrl_c()`'s `Result`. If signal-listener registration fails, the future completes immediately, Axum interprets that as a graceful-shutdown request, and `serve` returns a successful `CommandOutcome` instead of reporting the infrastructure failure. This depends on the undeclared assumption that signal registration is infallible; preserve the error and map it to `HttpServerOutcome::Failed`. The [Tokio API](https://docs.rs/tokio/1.52.3/tokio/signal/fn.ctrl_c.html) explicitly returns `io::Result<()>`.",
+              "severity": "P1"
+            },
+            {
+              "category": "test correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 189,
+              "message": "A successful `TcpStream::connect` does not prove that Axum accepted the connection: the listener is already bound before the server task starts, so the kernel can complete and queue the connection while the task has not reached `accept`. The test then drops the stream and requests shutdown, allowing it to pass without exercising Axum's accept/request path. Send a request and await its response, or instrument server-side acceptance, before signaling shutdown. Tokio's listener documentation notes that connections can wait in the [accept queue](https://docs.rs/tokio/1.52.3/tokio/net/struct.TcpListener.html).",
+              "severity": "P2"
+            },
+            {
+              "category": "boundary exposure violation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 38,
+              "message": "`HttpServerOutcome` is described by the briefing as an internal lifecycle DTO and is no longer returned by any public operation, but it remains publicly exported as `cli_driver::auth::HttpServerOutcome`. This exposes an adapter-internal transport lifecycle type and permits consumers to couple to or construct it despite the public `CommandOutcome` boundary. Make it private or `pub(crate)`.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:e1bd0b9dd9f15814f20adc1a14d81bb17419af884c23ecacc35c4b10d1266863",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:52:19Z",
+          "findings": [],
+          "hash": "rvw1:sha256:978ac04a0902d77ed9631a0b4e6cfba25cbde0f087abd538e86b24b03ac0d4f1",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:55:15Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 229,
+              "message": "The readiness test assumes one TCP `read` returns the complete `HTTP/1.1` prefix. `AsyncReadExt::read` only promises to pull some available bytes, so a valid response fragmented before the eighth byte makes this test fail nondeterministically. This transport-boundary assumption is undeclared; use `read_exact` for the fixed prefix or accumulate through the header terminator. See Tokio’s [`AsyncReadExt`](https://docs.rs/tokio/1.52.3/tokio/io/trait.AsyncReadExt.html).",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:978ac04a0902d77ed9631a0b4e6cfba25cbde0f087abd538e86b24b03ac0d4f1",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:58:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4181c385caa90ad0313611dac243f7c85017836c546e6405376028979d55b69e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:01:24Z",
+          "findings": [
+            {
+              "category": "CI formatting gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 45,
+              "message": "`cargo fmt --check -p cli_driver` exits 1 and reports multiple formatting differences in this file, so the repository's `fmt-check` dependency causes `cargo make ci-rust` to fail. Run rustfmt on the scoped source before approval.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:4181c385caa90ad0313611dac243f7c85017836c546e6405376028979d55b69e",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T00:03:11Z",
+          "findings": [],
+          "hash": "rvw1:sha256:61d70c049f97fd0128648060b2f1f04b3ce4fbca7b826f94b54fb78fd7f525ac",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:05:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:61d70c049f97fd0128648060b2f1f04b3ce4fbca7b826f94b54fb78fd7f525ac",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:36:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3621694965a1f4ca67f78691e39100f64f521ff23b46110d02ae96392efd87cb",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:44:11Z",
+          "findings": [
+            {
+              "category": "HTTP media-type contract",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 176,
+              "message": "`axum::Json` accepts structured-suffix media types such as `application/problem+json`, so a valid registration using that Content-Type reaches `RegisterUserService` and can return 201. This violates CN-004, which requires every media type other than `application/json` to return 415. Enforce the exact declared media type before extraction and cover a `application/*+json` case.",
+              "severity": "P1"
+            },
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 176,
+              "message": "The new `Json` extractor silently applies Axum's version-owned 2,097,152-byte default body limit and returns 413 when it is exceeded. Neither the spec nor the environment declaration defines that value, scope, or failure response; the declaration instead says HTTP body limits are deferred to a later delivery batch. Configure and declare the intended limit, or explicitly disable the framework default until that batch owns it.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:3621694965a1f4ca67f78691e39100f64f521ff23b46110d02ae96392efd87cb",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T00:48:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:d1d90b23ba3f0c02137bdf75c475614ab1c74af2b487c072c3d12d33cfc53dc8",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:54:47Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 173,
+              "message": "`DefaultBodyLimit::disable()` combined with the `Bytes` extractor buffers the entire unauthenticated request body without a byte bound, before the media-type check runs. A local client can therefore force arbitrarily large allocations and terminate the server through memory exhaustion. The environment declaration only defers HTTP limits; it defines no substitute boundary or excess behavior, so this still depends on an undeclared cooperative-client/process-memory assumption. Keep an explicit bounded limit and declare its failure mapping.",
+              "severity": "P1"
+            },
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 179,
+              "message": "`exact_application_json` does not parse or fully validate the Content-Type field: it ignores everything after the first semicolon and examines only the first value returned by `HeaderMap::get`. Consequently malformed values such as `application/json; invalid` and ambiguous duplicate Content-Type headers can pass the exact-media-type gate. Parse the complete MIME value with an established parser and require exactly one valid `application/json` value.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:d1d90b23ba3f0c02137bdf75c475614ab1c74af2b487c072c3d12d33cfc53dc8",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T00:59:05Z",
+          "findings": [
+            {
+              "category": "boundary correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 194,
+              "message": "`exact_application_json` accepts duplicate charset parameters such as `application/json;charset=utf-8;charset=utf-8`, although the contract allows only an optional single `charset=utf-8` parameter and requires malformed parameters to return 415. Track the parameter count/duplicate keys and add a regression test.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:bb9566a5d74761fbca3450b4064c05d0ebf9091411eef1b314bc394bf73cb64a",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:03:47Z",
+          "findings": [
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 194,
+              "message": "The media-type loop accepts repeated parameters, so `Content-Type: application/json; charset=utf-8; charset=utf-8` passes and invokes registration even though the briefing permits only one optional charset parameter and requires malformed parameters to return 415. Enforce zero or exactly one charset parameter and add the malformed-parameter case to the route tests.",
+              "severity": "P1"
+            },
+            {
+              "category": "CI clippy gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 184,
+              "message": "`values[0]` is production indexing and is denied by the workspace's `clippy::indexing_slicing` lint, so the clippy/CI gate will fail even though the preceding length check makes the access logically safe. Destructure the `get_all` iterator or use a checked accessor instead.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:bb9566a5d74761fbca3450b4064c05d0ebf9091411eef1b314bc394bf73cb64a",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:07:19Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6369576d47baef2c31bfeb3242881ac72eb7e43892aab4b600922a8070ff6bfe",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:10:16Z",
+          "findings": [
+            {
+              "category": "CI clippy gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 364,
+              "message": "The registration normalization test still uses five indexed `Vec` accesses. The workspace denies `clippy::indexing_slicing`, including in test targets, so the clippy/CI gate will fail. Bind the two entries through `.first()`/`.get(1)` or slice-pattern matching before asserting their fields.",
+              "severity": "P2"
+            },
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 200,
+              "message": "The hand-written parameter comparison rejects `Content-Type: application/json; charset=\"utf-8\"`. Quoted-string parameter values are valid HTTP media-type syntax and represent the permitted UTF-8 charset, but comparing the raw value to `utf-8` returns 415. Parse the media type structurally and compare the decoded parameter value, while retaining the single-header and single-charset checks.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:6369576d47baef2c31bfeb3242881ac72eb7e43892aab4b600922a8070ff6bfe",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:15:01Z",
+          "findings": [
+            {
+              "category": "boundary correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 201,
+              "message": "`value.trim().trim_matches('\"')` accepts malformed/unbalanced charset values such as `charset=\"utf-8` or `charset=\"\"utf-8`, because it strips any number of quote characters instead of validating either an unquoted `utf-8` value or a properly quoted value. These requests therefore bypass the required malformed-parameter 415 rejection. Parse the quote form strictly (or reject quoted values) and add regression coverage.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:cdf19e079bc3d8e284beb0d58e890a5e0f43f30519a509c009f427e76832648f",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:17:32Z",
+          "findings": [
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 200,
+              "message": "Using `trim().trim_matches('\"')` does not validate quoted-string syntax and accepts malformed parameters such as `charset=\"utf-8` or `charset=utf-8\"`; it also accepts invalid whitespace after `=`. Those requests pass the gate instead of returning the required 415. Parse the complete media type with a MIME parser rather than stripping quote characters manually, while retaining the cardinality checks.",
+              "severity": "P1"
+            },
+            {
+              "category": "CI clippy gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 366,
+              "message": "The new test uses an explicit `panic!`, but the workspace sets `clippy::panic = \"deny\"` and this test module only allows `unwrap_used`. Consequently the clippy/CI test target will fail. Use the already-permitted checked-access-plus-`unwrap()` pattern or add assertions without an explicit panic.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:cdf19e079bc3d8e284beb0d58e890a5e0f43f30519a509c009f427e76832648f",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:23:31Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e4327e67a78e7c09e5f5058ae1bbd5d05d614c3954e027e604b0d8b0ad9c867e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:26:11Z",
+          "findings": [
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 199,
+              "message": "The selected `mime` parser deliberately accepts an empty trailing parameter list, so `Content-Type: application/json;` (and `application/json; charset=utf-8;`) parses successfully and this match admits it. The route can therefore register the user instead of returning the briefing-required 415 for malformed parameters. Reject trailing empty parameter syntax before accepting the parsed value and add a regression case.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:e4327e67a78e7c09e5f5058ae1bbd5d05d614c3954e027e604b0d8b0ad9c867e",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:29:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:a2e61c15299fc2a115cc1377fa896e0644a4240d6309296ba78aa6c4a4e6909d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:32:14Z",
+          "findings": [
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 199,
+              "message": "`mime::Mime` deliberately accepts an empty trailing parameter list, so `Content-Type: application/json;` and `application/json; charset=utf-8;` still pass this match and can register the user. These malformed parameter forms must return 415 under the briefing. Reject a trailing semicolon/empty parameter before accepting the parsed value and add a regression test.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:a2e61c15299fc2a115cc1377fa896e0644a4240d6309296ba78aa6c4a4e6909d",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:35:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3bfa90493f2a244e70107b9cadcfa907b5bc2d8be62edaa59785897b7aca5541",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:46:44Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3bfa90493f2a244e70107b9cadcfa907b5bc2d8be62edaa59785897b7aca5541",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:19:16Z",
+          "findings": [
+            {
+              "category": "public API contract",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 217,
+              "message": "`router` remains private, but the briefing requires `pub fn router` for composition wiring tests. External callers cannot obtain the `/login` route from `AuthHttpApi`; make this method public.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:06155e76ee127b29dcb3cef09c0d2c4de3a6e9a11c12fd4b4c4f424aa73be42b",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T02:39:32Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4443bb00621f30c118c7412863415986a5ad0ae9e38474bb2e35e3125e1a39cc",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:46:36Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4443bb00621f30c118c7412863415986a5ad0ae9e38474bb2e35e3125e1a39cc",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:11:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:a93b6f13eaaa9377add2088cdc090981853cf789c75a2c3e5d29815307fe66c0",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:16:49Z",
+          "findings": [],
+          "hash": "rvw1:sha256:a93b6f13eaaa9377add2088cdc090981853cf789c75a2c3e5d29815307fe66c0",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:30:14Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "Review could not be completed: the required scope policy, briefing, current diff, and target file could not be read because the workspace command runner failed on a read-only /tmp sandbox lock. No code-level adjudication is possible.",
+              "severity": null
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:37:33Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "The review remains blocked: the required files and current diff could not be read because the workspace command runner fails while opening its read-only /tmp sandbox lock. No code-level finding can be adjudicated.",
+              "severity": null
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:38:41Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "Unable to perform the requested review because the repository read command fails before accessing any files: the sandbox cannot open its synthetic bubblewrap lock under /tmp. The required policy, briefing, current diff, and target source therefore remain unread.",
+              "severity": null
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:41:12Z",
+          "findings": [],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:46:45Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 285,
+              "message": "Each accepted register/login request now submits CPU- and memory-intensive authentication work to Tokio's shared blocking pool without admission control. With the locked Tokio runtime, `spawn_blocking` may create up to 512 blocking threads and its queue has no backpressure; concurrent unique registrations can therefore run many ~19 MiB Argon2 operations and exhaust CPU/memory. The environment declaration specifies only per-hash limits and explicitly defers worker/concurrency limits, so this depends on an undeclared resource and concurrency assumption. Add a bounded concurrency mechanism with defined saturation behavior and declare that boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "test correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 769,
+              "message": "The blocking-thread test compares each recorded `Option<ThreadId>` with `Some(runtime_thread)` using `assert_ne!`, which also passes when the service never recorded a thread (`None`). It therefore does not independently establish that both injected services executed. Require each value to be `Some` before comparing its thread ID with the runtime thread.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:51:59Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 285,
+              "message": "Each accepted register/login request submits CPU- and memory-intensive authentication work to Tokio's shared blocking pool without admission control. The locked runtime permits a very large blocking-thread pool and an unbounded waiting queue, so concurrent unique registrations can run many ~19 MiB Argon2 operations and exhaust CPU or memory. The environment declaration defines only per-hash limits and explicitly defers concurrency limits. Add a bounded concurrency mechanism with defined saturation behavior and declare that boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "test correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 769,
+              "message": "The blocking-thread test uses `assert_ne!(recorded.as_ref(), Some(&runtime_thread))`, which also succeeds when the recorded value is `None`. It therefore does not reliably prove that each injected service executed. Require each recorded thread ID to be present before comparing it with the runtime thread.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:58:37Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 50,
+              "message": "The new process-wide authentication limit of 8 and its immediate HTTP 503 saturation behavior are defined only in this adapter. Neither the spec nor the project environment declaration records the limit, its scope across register/login and all `AuthHttpApi` instances, or the overload response; the declaration still says worker and concurrency limits are deferred. Add this resource/concurrency contract to the project-owned declaration (and specification if it is client-visible policy).",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:2422ee94541f3b432503cbba1a18c2512debaf3f6762b39e298983a913254d92",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:10:03Z",
+          "findings": [
+            {
+              "category": "behavioral-regression",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 289,
+              "message": "The new process-wide semaphore changes the existing register/login contract: any ninth concurrent authentication request is immediately returned as 503 Service Unavailable (lines 289-293 and 326-330), although the briefing requires preserving prior response behavior and does not specify admission rejection. This can reject valid requests under ordinary concurrency; either remove this adapter-level limit or specify and test the overload contract in the design.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:2422ee94541f3b432503cbba1a18c2512debaf3f6762b39e298983a913254d92",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:17:25Z",
+          "findings": [
+            {
+              "category": "behavioral-regression",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 291,
+              "message": "The new global semaphore introduces an undocumented overload contract: once eight requests are admitted, subsequent valid register/login requests immediately return 503 Service Unavailable (lines 291-295 and 328-332). The briefing requires preserving the existing response mappings and does not authorize this new resource limit; documenting/testing the behavior in this diff does not make it part of the stated design. Remove the fail-fast limit or update the governing design contract before adding it.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:e08e1b9112b90c4ccd9b05a1dfac9d7621fc0eda10e54990b84d3816ebbeff0a",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:23:14Z",
+          "findings": [
+            {
+              "category": "undeclared-resource-limit",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 44,
+              "message": "The diff adds a process-wide hard-coded limit of eight concurrent authentication executions and makes all later requests wait on that semaphore before entering `spawn_blocking` (lines 44-52, 289-297, and 326-334). This introduces an undeclared resource-limit assumption and can create an unbounded queue of HTTP requests, while also coupling independent `AuthHttpApi` instances. The briefing only requires offloading execution and preserving behavior; define this capacity/backpressure contract in the design (with an explicit bounded/timeout policy) or remove the semaphore.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:9619d5da26981d8381e2b10164ba0f9eb2236901f76b14f8320dc30d0679c5cc",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:27:04Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9619d5da26981d8381e2b10164ba0f9eb2236901f76b14f8320dc30d0679c5cc",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:31:47Z",
+          "findings": [],
+          "hash": "rvw1:sha256:abbc5e8b052d8879e68becbd94722af3af1993906ed506dbfa66d68bda79d0dd",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:35:32Z",
+          "findings": [
+            {
+              "category": "CI formatting gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 773,
+              "message": "`cargo fmt --check -p cli_driver` exits 1 because of the extra blank line after the new blocking-thread test. This leaves the scoped file failing the repository formatting gate; run rustfmt before approval.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:abbc5e8b052d8879e68becbd94722af3af1993906ed506dbfa66d68bda79d0dd",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:38:22Z",
+          "findings": [],
+          "hash": "rvw1:sha256:013f2fc776b51d119f130da7ec1d5c0da2586d01cb5a42c389ddd6730688679f",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:51:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:a77ef05eb4654fd645facd495b4bd19b935d016d263588042b1fffa53d1737e0",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:58:09Z",
+          "findings": [
+            {
+              "category": "CI clippy gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 295,
+              "message": "Both newly added permit acquisitions call `.expect(...)` in production code (here and at line 332). The crate inherits the workspace's `clippy::expect_used = \"deny\"`, so the Clippy CI gate will reject both calls. Handle `AcquireError` without `expect`—for example, map the impossible closed-semaphore case to an internal-error response.",
+              "severity": "P2"
+            },
+            {
+              "category": "CI formatting gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 292,
+              "message": "`cargo fmt --all -- --check` exits 1 because rustfmt requires both newly added semaphore acquisition expressions (here and near line 329) to be reformatted. The repository's formatting gate therefore fails on the current diff; run rustfmt on the scoped file.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:a77ef05eb4654fd645facd495b4bd19b935d016d263588042b1fffa53d1737e0",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T17:02:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8c76f50e7f230898681c34feeaa75058e4a7734ddbbc9db096616de4430edccc",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "domain": {
+      "rounds": [
+        {
+          "at": "2026-09-10T20:27:45Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "Unable to perform the required review because the read-only execution sandbox fails before every shell command with `failed to open synthetic bubblewrap mount registry lock ... Read-only file system`; therefore the briefing, severity policy, current diff, and target file could not be read.",
+              "severity": "high"
+            }
+          ],
+          "hash": "rvw1:sha256:077393197a06c74a03f079606251234c56d4195e781f7a59c82aa5c691fd6dad",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T20:45:39Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "Review blocked: the sandbox fails before executing every repository read command because its synthetic bubblewrap mount registry is read-only. The required briefing, severity policy, current diff, and target file could not be inspected.",
+              "severity": "high"
+            }
+          ],
+          "hash": "rvw1:sha256:077393197a06c74a03f079606251234c56d4195e781f7a59c82aa5c691fd6dad",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T20:51:27Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/domain/src/lib.rs",
+              "line": 94,
+              "message": "`PasswordHash::new` validates only the `$argon2id$` prefix, so values such as `$argon2id$` or `$argon2id$garbage` become a `PasswordHash` even though the declared stored format is a complete PHC argon2id encoding with valid version/parameters/salt/digest. This breaks the newtype's documented validated-encoding invariant and lets malformed persisted hashes cross the domain boundary; validate the full PHC representation or reject malformed encodings.",
+              "severity": "medium"
+            }
+          ],
+          "hash": "rvw1:sha256:077393197a06c74a03f079606251234c56d4195e781f7a59c82aa5c691fd6dad",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T20:57:29Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/domain/src/lib.rs",
+              "line": 133,
+              "message": "`is_complete_argon2id_phc` checks only that salt and digest are non-empty; it accepts malformed PHC payloads such as `$argon2id$v=19$m=19456,t=2,p=1$%%%$%%%`. The project’s declared encoding policy requires salt and digest to be unpadded Base64, so `PasswordHash::new` still admits an invalid stored hash. Validate the salt and digest encoding before constructing the value.",
+              "severity": "medium"
+            }
+          ],
+          "hash": "rvw1:sha256:47e5c16ae091c3e23bf39966a1cbc5fb354a9d341161979f8eacc1e8162a7ed9",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:08:24Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cf3bc5cb70ea1c7ca4f5538881cc8db582b40bb92157730c932541ea872f3964",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:18:16Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cf3bc5cb70ea1c7ca4f5538881cc8db582b40bb92157730c932541ea872f3964",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "harness-policy": {
+      "rounds": [
+        {
+          "at": "2026-09-10T21:01:56Z",
+          "findings": [
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/environment-assumptions.md",
+              "line": 33,
+              "message": "This template distribution file now ships consumer-specific platform, protocol, Argon2, repository, and concurrency defaults, contradicting its own consumer-ownership rules at lines 20, 75, and 117. Keep these values in the consumer-owned declaration instance, or separately record and implement an explicit decision to promote them to shared template defaults.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:38ef6f157899fa9d1f04d4ab346b7aa33ada530ae162f09bb7fe47b9e5a490ff",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:12:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:452ae40486f4dce3df5425442e42fce0a28ea70dd72b1b63ea6cd4fb1d9c995f",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:35:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:452ae40486f4dce3df5425442e42fce0a28ea70dd72b1b63ea6cd4fb1d9c995f",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:57:51Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3ab9313f0391763417a7b3df545efb9c644941b913e1f5ca0ecc98f905bf0f3d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:03:06Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3ab9313f0391763417a7b3df545efb9c644941b913e1f5ca0ecc98f905bf0f3d",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:16:50Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec4a7a0b91eab4de8539f9bd809debf91954f08ad7d31f0fde67e97914e79d83",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:27:43Z",
+          "findings": [
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/environment-declaration.md",
+              "line": 30,
+              "message": "The declared lifecycle does not match the current `AuthHttpApi::serve` path. It awaits bare axum 0.8 `serve`, whose future never completes or returns an error after a successful bind; accept errors are retried internally. Consequently this path cannot produce `Stopped` or a serve-time `Failed`, and cancellation/process termination drops the future without returning either outcome. Describe the actual lifecycle (with only bind failure returned), or wire an explicit graceful-shutdown/fallible serving mechanism before declaring these outcomes.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:ec4a7a0b91eab4de8539f9bd809debf91954f08ad7d31f0fde67e97914e79d83",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:35:15Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5feb5841eb0160c76af3759f60065bd5140d46132a2a17bbf7e05be8870f495d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:38:41Z",
+          "findings": [
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/environment-declaration.md",
+              "line": 30,
+              "message": "The declared Ctrl-C lifecycle still does not match `AuthHttpApi::serve`: the shutdown future discards the `io::Result` from `tokio::signal::ctrl_c()`, so signal-listener setup failure completes the shutdown future immediately and is rendered as `Stopped` / `CommandOutcome { success: true }` without any Ctrl-C. Conversely, axum 0.8's `with_graceful_shutdown` future does not return a serve error, so the documented serve-error-to-`Failed` path is not real. Handle signal setup failure as `Failed` and describe the reachable failure sources accurately, or revise the declaration to state the actual behavior.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:5feb5841eb0160c76af3759f60065bd5140d46132a2a17bbf7e05be8870f495d",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:46:48Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eb7bc6d191b7458f7ce2eedce26bb9a2def801f650d13e0a2a8d4b45ee6eda46",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:49:02Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eb7bc6d191b7458f7ce2eedce26bb9a2def801f650d13e0a2a8d4b45ee6eda46",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:47:42Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b366b2aeef63a3fdfe75ba46388f8b88c36bab989365c52b82748dc086322c65",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:50:13Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b366b2aeef63a3fdfe75ba46388f8b88c36bab989365c52b82748dc086322c65",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:57:52Z",
+          "findings": [],
+          "hash": "rvw1:sha256:84a580cef5efde9f070a062d769d210a1f9410772d4c72eab43438c724302bbf",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:59:54Z",
+          "findings": [],
+          "hash": "rvw1:sha256:84a580cef5efde9f070a062d769d210a1f9410772d4c72eab43438c724302bbf",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:07:22Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cfb5e430471077dbe74858402d6e8218fe55c030e29147716a68702dd42c510f",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:21:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f1d215f4cd846ba71280184814c371e439385baff64c3c4b6a71caefbba59717",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:29:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5a5cd78983b83490b02756b0c289f03fb066ed5200febb6fe4faa2c648b17d2d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:34:45Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5a5cd78983b83490b02756b0c289f03fb066ed5200febb6fe4faa2c648b17d2d",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:48:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec9010ae7610f48188278fa473ee44857e6b42c10260630a5c14a1420cb32694",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:54:45Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec9010ae7610f48188278fa473ee44857e6b42c10260630a5c14a1420cb32694",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "impl-plan": {
+      "rounds": [
+        {
+          "at": "2026-09-10T18:30:20Z",
+          "findings": [
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 6,
+              "message": "T001 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 12,
+              "message": "T002 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 18,
+              "message": "T003 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 24,
+              "message": "T004 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 30,
+              "message": "T005 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 36,
+              "message": "T006 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "task description non-executable",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 42,
+              "message": "T007 description lacks an AC/IN/CN/spec-element anchor and does not identify a concrete target file or symbol; an executor must invent the implementation boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 6,
+              "message": "T001 restates upstream behavior in prose — “validated password-hash and opaque-token values, user and token aggregates, typed repository failures” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 12,
+              "message": "T002 restates upstream boundary and port behavior in prose — “typed parse and collaborator failures” and “password hashing, verification, and opaque-token issuance” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 18,
+              "message": "T003 restates registration behavior in prose — “duplicate-user detection, argon2id hashing orchestration, typed failure mapping” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 24,
+              "message": "T004 restates login behavior in prose — “credential lookup and verification, opaque-token issuance and persistence, typed failure mapping, response conversion” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 30,
+              "message": "T005 restates adapter behavior in prose — “argon2id password adapter” and “random opaque-token issuer” with repository conformance — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 36,
+              "message": "T006 restates HTTP contract behavior in prose — “media-type and malformed-body rejection” and “application-error translation” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 42,
+              "message": "T007 restates the shared-adapter ownership behavior in prose — “shares the in-memory repositories” — instead of using target + operation + anchor cite. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 53,
+              "message": "Section domain-foundation restates sequencing and domain behavior — “Establish validated authentication values, aggregates, and persistence boundaries before application orchestration” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 63,
+              "message": "Section application-services restates ownership and sequencing — “Build shared credential boundaries and then the independently owned registration and login services” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 75,
+              "message": "Section secondary-adapters restates implementation behavior — “in-memory persistence, argon2id hashing and verification, and opaque-token generation” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 85,
+              "message": "Section http-delivery restates the HTTP behavior contract — “typed axum JSON handling and stable HTTP outcomes” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 95,
+              "message": "Section composition restates shared ownership behavior — “Wire the complete authentication API with shared adapter ownership” — without an upstream anchor. See .harness/policies/no-upstream-restatement.md.",
+              "severity": "P2"
+            },
+            {
+              "category": "avoidable batch serialization",
+              "file": "track/items/2026-09-10-minimal-auth-api/batch-plan.json",
+              "line": 83,
+              "message": "T003 and T004 are both ready at the T002 dependency frontier, have distinct usecase ownership, and their combined estimate is 400 lines (180 + 220), within the 500-line ceiling. Splitting them across B001 and B002 is avoidable: T004 can replace T003 in B001 and T003 can run before T006 in B002, preserving dependencies and leaving each batch within scope ceilings.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:a2b695612e358321bdeeb5fb337fd1a4f2c3cbcb1da2d4bcd7718740555afec6",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T18:41:34Z",
+          "findings": [],
+          "hash": "rvw1:sha256:65575c98a0f67e8ee729a1483d0bdc33c1b19998b3fb3a98a7a1ef369f109f35",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T18:55:11Z",
+          "findings": [
+            {
+              "category": "task-coverage gap",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 47,
+              "message": "The `plan` object has no `summary`, leaving GO-001 without the required plan-owned goal-to-task traceability. Add a target + operation + GO-001 summary linking the contributing tasks, including `composition`/T007, without restating upstream behavior.",
+              "severity": "P1"
+            },
+            {
+              "category": "task-contract attribution mismatch",
+              "file": "track/items/2026-09-10-minimal-auth-api/task-contract.json",
+              "line": 5,
+              "message": "T001's attribution list omits the reference catalogue entries `domain::Username` and `domain::UsernameError`; both remain orphaned even though reference entries require an owner. Attribute them to an appropriate convergence task such as T001 without implying that the task modifies them.",
+              "severity": "P1"
+            },
+            {
+              "category": "pre-implementation split proposal",
+              "file": "track/items/2026-09-10-minimal-auth-api/impl-plan.json",
+              "line": 36,
+              "message": "T006 bundles two independently verifiable behavior units while still `todo`: the registration HTTP slice (`RegisterRequest`, IN-001/AC-001) and the login/token HTTP slice (`LoginRequest`, `AccessTokenResponse`, IN-002/AC-002). Split these into dependent executable tasks, assigning the shared `AuthHttpApi`/`HttpServerOutcome` foundation once and retaining the applicable CN-003/CN-004/CN-005 anchors.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:65575c98a0f67e8ee729a1483d0bdc33c1b19998b3fb3a98a7a1ef369f109f35",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T19:07:17Z",
+          "findings": [
+            {
+              "category": "dependency cycle or wrong ordering",
+              "file": "track/items/2026-09-10-minimal-auth-api/batch-plan.json",
+              "line": 105,
+              "message": "T006 is ordered in B001 before T003, but T006 implements `AuthHttpApi`, whose catalogued constructor requires `RegisterUserService`; that service is created by T003 in later B002. The batch order therefore requires T006 to refer to an artifact not yet created. Move T006 after T003 (while preserving the ceiling split).",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:70cbe5c579df2a960b660b66d181ba6ebc13dd1624e3994aca6ad5603310f2d6",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T19:11:43Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9842408c639a25c1d3fae2d86ec90d9f5cd6b2546d8528e6dbb75e0ae7ab36bf",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T19:16:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9842408c639a25c1d3fae2d86ec90d9f5cd6b2546d8528e6dbb75e0ae7ab36bf",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T20:25:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e01ed64398cf0dfccc7a429ed23766e8ee9e13c3759bae800386ed08722a9c1b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:03:41Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e01ed64398cf0dfccc7a429ed23766e8ee9e13c3759bae800386ed08722a9c1b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:39:46Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e01ed64398cf0dfccc7a429ed23766e8ee9e13c3759bae800386ed08722a9c1b",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:23:45Z",
+          "findings": [],
+          "hash": "rvw1:sha256:32a2830d68ca937878a9d2b98a7cedcf389fbbc860729fc37ee75949793c4de6",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:24:49Z",
+          "findings": [],
+          "hash": "rvw1:sha256:32a2830d68ca937878a9d2b98a7cedcf389fbbc860729fc37ee75949793c4de6",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:13:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:006e2524e29ef82d8556186c11bf401b4744c6b3b0797ead20f21a46950a03d0",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:17:26Z",
+          "findings": [],
+          "hash": "rvw1:sha256:006e2524e29ef82d8556186c11bf401b4744c6b3b0797ead20f21a46950a03d0",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:06:06Z",
+          "findings": [],
+          "hash": "rvw1:sha256:49356834d3a07c4497612e24130e1610f3e225a7a366fbae2e2358255329c396",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:06:38Z",
+          "findings": [],
+          "hash": "rvw1:sha256:49356834d3a07c4497612e24130e1610f3e225a7a366fbae2e2358255329c396",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:35:08Z",
+          "findings": [],
+          "hash": "rvw1:sha256:da20d47d0babc0a7b5f208e5ce8423c49290ce537ab795d42153462524150794",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:38:02Z",
+          "findings": [],
+          "hash": "rvw1:sha256:da20d47d0babc0a7b5f208e5ce8423c49290ce537ab795d42153462524150794",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:52:13Z",
+          "findings": [],
+          "hash": "rvw1:sha256:dd0ef7ec4057c2e18afe5b52feef69c54c2b5683899a90efc8f04584bc9fe759",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:53:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:dd0ef7ec4057c2e18afe5b52feef69c54c2b5683899a90efc8f04584bc9fe759",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:12:24Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cba169c12c15fa96709a52059eba604fb05acf14fa038ebb10e00a713d9eaa70",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:54:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cba169c12c15fa96709a52059eba604fb05acf14fa038ebb10e00a713d9eaa70",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:26:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6fd19b83fa4022f04d209d29bf0090bf9b147e65e20427f9000eebc24eacd5f6",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:27:16Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6fd19b83fa4022f04d209d29bf0090bf9b147e65e20427f9000eebc24eacd5f6",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "infrastructure": {
+      "rounds": [
+        {
+          "at": "2026-09-10T20:27:13Z",
+          "findings": [
+            {
+              "category": "resource-limit / external-boundary assumption",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 214,
+              "message": "`verify` accepts attacker-/storage-controlled Argon2 parameters and allocates `params.block_count()` blocks without an application-level bound. A hash containing an extreme `m` value can trigger multi-terabyte allocation/OOM during login. Enforce a bounded parameter policy before allocation and reject hashes outside it.",
+              "severity": "P1"
+            },
+            {
+              "category": "external-boundary assumptions",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 159,
+              "message": "This adapter newly depends on undeclared external assumptions: OS CSPRNG availability, PHC/base64 encoding details, Argon2 memory/time limits, and the `RwLock` concurrency model. `knowledge/conventions/environment-assumptions.md` still contains TODO declarations, while neither the spec nor an environment declaration records these assumptions. Declare the applicable platform, encoding, resource, and concurrency constraints.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:e5a4f4ea74882713bd7f5a2e890d9ce82e3d13b501fc797b539c1b312ff1d393",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:00:48Z",
+          "findings": [
+            {
+              "category": "resource-limit / external-boundary assumption",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 253,
+              "message": "The Argon2 parameter cap does not bound the PHC digest length. `decode_vec` and the subsequent `vec![0; parsed.digest.len()]` accept an arbitrarily large stored hash payload, allowing memory exhaustion before Argon2 runs. Enforce the declared 32-byte digest (and 16-byte salt) limits before decoding/allocation.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:5ec28f3173cbdbc6cb635e05e610ae66fc2321bed30aba079793c100c0ddd287",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:11:41Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5f335daea88b9ef1660fb676dbfe4b2bca06c9fda26ed20f333260a4b814bc38",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:26:14Z",
+          "findings": [
+            {
+              "category": "resource-limit / boundary validation",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 257,
+              "message": "The pre-decode limits use padded-Base64 lengths, but the fields are decoded as unpadded Base64. A 23-character salt decodes to 17 bytes yet passes the 24-character guard, and a 44-character digest decodes to 33 bytes yet passes the 44-character guard. `decode_vec` therefore allocates oversized fields before the later byte-length check rejects them, contrary to the briefing and environment declaration. Use the exact unpadded maxima (22 and 43 characters) and test these boundary cases.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:5f335daea88b9ef1660fb676dbfe4b2bca06c9fda26ed20f333260a4b814bc38",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:45:06Z",
+          "findings": [],
+          "hash": "rvw1:sha256:38b38861957246c0b7f32934fbd5c96c367729d05a0f3e4585bba1147f604c5b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:49:22Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存 / unbounded encoding parse",
+              "file": "libs/infrastructure/src/lib.rs",
+              "line": 233,
+              "message": "`parse_encoded_hash` has no total PHC or parameter-field length guard before splitting and parsing the stored encoding. For example, an otherwise valid `m` value can contain arbitrarily many leading zeroes, forcing unbounded scans on every verification while still parsing below the numeric cap. The environment declaration bounds numeric parameters and salt/digest sizes but does not declare a bound for their textual PHC representation. Add a fail-closed encoded-length bound before parsing, or declare and enforce an equivalent input boundary.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:38b38861957246c0b7f32934fbd5c96c367729d05a0f3e4585bba1147f604c5b",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:57:10Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bd9872a0ce83cb758a3bbadf7487fe5f4f7a82220611551f7c933cd06b8adab6",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:59:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bd9872a0ce83cb758a3bbadf7487fe5f4f7a82220611551f7c933cd06b8adab6",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:18:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:243a44e6cbba85c17a9344b97080c2e78a0a44750441bac63b7c0d08c0954944",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:20:26Z",
+          "findings": [],
+          "hash": "rvw1:sha256:243a44e6cbba85c17a9344b97080c2e78a0a44750441bac63b7c0d08c0954944",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "other": {
+      "rounds": [
+        {
+          "at": "2026-09-10T18:28:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3534e585a4d1742df09723f1414fe22100e086c309d3fdd90f65026e28ebae6b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T18:33:46Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3534e585a4d1742df09723f1414fe22100e086c309d3fdd90f65026e28ebae6b",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T20:26:24Z",
+          "findings": [
+            {
+              "category": "test coverage gap",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 519,
+              "message": "The voluntary binding for `LoginError` points to a test that only covers the successful `Ok` path and never produces or checks a `LoginError`. Bind it to an error-path test or add suitable coverage.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:f7abf6e271c5c126f6367661cc419635ff433905b8fc3149f53aaba7943b2356",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:01:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f4252654430373131a584d918f995512d80a453f34f4cb475ffe8058142c814d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:31:37Z",
+          "findings": [
+            {
+              "category": "correctness",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 445,
+              "message": "The `CredentialParseError`→IN-001 edge is still a `voluntary_binding`, but its cited test only verifies empty-password parse rejection and cannot prove IN-001's success promise (“Register a user through the API”). Convert this error-type edge to a waiver with a non-empty ownership reason; CN-005 remains directly covered by the `PasswordInputError` binding.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:f4252654430373131a584d918f995512d80a453f34f4cb475ffe8058142c814d",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:45:43Z",
+          "findings": [
+            {
+              "category": "test coverage gap",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 363,
+              "message": "`PasswordHashError` is recorded as a voluntary binding for CN-001, but it only represents invalid password-hash construction. CN-001's success promise is Argon2id password-hash storage, which is covered by `PasswordHash`, `PasswordHasher`, and `Argon2PasswordAdapter`; this error edge should be a waiver with a non-empty reason.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:ae352f73e0203b75cc45194194040774d5098942fb6daf9dce40832809a746f4",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:51:14Z",
+          "findings": [
+            {
+              "category": "test-obligation",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 445,
+              "message": "The new `CredentialParseError`→IN-001 waiver is rejected by the current obligation evaluator, and `bin/sotp test-obligation check` exits 1 for this edge. The declared error specifically covers registration credential parsing, so this reason does not establish that the edge has no verifiable IN-001 behavior. Bind the relevant behavior or correct the upstream edge; the current record leaves the track gate failing.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:ae352f73e0203b75cc45194194040774d5098942fb6daf9dce40832809a746f4",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:57:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:61eb2abd1edca346ded51e40f48dff1af22239f571629424e010513cb0e1a01b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:01:18Z",
+          "findings": [
+            {
+              "category": "test-obligation",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 361,
+              "message": "`PasswordHashError`→CN-001 is recorded as a waiver even though `InvalidEncoding` has directly verifiable behavior against CN-001's argon2id requirement. The obligation evaluator rejects this waiver and the required check fails. Restore a voluntary binding to the existing non-argon2id rejection test or correct the upstream edge.",
+              "severity": "P1"
+            },
+            {
+              "category": "test-obligation",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 439,
+              "message": "The `CredentialParseError`→IN-001 voluntary binding cites only a command-parsing test and never exercises registration through the API, so it does not verify IN-001's central behavior. The evaluator reports `CentralUnverified`, leaving the DonePending obligation gate failing. Add API-level evidence or correct/refine the upstream edge instead of treating this parsing test as fulfillment.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:61eb2abd1edca346ded51e40f48dff1af22239f571629424e010513cb0e1a01b",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T22:10:26Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bfc5b247569ca6916299a7d1af78a88f4f1e9b49ecca58b8ec69c9b41bb2229a",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:13:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bfc5b247569ca6916299a7d1af78a88f4f1e9b49ecca58b8ec69c9b41bb2229a",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:14:42Z",
+          "findings": [],
+          "hash": "rvw1:sha256:302ebeee94a8305225da67b0ae35fe79710b20a4675fe29ae4d2ef6a4bdaab0e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:20:06Z",
+          "findings": [],
+          "hash": "rvw1:sha256:302ebeee94a8305225da67b0ae35fe79710b20a4675fe29ae4d2ef6a4bdaab0e",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:25:51Z",
+          "findings": [],
+          "hash": "rvw1:sha256:1c82347be38bf04e202c9d5563bbed74b9d08482f3fe924f090b44d05afeb831",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:35:07Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7e30218452a48feffa78edc4b1d8dda2f7dc460d105c33abc74393fb9a521107",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:38:30Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7e30218452a48feffa78edc4b1d8dda2f7dc460d105c33abc74393fb9a521107",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:51:58Z",
+          "findings": [
+            {
+              "category": "test-obligation / stale verdict",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 778,
+              "message": "The AuthHttpApi→CN-003 binding has a stale fulfillment verdict after its bound test bodies changed. `bin/sotp test-obligation check` now exits 1 with `TestChanged` drift (and results reports one stale Done obligation), so the required obligation gate is no longer green. Re-run the canonical obligation evaluation for the changed tests and ensure `check` passes, repairing the binding if the verifier rejects it.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:ffe0ddda78451f42aafd65e9c37b64bc29e727f9a32cbee88c6cc7d57b5a9b85",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:57:40Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ffe0ddda78451f42aafd65e9c37b64bc29e727f9a32cbee88c6cc7d57b5a9b85",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:35:48Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:39:44Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:48:21Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:58:22Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:06:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:14:11Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:47:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:23e435eb657ccf97281cdb915a9aa6cf8d4cdcf2baf3b18348d6b2ed9a44dca9",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:48:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:23e435eb657ccf97281cdb915a9aa6cf8d4cdcf2baf3b18348d6b2ed9a44dca9",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:13:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b194a2231a6848e3ed20336323441cc84d6e4c7316d54a260458c852d17368c4",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T03:01:48Z",
+          "findings": [
+            {
+              "category": "test-coverage",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 833,
+              "message": "The CN-004 binding cites `test_auth_http_api_json_strings_are_not_unicode_normalized`, but that test constructs a standalone Axum router and never exercises `AuthHttpApi`, whose handlers perform their own `serde_json::from_slice` decoding. The record therefore lacks edge-local evidence for the adapter's normalization behavior; bind the actual register/login route normalization tests instead.",
+              "severity": "P1"
+            },
+            {
+              "category": "test-coverage",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 893,
+              "message": "The RegisterRequest CN-004 binding here and LoginRequest binding at line 959 claim that JSON string values are not Unicode-normalized, but their normalization-sensitive tests vary only the username. Register uses a constant ASCII password, while Login never asserts the recorded password, so password normalization would escape these bindings. Add normalization-sensitive password cases for both request edges.",
+              "severity": "P1"
+            },
+            {
+              "category": "correctness",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 420,
+              "message": "This waiver says registration belongs to the pending T003 implementation, and the RegisterUserCommand waiver at line 607 repeats that claim, but T003 is done and the track is Ready to Ship. Because waiver reasons are compliance evidence, replace these stale future-state claims with current, entry-local rationales or current test bindings.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:b194a2231a6848e3ed20336323441cc84d6e4c7316d54a260458c852d17368c4",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T03:23:12Z",
+          "findings": [],
+          "hash": "rvw1:sha256:380e981e1214d9bde28e6dfae645c1312132bb9992c6861f762b74e7fb467276",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T03:24:37Z",
+          "findings": [
+            {
+              "category": "test-obligation",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 547,
+              "message": "The rewritten waiver is still invalid: it relies on other entries and CN-005 bindings instead of establishing why PasswordInputError has no entry-local behavior intersecting IN-001. This currently makes `bin/sotp test-obligation check` exit 1. Explain explicitly that PasswordInputError represents invalid-input failure while IN-001 describes registration behavior, or replace the waiver with direct evidence, then re-evaluate the cache.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:380e981e1214d9bde28e6dfae645c1312132bb9992c6861f762b74e7fb467276",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T06:09:59Z",
+          "findings": [],
+          "hash": "rvw1:sha256:692c753a46d0c5fff006480a331cb593dcf6f86bf23de43b902803c093cb9778",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:13:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:692c753a46d0c5fff006480a331cb593dcf6f86bf23de43b902803c093cb9778",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:27:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6d5cf1eae4d1c28893daa9f33a4c94e97e69d242572290088c013544d0f12304",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:31:40Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6d5cf1eae4d1c28893daa9f33a4c94e97e69d242572290088c013544d0f12304",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "spec": {
+      "rounds": [
+        {
+          "at": "2026-09-10T12:53:21Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3fa1c28661e9ec152779772eccdd5ade734319cc50adab32cf67eb6443ea59e6",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T13:16:27Z",
+          "findings": [
+            {
+              "category": "goal not anchored to a decision",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 75,
+              "message": "GO-001 combines registration, credential authentication, and token issuance, but its sole cited decision only selects opaque tokens after authentication. The separate registration ADR is not cited here, and no cited decision establishes login-attempt authentication as a capability, so the goal exceeds its decision anchors.",
+              "severity": "P1"
+            },
+            {
+              "category": "missing AC coverage for a stated goal",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 75,
+              "message": "GO-001 requires authenticating login attempts, but AC-002 only checks token issuance once a login is already described as successful. No acceptance criterion deterministically proves that supplied credentials are verified or that invalid credentials are rejected, leaving the authentication part of the goal uncovered.",
+              "severity": "P1"
+            },
+            {
+              "category": "未宣言の前提への依存",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 63,
+              "message": "CN-003 introduces an external HTTP boundary for registration and login, while the project-owned environment declaration still contains TODOs for accepted input encoding, resource limits, and concurrency behavior, and the spec records none of those assumptions. Downstream design would have to invent boundary behavior for malformed/oversized inputs and concurrent access.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:3fa1c28661e9ec152779772eccdd5ade734319cc50adab32cf67eb6443ea59e6",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T13:23:03Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 53,
+              "message": "CN-002 keeps every user and token in process memory, but CN-005 and CN-006 limit only individual request bodies and concurrent requests. Sequential registrations and token issuances can therefore grow retained state without any declared capacity/retention boundary or defined failure behavior when memory is exhausted; the project environment declaration still leaves resource limits as TODO.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:a0e393440eb95ea1a0d3df4cb91680423ae63b50fe725aa9f1bd42bc0039fa81",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T13:25:17Z",
+          "findings": [
+            {
+              "category": "scope / acceptance_criteria contradiction",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 111,
+              "message": "CN-007 contradicts IN-002 and AC-002: those elements require token issuance after successful authentication/login, while CN-007 says a successful login is rejected at token capacity and no token is written. The contract therefore gives mutually exclusive outcomes for the same successful-authentication case.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:c9c0e8ba485a86af6f6bc0a4c571adbc630d500283e5dfe29c3664d27eb67356",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T13:27:18Z",
+          "findings": [],
+          "hash": "rvw1:sha256:943688951d9290c087e13233297bc0f32a5317a9ee05ccf9cc06ffe9da73c385",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T13:33:07Z",
+          "findings": [],
+          "hash": "rvw1:sha256:fda9de00ccc4d19873409d87fcb7beef0e39280f3b5cfbfd439c0312fd1c9bd2",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T13:36:32Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json",
+              "line": 73,
+              "message": "CN-004 defines UTF-8 decoding and malformed-input handling but leaves Unicode normalization unspecified while the project environment declaration’s normalization field remains TODO. Registration and authentication can therefore disagree across downstream implementations about whether canonically equivalent credential strings are identical, so the external input contract still depends on an undeclared normalization policy.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:fda9de00ccc4d19873409d87fcb7beef0e39280f3b5cfbfd439c0312fd1c9bd2",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T13:41:07Z",
+          "findings": [],
+          "hash": "rvw1:sha256:073a7905f1d511b046f0d72ad508d8ead9d359a9ffa32f250c1e99d0dbefdc27",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:30:59Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ba66b9f582e2111cab841d4958f8255b4a6b304367304be3d4e2b223a4c8fc4e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:33:06Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ba66b9f582e2111cab841d4958f8255b4a6b304367304be3d4e2b223a4c8fc4e",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T18:25:18Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bccbde40a2a9ad253453f8993e3cc4375ca3471f8e8fea209f27d06c32a8977a",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T18:28:23Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bccbde40a2a9ad253453f8993e3cc4375ca3471f8e8fea209f27d06c32a8977a",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T18:33:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b031133f1a0da659ba2b331dba6f2598d251e3765e52b5ab448125401134d930",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T18:35:19Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b031133f1a0da659ba2b331dba6f2598d251e3765e52b5ab448125401134d930",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "types": {
+      "rounds": [
+        {
+          "at": "2026-09-10T16:09:12Z",
+          "findings": [
+            {
+              "category": "unsupported semantic placement",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 452,
+              "message": "`usecase::IssuedAccessToken` is declared as a `ValueObject`, but its contract only describes an application-boundary serialization proof and declares no invariant, ubiquitous-language meaning, or invariant ownership. This supports a DTO/boundary-carrier role, not a usecase value-object role.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 385,
+              "message": "`domain::OpaqueAccessToken` docs restate the upstream opaque/non-empty token behavior contract instead of referring to the governing spec anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 492,
+              "message": "`domain::PasswordHash` docs restate the upstream argon2id password-storage contract instead of referring to the governing spec anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 603,
+              "message": "`domain::User` docs restate the upstream registered-user/password-hash behavior contract instead of referring to the governing spec anchors.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+              "line": 48,
+              "message": "`infrastructure::Argon2PasswordAdapter` docs restate the ADR/spec choice of argon2id rather than referring to the upstream anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+              "line": 84,
+              "message": "`infrastructure::InMemoryAccessTokenRepository` docs restate the upstream in-memory/repository design contract rather than referring to the governing spec anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+              "line": 122,
+              "message": "`infrastructure::InMemoryUserRepository` docs restate the upstream in-memory persistence and argon2id-storage behavior contract rather than referring to the governing spec anchors.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+              "line": 160,
+              "message": "`infrastructure::RandomOpaqueTokenIssuer` docs restate the upstream opaque-token behavior contract rather than referring to the governing spec anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+              "line": 53,
+              "message": "`cli_driver::AuthHttpApi` docs restate the detailed UTF-8, malformed-JSON, and media-type rejection contract from CN-004 rather than referring to the upstream anchor.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 819,
+              "message": "`usecase::PlaintextPassword` docs restate the upstream secret-retention and exposure behavior contract rather than referring to the governing spec/convention anchor.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:7262cc1ced9d08e3e530c2aa0c9745b73de7f4e27f5984bc12592eb7ab995b2c",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T16:27:05Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4b3099e6a4e4cdc49e696b17d11a471905f3509d4a98289a5f11fa733ebd202e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T16:44:46Z",
+          "findings": [
+            {
+              "category": "sync/async color mismatch",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 137,
+              "message": "`domain::AccessTokenRepository` (`save`, `find`) and `domain::UserRepository` (`find_by_username`, `save`) declare every persistence operation as synchronous. Because CN-002 explicitly makes these ports replaceable, a future database-backed adapter would have to block or change the port and propagate that change through the usecase layer; neither entry documents or justifies this synchronous contract.",
+              "severity": "P2"
+            },
+            {
+              "category": "per-method error imprecision",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 207,
+              "message": "`domain::UserRepository::find_by_username` returns the shared `UserRepositoryError`, including `DuplicateUser`, even though that write-conflict variant cannot arise from a lookup. The entry does not document a producible subset, so every lookup caller must handle a write-only error variant.",
+              "severity": "P2"
+            },
+            {
+              "category": "spec_refs missing or off-topic",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 324,
+              "message": "`usecase::PasswordHasher` cites only IN-002, but its `hash` method creates a stored password hash and correctly cites CN-001; registration is the consuming operation, while login uses `PasswordVerifier`. The entry-level IN-002 reference is therefore off-topic and should be replaced with the registration/hashing anchors.",
+              "severity": "P2"
+            },
+            {
+              "category": "duplicated structural declaration",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 582,
+              "message": "`usecase::LoginCommandError` and `usecase::RegisterUserCommandError` independently declare the identical `InvalidUsername(domain::UsernameError)` and `InvalidPassword(PasswordInputError)` shape. Neither is shared or references a common declaration, so the same credential-parsing error contract must be maintained twice.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+              "line": 139,
+              "message": "The docs for `domain::AccessTokenRepository` and `domain::UserRepository` paraphrase CN-002's in-memory-behind-a-replaceable-port decision (`the in-memory implementation is replaceable`) instead of limiting themselves to the type purpose and an anchor citation. This violates `.harness/policies/no-upstream-restatement.md`.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:4b3099e6a4e4cdc49e696b17d11a471905f3509d4a98289a5f11fa733ebd202e",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T17:48:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2eccdaec06e68d99733375194d1d64ad2492551e0b43d7c26f7a069dce2f12ee",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T17:56:41Z",
+          "findings": [
+            {
+              "category": "Liskov violation in trait design",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 229,
+              "message": "`usecase::LoginService` and `usecase::RegisterUserService` declare async `execute` methods but `cli_driver::AuthHttpApi::new` requires them as `Arc<dyn …>`; likewise `domain::UserRepository` and `domain::AccessTokenRepository` declare async methods while both interactors require `Arc<dyn …>`. An async trait method has an opaque future return and is not dyn-compatible, so these declared object types cannot be constructed. An `async_trait`-style transformation would instead expose a boxed-future signature not represented by this catalogue. Use static dispatch or declare an object-safe future-returning contract. See the [Rust Reference](https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility).",
+              "severity": "P1"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 828,
+              "message": "`usecase::PlaintextPassword` repeats CN-005's behavior as prose—“empty input is rejected”—even though its invariant and methods already carry the CN-005 references. `.harness/policies/no-upstream-restatement.md` requires an anchor citation or short identifying noun phrase instead of restating the behavioral contract.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:2eccdaec06e68d99733375194d1d64ad2492551e0b43d7c26f7a069dce2f12ee",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T18:12:45Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b41ecc36cda74bc133c00b348cdc068bc1399fa8e7a3c294a985716d95a143e6",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T18:17:03Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b41ecc36cda74bc133c00b348cdc068bc1399fa8e7a3c294a985716d95a143e6",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:03:18Z",
+          "findings": [
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+              "line": 766,
+              "message": "`usecase::PasswordInputError` docs restate the upstream password-length behavior in prose (`empty or exceeds the declared UTF-8 byte limit`) instead of using an anchor cite, violating the no-upstream-restatement policy. Keep the docs as an anchor-based type-purpose reference.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:20dcfe9e38f16adb1656a94570a266c355e612525963ba7138dec637ef739338",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:12:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:84d1f41d6225d14c5c80a8dd6a0eb0bd5c6dfeefd3a7c304665592ae4cfccf88",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:38:28Z",
+          "findings": [],
+          "hash": "rvw1:sha256:84d1f41d6225d14c5c80a8dd6a0eb0bd5c6dfeefd3a7c304665592ae4cfccf88",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:14:32Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2c11a055bba51b13fd3f0de9358f4f2b909a2476a73b0b2efc4498c6d3f836ac",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:19:32Z",
+          "findings": [
+            {
+              "category": "spec_refs missing or off-topic",
+              "file": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+              "line": 79,
+              "message": "`cli_driver::AuthHttpApi::new` still declares `login: Arc<dyn usecase::auth::LoginService>`, but its sole method-level reference is IN-001, which concerns registration. Removing IN-002 from this method leaves the login dependency without a relevant spec trace; the briefing only justifies removing the deferred reference at entry level. Restore IN-002 on `new` (or remove the login dependency from the declared foundation shape until T009).",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:2c11a055bba51b13fd3f0de9358f4f2b909a2476a73b0b2efc4498c6d3f836ac",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T23:25:00Z",
+          "findings": [],
+          "hash": "rvw1:sha256:526cdf16ba90fdabfecaea09c39a856be001df169ebaa0fc505c5c711d6431f5",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:25:55Z",
+          "findings": [],
+          "hash": "rvw1:sha256:526cdf16ba90fdabfecaea09c39a856be001df169ebaa0fc505c5c711d6431f5",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:35:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bdd156246c6abfdeee52efad3c097dda1e7d8bb7b4681efce2a3ab6625fc2c3b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:38:12Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bdd156246c6abfdeee52efad3c097dda1e7d8bb7b4681efce2a3ab6625fc2c3b",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:41:21Z",
+          "findings": [],
+          "hash": "rvw1:sha256:80a90216c8b16a550f14b0c8d5c8abdda695cf7e7ffb021d6dc31334add44ad0",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T03:05:10Z",
+          "findings": [],
+          "hash": "rvw1:sha256:80a90216c8b16a550f14b0c8d5c8abdda695cf7e7ffb021d6dc31334add44ad0",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "usecase": {
+      "rounds": [
+        {
+          "at": "2026-09-10T20:28:02Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "libs/usecase/src/lib.rs",
+              "line": 135,
+              "message": "`PlaintextPassword::parse` copies the entire caller-provided password into a `String` without any size bound or defined excess behavior. Both registration and login therefore depend on an undeclared input/resource limit; `knowledge/conventions/environment-assumptions.md` still leaves resource limits as TODO, so oversized requests can cause unbounded allocation before hashing or verification.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:d7d3ada3ac61bbdfc80e4869feca51dcd4f2b9855f2c92421fcc4322b5b85712",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-10T21:10:07Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eff88ea91c6db71496337f88000d43a0dee42a34e6e5be584409a3686c9c6b73",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T21:21:50Z",
+          "findings": [],
+          "hash": "rvw1:sha256:eff88ea91c6db71496337f88000d43a0dee42a34e6e5be584409a3686c9c6b73",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:10:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3e9d0d50cf18e03172a8c1407f2e7eed6626d9df95eb82cbe2a11fa02140cd83",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T22:12:40Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3e9d0d50cf18e03172a8c1407f2e7eed6626d9df95eb82cbe2a11fa02140cd83",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:15:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:431b1576375d773860eed822e3e3256d2a341e2dea85ec63bc7df89f50906cd1",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-10T23:21:03Z",
+          "findings": [],
+          "hash": "rvw1:sha256:431b1576375d773860eed822e3e3256d2a341e2dea85ec63bc7df89f50906cd1",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:23:10Z",
+          "findings": [],
+          "hash": "rvw1:sha256:808f83141ac756995eafcbb6751106065e5d95c8e8990cf2479292d617a9abb3",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:53:15Z",
+          "findings": [],
+          "hash": "rvw1:sha256:808f83141ac756995eafcbb6751106065e5d95c8e8990cf2479292d617a9abb3",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T17:18:50Z",
+          "findings": [
+            {
+              "category": "environment",
+              "file": null,
+              "line": null,
+              "message": "レビュー対象の briefing、scope severity policy、および現在の diff を読み込めませんでした。Read-only sandbox が実行前に失敗しています（bubblewrap mount registry lock: Read-only file system）。",
+              "severity": "blocker"
+            }
+          ],
+          "hash": "rvw1:sha256:aa02d6a4f63f82d3ccbef7a1825c2868623b29e03689e8d5359de6d4810de747",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T17:25:02Z",
+          "findings": [],
+          "hash": "rvw1:sha256:aa02d6a4f63f82d3ccbef7a1825c2868623b29e03689e8d5359de6d4810de747",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T17:38:50Z",
+          "findings": [
+            {
+              "category": "environment",
+              "file": null,
+              "line": null,
+              "message": "Unable to complete the required review: every read-only shell invocation failed before reading the briefing, severity policy, current diff, or target file because the sandbox could not open its synthetic mount registry lock on the read-only filesystem.",
+              "severity": "BLOCKER"
+            }
+          ],
+          "hash": "rvw1:sha256:f2e183fdf4976de1dce6feb99571a44c098c85d86a898db2b58e8f9f7a132022",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T17:47:38Z",
+          "findings": [
+            {
+              "category": "security boundary error handling",
+              "file": "libs/usecase/src/lib.rs",
+              "line": 456,
+              "message": "The unknown-user branch discards `PasswordVerificationError`. During a verifier outage, a nonexistent username therefore produces `UserNotFound` (HTTP 401), while an existing username produces `Verification` (HTTP 500), masking the failure and exposing account existence. Propagate dummy-verification failures and return `UserNotFound` only after successful dummy verification.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:f2e183fdf4976de1dce6feb99571a44c098c85d86a898db2b58e8f9f7a132022",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T17:52:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2703154a6cdeba9a1f94ec28fed85095b7e4af6e779f2894f293e5db828748c0",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    }
+  }
+}

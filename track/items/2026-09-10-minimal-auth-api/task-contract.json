@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "track_id": "2026-09-10-minimal-auth-api",
+  "entries": {
+    "T001": [
+      { "layer": "domain", "entry_key": "PasswordHash" },
+      { "layer": "domain", "entry_key": "PasswordHashError" },
+      { "layer": "domain", "entry_key": "OpaqueAccessToken" },
+      { "layer": "domain", "entry_key": "OpaqueAccessTokenError" },
+      { "layer": "domain", "entry_key": "User" },
+      { "layer": "domain", "entry_key": "AccessTokenRecord" },
+      { "layer": "domain", "entry_key": "UserRepository" },
+      { "layer": "domain", "entry_key": "AccessTokenRepository" },
+      { "layer": "domain", "entry_key": "UserRepositoryError" },
+      { "layer": "domain", "entry_key": "AccessTokenRepositoryError" },
+      { "layer": "domain", "entry_key": "UserLookupError" },
+      { "layer": "domain", "entry_key": "domain::Username" },
+      { "layer": "domain", "entry_key": "domain::UsernameError" }
+    ],
+    "T002": [
+      { "layer": "usecase", "entry_key": "PlaintextPassword" },
+      { "layer": "usecase", "entry_key": "PasswordInputError" },
+      { "layer": "usecase", "entry_key": "CredentialParseError" },
+      { "layer": "usecase", "entry_key": "RegisterUserCommand" },
+      { "layer": "usecase", "entry_key": "LoginCommand" },
+      { "layer": "usecase", "entry_key": "PasswordHashingError" },
+      { "layer": "usecase", "entry_key": "PasswordVerificationError" },
+      { "layer": "usecase", "entry_key": "TokenIssuanceError" },
+      { "layer": "usecase", "entry_key": "PasswordHasher" },
+      { "layer": "usecase", "entry_key": "PasswordVerifier" },
+      { "layer": "usecase", "entry_key": "OpaqueTokenIssuer" }
+    ],
+    "T003": [
+      { "layer": "usecase", "entry_key": "RegisterUserService" },
+      { "layer": "usecase", "entry_key": "RegisterUserInteractor" },
+      { "layer": "usecase", "entry_key": "RegisterUserError" }
+    ],
+    "T004": [
+      { "layer": "usecase", "entry_key": "LoginService" },
+      { "layer": "usecase", "entry_key": "LoginInteractor" },
+      { "layer": "usecase", "entry_key": "LoginError" },
+      { "layer": "usecase", "entry_key": "IssuedAccessToken" }
+    ],
+    "T005": [
+      { "layer": "infrastructure", "entry_key": "InMemoryUserRepository" },
+      { "layer": "infrastructure", "entry_key": "InMemoryAccessTokenRepository" },
+      { "layer": "infrastructure", "entry_key": "Argon2PasswordAdapter" },
+      { "layer": "infrastructure", "entry_key": "RandomOpaqueTokenIssuer" }
+    ],
+    "T006": [
+      { "layer": "cli_driver", "entry_key": "HttpServerOutcome" },
+      { "layer": "cli_driver", "entry_key": "AuthHttpApi" }
+    ],
+    "T007": [
+      { "layer": "cli_composition", "entry_key": "AuthCompositionRoot" }
+    ],
+    "T008": [
+      { "layer": "cli_driver", "entry_key": "RegisterRequest" }
+    ],
+    "T009": [
+      { "layer": "cli_driver", "entry_key": "LoginRequest" },
+      { "layer": "cli_driver", "entry_key": "AccessTokenResponse" }
+    ]
+  }
+}

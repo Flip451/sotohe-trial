@@ -1,0 +1,69 @@
+{
+  "crate_name": "cli_composition",
+  "functions": {},
+  "layer": "cli_composition",
+  "schema_version": 5,
+  "trait_impls": [
+    {
+      "for_type": "AuthCompositionRoot",
+      "trait_ref": "core::default::Default"
+    }
+  ],
+  "traits": {},
+  "types": {
+    "AuthCompositionRoot": {
+      "action": "add",
+      "docs": "Pure DI composition root wiring shared in-memory repositories, argon2id and token adapters, application interactors, and the HTTP primary adapter.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "kind": "unit"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "GO-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "auth_http_api",
+          "params": [],
+          "receiver": "&self",
+          "returns": "cli_driver::auth::AuthHttpApi",
+          "spec_refs": [
+            {
+              "anchor": "CN-003",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "CompositionRoot": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "GO-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-003",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    }
+  }
+}

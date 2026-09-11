@@ -1,0 +1,195 @@
+{
+  "crate_name": "infrastructure",
+  "functions": {},
+  "layer": "infrastructure",
+  "schema_version": 5,
+  "trait_impls": [
+    {
+      "for_type": "InMemoryUserRepository",
+      "trait_ref": "domain::auth::UserRepository"
+    },
+    {
+      "for_type": "InMemoryUserRepository",
+      "trait_ref": "core::default::Default"
+    },
+    {
+      "for_type": "InMemoryAccessTokenRepository",
+      "trait_ref": "domain::auth::AccessTokenRepository"
+    },
+    {
+      "for_type": "InMemoryAccessTokenRepository",
+      "trait_ref": "core::default::Default"
+    },
+    {
+      "for_type": "Argon2PasswordAdapter",
+      "trait_ref": "usecase::auth::PasswordHasher"
+    },
+    {
+      "for_type": "Argon2PasswordAdapter",
+      "trait_ref": "usecase::auth::PasswordVerifier"
+    },
+    {
+      "for_type": "Argon2PasswordAdapter",
+      "trait_ref": "core::default::Default"
+    },
+    {
+      "for_type": "RandomOpaqueTokenIssuer",
+      "trait_ref": "usecase::auth::OpaqueTokenIssuer"
+    },
+    {
+      "for_type": "RandomOpaqueTokenIssuer",
+      "trait_ref": "core::default::Default"
+    }
+  ],
+  "traits": {},
+  "types": {
+    "Argon2PasswordAdapter": {
+      "action": "add",
+      "docs": "Secondary adapter; see CN-001.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "kind": "unit"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "CN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "InMemoryAccessTokenRepository": {
+      "action": "add",
+      "docs": "Secondary adapter; see CN-002.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "CN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "InMemoryUserRepository": {
+      "action": "add",
+      "docs": "Secondary adapter; see CN-001 and CN-002.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "CN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "RandomOpaqueTokenIssuer": {
+      "action": "add",
+      "docs": "Secondary adapter; see AC-002.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "kind": "unit"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "AC-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    }
+  }
+}

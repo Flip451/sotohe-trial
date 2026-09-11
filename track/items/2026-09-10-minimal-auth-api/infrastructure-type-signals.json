@@ -1,0 +1,63 @@
+{
+  "baseline_hash": "05fde51fe5cef6e1f0eb646792cb63012b3a2d47cd9de6d8a5bb5862ff0b4296",
+  "declaration_hash": "2843a0be83801635d45882661b55b6d15d18a787e77d5ff56cbc814a454ed7f5",
+  "generated_at": "2026-09-11T18:39:16Z",
+  "head_commit": "1fed3d5aefe35877691e827d24031b43113ceee0",
+  "implementation_fingerprint": "927533a277fc11f6b660c94d004860fd1a2152f29fb548fb001686c369e12214",
+  "resolution_fingerprint": "8438d1c346e064b4a9db847786475d6b325327d71e968a41f9a0645210b17089",
+  "rustdoc_execution_identity": {
+    "crate_name": "infrastructure",
+    "expected_json_path": "target/.sotp-rustdoc/3752fba856c64f53fab38cbd30956ae144b497d94fbc78ab984a39cf81654280/doc/infrastructure.json",
+    "features": [],
+    "profile": "dev",
+    "target_directory": "target/.sotp-rustdoc/3752fba856c64f53fab38cbd30956ae144b497d94fbc78ab984a39cf81654280"
+  },
+  "schema_version": 6,
+  "signals": [
+    {
+      "found_items": [
+        "core::default::Default",
+        "usecase::auth::PasswordHasher",
+        "usecase::auth::PasswordVerifier"
+      ],
+      "found_type": true,
+      "kind_tag": "secondary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "Argon2PasswordAdapter"
+    },
+    {
+      "found_items": [
+        "core::default::Default",
+        "domain::auth::AccessTokenRepository"
+      ],
+      "found_type": true,
+      "kind_tag": "secondary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "InMemoryAccessTokenRepository"
+    },
+    {
+      "found_items": [
+        "core::default::Default",
+        "domain::auth::UserRepository"
+      ],
+      "found_type": true,
+      "kind_tag": "secondary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "InMemoryUserRepository"
+    },
+    {
+      "found_items": [
+        "core::default::Default",
+        "usecase::auth::OpaqueTokenIssuer"
+      ],
+      "found_type": true,
+      "kind_tag": "secondary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "RandomOpaqueTokenIssuer"
+    }
+  ]
+}

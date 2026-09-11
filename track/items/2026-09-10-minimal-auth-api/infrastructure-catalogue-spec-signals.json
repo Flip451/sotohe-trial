@@ -1,0 +1,26 @@
+{
+  "catalogue_declaration_hash": "2843a0be83801635d45882661b55b6d15d18a787e77d5ff56cbc814a454ed7f5",
+  "schema_version": 1,
+  "signals": [
+    {
+      "entry_hash": "e4c62b2935bc3f2b714931009e197d617d1599a82239681c07a3ebf1dcfdaac5",
+      "signal": "blue",
+      "type_name": "Argon2PasswordAdapter"
+    },
+    {
+      "entry_hash": "806cf6a177e98cfe2ed037f50c5fc498986ddac767a5f1c301737992c309433c",
+      "signal": "blue",
+      "type_name": "InMemoryAccessTokenRepository"
+    },
+    {
+      "entry_hash": "f74f7c3c5a79f54b46475d70077466e69a42c29d8dc657675393865ef48e306c",
+      "signal": "blue",
+      "type_name": "InMemoryUserRepository"
+    },
+    {
+      "entry_hash": "71e4d4109902d1a049ec5bd8f562a01880775ea68098b57633891789f4b80a6e",
+      "signal": "blue",
+      "type_name": "RandomOpaqueTokenIssuer"
+    }
+  ]
+}

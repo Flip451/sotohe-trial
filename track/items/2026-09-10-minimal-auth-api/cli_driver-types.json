@@ -1,0 +1,283 @@
+{
+  "crate_name": "cli_driver",
+  "functions": {},
+  "layer": "cli_driver",
+  "schema_version": 5,
+  "traits": {},
+  "types": {
+    "AccessTokenResponse": {
+      "action": "add",
+      "docs": "Typed response carrier; private JSON wire encoding obtains opaque token text only at final HTTP presentation.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "access_token",
+              "ty": "usecase::auth::IssuedAccessToken"
+            }
+          ],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "AC-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "AC-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "AuthHttpApi": {
+      "action": "add",
+      "docs": "Primary adapter foundation; see IN-001, IN-002, CN-003, and CN-004. `serve` renders lifecycle to CommandOutcome. Login/token route ownership is T009.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "register",
+              "ty": "std::sync::Arc<dyn usecase::auth::RegisterUserService>"
+            },
+            {
+              "name": "login",
+              "ty": "std::sync::Arc<dyn usecase::auth::LoginService>"
+            }
+          ],
+          "returns": "Self",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "IN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        },
+        {
+          "has_default_impl": false,
+          "is_async": true,
+          "name": "serve",
+          "params": [],
+          "receiver": "self",
+          "returns": "CommandOutcome",
+          "spec_refs": [
+            {
+              "anchor": "CN-003",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "CN-004",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ],
+          "docs": "Binds the declared loopback endpoint and serves until Ctrl-C graceful shutdown; maps HttpServerOutcome into CommandOutcome."
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "router",
+          "params": [],
+          "receiver": "&self",
+          "returns": "axum::routing::Router",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "IN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "CN-003",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "CN-004",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ],
+          "docs": "Builds the axum REST router for registration and login with the declared JSON media-type and body-handling constraints."
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "PrimaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-003",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-004",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "IN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "HttpServerOutcome": {
+      "action": "add",
+      "docs": "Delivery-bound server lifecycle DTO used internally before rendering to CommandOutcome; Failed String is an unconstrained opaque diagnostic for process presentation, not a domain concept.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Stopped",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "Failed",
+            "payload": {
+              "fields": [
+                "String"
+              ],
+              "kind": "tuple"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "CN-003",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "LoginRequest": {
+      "action": "add",
+      "docs": "Typed login request carrier produced by private JSON extraction and validation without retaining raw credential strings.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "into_command",
+          "params": [],
+          "receiver": "self",
+          "returns": "usecase::auth::LoginCommand",
+          "spec_refs": [
+            {
+              "anchor": "IN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-002",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-004",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    },
+    "RegisterRequest": {
+      "action": "add",
+      "docs": "Typed registration request carrier produced by private JSON extraction and validation without retaining raw credential strings.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "into_command",
+          "params": [],
+          "receiver": "self",
+          "returns": "usecase::auth::RegisterUserCommand",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ]
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "anchor": "CN-004",
+          "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ]
+    }
+  }
+}

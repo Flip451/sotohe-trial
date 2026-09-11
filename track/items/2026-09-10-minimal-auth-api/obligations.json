@@ -1,0 +1,481 @@
+{
+  "obligations": [
+    {
+      "brief": "Author a boundary test covering 'invariant:non_empty' of OpaqueAccessToken",
+      "declaration_hash": "f239a2b2e9283f87132508da48b54c470de011dcc8c7e1812b781af7ee50405e",
+      "id": {
+        "entry_key": "OpaqueAccessToken",
+        "item_identifier": "invariant:non_empty",
+        "obligation_kind": "boundary"
+      },
+      "spec_refs": [
+        {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "OpaqueAccessToken",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+        "section_key": "types"
+      },
+      "target_role": {
+        "kind": "data_role",
+        "role": "ValueObject"
+      }
+    },
+    {
+      "brief": "Author a boundary test covering 'invariant:argon2id_encoding' of PasswordHash",
+      "declaration_hash": "e1d3459cb0b46fb1940c1bda88fb04442c10605ac0007b02ef192fff92edea19",
+      "id": {
+        "entry_key": "PasswordHash",
+        "item_identifier": "invariant:argon2id_encoding",
+        "obligation_kind": "boundary"
+      },
+      "spec_refs": [
+        {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "element_id": "AC-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "PasswordHash",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+        "section_key": "types"
+      },
+      "target_role": {
+        "kind": "data_role",
+        "role": "ValueObject"
+      }
+    },
+    {
+      "brief": "Author a contract test covering 'trait_method:save' of AccessTokenRepository",
+      "declaration_hash": "052081b72c43bbd6e5f997b06b7ca86bb9e2021db3619c0f81784582c8fcee3c",
+      "id": {
+        "entry_key": "AccessTokenRepository",
+        "item_identifier": "trait_method:save",
+        "obligation_kind": "contract"
+      },
+      "spec_refs": [
+        {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "AccessTokenRepository",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "contract_role",
+        "role": "Repository"
+      }
+    },
+    {
+      "brief": "Author a contract test covering 'trait_method:find' of AccessTokenRepository",
+      "declaration_hash": "052081b72c43bbd6e5f997b06b7ca86bb9e2021db3619c0f81784582c8fcee3c",
+      "id": {
+        "entry_key": "AccessTokenRepository",
+        "item_identifier": "trait_method:find",
+        "obligation_kind": "contract"
+      },
+      "spec_refs": [
+        {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "AccessTokenRepository",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "contract_role",
+        "role": "Repository"
+      }
+    },
+    {
+      "brief": "Author a contract test covering 'trait_method:find_by_username' of UserRepository",
+      "declaration_hash": "ea6f3625a4929f48c0843ed8a232d22c1955e83a9bc07d6881669c87c3aa0bed",
+      "id": {
+        "entry_key": "UserRepository",
+        "item_identifier": "trait_method:find_by_username",
+        "obligation_kind": "contract"
+      },
+      "spec_refs": [
+        {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "UserRepository",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "contract_role",
+        "role": "Repository"
+      }
+    },
+    {
+      "brief": "Author a contract test covering 'trait_method:save' of UserRepository",
+      "declaration_hash": "ea6f3625a4929f48c0843ed8a232d22c1955e83a9bc07d6881669c87c3aa0bed",
+      "id": {
+        "entry_key": "UserRepository",
+        "item_identifier": "trait_method:save",
+        "obligation_kind": "contract"
+      },
+      "spec_refs": [
+        {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "UserRepository",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/domain-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "contract_role",
+        "role": "Repository"
+      }
+    },
+    {
+      "brief": "Author a result test covering 'entry' of LoginInteractor",
+      "declaration_hash": "41bb54249d0fa108bdfb92398d943c728998b85619ff3133009f4e8fb5a4aefd",
+      "id": {
+        "entry_key": "LoginInteractor",
+        "item_identifier": "entry",
+        "obligation_kind": "result"
+      },
+      "spec_refs": [
+        {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "LoginInteractor",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+        "section_key": "types"
+      },
+      "target_role": {
+        "kind": "data_role",
+        "role": "Interactor"
+      }
+    },
+    {
+      "brief": "Author a boundary test covering 'invariant:non_empty' of PlaintextPassword",
+      "declaration_hash": "82bfbbd4b6f3f8679926373342b306afbe30777dfd5755c5cbb8d747651ebc95",
+      "id": {
+        "entry_key": "PlaintextPassword",
+        "item_identifier": "invariant:non_empty",
+        "obligation_kind": "boundary"
+      },
+      "spec_refs": [
+        {
+          "element_id": "CN-005",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "PlaintextPassword",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+        "section_key": "types"
+      },
+      "target_role": {
+        "kind": "data_role",
+        "role": "ValueObject"
+      }
+    },
+    {
+      "brief": "Author a result test covering 'entry' of RegisterUserInteractor",
+      "declaration_hash": "88f49d7ef1c81f02a90ab3d630bbb8d533c29c631b8dcb1d60cbc791e70d5285",
+      "id": {
+        "entry_key": "RegisterUserInteractor",
+        "item_identifier": "entry",
+        "obligation_kind": "result"
+      },
+      "spec_refs": [
+        {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "RegisterUserInteractor",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+        "section_key": "types"
+      },
+      "target_role": {
+        "kind": "data_role",
+        "role": "Interactor"
+      }
+    },
+    {
+      "brief": "Author a result test covering 'trait_method:execute' of LoginService",
+      "declaration_hash": "efc5322dc65001579c19721e704f0db5969c2e7475c54e0355111c6588374ed0",
+      "id": {
+        "entry_key": "LoginService",
+        "item_identifier": "trait_method:execute",
+        "obligation_kind": "result"
+      },
+      "spec_refs": [
+        {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "LoginService",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "contract_role",
+        "role": "ApplicationService"
+      }
+    },
+    {
+      "brief": "Author a contract test covering 'trait_method:issue' of OpaqueTokenIssuer",
+      "declaration_hash": "53b8c97a35b126253ec43f514f53f5dbc458e42869485630f695bb559e13e39d",
+      "id": {
+        "entry_key": "OpaqueTokenIssuer",
+        "item_identifier": "trait_method:issue",
+        "obligation_kind": "contract"
+      },
+      "spec_refs": [
+        {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "OpaqueTokenIssuer",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "contract_role",
+        "role": "SecondaryPort"
+      }
+    },
+    {
+      "brief": "Author a contract test covering 'trait_method:hash' of PasswordHasher",
+      "declaration_hash": "7073410175813b38ab585bc7157030efb5f557363bdd9934908efec5ebe08989",
+      "id": {
+        "entry_key": "PasswordHasher",
+        "item_identifier": "trait_method:hash",
+        "obligation_kind": "contract"
+      },
+      "spec_refs": [
+        {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "PasswordHasher",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "contract_role",
+        "role": "SecondaryPort"
+      }
+    },
+    {
+      "brief": "Author a contract test covering 'trait_method:verify' of PasswordVerifier",
+      "declaration_hash": "d552fa23c8f3ea44744a5fff6fd2602c9a82f82e3d0acad21e856d26049755d4",
+      "id": {
+        "entry_key": "PasswordVerifier",
+        "item_identifier": "trait_method:verify",
+        "obligation_kind": "contract"
+      },
+      "spec_refs": [
+        {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "PasswordVerifier",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "contract_role",
+        "role": "SecondaryPort"
+      }
+    },
+    {
+      "brief": "Author a result test covering 'trait_method:execute' of RegisterUserService",
+      "declaration_hash": "1a9f5753b140024791300ee32ceef72d86fbedc2e8a77ad2e88bbf83505d5b9c",
+      "id": {
+        "entry_key": "RegisterUserService",
+        "item_identifier": "trait_method:execute",
+        "obligation_kind": "result"
+      },
+      "spec_refs": [
+        {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "RegisterUserService",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/usecase-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "contract_role",
+        "role": "ApplicationService"
+      }
+    },
+    {
+      "brief": "Author a contract_conformance test covering 'trait_impl:domain::auth::UserRepository' of InMemoryUserRepository",
+      "declaration_hash": "4ac845f02bf8853419518f7a447b154f8e32b5aa9219c68e9987b7e76c6674ab",
+      "id": {
+        "entry_key": "InMemoryUserRepository",
+        "item_identifier": "trait_impl:domain::auth::UserRepository",
+        "obligation_kind": "contract_conformance"
+      },
+      "spec_refs": [
+        {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "InMemoryUserRepository",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "trait_impl",
+        "role": "Repository"
+      }
+    },
+    {
+      "brief": "Author a contract_conformance test covering 'trait_impl:domain::auth::AccessTokenRepository' of InMemoryAccessTokenRepository",
+      "declaration_hash": "08d37c12a72186a8177f24cd0e774f73825e99c1c7ce935d9a0aa4ca68f9c7a0",
+      "id": {
+        "entry_key": "InMemoryAccessTokenRepository",
+        "item_identifier": "trait_impl:domain::auth::AccessTokenRepository",
+        "obligation_kind": "contract_conformance"
+      },
+      "spec_refs": [
+        {
+          "element_id": "CN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "InMemoryAccessTokenRepository",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "trait_impl",
+        "role": "Repository"
+      }
+    },
+    {
+      "brief": "Author a contract_conformance test covering 'trait_impl:usecase::auth::PasswordHasher' of Argon2PasswordAdapter",
+      "declaration_hash": "1800d3a36569532721b4de2b9480cdb576fc075e7b679803ceb3fa148944fa76",
+      "id": {
+        "entry_key": "Argon2PasswordAdapter",
+        "item_identifier": "trait_impl:usecase::auth::PasswordHasher",
+        "obligation_kind": "contract_conformance"
+      },
+      "spec_refs": [
+        {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        {
+          "element_id": "AC-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "Argon2PasswordAdapter",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "trait_impl",
+        "role": "SecondaryPort"
+      }
+    },
+    {
+      "brief": "Author a contract_conformance test covering 'trait_impl:usecase::auth::PasswordVerifier' of Argon2PasswordAdapter",
+      "declaration_hash": "8acc35cde163dd0fcaf7675f4df23791959f9dba477aadb5740fb65ffac56778",
+      "id": {
+        "entry_key": "Argon2PasswordAdapter",
+        "item_identifier": "trait_impl:usecase::auth::PasswordVerifier",
+        "obligation_kind": "contract_conformance"
+      },
+      "spec_refs": [
+        {
+          "element_id": "CN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "Argon2PasswordAdapter",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "trait_impl",
+        "role": "SecondaryPort"
+      }
+    },
+    {
+      "brief": "Author a contract_conformance test covering 'trait_impl:usecase::auth::OpaqueTokenIssuer' of RandomOpaqueTokenIssuer",
+      "declaration_hash": "62f0222072d6c89fd2af25a7a32c570d12a1c3d4eeb8a939446960cdecf78d7a",
+      "id": {
+        "entry_key": "RandomOpaqueTokenIssuer",
+        "item_identifier": "trait_impl:usecase::auth::OpaqueTokenIssuer",
+        "obligation_kind": "contract_conformance"
+      },
+      "spec_refs": [
+        {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        }
+      ],
+      "target_entry": {
+        "entry_key": "RandomOpaqueTokenIssuer",
+        "file_path": "track/items/2026-09-10-minimal-auth-api/infrastructure-types.json",
+        "section_key": "traits"
+      },
+      "target_role": {
+        "kind": "trait_impl",
+        "role": "SecondaryPort"
+      }
+    }
+  ],
+  "track_id": "2026-09-10-minimal-auth-api"
+}
