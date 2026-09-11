@@ -119,9 +119,13 @@ dependencies = [
 name = "cli_composition"
 version = "0.1.0"
 dependencies = [
+ "axum",
  "cli_driver",
  "domain",
  "infrastructure",
+ "serde_json",
+ "tokio",
+ "tower",
  "usecase",
 ]
 

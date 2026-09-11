@@ -13,3 +13,9 @@ cli_driver = { path = "../cli-driver" }
 domain = { path = "../../libs/domain" }
 infrastructure = { path = "../../libs/infrastructure" }
 usecase = { path = "../../libs/usecase" }
+
+[dev-dependencies]
+axum = "0.8"
+serde_json = "1"
+tokio = { version = "1", features = ["macros", "rt"] }
+tower = { version = "0.5", features = ["util"] }

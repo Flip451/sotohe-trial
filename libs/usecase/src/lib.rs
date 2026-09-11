@@ -14,6 +14,7 @@ use thiserror::Error;
 // Re-export the domain types that appear in this layer's public API so that
 // downstream layers depending only on `usecase` (e.g. the CLI driver) can name
 // them without taking a direct dependency on `domain`.
+pub use domain::auth::OpaqueAccessToken;
 pub use domain::{Username, UsernameError};
 
 /// Error returned when a greeting cannot be produced.

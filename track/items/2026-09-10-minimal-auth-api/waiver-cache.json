@@ -59,7 +59,7 @@
       "key": {
         "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
         "declaration_hash": "9bbfc82e7e0ee1c9ce4efd8f37298be621ad0463ee4fd8581b26a904636a41bd",
-        "waived_reason_hash": "c7025eceeaffd9306b050eb4a350c7d4a9d83075aa419f221469281b452f7b25"
+        "waived_reason_hash": "5a028a6773cf1047e6f4bbdf04b73fd22bf89bfc2a2744f01a4f63ba0f15201e"
       },
       "obligation_id": {
         "entry_key": "UserLookupError",
@@ -67,7 +67,7 @@
         "obligation_kind": "logic"
       },
       "verdict": {
-        "citation": "Register a user through the API.",
+        "citation": "Failure returned by user-repository lookup operations.",
         "kind": "waived"
       },
       "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
@@ -203,7 +203,7 @@
       "key": {
         "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
         "declaration_hash": "02850225c3c9555a86ec30c12856cef60ea18faedaaa1fd4ae512e2e8d91c932",
-        "waived_reason_hash": "e7f54e7f35bc2e1b4a28e1f1666966bc6d71ae213c4de9faa531546991dba8da"
+        "waived_reason_hash": "5cab01b5634c43b2f963182200c00c688af0f6425f5515f0dce4464ce6141d0f"
       },
       "obligation_id": {
         "entry_key": "PasswordInputError",
@@ -211,7 +211,7 @@
         "obligation_kind": "logic"
       },
       "verdict": {
-        "citation": "\"Application-boundary password input error (CN-005).\"",
+        "citation": "methods: []",
         "kind": "waived"
       },
       "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
@@ -275,7 +275,7 @@
       "key": {
         "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
         "declaration_hash": "5811854ddbbe6255c914197d8a398eceec302be55c36af036ff56dccfb6e7558",
-        "waived_reason_hash": "c82479a16b704baa87a785c1766221853174cf2be7dd6cc6fc23941ef83bd221"
+        "waived_reason_hash": "1999209c6d9dbd09de100ca575ded86334649cf0ba06cbad70be3257494b8aa4"
       },
       "obligation_id": {
         "entry_key": "RegisterUserCommand",
@@ -332,30 +332,6 @@
       },
       "verdict": {
         "citation": "Delivery-bound server lifecycle DTO used internally before rendering to CommandOutcome",
-        "kind": "waived"
-      },
-      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
-    },
-    {
-      "edge_id": {
-        "anchor_id": {
-          "element_id": "IN-002",
-          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
-        },
-        "entry_key": "AuthHttpApi"
-      },
-      "key": {
-        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
-        "declaration_hash": "61514be17e10601ee266bf85dbc0a089df71de85e5e59c24b3eefad06c5c42f2",
-        "waived_reason_hash": "50a61d3e45a539818d7d3da4de57b6034fc163a6ef30532d15dee353bad713b1"
-      },
-      "obligation_id": {
-        "entry_key": "AuthHttpApi",
-        "item_identifier": "voluntary:IN-002",
-        "obligation_kind": "logic"
-      },
-      "verdict": {
-        "citation": "Login/token route ownership is T009.",
         "kind": "waived"
       },
       "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"

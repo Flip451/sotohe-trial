@@ -417,7 +417,7 @@
           "element_id": "IN-001"
         }
       },
-      "reason": "UserLookupError only classifies lookup failures and does not own API registration behavior; registration service behavior belongs to the pending T003 implementation."
+      "reason": "UserLookupError classifies repository lookup failures surfaced through registration/login interactors; IN-001 registration behavior is bound on RegisterUserService/RegisterUserInteractor and AuthHttpApi."
     },
     {
       "kind": "waiver",
@@ -544,7 +544,7 @@
           "element_id": "IN-001"
         }
       },
-      "reason": "PasswordInputError only classifies invalid password input at the application boundary; registering a user through the API in IN-001 is owned by RegisterUserCommand/RegisterUserService (T003) and HTTP delivery tasks."
+      "reason": "PasswordInputError represents invalid-input failure only; IN-001 describes registration behavior, so PasswordInputError has no entry-local behavior intersecting IN-001."
     },
     {
       "kind": "waiver",
@@ -604,7 +604,7 @@
           "element_id": "IN-001"
         }
       },
-      "reason": "RegisterUserCommand only validates and carries registration input; end-to-end registration behavior belongs to the pending T003 registration interactor and API implementation."
+      "reason": "RegisterUserCommand is an input carrier validated at the application boundary; IN-001 registration behavior is exercised through RegisterUserService/RegisterUserInteractor and AuthHttpApi/RegisterRequest bindings rather than a command-level IN-001 success edge."
     },
     {
       "kind": "waiver",
@@ -830,7 +830,17 @@
         {
           "layer": "cli_driver",
           "module_path": "cli_driver::auth::tests",
-          "test_name": "test_auth_http_api_json_strings_are_not_unicode_normalized"
+          "test_name": "test_auth_http_api_login_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_register_request_json_strings_preserve_normalization_sensitive_values"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_login_request_json_strings_preserve_normalization_sensitive_values"
         }
       ]
     },
@@ -844,17 +854,6 @@
         }
       },
       "reason": "HttpServerOutcome is a delivery-bound lifecycle DTO whose only variants are Stopped and Failed(String). It does not declare routes, handlers, HTTP methods, media types, or axum types, so CN-003's axum REST-surface promise creates no independently verifiable behavioral obligation on this entry alone."
-    },
-    {
-      "kind": "waiver",
-      "edge_id": {
-        "entry_key": "AuthHttpApi",
-        "anchor_id": {
-          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
-          "element_id": "IN-002"
-        }
-      },
-      "reason": "The shared HTTP foundation only injects the login service; login request extraction, token response mapping, and route behavior belong to the pending T009 implementation."
     },
     {
       "kind": "voluntary_binding",
@@ -897,6 +896,128 @@
           "layer": "cli_driver",
           "module_path": "cli_driver::auth::tests",
           "test_name": "test_register_request_json_strings_preserve_normalization_sensitive_values"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "AuthHttpApi",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-002"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_returns_access_token"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_maps_invalid_credentials_to_unauthorized"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "LoginRequest",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-002"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_login_request_into_command_preserves_validated_credentials"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_returns_access_token"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "LoginRequest",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-004"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_login_request_json_strings_preserve_normalization_sensitive_values"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "AccessTokenResponse",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "AC-002"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_access_token_response_new_preserves_issued_token_for_wire"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_returns_access_token"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "AuthCompositionRoot",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "GO-001"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_composition",
+          "module_path": "cli_composition::auth::tests",
+          "test_name": "test_auth_composition_root_register_then_login_issues_token"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "AuthCompositionRoot",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-003"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_composition",
+          "module_path": "cli_composition::auth::tests",
+          "test_name": "test_auth_composition_root_register_then_login_issues_token"
         }
       ]
     }

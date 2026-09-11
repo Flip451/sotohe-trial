@@ -1269,7 +1269,7 @@
       "key": {
         "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
         "bound_tests_set_hash": "f9437c3ac6e9acad01012756432c23e7fa97b4597558e7682f42e2301dec0b4c",
-        "declaration_hash": "638c45a47900ad4ae217a9d3daa35d9256f666fd51c40d1bf1935662ad29da9e"
+        "declaration_hash": "c88fe5b32bda73a568bfdac2cfc7ccfcdb6357eb0a31873d301fd72226af0a47"
       },
       "obligation_id": {
         "entry_key": "AuthHttpApi",
@@ -1277,7 +1277,7 @@
         "obligation_kind": "logic"
       },
       "verdict": {
-        "citation": "            let response = app.oneshot(request).await.unwrap();\n\n            assert_eq!(response.status(), StatusCode::CREATED);\n            assert_eq!(\n                *received.lock().unwrap(),\n                vec![(\"ada\".to_owned(), \"correct horse\".to_owned())]\n            );",
+        "citation": "assert_eq!(response.status(), StatusCode::CREATED);\n            assert_eq!(\n                *received.lock().unwrap(),\n                vec![(\"ada\".to_owned(), \"correct horse\".to_owned())]\n            );",
         "kind": "fulfilled"
       },
       "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
@@ -1315,7 +1315,7 @@
       "key": {
         "anchor_text_hash": "31b67e94d7c37b14642283acfc1a085810673715abe3ed3894965580b60d9491",
         "bound_tests_set_hash": "e4fbeac2e95a3c0ad6bf295bf1ec76fe6791e00465ffb8d38970d3cc04aea90a",
-        "declaration_hash": "1ec4501c75eb910b1564b13482cd1d36bc5441a661bb1815f62abe10d4e69a53"
+        "declaration_hash": "fa2b82cfee0c252c659d2e6cd55c76e25f3a7cebfe1216b6c269423ca2de5c10"
       },
       "obligation_id": {
         "entry_key": "AuthHttpApi",
@@ -1323,7 +1323,7 @@
         "obligation_kind": "logic"
       },
       "verdict": {
-        "citation": "let _typed: Router = router; ... assert!(!response.is_empty(), \"expected an HTTP response from axum\");",
+        "citation": "let _typed: Router = router;",
         "kind": "fulfilled"
       },
       "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
@@ -1338,7 +1338,17 @@
         {
           "layer": "cli_driver",
           "module_path": "cli_driver::auth::tests",
-          "test_name": "test_auth_http_api_json_strings_are_not_unicode_normalized"
+          "test_name": "test_auth_http_api_login_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_register_request_json_strings_preserve_normalization_sensitive_values"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_login_request_json_strings_preserve_normalization_sensitive_values"
         }
       ],
       "edge_id": {
@@ -1350,8 +1360,8 @@
       },
       "key": {
         "anchor_text_hash": "f0717e77895fcf228f2d466ee3c0286a18de7d496962e6964c5c0078de5638e8",
-        "bound_tests_set_hash": "a0734299e1f476b1b747e76541cd9e623c5e6f5f662f90e8c9fb8b2f668aedcd",
-        "declaration_hash": "51829ce1d5b7c7c795ad8b6bd16b4a3bfe92b96427f1d3252c368b07bd253a60"
+        "bound_tests_set_hash": "a538d25ae34040aaeabc141dab22ba2a3cc1e2ded36c740e24c3436a0b5ace80",
+        "declaration_hash": "f798ae18bdf1adc038eda5d385565a817a803c0a8d108e61bf8db2f8584603b1"
       },
       "obligation_id": {
         "entry_key": "AuthHttpApi",
@@ -1422,7 +1432,7 @@
       },
       "key": {
         "anchor_text_hash": "f0717e77895fcf228f2d466ee3c0286a18de7d496962e6964c5c0078de5638e8",
-        "bound_tests_set_hash": "8a0c9dca41a26007108b7de7932022b9af85ef0265b24ec20e9d1e01c8de03ac",
+        "bound_tests_set_hash": "288d0aa7640d8f0ddb9d9172dcd1d77bc8b55cff122b38ea5f208969c820b430",
         "declaration_hash": "e64c6bfc13612bd94f3d4e8a151c75552bb7640ae258a79bb959458eb2e8ad89"
       },
       "obligation_id": {
@@ -1431,7 +1441,213 @@
         "obligation_kind": "logic"
       },
       "verdict": {
-        "citation": "`.body(Body::from(vec![0xff]))` ... `assert_eq!(response.status(), StatusCode::BAD_REQUEST);` \n`.body(Body::from(\"{\"))` ... `assert_eq!(response.status(), StatusCode::BAD_REQUEST);` \n`.header(\"content-type\", \"text/plain\")` ... `assert_eq!(response.status(), StatusCode::UNSUPPORTED_MEDIA_TYPE);` \n`assert_ne!(nfc.0, nfd.0);`",
+        "citation": "`.body(Body::from(vec![0xff]))` ... `assert_eq!(response.status(), StatusCode::BAD_REQUEST);` ... `.body(Body::from(\"{\"))` ... `assert_eq!(response.status(), StatusCode::BAD_REQUEST);` ... `.header(\"content-type\", \"text/plain\")` ... `assert_eq!(response.status(), StatusCode::UNSUPPORTED_MEDIA_TYPE);` ... `// NFC vs NFD usernames must remain distinct after JSON decode into RegisterRequest.` ... `assert_ne!(nfc.0, nfd.0);` ... `assert_ne!(nfc.1, nfd.1);`",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_returns_access_token"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_maps_invalid_credentials_to_unauthorized"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "bound_tests_set_hash": "a895841a5577c6c1c552eb1a934610bf64ad4ed955e3ae34615d6c0191f79114",
+        "declaration_hash": "a01f1028d7fd8811b7c6fdc535e4848695a4d2698593a2120d505387e47da0fd"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:IN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert_eq!(response.status(), StatusCode::OK);\n            let bytes = axum::body::to_bytes(response.into_body(), usize::MAX).await.unwrap();\n            let body: serde_json::Value = serde_json::from_slice(&bytes).unwrap();\n            assert_eq!(\n                body.get(\"access_token\").and_then(|v| v.as_str()),\n                Some(\"issued-opaque-token\")\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_login_request_into_command_preserves_validated_credentials"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_returns_access_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "LoginRequest"
+      },
+      "key": {
+        "anchor_text_hash": "301bf9ca1574f8cb0569a216180943bf62fb51c01f668af65cee614e8d5e2b2a",
+        "bound_tests_set_hash": "bacb9bc64bff8a8e8c00dbabeaf6574dc0077552079406822fbf01be14b5814a",
+        "declaration_hash": "277820e2f957acfd71436639b9a60f55d68a7a8c64c86039a86ebe0924f02040"
+      },
+      "obligation_id": {
+        "entry_key": "LoginRequest",
+        "item_identifier": "voluntary:IN-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let command = LoginRequest::from_payload(payload).unwrap().into_command();\n\nassert_eq!(command.username().as_str(), \"ada\");\nassert_eq!(command.password().expose_secret(), \" secret \");\n\nassert_eq!(response.status(), StatusCode::OK);\nassert_eq!(\n    body.get(\"access_token\").and_then(|v| v.as_str()),\n    Some(\"issued-opaque-token\")\n);",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_login_request_json_strings_preserve_normalization_sensitive_values"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-004",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "LoginRequest"
+      },
+      "key": {
+        "anchor_text_hash": "f0717e77895fcf228f2d466ee3c0286a18de7d496962e6964c5c0078de5638e8",
+        "bound_tests_set_hash": "266ad4a8d27a7b81aab97888bb4338d6b66f273849f380225bcf6e1eff3730e7",
+        "declaration_hash": "f3a825d9ae11d55c9737b06f5a6c011a7c2f339bc06b4f8f25387d6735b17e71"
+      },
+      "obligation_id": {
+        "entry_key": "LoginRequest",
+        "item_identifier": "voluntary:CN-004",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert_eq!(\n                app.clone().oneshot(invalid_utf8).await.unwrap().status(),\n                StatusCode::BAD_REQUEST\n            );\nassert_eq!(\n                app.clone().oneshot(unsupported).await.unwrap().status(),\n                StatusCode::UNSUPPORTED_MEDIA_TYPE\n            );\nassert_eq!(app.oneshot(malformed).await.unwrap().status(), StatusCode::BAD_REQUEST);\nassert_ne!(nfc.0, nfd.0);\nassert_eq!(nfc.0.chars().count(), 4);\nassert_eq!(nfd.0.chars().count(), 5);\nassert_ne!(nfc.1, nfd.1);\nassert_eq!(nfc.1.chars().count(), 6);\nassert_eq!(nfd.1.chars().count(), 7);",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_access_token_response_new_preserves_issued_token_for_wire"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_login_route_returns_access_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-002",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AccessTokenResponse"
+      },
+      "key": {
+        "anchor_text_hash": "03f22535cb6e17724dd7aac3638a5c248343f9f17808b33c3bac6b255d081406",
+        "bound_tests_set_hash": "4093e3b2ad5f473654b2b62d3d6c5633d557a466bab6b29bb16f7b42e12c3296",
+        "declaration_hash": "a89d6c6b36866a57c044ede87f224993905d9ad785cef107b17b61fc3b8c31ef"
+      },
+      "obligation_id": {
+        "entry_key": "AccessTokenResponse",
+        "item_identifier": "voluntary:AC-002",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let wire = AccessTokenResponse::new(issued).into_wire();\n            assert_eq!(wire.access_token, \"opaque-token-value\");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_composition",
+          "module_path": "cli_composition::auth::tests",
+          "test_name": "test_auth_composition_root_register_then_login_issues_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "GO-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthCompositionRoot"
+      },
+      "key": {
+        "anchor_text_hash": "f941ee74da1ab64c4159f1d4de0dd42d59036778b6d2d70fd833a5695328e414",
+        "bound_tests_set_hash": "6485ae8eaf02c76d5bf9c7c6d146e65fca227208fef14d9e597b91e9d77100d3",
+        "declaration_hash": "37455740ad71814f9ef6a310b904df2d7b4bc5b52c2c9f14f920e478deb5c04d"
+      },
+      "obligation_id": {
+        "entry_key": "AuthCompositionRoot",
+        "item_identifier": "voluntary:GO-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "assert_eq!(app.clone().oneshot(register).await.unwrap().status(), StatusCode::CREATED);\n\n            let login = Request::builder()\n                .method(\"POST\")\n                .uri(\"/login\")\n                .header(\"content-type\", \"application/json\")\n                .body(Body::from(r#\"{\"username\":\"ada\",\"password\":\"correct horse\"}\"#))\n                .unwrap();\n            let response = app.oneshot(login).await.unwrap();\n            assert_eq!(response.status(), StatusCode::OK);\n            let bytes = axum::body::to_bytes(response.into_body(), usize::MAX).await.unwrap();\n            let body: serde_json::Value = serde_json::from_slice(&bytes).unwrap();\n            let token = body.get(\"access_token\").and_then(|v| v.as_str()).unwrap();\n            assert!(!token.is_empty());",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_composition",
+          "module_path": "cli_composition::auth::tests",
+          "test_name": "test_auth_composition_root_register_then_login_issues_token"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-003",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthCompositionRoot"
+      },
+      "key": {
+        "anchor_text_hash": "31b67e94d7c37b14642283acfc1a085810673715abe3ed3894965580b60d9491",
+        "bound_tests_set_hash": "6485ae8eaf02c76d5bf9c7c6d146e65fca227208fef14d9e597b91e9d77100d3",
+        "declaration_hash": "c8743b46fd1ced088178a6b700a692aa37082f3725722e5dad6c284ae2fab9c8"
+      },
+      "obligation_id": {
+        "entry_key": "AuthCompositionRoot",
+        "item_identifier": "voluntary:CN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let app = AuthCompositionRoot::new().auth_http_api().router();\n\n            let register = Request::builder()\n                .method(\"POST\")\n                .uri(\"/register\")\n                .header(\"content-type\", \"application/json\")\n                .body(Body::from(r#\"{\"username\":\"ada\",\"password\":\"correct horse\"}\"#))\n                .unwrap();\n            assert_eq!(app.clone().oneshot(register).await.unwrap().status(), StatusCode::CREATED);",
         "kind": "fulfilled"
       },
       "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"

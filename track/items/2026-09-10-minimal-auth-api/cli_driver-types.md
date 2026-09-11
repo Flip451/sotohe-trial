@@ -10,8 +10,8 @@
 
 | Name | Kind | Action | Details | Signal | Cat-Spec |
 |------|------|--------|---------|--------|----------|
-| AccessTokenResponse | dto | add | — | 🟡 | 🔵 |
-| LoginRequest | dto | add | — | 🟡 | 🔵 |
+| AccessTokenResponse | dto | add | — | 🔵 | 🔵 |
+| LoginRequest | dto | add | — | 🔵 | 🔵 |
 | RegisterRequest | dto | add | — | 🔵 | 🔵 |
 
 ## Primary Adapters

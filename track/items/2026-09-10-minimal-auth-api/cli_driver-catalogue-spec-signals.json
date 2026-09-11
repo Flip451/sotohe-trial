@@ -1,5 +1,5 @@
 {
-  "catalogue_declaration_hash": "bcdbc83bfdd7c4c897e1254ac8abfe72a968d4b285d69d8688a90d80eda0be00",
+  "catalogue_declaration_hash": "de46bd9bc6e0b9a6063590a4675c0ac71a2972d612292faa71b1b46c6af4caf4",
   "schema_version": 1,
   "signals": [
     {
@@ -8,7 +8,7 @@
       "type_name": "AccessTokenResponse"
     },
     {
-      "entry_hash": "7acb12655f75cd0dd1f9599ea65e671cf4b2ceabcb8ad38981c0bfbc6626fd5b",
+      "entry_hash": "18b7d1122f11d5dad7c954c2c7ffecd7596df9c6548bf246fb3cc8369d09acd7",
       "signal": "blue",
       "type_name": "AuthHttpApi"
     },

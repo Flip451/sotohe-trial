@@ -5,7 +5,7 @@
 
 GO-001 — implement the domain-foundation, application-services, secondary-adapters, http-delivery, and composition sections through T001, T002, T003, T004, T005, T006, T007, T008, and T009.
 
-## Tasks (7/9 resolved)
+## Tasks (9/9 resolved)
 
 ### domain-foundation — Domain foundation
 
@@ -35,10 +35,10 @@ GO-001 — implement the domain-foundation, application-services, secondary-adap
 
 - [x] **T006**: Implement the cli_driver entries `AuthHttpApi` and `HttpServerOutcome` as the shared axum HTTP foundation, plus focused server lifecycle, JSON rejection, and HTTP outcome tests (IN-001, IN-002, CN-003, CN-004). (`21152e95f47e480cefee876b713829f2d023b28a`)
 - [x] **T008**: Implement the cli_driver entry `RegisterRequest` and wire the registration route into `AuthHttpApi`, plus focused registration request and HTTP behavior tests (IN-001, CN-003, CN-004, CN-005, AC-001). (`3245fed5dd96911b1b12d98611e05adff73b1280`)
-- [ ] **T009**: Implement the cli_driver entries `LoginRequest` and `AccessTokenResponse` and wire the login/token route into `AuthHttpApi`, plus focused login request, token response, and HTTP behavior tests (IN-002, CN-003, CN-004, CN-005, AC-002).
+- [x] **T009**: Implement the cli_driver entries `LoginRequest` and `AccessTokenResponse` and wire the login/token route into `AuthHttpApi`, plus focused login request, token response, and HTTP behavior tests (IN-002, CN-003, CN-004, CN-005, AC-002).
 
 ### composition — Composition
 
 > T007 — cli_composition catalogue entry and tests (IN-001, IN-002, CN-002, CN-003, AC-001, AC-002).
 
-- [ ] **T007**: Implement the cli_composition entry `AuthCompositionRoot`, plus focused wiring tests (IN-001, IN-002, CN-002, CN-003, AC-001, AC-002).
+- [x] **T007**: Implement the cli_composition entry `AuthCompositionRoot`, plus focused wiring tests (IN-001, IN-002, CN-002, CN-003, AC-001, AC-002).

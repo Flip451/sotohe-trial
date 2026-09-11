@@ -1,10 +1,10 @@
 {
   "baseline_hash": "812444f6a6df2941efd3f38b571e4ff7ea114613c3a565d160fc4122212cf028",
-  "declaration_hash": "bcdbc83bfdd7c4c897e1254ac8abfe72a968d4b285d69d8688a90d80eda0be00",
-  "generated_at": "2026-09-11T01:54:43Z",
-  "head_commit": "3245fed5dd96911b1b12d98611e05adff73b1280",
-  "implementation_fingerprint": "e459cd7b00706fb487bd56879d765cdbed4610e202d7c04ed7136ebbfbc807cc",
-  "resolution_fingerprint": "8ca3fb874cc5d774b855cd63cb5b4a3548026b3e47d50773cb7971799bc724c8",
+  "declaration_hash": "de46bd9bc6e0b9a6063590a4675c0ac71a2972d612292faa71b1b46c6af4caf4",
+  "generated_at": "2026-09-11T06:25:05Z",
+  "head_commit": "c0a70c2d7a7a9453001e08978e983357e23af052",
+  "implementation_fingerprint": "1a05df9268ac06facce9cfd7caba3105b57568ebfda0e499db88ad3093f5bc91",
+  "resolution_fingerprint": "8438d1c346e064b4a9db847786475d6b325327d71e968a41f9a0645210b17089",
   "rustdoc_execution_identity": {
     "crate_name": "cli_driver",
     "expected_json_path": "target/.sotp-rustdoc/95a4b68af0afc4b43a270ed2d8b87618673abb66281f314f09d0e0b454b15f3d/doc/cli_driver.json",
@@ -15,10 +15,10 @@
   "schema_version": 6,
   "signals": [
     {
-      "found_type": false,
+      "found_type": true,
       "kind_tag": "dto",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "AccessTokenResponse"
     },
     {
@@ -36,10 +36,10 @@
       "type_name": "HttpServerOutcome"
     },
     {
-      "found_type": false,
+      "found_type": true,
       "kind_tag": "dto",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "LoginRequest"
     },
     {

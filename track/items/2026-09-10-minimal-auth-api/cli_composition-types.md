@@ -4,5 +4,5 @@
 
 | Name | Kind | Action | Details | Signal | Cat-Spec |
 |------|------|--------|---------|--------|----------|
-| AuthCompositionRoot | composition_root | add | — | 🟡 | 🔵 |
+| AuthCompositionRoot | composition_root | add | — | 🔵 | 🔵 |
 

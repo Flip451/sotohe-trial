@@ -47,6 +47,38 @@
         }
       ]
     },
+    "cli_composition": {
+      "rounds": [
+        {
+          "at": "2026-09-11T02:21:21Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9257786c032c605e1e96a60b80c20e1d304ebcb28a71a7ad6dae48c10140d1fe",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:50:49Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2af1d5b1ccce7bdafc865aa8406ac11a3467d359ebd63b21b4cf366a1a0bab35",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:19:43Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec878e442003b2b2f5fb5ba8ca8267bf0975bb43d8a2d2164a30ae599b75e07a",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:22:35Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec878e442003b2b2f5fb5ba8ca8267bf0975bb43d8a2d2164a30ae599b75e07a",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
     "cli_driver": {
       "rounds": [
         {
@@ -410,6 +442,49 @@
           "at": "2026-09-11T01:46:44Z",
           "findings": [],
           "hash": "rvw1:sha256:3bfa90493f2a244e70107b9cadcfa907b5bc2d8be62edaa59785897b7aca5541",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:19:16Z",
+          "findings": [
+            {
+              "category": "public API contract",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 217,
+              "message": "`router` remains private, but the briefing requires `pub fn router` for composition wiring tests. External callers cannot obtain the `/login` route from `AuthHttpApi`; make this method public.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:06155e76ee127b29dcb3cef09c0d2c4de3a6e9a11c12fd4b4c4f424aa73be42b",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T02:39:32Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4443bb00621f30c118c7412863415986a5ad0ae9e38474bb2e35e3125e1a39cc",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:46:36Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4443bb00621f30c118c7412863415986a5ad0ae9e38474bb2e35e3125e1a39cc",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:11:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:a93b6f13eaaa9377add2088cdc090981853cf789c75a2c3e5d29815307fe66c0",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:16:49Z",
+          "findings": [],
+          "hash": "rvw1:sha256:a93b6f13eaaa9377add2088cdc090981853cf789c75a2c3e5d29815307fe66c0",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -931,6 +1006,20 @@
           "hash": "rvw1:sha256:dd0ef7ec4057c2e18afe5b52feef69c54c2b5683899a90efc8f04584bc9fe759",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:12:24Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cba169c12c15fa96709a52059eba604fb05acf14fa038ebb10e00a713d9eaa70",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:54:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cba169c12c15fa96709a52059eba604fb05acf14fa038ebb10e00a713d9eaa70",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -1283,6 +1372,78 @@
           "at": "2026-09-11T01:48:39Z",
           "findings": [],
           "hash": "rvw1:sha256:23e435eb657ccf97281cdb915a9aa6cf8d4cdcf2baf3b18348d6b2ed9a44dca9",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:13:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b194a2231a6848e3ed20336323441cc84d6e4c7316d54a260458c852d17368c4",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T03:01:48Z",
+          "findings": [
+            {
+              "category": "test-coverage",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 833,
+              "message": "The CN-004 binding cites `test_auth_http_api_json_strings_are_not_unicode_normalized`, but that test constructs a standalone Axum router and never exercises `AuthHttpApi`, whose handlers perform their own `serde_json::from_slice` decoding. The record therefore lacks edge-local evidence for the adapter's normalization behavior; bind the actual register/login route normalization tests instead.",
+              "severity": "P1"
+            },
+            {
+              "category": "test-coverage",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 893,
+              "message": "The RegisterRequest CN-004 binding here and LoginRequest binding at line 959 claim that JSON string values are not Unicode-normalized, but their normalization-sensitive tests vary only the username. Register uses a constant ASCII password, while Login never asserts the recorded password, so password normalization would escape these bindings. Add normalization-sensitive password cases for both request edges.",
+              "severity": "P1"
+            },
+            {
+              "category": "correctness",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 420,
+              "message": "This waiver says registration belongs to the pending T003 implementation, and the RegisterUserCommand waiver at line 607 repeats that claim, but T003 is done and the track is Ready to Ship. Because waiver reasons are compliance evidence, replace these stale future-state claims with current, entry-local rationales or current test bindings.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:b194a2231a6848e3ed20336323441cc84d6e4c7316d54a260458c852d17368c4",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T03:23:12Z",
+          "findings": [],
+          "hash": "rvw1:sha256:380e981e1214d9bde28e6dfae645c1312132bb9992c6861f762b74e7fb467276",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T03:24:37Z",
+          "findings": [
+            {
+              "category": "test-obligation",
+              "file": "track/items/2026-09-10-minimal-auth-api/test-bindings.json",
+              "line": 547,
+              "message": "The rewritten waiver is still invalid: it relies on other entries and CN-005 bindings instead of establishing why PasswordInputError has no entry-local behavior intersecting IN-001. This currently makes `bin/sotp test-obligation check` exit 1. Explain explicitly that PasswordInputError represents invalid-input failure while IN-001 describes registration behavior, or replace the waiver with direct evidence, then re-evaluate the cache.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:380e981e1214d9bde28e6dfae645c1312132bb9992c6861f762b74e7fb467276",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T06:09:59Z",
+          "findings": [],
+          "hash": "rvw1:sha256:692c753a46d0c5fff006480a331cb593dcf6f86bf23de43b902803c093cb9778",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T06:13:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:692c753a46d0c5fff006480a331cb593dcf6f86bf23de43b902803c093cb9778",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -1659,6 +1820,20 @@
           "hash": "rvw1:sha256:bdd156246c6abfdeee52efad3c097dda1e7d8bb7b4681efce2a3ab6625fc2c3b",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:41:21Z",
+          "findings": [],
+          "hash": "rvw1:sha256:80a90216c8b16a550f14b0c8d5c8abdda695cf7e7ffb021d6dc31334add44ad0",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T03:05:10Z",
+          "findings": [],
+          "hash": "rvw1:sha256:80a90216c8b16a550f14b0c8d5c8abdda695cf7e7ffb021d6dc31334add44ad0",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -1718,6 +1893,20 @@
           "at": "2026-09-10T23:21:03Z",
           "findings": [],
           "hash": "rvw1:sha256:431b1576375d773860eed822e3e3256d2a341e2dea85ec63bc7df89f50906cd1",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:23:10Z",
+          "findings": [],
+          "hash": "rvw1:sha256:808f83141ac756995eafcbb6751106065e5d95c8e8990cf2479292d617a9abb3",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T02:53:15Z",
+          "findings": [],
+          "hash": "rvw1:sha256:808f83141ac756995eafcbb6751106065e5d95c8e8990cf2479292d617a9abb3",
           "type": "final",
           "verdict": "zero_findings"
         }

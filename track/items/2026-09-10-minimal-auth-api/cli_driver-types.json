@@ -105,6 +105,33 @@
             }
           ],
           "docs": "Binds the declared loopback endpoint and serves until Ctrl-C graceful shutdown; maps HttpServerOutcome into CommandOutcome."
+        },
+        {
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "router",
+          "params": [],
+          "receiver": "&self",
+          "returns": "axum::routing::Router",
+          "spec_refs": [
+            {
+              "anchor": "IN-001",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "IN-002",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "CN-003",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            },
+            {
+              "anchor": "CN-004",
+              "file": "track/items/2026-09-10-minimal-auth-api/spec.json"
+            }
+          ],
+          "docs": "Builds the axum REST router for registration and login with the declared JSON media-type and body-handling constraints."
         }
       ],
       "module_path": "auth",
