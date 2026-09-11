@@ -1,8 +1,8 @@
 {
   "baseline_hash": "812444f6a6df2941efd3f38b571e4ff7ea114613c3a565d160fc4122212cf028",
   "declaration_hash": "de46bd9bc6e0b9a6063590a4675c0ac71a2972d612292faa71b1b46c6af4caf4",
-  "generated_at": "2026-09-11T06:25:05Z",
-  "head_commit": "c0a70c2d7a7a9453001e08978e983357e23af052",
+  "generated_at": "2026-09-11T06:28:49Z",
+  "head_commit": "d18d4de2f95dd041ce0ab569f6f78cd5225cf72f",
   "implementation_fingerprint": "1a05df9268ac06facce9cfd7caba3105b57568ebfda0e499db88ad3093f5bc91",
   "resolution_fingerprint": "8438d1c346e064b4a9db847786475d6b325327d71e968a41f9a0645210b17089",
   "rustdoc_execution_identity": {

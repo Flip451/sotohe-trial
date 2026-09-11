@@ -101,6 +101,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "d18d4de2f95dd041ce0ab569f6f78cd5225cf72f",
       "description": "Implement the cli_composition entry `AuthCompositionRoot`, plus focused wiring tests (IN-001, IN-002, CN-002, CN-003, AC-001, AC-002).",
       "id": "T007",
       "status": "done"
@@ -112,6 +113,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "d18d4de2f95dd041ce0ab569f6f78cd5225cf72f",
       "description": "Implement the cli_driver entries `LoginRequest` and `AccessTokenResponse` and wire the login/token route into `AuthHttpApi`, plus focused login request, token response, and HTTP behavior tests (IN-002, CN-003, CN-004, CN-005, AC-002).",
       "id": "T009",
       "status": "done"
