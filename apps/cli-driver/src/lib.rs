@@ -34,7 +34,7 @@ pub mod auth {
         response::IntoResponse,
         routing::post,
     };
-    use tokio::net::TcpListener;
+    use tokio::{net::TcpListener, sync::Semaphore};
     use usecase::auth::{
         CredentialParseError, IssuedAccessToken, LoginCommand, LoginError, LoginService,
         RegisterUserCommand, RegisterUserError, RegisterUserService,
@@ -44,6 +44,13 @@ pub mod auth {
 
     const HTTP_BIND_ADDRESS: &str = "127.0.0.1:3000";
     const HTTP_MAX_BODY_BYTES: usize = 64 * 1024;
+    /// Process-wide cap on concurrent Argon2 authentication jobs.
+    ///
+    /// Declared in `knowledge/conventions/environment-declaration.md`.
+    /// Additional accepted requests wait (`acquire().await`) before
+    /// `spawn_blocking`; no new HTTP status is introduced on saturation.
+    const AUTH_BLOCKING_CONCURRENCY_LIMIT: usize = 8;
+    static AUTH_BLOCKING_PERMITS: Semaphore = Semaphore::const_new(AUTH_BLOCKING_CONCURRENCY_LIMIT);
 
     /// Outcome returned when the HTTP server lifecycle ends.
     pub enum HttpServerOutcome {
@@ -282,8 +289,16 @@ pub mod auth {
             Err(_) => return StatusCode::BAD_REQUEST,
         };
 
-        let result =
-            tokio::task::spawn_blocking(move || register.execute(request.into_command())).await;
+        let permit = match AUTH_BLOCKING_PERMITS.acquire().await {
+            Ok(permit) => permit,
+            Err(_) => return StatusCode::INTERNAL_SERVER_ERROR,
+        };
+        let result = tokio::task::spawn_blocking(move || {
+            let result = register.execute(request.into_command());
+            drop(permit);
+            result
+        })
+        .await;
 
         match result {
             Ok(Ok(())) => StatusCode::CREATED,
@@ -311,8 +326,16 @@ pub mod auth {
             Err(_) => return StatusCode::BAD_REQUEST.into_response(),
         };
 
-        let result =
-            tokio::task::spawn_blocking(move || login.execute(request.into_command())).await;
+        let permit = match AUTH_BLOCKING_PERMITS.acquire().await {
+            Ok(permit) => permit,
+            Err(_) => return StatusCode::INTERNAL_SERVER_ERROR.into_response(),
+        };
+        let result = tokio::task::spawn_blocking(move || {
+            let result = login.execute(request.into_command());
+            drop(permit);
+            result
+        })
+        .await;
 
         match result {
             Ok(Ok(token)) => {

@@ -719,6 +719,42 @@
           "hash": "rvw1:sha256:013f2fc776b51d119f130da7ec1d5c0da2586d01cb5a42c389ddd6730688679f",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:51:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:a77ef05eb4654fd645facd495b4bd19b935d016d263588042b1fffa53d1737e0",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:58:09Z",
+          "findings": [
+            {
+              "category": "CI clippy gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 295,
+              "message": "Both newly added permit acquisitions call `.expect(...)` in production code (here and at line 332). The crate inherits the workspace's `clippy::expect_used = \"deny\"`, so the Clippy CI gate will reject both calls. Handle `AcquireError` without `expect`—for example, map the impossible closed-semaphore case to an internal-error response.",
+              "severity": "P2"
+            },
+            {
+              "category": "CI formatting gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 292,
+              "message": "`cargo fmt --all -- --check` exits 1 because rustfmt requires both newly added semaphore acquisition expressions (here and near line 329) to be reformatted. The repository's formatting gate therefore fails on the current diff; run rustfmt on the scoped file.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:a77ef05eb4654fd645facd495b4bd19b935d016d263588042b1fffa53d1737e0",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T17:02:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8c76f50e7f230898681c34feeaa75058e4a7734ddbbc9db096616de4430edccc",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -956,6 +992,20 @@
           "at": "2026-09-11T16:34:45Z",
           "findings": [],
           "hash": "rvw1:sha256:5a5cd78983b83490b02756b0c289f03fb066ed5200febb6fe4faa2c648b17d2d",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:48:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec9010ae7610f48188278fa473ee44857e6b42c10260630a5c14a1420cb32694",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:54:45Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ec9010ae7610f48188278fa473ee44857e6b42c10260630a5c14a1420cb32694",
           "type": "final",
           "verdict": "zero_findings"
         }
