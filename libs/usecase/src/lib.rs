@@ -425,6 +425,11 @@ pub mod auth {
         tokens: Arc<dyn AccessTokenRepository>,
     }
 
+    // Keep the missing-user path as expensive as the stored-password path so
+    // username lookup does not become a timing oracle. The zero digest is
+    // intentionally never a successful match for a real password.
+    const DUMMY_PASSWORD_HASH: &str = "$argon2id$v=19$m=19456,t=2,p=1$AAAAAAAAAAAAAAAAAAAAAA$AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
     impl LoginInteractor {
         /// Builds a login interactor from its collaborators.
         #[must_use]
@@ -440,8 +445,17 @@ pub mod auth {
 
     impl LoginService for LoginInteractor {
         fn execute(&self, command: LoginCommand) -> Result<IssuedAccessToken, LoginError> {
-            let user =
-                self.users.find_by_username(command.username())?.ok_or(LoginError::UserNotFound)?;
+            let Some(user) = self.users.find_by_username(command.username())? else {
+                // Always invoke the verifier for an unknown username. The
+                // result is intentionally discarded because this remains the
+                // same authentication failure as before at the usecase API.
+                let dummy_hash = match PasswordHash::new(DUMMY_PASSWORD_HASH.to_owned()) {
+                    Ok(hash) => hash,
+                    Err(_) => return Err(LoginError::UserNotFound),
+                };
+                let _ = self.verifier.verify(command.password(), &dummy_hash);
+                return Err(LoginError::UserNotFound);
+            };
             let verified = self.verifier.verify(command.password(), user.password_hash())?;
             if !verified {
                 return Err(LoginError::InvalidCredentials);
@@ -733,6 +747,21 @@ pub mod auth {
             }
         }
 
+        struct RecordingVerifier {
+            calls: Arc<Mutex<Vec<String>>>,
+        }
+
+        impl PasswordVerifier for RecordingVerifier {
+            fn verify(
+                &self,
+                _password: &PlaintextPassword,
+                hash: &PasswordHash,
+            ) -> Result<bool, PasswordVerificationError> {
+                self.calls.lock().unwrap().push(hash.as_str().to_owned());
+                Ok(false)
+            }
+        }
+
         struct FailingHasher;
 
         impl PasswordHasher for FailingHasher {
@@ -826,6 +855,25 @@ pub mod auth {
             let (interactor, _) = interactor(None, Ok(true), None, false, false);
 
             assert!(matches!(interactor.execute(valid_command()), Err(LoginError::UserNotFound)));
+        }
+
+        #[test]
+        fn test_login_interactor_missing_user_verifies_against_valid_dummy_hash() {
+            let calls = Arc::new(Mutex::new(Vec::new()));
+            let tokens =
+                Arc::new(RecordingTokenRepository { saved: Mutex::new(None), unavailable: false });
+            let interactor = LoginInteractor::new(
+                Arc::new(FixedUserRepository { user: None, unavailable: false }),
+                Arc::new(RecordingVerifier { calls: Arc::clone(&calls) }),
+                Arc::new(FixedIssuer { token: None }),
+                tokens,
+            );
+
+            assert!(matches!(interactor.execute(valid_command()), Err(LoginError::UserNotFound)));
+
+            let calls = calls.lock().unwrap();
+            assert_eq!(calls.as_slice(), [DUMMY_PASSWORD_HASH]);
+            assert!(calls.first().and_then(|hash| PasswordHash::new(hash.clone()).ok()).is_some());
         }
 
         #[test]

@@ -2247,6 +2247,28 @@
           "hash": "rvw1:sha256:808f83141ac756995eafcbb6751106065e5d95c8e8990cf2479292d617a9abb3",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T17:18:50Z",
+          "findings": [
+            {
+              "category": "environment",
+              "file": null,
+              "line": null,
+              "message": "レビュー対象の briefing、scope severity policy、および現在の diff を読み込めませんでした。Read-only sandbox が実行前に失敗しています（bubblewrap mount registry lock: Read-only file system）。",
+              "severity": "blocker"
+            }
+          ],
+          "hash": "rvw1:sha256:aa02d6a4f63f82d3ccbef7a1825c2868623b29e03689e8d5359de6d4810de747",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T17:25:02Z",
+          "findings": [],
+          "hash": "rvw1:sha256:aa02d6a4f63f82d3ccbef7a1825c2868623b29e03689e8d5359de6d4810de747",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     }
