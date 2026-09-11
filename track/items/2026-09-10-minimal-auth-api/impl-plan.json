@@ -77,6 +77,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "21152e95f47e480cefee876b713829f2d023b28a",
       "description": "Implement the usecase entries `RegisterUserService`, `RegisterUserInteractor`, and `RegisterUserError`, plus result tests (IN-001, CN-001, CN-002, CN-005, AC-001, AC-003).",
       "id": "T003",
       "status": "done"
@@ -94,6 +95,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "21152e95f47e480cefee876b713829f2d023b28a",
       "description": "Implement the cli_driver entries `AuthHttpApi` and `HttpServerOutcome` as the shared axum HTTP foundation, plus focused server lifecycle, JSON rejection, and HTTP outcome tests (IN-001, IN-002, CN-003, CN-004).",
       "id": "T006",
       "status": "done"
