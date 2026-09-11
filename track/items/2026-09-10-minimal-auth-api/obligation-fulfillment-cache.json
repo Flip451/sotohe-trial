@@ -1606,7 +1606,7 @@
         "entry_key": "AuthCompositionRoot"
       },
       "key": {
-        "anchor_text_hash": "f941ee74da1ab64c4159f1d4de0dd42d59036778b6d2d70fd833a5695328e414",
+        "anchor_text_hash": "cdf602b0542158184fe5e8dbd9a7ef61bca67643ecdf03e2450554c77a3a3763",
         "bound_tests_set_hash": "6485ae8eaf02c76d5bf9c7c6d146e65fca227208fef14d9e597b91e9d77100d3",
         "declaration_hash": "37455740ad71814f9ef6a310b904df2d7b4bc5b52c2c9f14f920e478deb5c04d"
       },
@@ -1616,7 +1616,7 @@
         "obligation_kind": "logic"
       },
       "verdict": {
-        "citation": "assert_eq!(app.clone().oneshot(register).await.unwrap().status(), StatusCode::CREATED);\n\n            let login = Request::builder()\n                .method(\"POST\")\n                .uri(\"/login\")\n                .header(\"content-type\", \"application/json\")\n                .body(Body::from(r#\"{\"username\":\"ada\",\"password\":\"correct horse\"}\"#))\n                .unwrap();\n            let response = app.oneshot(login).await.unwrap();\n            assert_eq!(response.status(), StatusCode::OK);\n            let bytes = axum::body::to_bytes(response.into_body(), usize::MAX).await.unwrap();\n            let body: serde_json::Value = serde_json::from_slice(&bytes).unwrap();\n            let token = body.get(\"access_token\").and_then(|v| v.as_str()).unwrap();\n            assert!(!token.is_empty());",
+        "citation": "assert_eq!(response.status(), StatusCode::OK);\n            let bytes = axum::body::to_bytes(response.into_body(), usize::MAX).await.unwrap();\n            let body: serde_json::Value = serde_json::from_slice(&bytes).unwrap();\n            let token = body.get(\"access_token\").and_then(|v| v.as_str()).unwrap();\n            assert!(!token.is_empty());",
         "kind": "fulfilled"
       },
       "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"

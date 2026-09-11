@@ -10,17 +10,17 @@
         },
         "kind": "catalogue_entry"
       },
-      "evidence_hash": "d0459f6c0f0c540a1e4124ba29d8a3b7375e4382ffc58fd561812f46f642e709",
+      "evidence_hash": "5c93038aa1108f4d1a538d7095150a07ff54a13ac0de021a48f887254a1d497d",
       "evidence_origin": {
         "data": {
           "element_id": "GO-001",
           "section": "goal",
-          "text_label": "Provide a minimal HTTP API foundation for user registration and issuance of opaque access tokens after successful authentication."
+          "text_label": "Issue opaque access tokens after successful authentication for client proof."
         },
         "kind": "spec_element"
       },
       "verdict": {
-        "citation": "Provide a minimal HTTP API foundation for user registration and issuance of opaque access tokens after successful authentication.",
+        "citation": "Issue opaque access tokens after successful authentication for client proof.",
         "kind": "pass"
       }
     },

@@ -1,58 +1,12 @@
 {
   "entries": [
     {
-      "claim_hash": "d0459f6c0f0c540a1e4124ba29d8a3b7375e4382ffc58fd561812f46f642e709",
+      "claim_hash": "5c93038aa1108f4d1a538d7095150a07ff54a13ac0de021a48f887254a1d497d",
       "claim_origin": {
         "data": {
           "element_id": "GO-001",
           "section": "goal",
-          "text_label": "Provide a minimal HTTP API foundation for user registration and issuance of opaque access tokens after successful authentication."
-        },
-        "kind": "spec_element"
-      },
-      "evidence_hash": "ed6bff81af9c35c1feaa2187ebcc5490f1192ff66bcff039620f5fc57923d50f",
-      "evidence_origin": {
-        "data": {
-          "decision_id": "D1",
-          "file_path": "knowledge/adr/2026-09-10-1238-minimal-auth-registration-capability.md"
-        },
-        "kind": "adr_decision"
-      },
-      "verdict": {
-        "citation": "最小認証 API は、HTTP API を通じてユーザー登録を外部に提供する能力を持つ。",
-        "kind": "pass"
-      }
-    },
-    {
-      "claim_hash": "d0459f6c0f0c540a1e4124ba29d8a3b7375e4382ffc58fd561812f46f642e709",
-      "claim_origin": {
-        "data": {
-          "element_id": "GO-001",
-          "section": "goal",
-          "text_label": "Provide a minimal HTTP API foundation for user registration and issuance of opaque access tokens after successful authentication."
-        },
-        "kind": "spec_element"
-      },
-      "evidence_hash": "7c3c20c72f37aa24f871750ebad3a2c85c86d918aa3fb099481b21aa17ef5b02",
-      "evidence_origin": {
-        "data": {
-          "decision_id": "D4",
-          "file_path": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
-        },
-        "kind": "adr_decision"
-      },
-      "verdict": {
-        "citation": "HTTP 面は axum による REST API とする。",
-        "kind": "pass"
-      }
-    },
-    {
-      "claim_hash": "d0459f6c0f0c540a1e4124ba29d8a3b7375e4382ffc58fd561812f46f642e709",
-      "claim_origin": {
-        "data": {
-          "element_id": "GO-001",
-          "section": "goal",
-          "text_label": "Provide a minimal HTTP API foundation for user registration and issuance of opaque access tokens after successful authentication."
+          "text_label": "Issue opaque access tokens after successful authentication for client proof."
         },
         "kind": "spec_element"
       },
@@ -70,6 +24,29 @@
       }
     },
     {
+      "claim_hash": "94eb7f0b6e30a51bdd804630678e6c84b596abeba4d5501a1956c4e4f5bb9d97",
+      "claim_origin": {
+        "data": {
+          "element_id": "GO-002",
+          "section": "goal",
+          "text_label": "Expose user registration as an HTTP API capability."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "ecc58bcab43cc1a47639f71a9154e13442149e5e1140e95b0530492cf85e78b4",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D1",
+          "file_path": "knowledge/adr/2026-09-10-1238-minimal-auth-registration-capability.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "最小認証 API は、HTTP API を通じてユーザー登録を外部に提供する能力を持つ。",
+        "kind": "pass"
+      }
+    },
+    {
       "claim_hash": "baca2e1333dd8a6c3dd7d4f5bfb60d20998745e08c2b48c44af7b61e97382e7c",
       "claim_origin": {
         "data": {
@@ -79,7 +56,7 @@
         },
         "kind": "spec_element"
       },
-      "evidence_hash": "ed6bff81af9c35c1feaa2187ebcc5490f1192ff66bcff039620f5fc57923d50f",
+      "evidence_hash": "ecc58bcab43cc1a47639f71a9154e13442149e5e1140e95b0530492cf85e78b4",
       "evidence_origin": {
         "data": {
           "decision_id": "D1",
@@ -88,7 +65,7 @@
         "kind": "adr_decision"
       },
       "verdict": {
-        "citation": "HTTP API を通じてユーザー登録を外部に提供する能力を持つ。",
+        "citation": "最小認証 API は、HTTP API を通じてユーザー登録を外部に提供する能力を持つ。",
         "kind": "pass"
       }
     },
@@ -240,7 +217,7 @@
         },
         "kind": "spec_element"
       },
-      "evidence_hash": "9a3c75004db46f25c4f1e963a8967a70339fe80708b7259d6dcde33768603c64",
+      "evidence_hash": "665eab3513535e6617c1d1b73c42302bd6ac233a98350ac3b95d57178d34816e",
       "evidence_origin": {
         "data": {
           "decision_id": "D1",
@@ -263,7 +240,7 @@
         },
         "kind": "spec_element"
       },
-      "evidence_hash": "ed6bff81af9c35c1feaa2187ebcc5490f1192ff66bcff039620f5fc57923d50f",
+      "evidence_hash": "ecc58bcab43cc1a47639f71a9154e13442149e5e1140e95b0530492cf85e78b4",
       "evidence_origin": {
         "data": {
           "decision_id": "D1",

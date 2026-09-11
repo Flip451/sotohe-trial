@@ -1,14 +1,15 @@
 <!-- Generated from spec.json — DO NOT EDIT DIRECTLY -->
 ---
 version: "1.0.0"
-signals: { blue: 12, yellow: 0, red: 0 }
+signals: { blue: 13, yellow: 0, red: 0 }
 ---
 
 # 最小認証API
 
 ## Goal
 
-- [GO-001] Provide a minimal HTTP API foundation for user registration and issuance of opaque access tokens after successful authentication. [adr: knowledge/adr/2026-09-10-1238-minimal-auth-registration-capability.md#D1, knowledge/adr/2026-09-10-1126-minimal-auth-api.md#D4, knowledge/adr/2026-09-10-1126-minimal-auth-api.md#D1]
+- [GO-001] Issue opaque access tokens after successful authentication for client proof. [adr: knowledge/adr/2026-09-10-1126-minimal-auth-api.md#D1]
+- [GO-002] Expose user registration as an HTTP API capability. [adr: knowledge/adr/2026-09-10-1238-minimal-auth-registration-capability.md#D1]
 
 ## Scope
 
@@ -38,5 +39,5 @@ signals: { blue: 12, yellow: 0, red: 0 }
 ## Signal Summary
 
 ### Stage 1: Spec Signals
-🔵 12  🟡 0  🔴 0
+🔵 13  🟡 0  🔴 0
 
