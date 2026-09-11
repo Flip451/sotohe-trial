@@ -6,14 +6,14 @@
 
 use std::process::ExitCode;
 
-use cli_composition::GreetingCompositionRoot;
+use cli_composition::auth::AuthCompositionRoot;
 use cli_driver::CommandOutcome;
 
-fn main() -> ExitCode {
-    let name = std::env::args().nth(1).unwrap_or_else(|| "world".to_owned());
-    let composition_root = GreetingCompositionRoot::new();
-    let driver = composition_root.greeting_driver();
-    present(driver.handle(&name))
+#[tokio::main(flavor = "current_thread")]
+async fn main() -> ExitCode {
+    let composition_root = AuthCompositionRoot::new();
+    let api = composition_root.auth_http_api();
+    present(api.serve().await)
 }
 
 /// Prints the command result and maps it to a process exit code.

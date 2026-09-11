@@ -113,6 +113,7 @@ version = "0.1.0"
 dependencies = [
  "cli_composition",
  "cli_driver",
+ "tokio",
 ]
 
 [[package]]

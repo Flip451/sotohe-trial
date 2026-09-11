@@ -282,10 +282,13 @@ pub mod auth {
             Err(_) => return StatusCode::BAD_REQUEST,
         };
 
-        match register.execute(request.into_command()) {
-            Ok(()) => StatusCode::CREATED,
-            Err(RegisterUserError::UserAlreadyExists) => StatusCode::CONFLICT,
-            Err(_) => StatusCode::INTERNAL_SERVER_ERROR,
+        let result =
+            tokio::task::spawn_blocking(move || register.execute(request.into_command())).await;
+
+        match result {
+            Ok(Ok(())) => StatusCode::CREATED,
+            Ok(Err(RegisterUserError::UserAlreadyExists)) => StatusCode::CONFLICT,
+            Ok(Err(_)) | Err(_) => StatusCode::INTERNAL_SERVER_ERROR,
         }
     }
 
@@ -308,15 +311,18 @@ pub mod auth {
             Err(_) => return StatusCode::BAD_REQUEST.into_response(),
         };
 
-        match login.execute(request.into_command()) {
-            Ok(token) => {
+        let result =
+            tokio::task::spawn_blocking(move || login.execute(request.into_command())).await;
+
+        match result {
+            Ok(Ok(token)) => {
                 let response = AccessTokenResponse::new(token);
                 (StatusCode::OK, Json(response.into_wire())).into_response()
             }
-            Err(LoginError::UserNotFound | LoginError::InvalidCredentials) => {
+            Ok(Err(LoginError::UserNotFound | LoginError::InvalidCredentials)) => {
                 StatusCode::UNAUTHORIZED.into_response()
             }
-            Err(_) => StatusCode::INTERNAL_SERVER_ERROR.into_response(),
+            Ok(Err(_)) | Err(_) => StatusCode::INTERNAL_SERVER_ERROR.into_response(),
         }
     }
 
@@ -660,6 +666,29 @@ pub mod auth {
             }
         }
 
+        struct ThreadRecordingRegister {
+            executed_on: Arc<Mutex<Option<std::thread::ThreadId>>>,
+        }
+
+        impl RegisterUserService for ThreadRecordingRegister {
+            fn execute(&self, _command: RegisterUserCommand) -> Result<(), RegisterUserError> {
+                *self.executed_on.lock().unwrap() = Some(std::thread::current().id());
+                Ok(())
+            }
+        }
+
+        struct ThreadRecordingLogin {
+            executed_on: Arc<Mutex<Option<std::thread::ThreadId>>>,
+        }
+
+        impl LoginService for ThreadRecordingLogin {
+            fn execute(&self, _command: LoginCommand) -> Result<IssuedAccessToken, LoginError> {
+                *self.executed_on.lock().unwrap() = Some(std::thread::current().id());
+                let token = OpaqueAccessToken::new("blocking-token".to_owned()).unwrap();
+                Ok(IssuedAccessToken::from_domain(token))
+            }
+        }
+
         #[test]
         fn test_login_request_into_command_preserves_validated_credentials() {
             let payload: LoginRequestPayload =
@@ -708,6 +737,39 @@ pub mod auth {
                 *received.lock().unwrap(),
                 vec![("ada".to_owned(), "correct horse".to_owned())]
             );
+        }
+
+        #[tokio::test]
+        async fn test_auth_http_api_authentication_runs_services_on_blocking_threads() {
+            let runtime_thread = std::thread::current().id();
+            let register_thread = Arc::new(Mutex::new(None));
+            let login_thread = Arc::new(Mutex::new(None));
+            let app = AuthHttpApi::new(
+                Arc::new(ThreadRecordingRegister { executed_on: Arc::clone(&register_thread) }),
+                Arc::new(ThreadRecordingLogin { executed_on: Arc::clone(&login_thread) }),
+            )
+            .router();
+
+            let register = Request::builder()
+                .method("POST")
+                .uri("/register")
+                .header("content-type", "application/json")
+                .body(Body::from(r#"{"username":"ada","password":"correct horse"}"#))
+                .unwrap();
+            assert_eq!(app.clone().oneshot(register).await.unwrap().status(), StatusCode::CREATED);
+
+            let login = Request::builder()
+                .method("POST")
+                .uri("/login")
+                .header("content-type", "application/json")
+                .body(Body::from(r#"{"username":"ada","password":"correct horse"}"#))
+                .unwrap();
+            assert_eq!(app.oneshot(login).await.unwrap().status(), StatusCode::OK);
+
+            let register_thread = register_thread.lock().unwrap().expect("register executed");
+            assert_ne!(register_thread, runtime_thread);
+            let login_thread = login_thread.lock().unwrap().expect("login executed");
+            assert_ne!(login_thread, runtime_thread);
         }
 
         #[tokio::test]

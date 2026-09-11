@@ -47,6 +47,46 @@
         }
       ]
     },
+    "cli": {
+      "rounds": [
+        {
+          "at": "2026-09-11T15:36:55Z",
+          "findings": [
+            {
+              "category": "environment",
+              "file": null,
+              "line": null,
+              "message": "Unable to perform the requested review: the read-only command runner fails during sandbox initialization because it cannot create its synthetic mount registry lock under /tmp. The briefing, severity policy, current files, and diff could not be read, so no code-level adjudication is possible.",
+              "severity": "blocking"
+            }
+          ],
+          "hash": "rvw1:sha256:b50a18c2e33f56a227efe9f5b71d2a25542a158aebbd665219f5bcf5c6a35a73",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:37:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b50a18c2e33f56a227efe9f5b71d2a25542a158aebbd665219f5bcf5c6a35a73",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:42:31Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b50a18c2e33f56a227efe9f5b71d2a25542a158aebbd665219f5bcf5c6a35a73",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:45:08Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b50a18c2e33f56a227efe9f5b71d2a25542a158aebbd665219f5bcf5c6a35a73",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
     "cli_composition": {
       "rounds": [
         {
@@ -487,6 +527,198 @@
           "hash": "rvw1:sha256:a93b6f13eaaa9377add2088cdc090981853cf789c75a2c3e5d29815307fe66c0",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:30:14Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "Review could not be completed: the required scope policy, briefing, current diff, and target file could not be read because the workspace command runner failed on a read-only /tmp sandbox lock. No code-level adjudication is possible.",
+              "severity": null
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:37:33Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "The review remains blocked: the required files and current diff could not be read because the workspace command runner fails while opening its read-only /tmp sandbox lock. No code-level finding can be adjudicated.",
+              "severity": null
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:38:41Z",
+          "findings": [
+            {
+              "category": "tooling",
+              "file": null,
+              "line": null,
+              "message": "Unable to perform the requested review because the repository read command fails before accessing any files: the sandbox cannot open its synthetic bubblewrap lock under /tmp. The required policy, briefing, current diff, and target source therefore remain unread.",
+              "severity": null
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:41:12Z",
+          "findings": [],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:46:45Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 285,
+              "message": "Each accepted register/login request now submits CPU- and memory-intensive authentication work to Tokio's shared blocking pool without admission control. With the locked Tokio runtime, `spawn_blocking` may create up to 512 blocking threads and its queue has no backpressure; concurrent unique registrations can therefore run many ~19 MiB Argon2 operations and exhaust CPU/memory. The environment declaration specifies only per-hash limits and explicitly defers worker/concurrency limits, so this depends on an undeclared resource and concurrency assumption. Add a bounded concurrency mechanism with defined saturation behavior and declare that boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "test correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 769,
+              "message": "The blocking-thread test compares each recorded `Option<ThreadId>` with `Some(runtime_thread)` using `assert_ne!`, which also passes when the service never recorded a thread (`None`). It therefore does not independently establish that both injected services executed. Require each value to be `Some` before comparing its thread ID with the runtime thread.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:51:59Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 285,
+              "message": "Each accepted register/login request submits CPU- and memory-intensive authentication work to Tokio's shared blocking pool without admission control. The locked runtime permits a very large blocking-thread pool and an unbounded waiting queue, so concurrent unique registrations can run many ~19 MiB Argon2 operations and exhaust CPU or memory. The environment declaration defines only per-hash limits and explicitly defers concurrency limits. Add a bounded concurrency mechanism with defined saturation behavior and declare that boundary.",
+              "severity": "P1"
+            },
+            {
+              "category": "test correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 769,
+              "message": "The blocking-thread test uses `assert_ne!(recorded.as_ref(), Some(&runtime_thread))`, which also succeeds when the recorded value is `None`. It therefore does not reliably prove that each injected service executed. Require each recorded thread ID to be present before comparing it with the runtime thread.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:424f5739aae48fafc61d0e29153dfad3c647657b32083ab0182156b0c96c9453",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T15:58:37Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 50,
+              "message": "The new process-wide authentication limit of 8 and its immediate HTTP 503 saturation behavior are defined only in this adapter. Neither the spec nor the project environment declaration records the limit, its scope across register/login and all `AuthHttpApi` instances, or the overload response; the declaration still says worker and concurrency limits are deferred. Add this resource/concurrency contract to the project-owned declaration (and specification if it is client-visible policy).",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:2422ee94541f3b432503cbba1a18c2512debaf3f6762b39e298983a913254d92",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:10:03Z",
+          "findings": [
+            {
+              "category": "behavioral-regression",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 289,
+              "message": "The new process-wide semaphore changes the existing register/login contract: any ninth concurrent authentication request is immediately returned as 503 Service Unavailable (lines 289-293 and 326-330), although the briefing requires preserving prior response behavior and does not specify admission rejection. This can reject valid requests under ordinary concurrency; either remove this adapter-level limit or specify and test the overload contract in the design.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:2422ee94541f3b432503cbba1a18c2512debaf3f6762b39e298983a913254d92",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:17:25Z",
+          "findings": [
+            {
+              "category": "behavioral-regression",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 291,
+              "message": "The new global semaphore introduces an undocumented overload contract: once eight requests are admitted, subsequent valid register/login requests immediately return 503 Service Unavailable (lines 291-295 and 328-332). The briefing requires preserving the existing response mappings and does not authorize this new resource limit; documenting/testing the behavior in this diff does not make it part of the stated design. Remove the fail-fast limit or update the governing design contract before adding it.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:e08e1b9112b90c4ccd9b05a1dfac9d7621fc0eda10e54990b84d3816ebbeff0a",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:23:14Z",
+          "findings": [
+            {
+              "category": "undeclared-resource-limit",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 44,
+              "message": "The diff adds a process-wide hard-coded limit of eight concurrent authentication executions and makes all later requests wait on that semaphore before entering `spawn_blocking` (lines 44-52, 289-297, and 326-334). This introduces an undeclared resource-limit assumption and can create an unbounded queue of HTTP requests, while also coupling independent `AuthHttpApi` instances. The briefing only requires offloading execution and preserving behavior; define this capacity/backpressure contract in the design (with an explicit bounded/timeout policy) or remove the semaphore.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:9619d5da26981d8381e2b10164ba0f9eb2236901f76b14f8320dc30d0679c5cc",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:27:04Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9619d5da26981d8381e2b10164ba0f9eb2236901f76b14f8320dc30d0679c5cc",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:31:47Z",
+          "findings": [],
+          "hash": "rvw1:sha256:abbc5e8b052d8879e68becbd94722af3af1993906ed506dbfa66d68bda79d0dd",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:35:32Z",
+          "findings": [
+            {
+              "category": "CI formatting gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 773,
+              "message": "`cargo fmt --check -p cli_driver` exits 1 because of the extra blank line after the new blocking-thread test. This leaves the scoped file failing the repository formatting gate; run rustfmt before approval.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:abbc5e8b052d8879e68becbd94722af3af1993906ed506dbfa66d68bda79d0dd",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T16:38:22Z",
+          "findings": [],
+          "hash": "rvw1:sha256:013f2fc776b51d119f130da7ec1d5c0da2586d01cb5a42c389ddd6730688679f",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -696,6 +928,34 @@
           "at": "2026-09-11T00:59:54Z",
           "findings": [],
           "hash": "rvw1:sha256:84a580cef5efde9f070a062d769d210a1f9410772d4c72eab43438c724302bbf",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:07:22Z",
+          "findings": [],
+          "hash": "rvw1:sha256:cfb5e430471077dbe74858402d6e8218fe55c030e29147716a68702dd42c510f",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:21:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f1d215f4cd846ba71280184814c371e439385baff64c3c4b6a71caefbba59717",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:29:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5a5cd78983b83490b02756b0c289f03fb066ed5200febb6fe4faa2c648b17d2d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T16:34:45Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5a5cd78983b83490b02756b0c289f03fb066ed5200febb6fe4faa2c648b17d2d",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -1458,6 +1718,20 @@
           "at": "2026-09-11T06:13:29Z",
           "findings": [],
           "hash": "rvw1:sha256:692c753a46d0c5fff006480a331cb593dcf6f86bf23de43b902803c093cb9778",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:27:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6d5cf1eae4d1c28893daa9f33a4c94e97e69d242572290088c013544d0f12304",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T15:31:40Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6d5cf1eae4d1c28893daa9f33a4c94e97e69d242572290088c013544d0f12304",
           "type": "final",
           "verdict": "zero_findings"
         }

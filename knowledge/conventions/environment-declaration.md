@@ -25,6 +25,6 @@
 
 ## Concurrency Model
 
-- thread、task、process などの実行単位と、同時実行の上限: 同期 API (`Send + Sync` ports)。インメモリリポジトリはプロセス内共有。HTTP 配信は Tokio + axum (`AuthHttpApi::serve`) で単一プロセス内の非同期タスクとして動作する。既定 listen は `127.0.0.1:3000`。ワーカー数・同時接続上限の明示設定は後続。Argon2 `p` は 1 に固定。
+- thread、task、process などの実行単位と、同時実行の上限: 同期 API (`Send + Sync` ports)。インメモリリポジトリはプロセス内共有。HTTP 配信は Tokio + axum (`AuthHttpApi::serve`) で単一プロセス内の非同期タスクとして動作する。既定 listen は `127.0.0.1:3000`。ワーカー数・同時接続上限の明示設定は後続。register/login の同期認証実行（Argon2）は `tokio::task::spawn_blocking` で Tokio worker から外す。Argon2 `p` は 1 に固定。
 - shared state の所有、同期、順序、再入可能性: `InMemoryUserRepository` / `InMemoryAccessTokenRepository` は `std::sync::RwLock` で HashMap を保護。ロック毒は repository `Unavailable`。同一 username の二重 save は `DuplicateUser`。順序保証はリポジトリ操作単位。HTTP ハンドラは usecase ports を `Arc` 共有する。
 - cancellation、shutdown、失敗時の処理: usecase 同期呼び出しに協調 cancellation なし。`AuthHttpApi::serve` は既定 bind `127.0.0.1:3000` の後、`axum::serve(...).with_graceful_shutdown` で Ctrl-C (`tokio::signal::ctrl_c`) を待つ。Ctrl-C 受信でグレースフル停止し `HttpServerOutcome::Stopped` → `CommandOutcome { success: true }`。`ctrl_c` の handler インストール失敗は shutdown 完了後に検出し `Failed("failed to install Ctrl-C handler: …")` → `CommandOutcome { success: false }`。bind 失敗も `Failed`。axum 0.8 の graceful-shutdown 経路では accept ループが正常終了するため、serve 本体の `Err` は通常到達しない（到達した場合のみ `Failed`）。Ctrl-C 以外の強制プロセス終了では future が drop され outcome は返らない。インメモリ状態はプロセス終了で消える。部分失敗は型付きエラーで fail-closed（トークン発行後の persist 失敗は `LoginError::Persistence`）。
