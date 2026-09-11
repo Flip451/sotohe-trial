@@ -1256,6 +1256,42 @@
         {
           "layer": "cli_driver",
           "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_register_route_registers_user"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "f9437c3ac6e9acad01012756432c23e7fa97b4597558e7682f42e2301dec0b4c",
+        "declaration_hash": "638c45a47900ad4ae217a9d3daa35d9256f666fd51c40d1bf1935662ad29da9e"
+      },
+      "obligation_id": {
+        "entry_key": "AuthHttpApi",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "            let response = app.oneshot(request).await.unwrap();\n\n            assert_eq!(response.status(), StatusCode::CREATED);\n            assert_eq!(\n                *received.lock().unwrap(),\n                vec![(\"ada\".to_owned(), \"correct horse\".to_owned())]\n            );",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_register_route_registers_user"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
           "test_name": "test_auth_http_api_router_is_axum_router"
         },
         {
@@ -1278,7 +1314,7 @@
       },
       "key": {
         "anchor_text_hash": "31b67e94d7c37b14642283acfc1a085810673715abe3ed3894965580b60d9491",
-        "bound_tests_set_hash": "2b5cb87fc7ff6c7812f158065a944083747994c2e3dc3e9489befdf4753f5ff1",
+        "bound_tests_set_hash": "e4fbeac2e95a3c0ad6bf295bf1ec76fe6791e00465ffb8d38970d3cc04aea90a",
         "declaration_hash": "1ec4501c75eb910b1564b13482cd1d36bc5441a661bb1815f62abe10d4e69a53"
       },
       "obligation_id": {
@@ -1287,7 +1323,7 @@
         "obligation_kind": "logic"
       },
       "verdict": {
-        "citation": "let _typed: Router = router; ... assert!(response.starts_with(\"HTTP/1.1\"), \"unexpected response: {response:?}\");",
+        "citation": "let _typed: Router = router; ... assert!(!response.is_empty(), \"expected an HTTP response from axum\");",
         "kind": "fulfilled"
       },
       "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
@@ -1314,7 +1350,7 @@
       },
       "key": {
         "anchor_text_hash": "f0717e77895fcf228f2d466ee3c0286a18de7d496962e6964c5c0078de5638e8",
-        "bound_tests_set_hash": "e14fd79009427cef240b458cd6379b525fadf8c361d88330be7ce52992b9cd67",
+        "bound_tests_set_hash": "a0734299e1f476b1b747e76541cd9e623c5e6f5f662f90e8c9fb8b2f668aedcd",
         "declaration_hash": "51829ce1d5b7c7c795ad8b6bd16b4a3bfe92b96427f1d3252c368b07bd253a60"
       },
       "obligation_id": {
@@ -1323,7 +1359,79 @@
         "obligation_kind": "logic"
       },
       "verdict": {
-        "citation": "assert_eq!(response.status(), StatusCode::BAD_REQUEST); ... assert_eq!(response.status(), StatusCode::BAD_REQUEST); ... assert_eq!(response.status(), StatusCode::UNSUPPORTED_MEDIA_TYPE); ... assert_ne!(values[0], values[1]);",
+        "citation": "let invalid_utf8 = Request::builder()\n                .method(\"POST\")\n                .uri(\"/register\")\n                .header(\"content-type\", \"application/json\")\n                .body(Body::from(vec![0xff]))\n                .unwrap();\n            let response = app.clone().oneshot(invalid_utf8).await.unwrap();\n            assert_eq!(response.status(), StatusCode::BAD_REQUEST);\n\n            let malformed_json = Request::builder()\n                .method(\"POST\")\n                .uri(\"/register\")\n                .header(\"content-type\", \"application/json\")\n                .body(Body::from(\"{\"))\n                .unwrap();\n            let response = app.clone().oneshot(malformed_json).await.unwrap();\n            assert_eq!(response.status(), StatusCode::BAD_REQUEST);\n\n            let unsupported_media_type = Request::builder()\n                .method(\"POST\")\n                .uri(\"/register\")\n                .header(\"content-type\", \"text/plain\")\n                .body(Body::from(\"{}\"))\n                .unwrap();\n            let response = app.clone().oneshot(unsupported_media_type).await.unwrap();\n            assert_eq!(response.status(), StatusCode::UNSUPPORTED_MEDIA_TYPE);",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_register_request_into_command_preserves_validated_credentials"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_register_route_registers_user"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-001",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterRequest"
+      },
+      "key": {
+        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
+        "bound_tests_set_hash": "e9932df8e20ff53882e8422b61ce8a9674024518992ba17471edc2db647dec45",
+        "declaration_hash": "0b2469db060ea3f2651eb1e8b691431ae188bf38a3adf5f3c8e4eec1889c6811"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterRequest",
+        "item_identifier": "voluntary:IN-001",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "let payload: RegisterRequestPayload =\n                serde_json::from_str(r#\"{\"username\":\" ada \",\"password\":\" secret \"}\"#).unwrap();\n            let command = RegisterRequest::from_payload(payload).unwrap().into_command();\n\n            assert_eq!(command.username().as_str(), \"ada\");\n            assert_eq!(command.password().expose_secret(), \" secret \");",
+        "kind": "fulfilled"
+      },
+      "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"
+    },
+    {
+      "bound_tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_register_request_json_strings_preserve_normalization_sensitive_values"
+        }
+      ],
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "CN-004",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
+        },
+        "entry_key": "RegisterRequest"
+      },
+      "key": {
+        "anchor_text_hash": "f0717e77895fcf228f2d466ee3c0286a18de7d496962e6964c5c0078de5638e8",
+        "bound_tests_set_hash": "8a0c9dca41a26007108b7de7932022b9af85ef0265b24ec20e9d1e01c8de03ac",
+        "declaration_hash": "e64c6bfc13612bd94f3d4e8a151c75552bb7640ae258a79bb959458eb2e8ad89"
+      },
+      "obligation_id": {
+        "entry_key": "RegisterRequest",
+        "item_identifier": "voluntary:CN-004",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "`.body(Body::from(vec![0xff]))` ... `assert_eq!(response.status(), StatusCode::BAD_REQUEST);` \n`.body(Body::from(\"{\"))` ... `assert_eq!(response.status(), StatusCode::BAD_REQUEST);` \n`.header(\"content-type\", \"text/plain\")` ... `assert_eq!(response.status(), StatusCode::UNSUPPORTED_MEDIA_TYPE);` \n`assert_ne!(nfc.0, nfd.0);`",
         "kind": "fulfilled"
       },
       "verifier_fingerprint": "cabe5206975038b819c1466aa42623decd64e0c8c344b3b644130b061222431f"

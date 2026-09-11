@@ -12,7 +12,7 @@
 |------|------|--------|---------|--------|----------|
 | AccessTokenResponse | dto | add | — | 🟡 | 🔵 |
 | LoginRequest | dto | add | — | 🟡 | 🔵 |
-| RegisterRequest | dto | add | — | 🟡 | 🔵 |
+| RegisterRequest | dto | add | — | 🔵 | 🔵 |
 
 ## Primary Adapters
 

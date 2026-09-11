@@ -25,7 +25,7 @@
       }
     },
     {
-      "claim_hash": "bc8e8ef9bab055b8dcbe07b7aaa776e2ba7e11244fd7e91c6aac64b5fc524698",
+      "claim_hash": "7acb12655f75cd0dd1f9599ea65e671cf4b2ceabcb8ad38981c0bfbc6626fd5b",
       "claim_origin": {
         "data": {
           "entry_key": "AuthHttpApi",
@@ -49,31 +49,7 @@
       }
     },
     {
-      "claim_hash": "bc8e8ef9bab055b8dcbe07b7aaa776e2ba7e11244fd7e91c6aac64b5fc524698",
-      "claim_origin": {
-        "data": {
-          "entry_key": "AuthHttpApi",
-          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
-          "section_key": "types"
-        },
-        "kind": "catalogue_entry"
-      },
-      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
-      "evidence_origin": {
-        "data": {
-          "element_id": "IN-002",
-          "section": "in_scope",
-          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
-        },
-        "kind": "spec_element"
-      },
-      "verdict": {
-        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
-        "kind": "pass"
-      }
-    },
-    {
-      "claim_hash": "bc8e8ef9bab055b8dcbe07b7aaa776e2ba7e11244fd7e91c6aac64b5fc524698",
+      "claim_hash": "7acb12655f75cd0dd1f9599ea65e671cf4b2ceabcb8ad38981c0bfbc6626fd5b",
       "claim_origin": {
         "data": {
           "entry_key": "AuthHttpApi",
@@ -97,7 +73,7 @@
       }
     },
     {
-      "claim_hash": "bc8e8ef9bab055b8dcbe07b7aaa776e2ba7e11244fd7e91c6aac64b5fc524698",
+      "claim_hash": "7acb12655f75cd0dd1f9599ea65e671cf4b2ceabcb8ad38981c0bfbc6626fd5b",
       "claim_origin": {
         "data": {
           "entry_key": "AuthHttpApi",
@@ -121,7 +97,31 @@
       }
     },
     {
-      "claim_hash": "3ab30920e29edb26e6382f3580edfb924d0c98caca9575d50860ac80eca673ca",
+      "claim_hash": "7acb12655f75cd0dd1f9599ea65e671cf4b2ceabcb8ad38981c0bfbc6626fd5b",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AuthHttpApi",
+          "file_path": "track/items/2026-09-10-minimal-auth-api/cli_driver-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "153036b98709896703226228b21ef68675da513c2a781787c758ef8b3d84a5c0",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Authenticate a user login attempt and issue an access token after successful authentication."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Authenticate a user login attempt and issue an access token after successful authentication.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "c65d521300d6114a8f02232f72b4e3fedbd1fb5af31cc377ec54482c32c0dcf9",
       "claim_origin": {
         "data": {
           "entry_key": "HttpServerOutcome",

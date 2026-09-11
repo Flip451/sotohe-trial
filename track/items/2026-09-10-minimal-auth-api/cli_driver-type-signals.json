@@ -1,9 +1,9 @@
 {
   "baseline_hash": "812444f6a6df2941efd3f38b571e4ff7ea114613c3a565d160fc4122212cf028",
   "declaration_hash": "bcdbc83bfdd7c4c897e1254ac8abfe72a968d4b285d69d8688a90d80eda0be00",
-  "generated_at": "2026-09-11T00:04:14Z",
-  "head_commit": "bdf1904c6fd40b8ce73862877cc9228a4355bfbe",
-  "implementation_fingerprint": "11a3081f37f7f3cbb44170f82e9b12d5aed923ef76972142ca3f844ee465a5cf",
+  "generated_at": "2026-09-11T01:50:13Z",
+  "head_commit": "314b57f72c61217ba1e772ad5386feaeaec35267",
+  "implementation_fingerprint": "e459cd7b00706fb487bd56879d765cdbed4610e202d7c04ed7136ebbfbc807cc",
   "resolution_fingerprint": "8ca3fb874cc5d774b855cd63cb5b4a3548026b3e47d50773cb7971799bc724c8",
   "rustdoc_execution_identity": {
     "crate_name": "cli_driver",
@@ -43,10 +43,10 @@
       "type_name": "LoginRequest"
     },
     {
-      "found_type": false,
+      "found_type": true,
       "kind_tag": "dto",
       "namespace": "type",
-      "signal": "yellow",
+      "signal": "blue",
       "type_name": "RegisterRequest"
     }
   ]

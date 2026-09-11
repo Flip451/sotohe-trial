@@ -315,30 +315,6 @@
     {
       "edge_id": {
         "anchor_id": {
-          "element_id": "IN-001",
-          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
-        },
-        "entry_key": "AuthHttpApi"
-      },
-      "key": {
-        "anchor_text_hash": "88cd04aa2571bc1d541a137d0d55b599fabb3c34832488211bf8672b31b75aa4",
-        "declaration_hash": "2e08b3037e4efbb6b4f0a315483d30d892a57447f5eea4e367351638b8d09ada",
-        "waived_reason_hash": "26bbe1d3012a208cb376281dd22beca6517d814a941dcec585942c73fda5c29e"
-      },
-      "obligation_id": {
-        "entry_key": "AuthHttpApi",
-        "item_identifier": "voluntary:IN-001",
-        "obligation_kind": "logic"
-      },
-      "verdict": {
-        "citation": "ParamDeclaration { name: ParamName(Identifier(\"register\")), ty: TypeRef(\"std::sync::Arc<dyn usecase::auth::RegisterUserService>\") }",
-        "kind": "waived"
-      },
-      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
-    },
-    {
-      "edge_id": {
-        "anchor_id": {
           "element_id": "CN-003",
           "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json"
         },

@@ -21,7 +21,7 @@
 
 - 入力サイズ、メモリ、保存領域、処理時間、同時実行数などの上限: (1) 平文パスワード最大 1024 UTF-8 バイト (`PlaintextPassword::parse`)。(2) Argon2id パラメータ上限は hashing 既定と同一: `m≤19456` KiB、`t≤2`、`p≤1`、出力長 32 バイト、salt 16 バイト。PHC 全文は最大 256 UTF-8 バイト。verify は格納ハッシュの PHC 長・パラメータまたは salt/digest 長がこの上限を超える場合に割り当て/走査前に拒否する。(3) インメモリ User/AccessToken リポジトリの件数上限は設けない（プロセスメモリが境界）。
 - 上限の単位、適用範囲、超過時の失敗動作: パスワード超過は `PasswordInputError::TooLong`。Argon2 パラメータ超過・salt/digest 過長または不正 PHC は `PasswordVerificationError::Unavailable`。CSPRNG 失敗は hashing/issuance `Unavailable`。
-- 上限を設けない項目がある場合の理由と、代わりに置く境界: インメモリ件数は置換可能な repository port (CN-002) の責務とし、本トラックではプロセスメモリを事実上の境界とする。HTTP リクエストボディ上限は delivery 層 (後続バッチ) で扱う。既定 HTTP bind は Supported Platforms の `127.0.0.1:3000` に固定し、ポート競合は bind 失敗として表面化する。
+- 上限を設けない項目がある場合の理由と、代わりに置く境界: インメモリ件数は置換可能な repository port (CN-002) の責務とし、本トラックではプロセスメモリを事実上の境界とする。HTTP リクエストボディ上限: `AuthHttpApi` は axum `DefaultBodyLimit::max(64 KiB)` (`HTTP_MAX_BODY_BYTES`) を適用する。超過はフレームワーク既定どおり HTTP 413。既定 HTTP bind は Supported Platforms の `127.0.0.1:3000` に固定し、ポート競合は bind 失敗として表面化する。
 
 ## Concurrency Model
 

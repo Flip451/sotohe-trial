@@ -193,6 +193,225 @@
           "hash": "rvw1:sha256:61d70c049f97fd0128648060b2f1f04b3ce4fbca7b826f94b54fb78fd7f525ac",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:36:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3621694965a1f4ca67f78691e39100f64f521ff23b46110d02ae96392efd87cb",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:44:11Z",
+          "findings": [
+            {
+              "category": "HTTP media-type contract",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 176,
+              "message": "`axum::Json` accepts structured-suffix media types such as `application/problem+json`, so a valid registration using that Content-Type reaches `RegisterUserService` and can return 201. This violates CN-004, which requires every media type other than `application/json` to return 415. Enforce the exact declared media type before extraction and cover a `application/*+json` case.",
+              "severity": "P1"
+            },
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 176,
+              "message": "The new `Json` extractor silently applies Axum's version-owned 2,097,152-byte default body limit and returns 413 when it is exceeded. Neither the spec nor the environment declaration defines that value, scope, or failure response; the declaration instead says HTTP body limits are deferred to a later delivery batch. Configure and declare the intended limit, or explicitly disable the framework default until that batch owns it.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:3621694965a1f4ca67f78691e39100f64f521ff23b46110d02ae96392efd87cb",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T00:48:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:d1d90b23ba3f0c02137bdf75c475614ab1c74af2b487c072c3d12d33cfc53dc8",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:54:47Z",
+          "findings": [
+            {
+              "category": "未宣言の前提への依存",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 173,
+              "message": "`DefaultBodyLimit::disable()` combined with the `Bytes` extractor buffers the entire unauthenticated request body without a byte bound, before the media-type check runs. A local client can therefore force arbitrarily large allocations and terminate the server through memory exhaustion. The environment declaration only defers HTTP limits; it defines no substitute boundary or excess behavior, so this still depends on an undeclared cooperative-client/process-memory assumption. Keep an explicit bounded limit and declare its failure mapping.",
+              "severity": "P1"
+            },
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 179,
+              "message": "`exact_application_json` does not parse or fully validate the Content-Type field: it ignores everything after the first semicolon and examines only the first value returned by `HeaderMap::get`. Consequently malformed values such as `application/json; invalid` and ambiguous duplicate Content-Type headers can pass the exact-media-type gate. Parse the complete MIME value with an established parser and require exactly one valid `application/json` value.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:d1d90b23ba3f0c02137bdf75c475614ab1c74af2b487c072c3d12d33cfc53dc8",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T00:59:05Z",
+          "findings": [
+            {
+              "category": "boundary correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 194,
+              "message": "`exact_application_json` accepts duplicate charset parameters such as `application/json;charset=utf-8;charset=utf-8`, although the contract allows only an optional single `charset=utf-8` parameter and requires malformed parameters to return 415. Track the parameter count/duplicate keys and add a regression test.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:bb9566a5d74761fbca3450b4064c05d0ebf9091411eef1b314bc394bf73cb64a",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:03:47Z",
+          "findings": [
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 194,
+              "message": "The media-type loop accepts repeated parameters, so `Content-Type: application/json; charset=utf-8; charset=utf-8` passes and invokes registration even though the briefing permits only one optional charset parameter and requires malformed parameters to return 415. Enforce zero or exactly one charset parameter and add the malformed-parameter case to the route tests.",
+              "severity": "P1"
+            },
+            {
+              "category": "CI clippy gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 184,
+              "message": "`values[0]` is production indexing and is denied by the workspace's `clippy::indexing_slicing` lint, so the clippy/CI gate will fail even though the preceding length check makes the access logically safe. Destructure the `get_all` iterator or use a checked accessor instead.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:bb9566a5d74761fbca3450b4064c05d0ebf9091411eef1b314bc394bf73cb64a",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:07:19Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6369576d47baef2c31bfeb3242881ac72eb7e43892aab4b600922a8070ff6bfe",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:10:16Z",
+          "findings": [
+            {
+              "category": "CI clippy gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 364,
+              "message": "The registration normalization test still uses five indexed `Vec` accesses. The workspace denies `clippy::indexing_slicing`, including in test targets, so the clippy/CI gate will fail. Bind the two entries through `.first()`/`.get(1)` or slice-pattern matching before asserting their fields.",
+              "severity": "P2"
+            },
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 200,
+              "message": "The hand-written parameter comparison rejects `Content-Type: application/json; charset=\"utf-8\"`. Quoted-string parameter values are valid HTTP media-type syntax and represent the permitted UTF-8 charset, but comparing the raw value to `utf-8` returns 415. Parse the media type structurally and compare the decoded parameter value, while retaining the single-header and single-charset checks.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:6369576d47baef2c31bfeb3242881ac72eb7e43892aab4b600922a8070ff6bfe",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:15:01Z",
+          "findings": [
+            {
+              "category": "boundary correctness",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 201,
+              "message": "`value.trim().trim_matches('\"')` accepts malformed/unbalanced charset values such as `charset=\"utf-8` or `charset=\"\"utf-8`, because it strips any number of quote characters instead of validating either an unquoted `utf-8` value or a properly quoted value. These requests therefore bypass the required malformed-parameter 415 rejection. Parse the quote form strictly (or reject quoted values) and add regression coverage.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:cdf19e079bc3d8e284beb0d58e890a5e0f43f30519a509c009f427e76832648f",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:17:32Z",
+          "findings": [
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 200,
+              "message": "Using `trim().trim_matches('\"')` does not validate quoted-string syntax and accepts malformed parameters such as `charset=\"utf-8` or `charset=utf-8\"`; it also accepts invalid whitespace after `=`. Those requests pass the gate instead of returning the required 415. Parse the complete media type with a MIME parser rather than stripping quote characters manually, while retaining the cardinality checks.",
+              "severity": "P1"
+            },
+            {
+              "category": "CI clippy gate",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 366,
+              "message": "The new test uses an explicit `panic!`, but the workspace sets `clippy::panic = \"deny\"` and this test module only allows `unwrap_used`. Consequently the clippy/CI test target will fail. Use the already-permitted checked-access-plus-`unwrap()` pattern or add assertions without an explicit panic.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:cdf19e079bc3d8e284beb0d58e890a5e0f43f30519a509c009f427e76832648f",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:23:31Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e4327e67a78e7c09e5f5058ae1bbd5d05d614c3954e027e604b0d8b0ad9c867e",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:26:11Z",
+          "findings": [
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 199,
+              "message": "The selected `mime` parser deliberately accepts an empty trailing parameter list, so `Content-Type: application/json;` (and `application/json; charset=utf-8;`) parses successfully and this match admits it. The route can therefore register the user instead of returning the briefing-required 415 for malformed parameters. Reject trailing empty parameter syntax before accepting the parsed value and add a regression case.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:e4327e67a78e7c09e5f5058ae1bbd5d05d614c3954e027e604b0d8b0ad9c867e",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:29:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:a2e61c15299fc2a115cc1377fa896e0644a4240d6309296ba78aa6c4a4e6909d",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:32:14Z",
+          "findings": [
+            {
+              "category": "HTTP media-type validation",
+              "file": "apps/cli-driver/src/lib.rs",
+              "line": 199,
+              "message": "`mime::Mime` deliberately accepts an empty trailing parameter list, so `Content-Type: application/json;` and `application/json; charset=utf-8;` still pass this match and can register the user. These malformed parameter forms must return 415 under the briefing. Reject a trailing semicolon/empty parameter before accepting the parsed value and add a regression test.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:a2e61c15299fc2a115cc1377fa896e0644a4240d6309296ba78aa6c4a4e6909d",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T01:35:57Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3bfa90493f2a244e70107b9cadcfa907b5bc2d8be62edaa59785897b7aca5541",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:46:44Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3bfa90493f2a244e70107b9cadcfa907b5bc2d8be62edaa59785897b7aca5541",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -374,6 +593,34 @@
           "at": "2026-09-10T23:49:02Z",
           "findings": [],
           "hash": "rvw1:sha256:eb7bc6d191b7458f7ce2eedce26bb9a2def801f650d13e0a2a8d4b45ee6eda46",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:47:42Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b366b2aeef63a3fdfe75ba46388f8b88c36bab989365c52b82748dc086322c65",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:50:13Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b366b2aeef63a3fdfe75ba46388f8b88c36bab989365c52b82748dc086322c65",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:57:52Z",
+          "findings": [],
+          "hash": "rvw1:sha256:84a580cef5efde9f070a062d769d210a1f9410772d4c72eab43438c724302bbf",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:59:54Z",
+          "findings": [],
+          "hash": "rvw1:sha256:84a580cef5efde9f070a062d769d210a1f9410772d4c72eab43438c724302bbf",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -654,6 +901,20 @@
           "at": "2026-09-11T00:06:38Z",
           "findings": [],
           "hash": "rvw1:sha256:49356834d3a07c4497612e24130e1610f3e225a7a366fbae2e2358255329c396",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:35:08Z",
+          "findings": [],
+          "hash": "rvw1:sha256:da20d47d0babc0a7b5f208e5ce8423c49290ce537ab795d42153462524150794",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:38:02Z",
+          "findings": [],
+          "hash": "rvw1:sha256:da20d47d0babc0a7b5f208e5ce8423c49290ce537ab795d42153462524150794",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -952,6 +1213,62 @@
           "at": "2026-09-10T23:57:40Z",
           "findings": [],
           "hash": "rvw1:sha256:ffe0ddda78451f42aafd65e9c37b64bc29e727f9a32cbee88c6cc7d57b5a9b85",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:35:48Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:39:44Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:48:21Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T00:58:22Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:06:25Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:14:11Z",
+          "findings": [],
+          "hash": "rvw1:sha256:8f8862902f14db6f9d78d480fddb70ad97d4e620089f9a78d9393588baeb9a10",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:47:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:23e435eb657ccf97281cdb915a9aa6cf8d4cdcf2baf3b18348d6b2ed9a44dca9",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T01:48:39Z",
+          "findings": [],
+          "hash": "rvw1:sha256:23e435eb657ccf97281cdb915a9aa6cf8d4cdcf2baf3b18348d6b2ed9a44dca9",
           "type": "final",
           "verdict": "zero_findings"
         }

@@ -764,7 +764,7 @@
       ]
     },
     {
-      "kind": "waiver",
+      "kind": "voluntary_binding",
       "edge_id": {
         "entry_key": "AuthHttpApi",
         "anchor_id": {
@@ -772,7 +772,13 @@
           "element_id": "IN-001"
         }
       },
-      "reason": "The shared HTTP foundation only injects the registration service; registration request extraction and route behavior belong to the pending T008 implementation."
+      "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_register_route_registers_user"
+        }
+      ]
     },
     {
       "kind": "voluntary_binding",
@@ -784,6 +790,11 @@
         }
       },
       "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_register_route_registers_user"
+        },
         {
           "layer": "cli_driver",
           "module_path": "cli_driver::auth::tests",
@@ -844,6 +855,50 @@
         }
       },
       "reason": "The shared HTTP foundation only injects the login service; login request extraction, token response mapping, and route behavior belong to the pending T009 implementation."
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "RegisterRequest",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "IN-001"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_register_request_into_command_preserves_validated_credentials"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_register_route_registers_user"
+        }
+      ]
+    },
+    {
+      "kind": "voluntary_binding",
+      "edge_id": {
+        "entry_key": "RegisterRequest",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-10-minimal-auth-api/spec.json",
+          "element_id": "CN-004"
+        }
+      },
+      "tests": [
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_auth_http_api_json_rejection_returns_expected_statuses"
+        },
+        {
+          "layer": "cli_driver",
+          "module_path": "cli_driver::auth::tests",
+          "test_name": "test_register_request_json_strings_preserve_normalization_sensitive_values"
+        }
+      ]
     }
   ]
 }
