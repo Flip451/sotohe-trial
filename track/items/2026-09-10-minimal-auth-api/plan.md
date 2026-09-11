@@ -34,7 +34,7 @@ GO-001 — implement the domain-foundation, application-services, secondary-adap
 > T009 — login request, token response, route wiring, and tests (IN-002, CN-003, CN-004, CN-005, AC-002).
 
 - [x] **T006**: Implement the cli_driver entries `AuthHttpApi` and `HttpServerOutcome` as the shared axum HTTP foundation, plus focused server lifecycle, JSON rejection, and HTTP outcome tests (IN-001, IN-002, CN-003, CN-004). (`21152e95f47e480cefee876b713829f2d023b28a`)
-- [x] **T008**: Implement the cli_driver entry `RegisterRequest` and wire the registration route into `AuthHttpApi`, plus focused registration request and HTTP behavior tests (IN-001, CN-003, CN-004, CN-005, AC-001).
+- [x] **T008**: Implement the cli_driver entry `RegisterRequest` and wire the registration route into `AuthHttpApi`, plus focused registration request and HTTP behavior tests (IN-001, CN-003, CN-004, CN-005, AC-001). (`3245fed5dd96911b1b12d98611e05adff73b1280`)
 - [ ] **T009**: Implement the cli_driver entries `LoginRequest` and `AccessTokenResponse` and wire the login/token route into `AuthHttpApi`, plus focused login request, token response, and HTTP behavior tests (IN-002, CN-003, CN-004, CN-005, AC-002).
 
 ### composition — Composition
