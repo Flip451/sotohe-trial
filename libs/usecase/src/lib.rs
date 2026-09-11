@@ -446,14 +446,13 @@ pub mod auth {
     impl LoginService for LoginInteractor {
         fn execute(&self, command: LoginCommand) -> Result<IssuedAccessToken, LoginError> {
             let Some(user) = self.users.find_by_username(command.username())? else {
-                // Always invoke the verifier for an unknown username. The
-                // result is intentionally discarded because this remains the
-                // same authentication failure as before at the usecase API.
-                let dummy_hash = match PasswordHash::new(DUMMY_PASSWORD_HASH.to_owned()) {
-                    Ok(hash) => hash,
-                    Err(_) => return Err(LoginError::UserNotFound),
-                };
-                let _ = self.verifier.verify(command.password(), &dummy_hash);
+                // Always invoke the verifier for an unknown username so work
+                // matches the existing-user failure path. Propagate verifier
+                // infrastructure failures; only after a successful dummy
+                // verification return UserNotFound.
+                let dummy_hash = PasswordHash::new(DUMMY_PASSWORD_HASH.to_owned())
+                    .map_err(|_| LoginError::UserNotFound)?;
+                self.verifier.verify(command.password(), &dummy_hash)?;
                 return Err(LoginError::UserNotFound);
             };
             let verified = self.verifier.verify(command.password(), user.password_hash())?;
@@ -874,6 +873,17 @@ pub mod auth {
             let calls = calls.lock().unwrap();
             assert_eq!(calls.as_slice(), [DUMMY_PASSWORD_HASH]);
             assert!(calls.first().and_then(|hash| PasswordHash::new(hash.clone()).ok()).is_some());
+        }
+
+        #[test]
+        fn test_login_interactor_missing_user_propagates_verification_unavailable() {
+            let (interactor, _) =
+                interactor(None, Err(PasswordVerificationError::Unavailable), None, false, false);
+
+            assert!(matches!(
+                interactor.execute(valid_command()),
+                Err(LoginError::Verification(PasswordVerificationError::Unavailable))
+            ));
         }
 
         #[test]

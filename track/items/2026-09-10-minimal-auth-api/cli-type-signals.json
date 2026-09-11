@@ -1,9 +1,9 @@
 {
   "baseline_hash": "5868e4a53ffcfc84c610c5f4a71062b775520264a753e22ea95f0f1eef718fc6",
   "declaration_hash": "a37dc03aacd2f1bf2a071561c0012c9023c6ced85febf0eb530df5b6feb60d7d",
-  "generated_at": "2026-09-11T17:27:38Z",
-  "head_commit": "89b33521d1abbfbc828c7a87ff537a8bb242fa55",
-  "implementation_fingerprint": "a3f29f90b1092c82037b2113da6a84b247506c48b6adb74956231693d72a184b",
+  "generated_at": "2026-09-11T17:55:29Z",
+  "head_commit": "4a26269bfee4b1ec77e1a8be73a0f99405911ae1",
+  "implementation_fingerprint": "fac5efcc25add7de567636e6bcbfeed6ebf79e4bb6afe54c357ea3e7fb28e196",
   "resolution_fingerprint": "8438d1c346e064b4a9db847786475d6b325327d71e968a41f9a0645210b17089",
   "rustdoc_execution_identity": {
     "crate_name": "cli",

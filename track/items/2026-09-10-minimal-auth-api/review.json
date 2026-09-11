@@ -2269,6 +2269,43 @@
           "hash": "rvw1:sha256:aa02d6a4f63f82d3ccbef7a1825c2868623b29e03689e8d5359de6d4810de747",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-11T17:38:50Z",
+          "findings": [
+            {
+              "category": "environment",
+              "file": null,
+              "line": null,
+              "message": "Unable to complete the required review: every read-only shell invocation failed before reading the briefing, severity policy, current diff, or target file because the sandbox could not open its synthetic mount registry lock on the read-only filesystem.",
+              "severity": "BLOCKER"
+            }
+          ],
+          "hash": "rvw1:sha256:f2e183fdf4976de1dce6feb99571a44c098c85d86a898db2b58e8f9f7a132022",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T17:47:38Z",
+          "findings": [
+            {
+              "category": "security boundary error handling",
+              "file": "libs/usecase/src/lib.rs",
+              "line": 456,
+              "message": "The unknown-user branch discards `PasswordVerificationError`. During a verifier outage, a nonexistent username therefore produces `UserNotFound` (HTTP 401), while an existing username produces `Verification` (HTTP 500), masking the failure and exposing account existence. Propagate dummy-verification failures and return `UserNotFound` only after successful dummy verification.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:f2e183fdf4976de1dce6feb99571a44c098c85d86a898db2b58e8f9f7a132022",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-11T17:52:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2703154a6cdeba9a1f94ec28fed85095b7e4af6e779f2894f293e5db828748c0",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     }
