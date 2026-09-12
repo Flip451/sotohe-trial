@@ -1,0 +1,318 @@
+{
+  "entries": [
+    {
+      "claim_hash": "67153c76c7198a12dffc1809d9591389f9b8f0bdc1355e8f39c7c6a523aa023a",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::Username",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "56c156d4659e6e02aa3e51202160d7ba32620169998bddd1719122bff04f2864",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::UsernameError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "bb92cc623290aced3de4219087d77dfda6518c6fd6f4226332ba93cd97cd92f6",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::auth::AccessTokenRecord",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "05bf6f386fa63f5689eaaac8bb41ea263edb97a0ee4d03aba38f6bc43be8f115",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::auth::AccessTokenRepositoryError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "0a6b7f82bd38d25cda21ed73b28225490648cd200ef95ecfd1041dc282c765fa",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::auth::OpaqueAccessToken",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "c3a798ec454f52d6a68d7d77f4d261727d604747be065b1ba7d270ed5267e143",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::auth::OpaqueAccessTokenError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "5c1325f6a857fec106935bb4b52314d420f405ed66b84e86dc7314ff0addd36d",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::auth::PasswordHash",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "b5aef01ff1d1736ad45f59dd87c74e581cb34d96cea6b528255ef1de33df8478",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::auth::PasswordHashError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "0d850916a276a6d32b7c25c907c9ed1e45de76e2c7cbe90f5221bd6f43272b74",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::auth::User",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "02c070d4f3d6638ac69e8ea029fcec01385d7e9a3082d08aa57dbe7d460d0232",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::auth::UserLookupError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "f2ff577cb33687401562e73f1547acd802d986159ebc8a9b5467b560656a4788",
+      "claim_origin": {
+        "data": {
+          "entry_key": "entities::auth::UserRepositoryError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "8602ffb083a13d3565a999365fe68cf4dd6398d2f62d63520cc883fb566719b0",
+      "claim_origin": {
+        "data": {
+          "entry_key": "AccessTokenRepository",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "4f7c7eca23860a0ee9184068441da1586a4289276f2d9e87c407949aa7ed8d4c",
+      "claim_origin": {
+        "data": {
+          "entry_key": "UserRepository",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/entities-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    }
+  ],
+  "layer": "entities",
+  "schema_version": 1
+}

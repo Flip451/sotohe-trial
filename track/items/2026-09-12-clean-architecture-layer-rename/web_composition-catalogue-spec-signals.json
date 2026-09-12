@@ -1,0 +1,16 @@
+{
+  "catalogue_declaration_hash": "1f6286327edfd6e89f17e21020ae52a221c815edfe577d9581a14e247a47d9db",
+  "schema_version": 1,
+  "signals": [
+    {
+      "entry_hash": "216af7a0baf1316f940885195ec1ac49c5309a123402d8fe9735714e6f380e0f",
+      "signal": "blue",
+      "type_name": "web_composition::GreetingCompositionRoot"
+    },
+    {
+      "entry_hash": "0fea9d71db575e99c7bbe60aa0d08b0db0e2a2589f71152b496c93724cecdfc0",
+      "signal": "blue",
+      "type_name": "web_composition::auth::AuthCompositionRoot"
+    }
+  ]
+}

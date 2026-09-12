@@ -50,7 +50,7 @@ Purpose: ローカル開発向けのアプリケーションレベルの秘密 (
 
 ## Symlink Rejection in Infrastructure Adapters
 
-Infrastructure 層のファイル I/O アダプターは、composition root から別途信頼して受け取る root を起点に、対象までの **すべての既存パス要素**（中間ディレクトリと leaf を含む）の symlink を事前に拒絶し、対象への相対パスを root より下に閉じる。leaf と直上の親だけを検査する実装は不十分である。
+Frameworks 層のファイル I/O アダプターは、composition root から別途信頼して受け取る root を起点に、対象までの **すべての既存パス要素**（中間ディレクトリと leaf を含む）の symlink を事前に拒絶し、対象への相対パスを root より下に閉じる。leaf と直上の親だけを検査する実装は不十分である。
 
 ### ルール
 
@@ -60,7 +60,7 @@ Infrastructure 層のファイル I/O アダプターは、composition root か�
 | root より下の各既存要素（中間ディレクトリと leaf を含む） | root から leaf に向かって順に `symlink_metadata()` で検査し、symlink なら fail-closed エラー |
 | 新規作成する leaf | 作成前に既存の全 ancestor を上記のとおり検査する |
 
-> **強制先**: review 観点 — infrastructure / cli_composition scope
+> **強制先**: review 観点 — frameworks / web_composition scope
 
 ### 理由
 
@@ -76,7 +76,7 @@ Infrastructure 層のファイル I/O アダプターは、composition root か�
 3. symlink の場合は fail-closed でエラーを返す（silent skip 禁止）
 4. leaf と直近の親だけでなく、中間ディレクトリに置いた nested symlink と root 外への `../` 経路の拒絶もテストする（プラットフォーム対応に注意）
 
-> **強制先**: review 観点 — infrastructure scope
+> **強制先**: review 観点 — frameworks scope
 
 ## Security Boundary Failure Handling
 
@@ -84,12 +84,12 @@ Infrastructure 層のファイル I/O アダプターは、composition root か�
 構築または初期化に失敗した場合は、警告のみの通知、無効値への縮退、保護なしでの処理継続ではなく、
 処理を停止してエラーを返すか fail-stop とする。
 
-> **強制先**: review 観点 — domain / usecase / infrastructure / cli / cli_driver / cli_composition / harness-policy scope
+> **強制先**: review 観点 — entities / use_cases / frameworks / web / interface_adapters / web_composition / harness-policy scope
 
 静的な秘匿パターンなど、構築がプログラミングエラーを示す場合も、同じ構築保証を適用する。
 外部入力を使う動的な値は、検証に失敗した時点でエラーとして伝播させる。
 
-> **強制先**: review 観点 — domain / usecase / infrastructure / cli / cli_driver / cli_composition / harness-policy scope
+> **強制先**: review 観点 — entities / use_cases / frameworks / web / interface_adapters / web_composition / harness-policy scope
 
 ## Enforcement
 
@@ -127,7 +127,7 @@ fn init_config() -> Result<Config, ConfigError> {
 
 ドメイン型のコンストラクタで検証する。newtype で不正値を構築不能にする設計原則は `prefer-type-safe-abstractions.md` にある。
 
-> **強制先**: review 観点 — domain scope
+> **強制先**: review 観点 — entities scope
 
 ```rust
 pub struct Email(String);
@@ -143,7 +143,7 @@ impl Email {
 
 SQL を扱う場合、クエリ文字列に外部入力を埋め込まず、必ずパラメータバインドを使う。以下は SQL クライアント crate として `sqlx` を採用した場合の例である。crate の選定はプロジェクトが ADR で決める事項であり、テンプレートは既定の SQL クライアントを出荷しない。
 
-> **強制先**: review 観点 — infrastructure scope
+> **強制先**: review 観点 — frameworks scope
 
 ```rust
 // Bad
@@ -160,7 +160,7 @@ let user = sqlx::query_as::<_, User>("SELECT * FROM users WHERE id = $1")
 
 内部詳細をユーザーに漏らさない。
 
-> **強制先**: review 観点 — infrastructure scope
+> **強制先**: review 観点 — frameworks scope
 
 ```rust
 // Bad: leaks internal info
@@ -182,19 +182,19 @@ cargo make deny      # 脆弱性・ライセンス・禁止クレートチェッ
 ## Code Review Checklist
 
 - [ ] シークレットのハードコードなし
-  > **強制先**: review 観点 — domain / usecase / infrastructure / cli / cli_driver / cli_composition / harness-policy scope
+  > **強制先**: review 観点 — entities / use_cases / frameworks / web / interface_adapters / web_composition / harness-policy scope
 - [ ] 外部入力はドメイン型で検証済み
-  > **強制先**: review 観点 — domain scope
+  > **強制先**: review 観点 — entities scope
 - [ ] SQL クエリはパラメータバインド使用
-  > **強制先**: review 観点 — infrastructure scope
+  > **強制先**: review 観点 — frameworks scope
 - [ ] エラーメッセージは内部情報を漏らさない
-  > **強制先**: review 観点 — infrastructure scope
+  > **強制先**: review 観点 — frameworks scope
 - [ ] ログに機密情報が含まれていない
-  > **強制先**: review 観点 — infrastructure scope
+  > **強制先**: review 観点 — frameworks scope
 - [ ] セキュリティ境界（秘匿・検証・権限判定）で無音の機能縮退がなく、構築・初期化の失敗が停止として扱われている
-  > **強制先**: review 観点 — domain / usecase / infrastructure / cli / cli_driver / cli_composition / harness-policy scope
+  > **強制先**: review 観点 — entities / use_cases / frameworks / web / interface_adapters / web_composition / harness-policy scope
 - [ ] `unsafe` コードは最小限かつコメント付き
-  > **強制先**: review 観点 — domain / usecase / infrastructure / cli / cli_driver / cli_composition / harness-policy scope
+  > **強制先**: review 観点 — entities / use_cases / frameworks / web / interface_adapters / web_composition / harness-policy scope
 - [ ] `cargo make deny` が通っている
   > **強制先**: 機械 lint — cargo make deny
 

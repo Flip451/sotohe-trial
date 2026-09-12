@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "track_id": "2026-09-12-clean-architecture-layer-rename",
+  "entries": {
+    "T001": [],
+    "T002": [
+      {
+        "layer": "entities",
+        "entry_key": "entities::auth::PasswordHash"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::auth::PasswordHashError"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::auth::OpaqueAccessToken"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::auth::OpaqueAccessTokenError"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::auth::User"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::auth::AccessTokenRecord"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::auth::UserRepositoryError"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::auth::AccessTokenRepositoryError"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::auth::UserLookupError"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "UserRepository"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "AccessTokenRepository"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::Username"
+      },
+      {
+        "layer": "entities",
+        "entry_key": "entities::UsernameError"
+      }
+    ],
+    "T003": [
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::GreetError"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::GreetUser"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::CredentialParseError"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::IssuedAccessToken"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::LoginCommand"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::LoginError"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::LoginInteractor"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::PasswordHashingError"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::PasswordInputError"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::PasswordVerificationError"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::PlaintextPassword"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::RegisterUserCommand"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::RegisterUserError"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::RegisterUserInteractor"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "use_cases::auth::TokenIssuanceError"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "LoginService"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "OpaqueTokenIssuer"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "PasswordHasher"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "PasswordVerifier"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "RegisterUserService"
+      },
+      {
+        "layer": "use_cases",
+        "entry_key": "SalutationProvider"
+      }
+    ],
+    "T004": [
+      {
+        "layer": "frameworks",
+        "entry_key": "frameworks::StaticSalutation"
+      },
+      {
+        "layer": "frameworks",
+        "entry_key": "frameworks::auth::Argon2PasswordAdapter"
+      },
+      {
+        "layer": "frameworks",
+        "entry_key": "frameworks::auth::InMemoryAccessTokenRepository"
+      },
+      {
+        "layer": "frameworks",
+        "entry_key": "frameworks::auth::InMemoryUserRepository"
+      },
+      {
+        "layer": "frameworks",
+        "entry_key": "frameworks::auth::RandomOpaqueTokenIssuer"
+      }
+    ],
+    "T005": [
+      {
+        "layer": "interface_adapters",
+        "entry_key": "interface_adapters::CommandOutcome"
+      },
+      {
+        "layer": "interface_adapters",
+        "entry_key": "interface_adapters::GreetDriver"
+      },
+      {
+        "layer": "interface_adapters",
+        "entry_key": "interface_adapters::auth::AccessTokenResponse"
+      },
+      {
+        "layer": "interface_adapters",
+        "entry_key": "interface_adapters::auth::AuthHttpApi"
+      },
+      {
+        "layer": "interface_adapters",
+        "entry_key": "interface_adapters::auth::LoginRequest"
+      },
+      {
+        "layer": "interface_adapters",
+        "entry_key": "interface_adapters::auth::RegisterRequest"
+      }
+    ],
+    "T009": [
+      {
+        "layer": "frameworks",
+        "entry_key": "frameworks::http::HttpServer"
+      },
+      {
+        "layer": "frameworks",
+        "entry_key": "frameworks::http::HttpServerOutcome"
+      },
+      {
+        "layer": "interface_adapters",
+        "entry_key": "interface_adapters::auth::HttpServerOutcome"
+      }
+    ],
+    "T006": [
+      {
+        "layer": "web_composition",
+        "entry_key": "web_composition::GreetingCompositionRoot"
+      },
+      {
+        "layer": "web_composition",
+        "entry_key": "web_composition::auth::AuthCompositionRoot"
+      }
+    ],
+    "T007": [],
+    "T008": []
+  }
+}

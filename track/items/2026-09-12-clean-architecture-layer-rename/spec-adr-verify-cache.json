@@ -1,0 +1,488 @@
+{
+  "entries": [
+    {
+      "claim_hash": "18550005b83006a45ecd849905a51d793376831b850e224ca81dcdd519859b6a",
+      "claim_origin": {
+        "data": {
+          "element_id": "GO-001",
+          "section": "goal",
+          "text_label": "Migrate the existing consumer workspace to the textbook Clean Architecture layer vocabulary and placement while preserving its authentication product behavior."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D1",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "次の crate map にリネームする（括弧内は現行）。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "18550005b83006a45ecd849905a51d793376831b850e224ca81dcdd519859b6a",
+      "claim_origin": {
+        "data": {
+          "element_id": "GO-001",
+          "section": "goal",
+          "text_label": "Migrate the existing consumer workspace to the textbook Clean Architecture layer vocabulary and placement while preserving its authentication product behavior."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "外向きの register / login HTTP 契約と認証振る舞いは維持する。内部配置は次に寄せる。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "claim_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D1",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "次の crate map にリネームする（括弧内は現行）。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "889efc3d1297cb777486b8e45bcf4a435e5097e7aea72ca51068d50719859d1a",
+      "claim_origin": {
+        "data": {
+          "element_id": "IN-002",
+          "section": "in_scope",
+          "text_label": "Maintain the decided dependency ring and update its enforcement configuration for the renamed crates."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D2",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "依存方向は次のとおり維持する。 ... `architecture-rules.json` と `deny.toml` の wrappers もこの方向に同期する。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "claim_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "内部配置は次に寄せる。\n\n1. Port / インターフェースは `use_cases` に置く\n2. HTTP コントローラと DTO 変換は `interface_adapters` のみ\n3. 永続化・暗号・axum サーバ配線などの実装は `frameworks`\n4. 組み立ては `web_composition` のみ。`web` bin は薄い入口に留める",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "170d43590164ac2880d8be78a5c01de0066eec972ee9bc24cc6d10639914a943",
+      "claim_origin": {
+        "data": {
+          "element_id": "IN-004",
+          "section": "in_scope",
+          "text_label": "Preserve the existing HTTP registration and login behavior through the internal migration."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "外向きの register / login HTTP 契約と認証振る舞いは維持する。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "170d43590164ac2880d8be78a5c01de0066eec972ee9bc24cc6d10639914a943",
+      "claim_origin": {
+        "data": {
+          "element_id": "IN-004",
+          "section": "in_scope",
+          "text_label": "Preserve the existing HTTP registration and login behavior through the internal migration."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "ecc58bcab43cc1a47639f71a9154e13442149e5e1140e95b0530492cf85e78b4",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D1",
+          "file_path": "knowledge/adr/2026-09-10-1238-minimal-auth-registration-capability.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "最小認証 API は、HTTP API を通じてユーザー登録を外部に提供する能力を持つ。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "7ac14cbc47feda7b8fba567946d66889ec2279ed53e5ff826ab36e3e25f597c8",
+      "claim_origin": {
+        "data": {
+          "element_id": "OS-001",
+          "section": "out_of_scope",
+          "text_label": "Changing the existing registration or login HTTP contract or authentication behavior is out of scope."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "外向きの register / login HTTP 契約と認証振る舞いは維持する。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "1e0bed81568c46d6c5177b487d6616356cad451c4fcee033a860d82d14ba87d6",
+      "claim_origin": {
+        "data": {
+          "element_id": "OS-002",
+          "section": "out_of_scope",
+          "text_label": "Adding a new authentication product capability is out of scope."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "外向きの register / login HTTP 契約と認証振る舞いは維持する。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "53e598f4982bd606b3b27bf33736fd0f4e00befcc9214372240867da51f3541e",
+      "claim_origin": {
+        "data": {
+          "element_id": "OS-003",
+          "section": "out_of_scope",
+          "text_label": "Collapsing composition and the binary entry point into a four-layer architecture is out of scope."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "組み立ては `web_composition` のみ。`web` bin は薄い入口に留める",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "a3b5aa885ad14181a414ccfaea6888ecc41ca13980ad3807509e84cb440b3901",
+      "claim_origin": {
+        "data": {
+          "element_id": "CN-001",
+          "section": "constraint",
+          "text_label": "The layer vocabulary is entities, use_cases, interface_adapters, frameworks, web_composition, and web, mapped to the decided library and application paths."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D1",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "次の crate map にリネームする（括弧内は現行）。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "5a277555ec0baca0b06617f33e7bbbf38545e4ffe63cc131bc9bdb642f410116",
+      "claim_origin": {
+        "data": {
+          "element_id": "CN-002",
+          "section": "constraint",
+          "text_label": "entities has no workspace-layer dependency; use_cases depends only on entities; interface_adapters depends only on use_cases; frameworks depends only on entities and use_cases; web_composition depends only on entities, use_cases, frameworks, and interface_adapters; and web depends only on web_composition and interface_adapters."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D2",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "依存方向は次のとおり維持する。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "08602f6513d312f046dc91728bdaf4c806f7140c82cff2d4ad1393054ad5cbd7",
+      "claim_origin": {
+        "data": {
+          "element_id": "CN-003",
+          "section": "constraint",
+          "text_label": "architecture-rules.json and deny.toml remain synchronized with the renamed crates and the decided dependency direction."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D2",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "`architecture-rules.json` と `deny.toml` の wrappers もこの方向に同期する。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "fa30df90de160fa20cc97d369806b3ea1be5ff3fbbbe6e5e030bc0f230f13f6f",
+      "claim_origin": {
+        "data": {
+          "element_id": "CN-004",
+          "section": "constraint",
+          "text_label": "Internal relocation follows the decided textbook Clean Architecture placement boundaries without adding a product capability."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "候補選択: from:[rename-only, rename-plus-structural-textbook-placement, custom] chose:rename-plus-structural-textbook-placement\n\n### D3: リネームに加え、置き場を教科書CAへ寄せる",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "4e1c79be54a6def79048e41b657657da84c8fdbf79bd9c5250307662167d8adf",
+      "claim_origin": {
+        "data": {
+          "element_id": "CN-005",
+          "section": "constraint",
+          "text_label": "The migration preserves the existing REST authentication surface and its opaque-token behavior."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "外向きの register / login HTTP 契約と認証振る舞いは維持する。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "4e1c79be54a6def79048e41b657657da84c8fdbf79bd9c5250307662167d8adf",
+      "claim_origin": {
+        "data": {
+          "element_id": "CN-005",
+          "section": "constraint",
+          "text_label": "The migration preserves the existing REST authentication surface and its opaque-token behavior."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "7c3c20c72f37aa24f871750ebad3a2c85c86d918aa3fb099481b21aa17ef5b02",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D1",
+          "file_path": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "認証成功後のクライアント証明には Opaque アクセストークンを用いる。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "944186d8590a9a7268565fd66d302f78138f8a69bd2a86e257f391f60a52080f",
+      "claim_origin": {
+        "data": {
+          "element_id": "AC-001",
+          "section": "acceptance_criteria",
+          "text_label": "The workspace exposes the six Clean Architecture crates at the decided paths and with the decided Rust crate identifiers."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D1",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "次の crate map にリネームする（括弧内は現行）。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "9dc18a1ee37970cd8d39200d2f0b861f57e7f00b4d0a5ba14f8f6a44a5114cd2",
+      "claim_origin": {
+        "data": {
+          "element_id": "AC-002",
+          "section": "acceptance_criteria",
+          "text_label": "Declared workspace dependencies and their architecture-rule and dependency-denial enforcement admit only the decided dependency ring."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D2",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "`architecture-rules.json` と `deny.toml` の wrappers もこの方向に同期する。",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "4d2c776de5ac3363ddbc83145b246559e2afc7be2b9653ae2a1afbac5ef03aeb",
+      "claim_origin": {
+        "data": {
+          "element_id": "AC-003",
+          "section": "acceptance_criteria",
+          "text_label": "Application ports are located in use_cases; aggregate Repository ports remain in entities with their aggregates; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "1. Port / インターフェースは `use_cases` に置く\n2. HTTP コントローラと DTO 変換は `interface_adapters` のみ\n3. 永続化・暗号・axum サーバ配線などの実装は `frameworks`\n4. 組み立ては `web_composition` のみ。`web` bin は薄い入口に留める",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "4d2c776de5ac3363ddbc83145b246559e2afc7be2b9653ae2a1afbac5ef03aeb",
+      "claim_origin": {
+        "data": {
+          "element_id": "AC-003",
+          "section": "acceptance_criteria",
+          "text_label": "Application ports are located in use_cases; aggregate Repository ports remain in entities with their aggregates; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "fba1c314af1676f0b5187a114ea4dae0ae2fb807e03b11f01b82db8dc2023b26",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D1",
+          "file_path": "knowledge/adr/2026-09-12-0845-clean-architecture-aggregate-repository-placement.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "Application ports (use-case facing secondary ports such as hashing, verification, token issuance, and application services) live in `use_cases`.\n2. Aggregate `Repository` ports remain in `entities` beside their aggregates (`UserRepository`, `AccessTokenRepository`).",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "b8e0763aa4503405ed951615925c02b5038443e640bf2e6f3db8633c30322a35",
+      "claim_origin": {
+        "data": {
+          "element_id": "AC-004",
+          "section": "acceptance_criteria",
+          "text_label": "The existing registration and login HTTP contracts and authentication behavior, including empty-password rejection, remain unchanged after the migration."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "82b79093f01f20dd8f2a23730cc6647dd581f9a1971509535cbc8327b5c296a5",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D3",
+          "file_path": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "外向きの register / login HTTP 契約と認証振る舞いは維持する。",
+        "kind": "pass"
+      }
+    }
+  ],
+  "schema_version": 1
+}

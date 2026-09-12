@@ -1,0 +1,38 @@
+{
+  "track_id": "2026-09-12-clean-architecture-layer-rename",
+  "records": [
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "interface_adapters::auth::AuthHttpApi",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
+          "element_id": "IN-003"
+        }
+      },
+      "reason": "IN-003 is a structural relocation criterion (HTTP delivery stays in interface_adapters). Placement is enforced by architecture-rules/check-layers and the catalogue layer file; existing AuthHttpApi route tests cover HTTP behavior independently of this rename anchor."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "frameworks::http::HttpServer",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
+          "element_id": "IN-003"
+        }
+      },
+      "reason": "IN-003 relocates the axum server lifecycle adapter into frameworks. That placement is enforced by architecture-rules/check-layers and frameworks-types.json ownership; HttpServer lifecycle tests cover runtime behavior independently of this rename anchor."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "frameworks::http::HttpServerOutcome",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
+          "element_id": "IN-003"
+        }
+      },
+      "reason": "HttpServerOutcome is the frameworks-local Stopped/Failed DTO relocated with HttpServer (frameworks-types.json add). IN-003 placement is discharged by that catalogue ownership and the frameworks crate path; no independent IN-003 behavior exists on the DTO alone."
+    }
+  ]
+}

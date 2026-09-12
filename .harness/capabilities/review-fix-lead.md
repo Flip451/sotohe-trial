@@ -194,11 +194,11 @@ Keep N small (1–3) to avoid context bloat.
 Before modifying any file, verify it belongs to the correct architecture layer per
 `.harness/policies/implementation-delegation.md`:
 
-- Domain types and domain ports stay in `libs/domain/`
-- Usecase interactors and usecase ports stay in `libs/usecase/`
-- Infrastructure adapters stay in `libs/infrastructure/`
-- CLI composition-root wiring stays in `apps/cli-composition/` (the `apps/cli` crate is the bin entry point only)
-- `apps/cli-driver` is the primary adapter layer
+- Entity types and aggregate Repository ports stay in `libs/entities/`
+- Use-case interactors and application ports stay in `libs/use_cases/`
+- Framework adapters stay in `libs/frameworks/`
+- Web composition-root wiring stays in `apps/web-composition/` (the `apps/web` crate is the bin entry point only)
+- `libs/interface_adapters` is the HTTP/controller primary-adapter layer
 - Do not move types between layers without explicit ADR authorization.
 
 ## Output contract

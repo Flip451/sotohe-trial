@@ -16,11 +16,11 @@ env = { SOTP_TELEMETRY = "0" }
 command = "cargo"
 args = ["nextest", "run", "--all-targets", "--all-features", "--no-tests=warn"]
 
-[tasks.test-cli-feature-off]
-description = "[gate] Run CLI tests with semantic-dup disabled on the host toolchain"
+[tasks.test-web-feature-off]
+description = "[gate] Run web tests with semantic-dup disabled on the host toolchain"
 env = { SOTP_TELEMETRY = "0" }
 command = "cargo"
-args = ["nextest", "run", "--no-default-features", "-p", "cli", "--no-tests=warn"]
+args = ["nextest", "run", "--no-default-features", "-p", "web", "--no-tests=warn"]
 
 [tasks.test-doc]
 description = "[gate] Run documentation tests on the host toolchain"

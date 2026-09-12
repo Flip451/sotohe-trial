@@ -1,0 +1,21 @@
+[package]
+name = "web_composition"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+entities = { path = "../../libs/entities" }
+frameworks = { path = "../../libs/frameworks" }
+interface_adapters = { path = "../../libs/interface_adapters" }
+use_cases = { path = "../../libs/use_cases" }
+
+[dev-dependencies]
+axum = "0.8"
+serde_json = "1"
+tokio = { version = "1", features = ["macros", "rt"] }
+tower = { version = "0.5", features = ["util"] }

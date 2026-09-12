@@ -1,0 +1,71 @@
+{
+  "catalogue_declaration_hash": "7a9970c789a241c4b0980d1d4a993cb63cc2eb7240e7b23d98235416bf9e103c",
+  "schema_version": 1,
+  "signals": [
+    {
+      "entry_hash": "67153c76c7198a12dffc1809d9591389f9b8f0bdc1355e8f39c7c6a523aa023a",
+      "signal": "blue",
+      "type_name": "entities::Username"
+    },
+    {
+      "entry_hash": "56c156d4659e6e02aa3e51202160d7ba32620169998bddd1719122bff04f2864",
+      "signal": "blue",
+      "type_name": "entities::UsernameError"
+    },
+    {
+      "entry_hash": "bb92cc623290aced3de4219087d77dfda6518c6fd6f4226332ba93cd97cd92f6",
+      "signal": "blue",
+      "type_name": "entities::auth::AccessTokenRecord"
+    },
+    {
+      "entry_hash": "05bf6f386fa63f5689eaaac8bb41ea263edb97a0ee4d03aba38f6bc43be8f115",
+      "signal": "blue",
+      "type_name": "entities::auth::AccessTokenRepositoryError"
+    },
+    {
+      "entry_hash": "0a6b7f82bd38d25cda21ed73b28225490648cd200ef95ecfd1041dc282c765fa",
+      "signal": "blue",
+      "type_name": "entities::auth::OpaqueAccessToken"
+    },
+    {
+      "entry_hash": "c3a798ec454f52d6a68d7d77f4d261727d604747be065b1ba7d270ed5267e143",
+      "signal": "blue",
+      "type_name": "entities::auth::OpaqueAccessTokenError"
+    },
+    {
+      "entry_hash": "5c1325f6a857fec106935bb4b52314d420f405ed66b84e86dc7314ff0addd36d",
+      "signal": "blue",
+      "type_name": "entities::auth::PasswordHash"
+    },
+    {
+      "entry_hash": "b5aef01ff1d1736ad45f59dd87c74e581cb34d96cea6b528255ef1de33df8478",
+      "signal": "blue",
+      "type_name": "entities::auth::PasswordHashError"
+    },
+    {
+      "entry_hash": "0d850916a276a6d32b7c25c907c9ed1e45de76e2c7cbe90f5221bd6f43272b74",
+      "signal": "blue",
+      "type_name": "entities::auth::User"
+    },
+    {
+      "entry_hash": "02c070d4f3d6638ac69e8ea029fcec01385d7e9a3082d08aa57dbe7d460d0232",
+      "signal": "blue",
+      "type_name": "entities::auth::UserLookupError"
+    },
+    {
+      "entry_hash": "f2ff577cb33687401562e73f1547acd802d986159ebc8a9b5467b560656a4788",
+      "signal": "blue",
+      "type_name": "entities::auth::UserRepositoryError"
+    },
+    {
+      "entry_hash": "8602ffb083a13d3565a999365fe68cf4dd6398d2f62d63520cc883fb566719b0",
+      "signal": "blue",
+      "type_name": "AccessTokenRepository"
+    },
+    {
+      "entry_hash": "4f7c7eca23860a0ee9184068441da1586a4289276f2d9e87c407949aa7ed8d4c",
+      "signal": "blue",
+      "type_name": "UserRepository"
+    }
+  ]
+}

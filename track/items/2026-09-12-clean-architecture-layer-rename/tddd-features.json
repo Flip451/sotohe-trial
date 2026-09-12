@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "layers": {
+    "entities": [],
+    "use_cases": [],
+    "interface_adapters": [],
+    "frameworks": [],
+    "web_composition": [],
+    "web": []
+  }
+}

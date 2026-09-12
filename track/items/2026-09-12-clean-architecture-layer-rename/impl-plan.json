@@ -1,0 +1,150 @@
+{
+  "plan": {
+    "sections": [
+      {
+        "description": [
+          "T001 — update workspace, architecture-rule, deny, Makefile, catalogue-lint, preset, and fixture configuration for the renamed layer ids and dependency permissions (IN-001, IN-002, CN-001, CN-002, CN-003, AC-001, AC-002)."
+        ],
+        "id": "enforcement-first",
+        "task_ids": [
+          "T001"
+        ],
+        "title": "Enforcement first"
+      },
+      {
+        "description": [
+          "T002–T007 and T009 — rename and relocate the six implementation crates; update references and wiring (IN-001, IN-002, IN-003, IN-004, OS-001, OS-002, OS-003, CN-001, CN-002, CN-003, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004)."
+        ],
+        "id": "crate-migration",
+        "task_ids": [
+          "T002",
+          "T003",
+          "T004",
+          "T005",
+          "T009",
+          "T006",
+          "T007"
+        ],
+        "title": "Clean Architecture crate migration"
+      },
+      {
+        "description": [
+          "T008 — update architecture documentation, review-scope routing, and reference catalogue filenames/layer ids after enforcement and source migration, then run the required repository gates."
+        ],
+        "id": "documentation-and-gates",
+        "task_ids": [
+          "T008"
+        ],
+        "title": "Documentation, metadata, and terminal gates"
+      }
+    ],
+    "summary": [
+      "GO-001 — migrate enforcement, all six crates, placement boundaries, documentation, review routing, and reference catalogues through T001–T009 while preserving registration and login behavior."
+    ]
+  },
+  "schema_version": 2,
+  "tasks": [
+    {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
+      "description": "Update root workspace membership, architecture-rules.json layer ids/paths/dependency permissions, deny.toml wrappers, affected Makefile.toml task names, .harness/catalogue-lint/config.json, presets/ddd-strict.json, and focused enforcement fixtures (IN-001, IN-002, CN-001, CN-002, CN-003, AC-001, AC-002).",
+      "id": "T001",
+      "status": "done"
+    },
+    {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
+      "depends_on": [
+        "T001"
+      ],
+      "description": "Move libs/domain to libs/entities, rename the Rust crate identifier to entities, and update internal references and tests (IN-001, IN-003, CN-001, CN-002, CN-004, AC-001, AC-002).",
+      "id": "T002",
+      "status": "done"
+    },
+    {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
+      "depends_on": [
+        "T001",
+        "T002"
+      ],
+      "description": "Move libs/usecase to libs/use_cases, rename the Rust crate identifier to use_cases, redirect crate references to entities, and update use-case references and tests (IN-001, IN-003, IN-004, CN-001, CN-002, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
+      "id": "T003",
+      "status": "done"
+    },
+    {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
+      "depends_on": [
+        "T001",
+        "T002",
+        "T003"
+      ],
+      "description": "Move libs/infrastructure to libs/frameworks, rename the Rust crate identifier to frameworks, update dependencies to entities and use_cases, and update references and tests (IN-001, IN-002, IN-003, CN-001, CN-002, CN-003, CN-004, AC-001, AC-002, AC-003).",
+      "id": "T004",
+      "status": "done"
+    },
+    {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
+      "depends_on": [
+        "T001",
+        "T002",
+        "T003",
+        "T004"
+      ],
+      "description": "Move apps/cli-driver to libs/interface_adapters with Rust crate identifier interface_adapters, and update HTTP controller/DTO references and focused tests (IN-001, IN-002, IN-003, IN-004, OS-001, OS-002, CN-001, CN-002, CN-003, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
+      "id": "T005",
+      "status": "done"
+    },
+    {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
+      "depends_on": [
+        "T001",
+        "T002",
+        "T003",
+        "T004",
+        "T005"
+      ],
+      "description": "Move axum server lifecycle/wiring from libs/interface_adapters into libs/frameworks and update focused lifecycle tests (IN-003, IN-004, OS-001, OS-002, CN-004, CN-005, AC-003, AC-004).",
+      "id": "T009",
+      "status": "done"
+    },
+    {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
+      "depends_on": [
+        "T001",
+        "T002",
+        "T003",
+        "T004",
+        "T005",
+        "T009"
+      ],
+      "description": "Move apps/cli-composition to apps/web-composition with Rust crate identifier web_composition, and update dependency declarations, references, and composition-root tests (IN-001, IN-002, IN-003, IN-004, OS-003, CN-001, CN-002, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
+      "id": "T006",
+      "status": "done"
+    },
+    {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
+      "depends_on": [
+        "T001",
+        "T005",
+        "T006"
+      ],
+      "description": "Move apps/cli to apps/web with Rust crate identifier web, update dependency declarations, and update main to invoke web_composition and interface_adapters (IN-001, IN-002, IN-003, IN-004, OS-003, CN-001, CN-002, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
+      "id": "T007",
+      "status": "done"
+    },
+    {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
+      "depends_on": [
+        "T001",
+        "T002",
+        "T003",
+        "T004",
+        "T005",
+        "T009",
+        "T006",
+        "T007"
+      ],
+      "description": "After enforcement and crate migration, update architecture-facing documentation and review-scope group ids/patterns/briefing references, rename the six reference catalogue files and their layer/crate ids plus the TDDD feature declaration to the new vocabulary, preserve catalogue-lint config/preset structural equality, and validate the completed migration with formatting, check-layers, verify-arch-docs, cargo deny, and cargo make ci (IN-001, IN-002, IN-003, IN-004, OS-001, OS-002, OS-003, CN-001, CN-002, CN-003, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
+      "id": "T008",
+      "status": "done"
+    }
+  ]
+}

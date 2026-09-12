@@ -67,7 +67,7 @@ Catalogue files for this workspace use **`schema_version: 5`** — a 2-axis stru
 | `UseCase` | `{ "UseCase": { "handles": ["<TypeRef>"...] } }` | `handles` defaults to `[]` ⇔ `{ "UseCase": {} }` |
 | `EventPolicy` | `{ "EventPolicy": { "reacts_to": ["<TypeRef>", ...] } }` | `reacts_to` is **required and must be non-empty** (`NonEmptyVec` invariant — empty array is a decode error) |
 | `DomainEvent` | `{ "DomainEvent": {} }` | unit variant — payload-free event role (Stage 2) |
-| `Specification` / `Factory` / `Interactor` / `Command` / `Query` / `Dto` / `ErrorType` / `SecondaryAdapter` / `CompositionRoot` / `PrimaryAdapter` | `{ "<Variant>": {} }` | unit variants — always write the empty object payload. `CompositionRoot` is permitted only in `cli_composition`; `PrimaryAdapter` is permitted only in `cli_driver` |
+| `Specification` / `Factory` / `Interactor` / `Command` / `Query` / `Dto` / `ErrorType` / `SecondaryAdapter` / `CompositionRoot` / `PrimaryAdapter` | `{ "<Variant>": {} }` | unit variants — always write the empty object payload. `CompositionRoot` is permitted only in `web_composition`; `PrimaryAdapter` is permitted in `interface_adapters` and `frameworks` |
 
 Using a trait-section or function-section role here is a parse-time error.
 

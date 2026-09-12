@@ -1,0 +1,54 @@
+{
+  "entries": [
+    {
+      "claim_hash": "216af7a0baf1316f940885195ec1ac49c5309a123402d8fe9735714e6f380e0f",
+      "claim_origin": {
+        "data": {
+          "entry_key": "web_composition::GreetingCompositionRoot",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/web_composition-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "0fea9d71db575e99c7bbe60aa0d08b0db0e2a2589f71152b496c93724cecdfc0",
+      "claim_origin": {
+        "data": {
+          "entry_key": "web_composition::auth::AuthCompositionRoot",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/web_composition-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    }
+  ],
+  "layer": "web_composition",
+  "schema_version": 1
+}

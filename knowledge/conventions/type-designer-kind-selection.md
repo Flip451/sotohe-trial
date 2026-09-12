@@ -112,7 +112,7 @@ R1 の五つの層の性質に分類された layer の role には、出荷 cat
 
 `ValueObject` は innermost / application / driven adapter のいずれへ置く場合も、ユビキタス言語、不変条件の所有、複数 application operation を越えた意味の安定性、persistence・delivery・workflow 都合からの独立性を根拠として決める。same-track innermost 内部の inbound reference は model での利用を示す補助証拠として記録してよいが、その不在だけで拒否してはならない。application boundary にのみ意味を持つ値は application の `Dto` / `Command` / `Query` / `ValueObject` として置く。配置の semantic classification と根拠は catalogue の `docs` または track の review 記録に残し、reviewer が照合する。
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure / cli_driver scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks / interface_adapters scope
 
 五つの層の性質に分類された layer で `✗` または **ONLY** を破る role × layer 性質の選択は、`bin/sotp signal calc-impl-catalog` の signal 評価以前に **role 違反** として draft 段階で却下する。process entrypoint の literal な shell allowance はこの role × layer 判定ではなく、直前の process entrypoint 規則に従って判定する。
 
@@ -122,7 +122,7 @@ R1 の五つの層の性質に分類された layer の role には、出荷 cat
 
 port が innermost の不変条件または aggregate の語彙で説明できるなら innermost に置く。application のオーケストレーションが必要とする技術的能力なら application に置く。たとえば aggregate の永続化は innermost の `Repository`、レビュー実行や差分取得の能力は application の `SecondaryPort` として分類する。
 
-> **強制先**: review 観点 — types / domain / usecase scope
+> **強制先**: review 観点 — types / entities / use_cases scope
 
 R7 (Cross-Track Port Reference) も参照すること: top-level `trait_impls` のうち `for_type` が `SecondaryAdapter` 型を指す entry の `trait_ref` が参照する port が当該 track の catalogue に未 declare の場合、`-.impl.->` edge が silently skip される。
 
@@ -132,36 +132,36 @@ R7 (Cross-Track Port Reference) も参照すること: top-level `trait_impls` �
 
 `Command` と `Query` を別の `Interactor` / `ApplicationService` に分離するのは、side effect、required collaborator、possible error、consistency boundary、read/write model のうち少なくとも一つに操作固有の実質的な非対称性がある場合だけである。分離する catalogue は、該当次元、具体的な操作差、分離根拠を `docs` または review 可能な track 記録に残す。read と write の両方があることや、role が利用可能なことだけでは分離理由にならない。
 
-> **強制先**: review 観点 — types / usecase scope
+> **強制先**: review 観点 — types / use_cases scope
 
 #### Driver injection and facade prohibition
 
 入力 port は 1 ユースケースにつき 1 trait とし、実行メソッドを 1 つだけ持つ。driver の注入粒度はこの port 粒度に合わせ、driver は自分が消費する複数の単能 port をそれぞれ直接受け取ってよい。「driver は 1 つの interactor だけを注入する」という制約は置かない。
 
-> **強制先**: review 観点 — types / usecase / cli_driver / cli_composition scope
+> **強制先**: review 観点 — types / use_cases / interface_adapters / web_composition scope
 
 入力 port の 1 trait 規則は、入力 port trait を置く場合の粒度を定める。R2 の条件を満たす stateless な user-facing 操作を top-level `pub fn`（`role: UseCaseFunction`）としてモデル化した場合、その entrypoint は port trait も Interactor も持たず、driver はその関数を直接呼び出す。この形は 1 trait 規則の対象外である。後からその操作に入力 port trait を導入する時点で、1 ユースケース 1 trait・実行メソッド 1 つの規則に従う。
 
-> **強制先**: review 観点 — types / usecase / cli_driver / cli_composition scope
+> **強制先**: review 観点 — types / use_cases / interface_adapters / web_composition scope
 
 command と query を混載する `*Service` などの facade port を新設してはならない。この禁止は未移行の文脈にも適用する。既存の facade port や既存の単一 interactor 注入は、この規約だけを理由に遡及改修しない。
 
-> **強制先**: review 観点 — types / usecase / cli_driver / cli_composition scope
+> **強制先**: review 観点 — types / use_cases / interface_adapters / web_composition scope
 
 #### Validated Command / Query boundary
 
 - 新規コードの usecase 入力 boundary は、command usecase では検証済みの usecase 所有 `Command` 型を 1 個だけ、query usecase では検証済みの usecase 所有 `Query` 型を 1 個だけ受け取る。未検証の `String` などを入力 boundary の公開シグネチャに置いてはならない。
 
-  > **強制先**: review 観点 — types / usecase / cli_driver scope
-- `String` から対応する `Command` または `Query` へのパースと検証は usecase 所有の boundary 型が担う。CLI の driving path（規約上の `cli`）はそのパースを一度だけ呼び出してから対応する入力 boundary を呼び出し、得られた検証済み `Command` または `Query` を渡す。現行の層構成ではこの責務を `cli_driver` が担い、薄い `cli` bin は `cli_driver` を呼び出すだけで usecase crate に直接依存しない。
+  > **強制先**: review 観点 — types / use_cases / interface_adapters scope
+- `String` から対応する `Command` または `Query` へのパースと検証は use_cases 所有の boundary 型が担う。リクエスト抽出と DTO→Command/Query 変換は `interface_adapters` が担う。薄い `web` bin は `web_composition` から組み立て済みサーバを得て lifecycle outcome を提示するだけで、リクエストパースや use_cases crate への直接依存を持たない。
 
-  > **強制先**: review 観点 — types / usecase / cli / cli_driver scope
-- domain enum の鏡像を cli 側に定義してはならない。boundary の語彙は usecase 所有の boundary 型に統一し、`cli` と `cli_driver` は domain 型を知らないという原則を維持する。
+  > **強制先**: review 観点 — types / use_cases / web / interface_adapters scope
+- domain enum の鏡像を web 側に定義してはならない。boundary の語彙は use_cases 所有の boundary 型に統一し、`web` と `interface_adapters` は domain 型を知らないという原則を維持する。
 
-  > **強制先**: review 観点 — types / usecase / cli / cli_driver scope
+  > **強制先**: review 観点 — types / use_cases / web / interface_adapters scope
 - 既存の境界実装は、この規約だけを理由に遡及改修しない。
 
-  > **強制先**: review 観点 — types / usecase / cli / cli_driver scope
+  > **強制先**: review 観点 — types / use_cases / web / interface_adapters scope
 
 ### R2. Free Function Preference (stateless behavior は FreeFunction)
 
@@ -174,7 +174,7 @@ command と query を混載する `*Service` などの facade port を新設し�
 
 ただし、R1 で application-only の user-facing use-case entrypoint と分類される top-level `pub fn` は、この `FreeFunction` 判定の対象外として `role: UseCaseFunction` で起草する。したがって、R2 の top-level `pub fn` 判定は `UseCaseFunction` ではない stateless function に適用する。
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure / cli_driver scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks / interface_adapters scope
 
 判定例:
 
@@ -186,17 +186,17 @@ command と query を混載する `*Service` などの facade port を新設し�
 
 候補はまず、(1) アーキテクチャが要求する structure-required port とその実装の組か、(2) その組の上に層の内部で任意に重ねる service-level 抽象かを分類する。ユースケース自身の入力ポートは、1 ユースケース 1 trait・実行メソッド 1 つの `ApplicationService` inbound port と、その `Interactor` 実装からなる structure-required な組であり、複数実装や service 自体のテスト差し替えがなくても D2 の必要性テストを適用せず、R1 / D3 の配置・粒度規則に従って導入する。層を越える依存を表す `SecondaryPort` と aggregate の永続化を表す `Repository` も structure-required ports であり、必要性テストではなく支配するアーキテクチャ規則に従って導入する。
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure / cli_driver scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks / interface_adapters scope
 
 一方、structure-required な入力ポートの組の上に同じ service を共有するためだけに第二の trait と実装を重ねる場合、またはその他の層内 service-level 抽象を追加する場合は、D2 の必要性テストの対象である。(a) 複数の実装が現存する、または (b) service 自体をテスト境界で差し替える必要がある場合だけ導入し、共有所有だけなら `Arc<具象型>` を既定とする。条件が後から成立した時点で trait を切り出す。既存の抽象ペアは改訂後の規約に合わせて遡及解体しない。structure-required な `ApplicationService`、`SecondaryPort`、`Repository` の port 自体やその必要な実装を、単一実装だからという理由で省略してはならない。
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure / cli_driver scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks / interface_adapters scope
 
 ### R3. ValueObject Semantic Restriction
 
 `role: ValueObject` は値等価で識別される値を表す。自身の値から新しい値または述語を導出する side-effect-free な method は許容する。一方、依存または外部リソースを扱う behavior 中心の service 的 struct は ValueObject ではない。
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure / cli_driver scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks / interface_adapters scope
 
 | OK (ValueObject) | NG (ValueObject 違反) |
 |---|---|
@@ -207,7 +207,7 @@ command と query を混載する `*Service` などの facade port を新設し�
 
 判定は構造条件より意味論を優先する。値等価で識別され、method がその値だけから値または述語を導出するなら ValueObject である。依存、外部 resource、または service の責務を中心にするなら ValueObject ではない。
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure / cli_driver scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks / interface_adapters scope
 
 behavior を持つ struct は以下のいずれかに振り分ける。
 
@@ -217,7 +217,7 @@ behavior を持つ struct は以下のいずれかに振り分ける。
 - 状態遷移あり → typestate cluster (`role: ValueObject` で各 state を typestate marker 付き `struct` として表現し、遷移メソッドを `methods` に宣言する。wire format は `.harness/reference/catalogue-schema.md` を参照)
 - 値の同一性ではなく domain behavior を中心にする struct → `role: DomainService` (R6)
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks scope
 
 ### R4. Role Distribution Reconnaissance (起草前の偵察義務)
 
@@ -269,7 +269,7 @@ behavior を持つ struct は以下のいずれかに振り分ける。
 - `ApplicationService` / `SecondaryPort` の実装ではない (structure-required な inbound port の実装は `role: Interactor`、任意 service-level abstraction が D2 の条件を満たして `ApplicationService` を実装する場合も `role: Interactor`、secondary port の実装は `role: SecondaryAdapter`)
 - 配置層は innermost (default) / application (要根拠 — trans-domain な application logic で domain knowledge を集約する場合のみ、`docs` フィールドに根拠を記録) / driven adapter (forbidden)
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks scope
 
 判定例:
 
@@ -341,7 +341,7 @@ bare wrapper 名のみの宣言を catalogue の codec / verify CLI が schema v
 
 catalogue の field / payload / param / returns / map キーで、検証可能な制約・有限値集合・ドメイン的意味を持つ概念を生 primitive (`String` / `i32` / `bool` 等) で宣言してはならない。値オブジェクト (`role: ValueObject` の `tuple` shape newtype、または有限値集合の `enum`) を定義して使う。
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks scope
 
 対象フィールド:
 
@@ -363,7 +363,7 @@ catalogue の field / payload / param / returns / map キーで、検証可能�
    - **config キー / filter 値が domain 概念を名指すなら、それは概念への参照である**。`[role.<RoleName>]` の RoleName、`[edge.<EdgeKind>]` の EdgeKind、`include_function_roles` の各 FunctionRole 等、有限の domain 概念集合を名指すキー/値は「ただの設定文字列」ではなく、当該 domain enum (serde は driven adapter の mirror 経由) で型付ける。「open-ended だから String」「runtime で検証するから String」は R9 違反
    - 対応する enum が未だ無ければ、R1 の semantic evidence で配置を判定する。ユビキタス言語・不変条件・operation を越えた安定性・delivery/persistence/workflow からの独立性がある domain 概念なら R10 に従い domain enum を新設する。application boundary にのみ意味を持つ値なら、application の `Dto` / `Command` / `Query` / `ValueObject` として型付ける。いずれの場合も生 String へ退避してはならない。生 String 可は color / mermaid 構文のような domain 的意味を持たない提示専用値のみ
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks scope
 
 draft が本ルールに違反する (制約ある概念を生 primitive で宣言している) 場合、orchestrator のレビュー前に self-reject して値オブジェクト化する。
 
@@ -382,11 +382,11 @@ draft が本ルールに違反する (制約ある概念を生 primitive で宣�
 
 R10 を適用する前に R1 の semantic-first evidence で候補を分類する。ユビキタス言語に属し、不変条件を所有し、複数 application operation を越えて意味が安定し、persistence・delivery・workflow の都合から独立して存在するなら domain 概念である。same-track innermost 内部の inbound reference はその利用を示す補助証拠であり、欠如だけで innermost 配置を拒否しない。application boundary にのみ意味を持つ値は application の `Dto` / `Command` / `Query` / `ValueObject` として型付ける。
 
-> **強制先**: review 観点 — types / domain / usecase scope
+> **強制先**: review 観点 — types / entities / use_cases scope
 
 R1 で domain 概念と分類された概念 (ユビキタス言語に現れる名詞: 識別子・数量・分類・ポリシー・状態 等) は、必ず **ドメインオブジェクト** として R1 マトリクスで innermost に合法な role (`ValueObject` / `Entity` / `AggregateRoot` / `DomainService` / `Specification` / `Factory` / `ErrorType` — R1 マトリクスの innermost 列を参照) のいずれかでモデル化し、**innermost の性質に対応する layer catalogue に定義する**。どの層がそれを消費するかは問わない。R9 が「概念を生 primitive にしない」を、本 R10 が「domain 概念のドメインオブジェクト化 + innermost 配置 + カタログ宣言」を担う。role 選定は R1–R6 の判断木 (R3: ValueObject 制限 / R6: DomainService 選定基準 等) に従う。
 
-> **強制先**: review 観点 — types / domain scope
+> **強制先**: review 観点 — types / entities scope
 
 論理連鎖 (なぜ概念が省略不能か):
 
@@ -396,7 +396,7 @@ R1 で domain 概念と分類された概念 (ユビキタス言語に現れる�
 4. `pub` 型は **カタログ宣言が必須** である (カタログは public な API surface を写す。source に在る pub 型がカタログ未宣言なら signal が 🔴 になる)
 5. ∴ **各 domain 概念は省略不能で innermost catalogue に宣言される**。R1 で application 境界値と分類された候補は、その application catalogue に宣言される
 
-> **強制先**: review 観点 — types / domain / usecase scope
+> **強制先**: review 観点 — types / entities / use_cases scope
 
 ただし手順 4 の signal 裏打ちは **実装後** にしか効かない (計画段階では概念が source に未在のため、カタログから省いても赤にならない)。よって R10 は **計画段階** で概念のモデル化・配置・宣言を保証する上流ルールであり、R9 と同じく **信号機評価とは別軸** である (全緑でも R10 充足を意味しない)。
 
@@ -405,14 +405,14 @@ R1 で domain 概念と分類された概念 (ユビキタス言語に現れる�
 - innermost を serde-free に保つことは、R1 で domain 概念と分類された概念を innermost にモデル化しない理由には **ならない**。外部形式 (TOML / JSON 等) から読む必要がある domain 概念は、(a) innermost の性質に対応する layer に serde-free なドメインオブジェクトを定義し、(b) driven adapter に `role: Dto` の serde DTO を定義して相互変換する (R1: `Dto` は driven adapter)。purity は「innermost の domain model + driven adapter の DTO」の対で解決する。
 - 「serde が要るから driven adapter の生 struct に留める」「R1 の分類をせずに概念をカタログから省略する」は **いずれも R10 違反**。R1 で application 境界値と分類された候補は、innermost ではなく application catalogue に型付けて宣言する。
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks scope
 
 判別 (R1 による分類):
 
 - ドメイン的意味 (ドメインエキスパートとの会話に現れるか)、不変条件の所有、operation を越えた意味の安定性、delivery / persistence / workflow からの独立性を合わせて判断する。serde・外部形式・表示の都合は判別に **関与しない** (それは配置ではなく DTO 変換の問題である)。same-track inbound reference は補助証拠であり、意味分類を置き換えない
 - ドメイン的意味を一切持たない純粋な技術ノブ (adapter 内部のバッファサイズ・リトライ回数等) は innermost に置かない。R1〜R6 を適用しても role または配置が確定しない場合は、R5 に従い `## Open Questions` に escalation し、曖昧さだけを理由に innermost に配置してはならない
 
-> **強制先**: review 観点 — types / domain / usecase / infrastructure scope
+> **強制先**: review 観点 — types / entities / use_cases / frameworks scope
 
 判定例:
 
@@ -466,7 +466,7 @@ type-designer 自身および reviewer は draft 段階で以下を確認する�
   > **強制先**: review 観点 — types scope
 - [ ] R6 の採用条件を満たし、値等価で識別される ValueObject (R3) ではない、field + behavior を持つ innermost struct が `role: DomainService` で起草されているか (`role: ValueObject` / `role: Interactor` への誤分類がないか)
 
-  > **強制先**: review 観点 — types / domain scope
+  > **強制先**: review 観点 — types / entities scope
 - [ ] role 起草前に偵察 (R4) を実施したか (近接 track の role 分布を確認したか)
 
   > **強制先**: review 観点 — types scope
@@ -481,10 +481,10 @@ type-designer 自身および reviewer は draft 段階で以下を確認する�
   > **強制先**: review 観点 — types scope
 - [ ] field / payload / param / returns / map キーで、制約ある概念を生 primitive (`String` 等) で宣言していないか (R9)。制約があれば値オブジェクト (newtype / enum) を定義しているか。**`role: Dto` / serde 境界も例外ではない** — 概念を名指す map キー・filter 値は innermost の domain enum (serde は driven adapter の mirror enum 経由) で型付けているか。生 primitive は color / 自由ラベル等の真に不透明な提示専用値のみで、その場合 `docs` に根拠が記録されているか
 
-  > **強制先**: review 観点 — types / domain / usecase / infrastructure scope
+  > **強制先**: review 観点 — types / entities / use_cases / frameworks scope
 - [ ] `ValueObject` 候補を R1 の semantic-first evidence (ユビキタス言語、不変条件、operation を越えた安定性、delivery/persistence/workflow からの独立性) で分類し、根拠を記録したか。domain 概念は R1 マトリクスで innermost に合法な role (ValueObject / Entity / AggregateRoot / DomainService / Specification / Factory / ErrorType) のいずれかで innermost に定義し、innermost catalogue に宣言しているか (R10)。same-track inbound reference は補助証拠としてのみ扱ったか。application boundary 値は application の `Dto` / `Command` / `Query` / `ValueObject` として型付け、application catalogue に宣言しているか。serde / 外部形式の都合を口実に、R1 の分類をせずに概念を driven adapter の生 struct に留めたりカタログから省略したりしていないか。外部形式が要る domain 概念は「innermost の domain object + driven adapter の `role: Dto`」の対で表現しているか
 
-  > **強制先**: review 観点 — types / domain / usecase / infrastructure scope
+  > **強制先**: review 観点 — types / entities / use_cases / frameworks scope
 - [ ] R1〜R10 のいずれでも判断できない entry が `## Open Questions` に escalation されているか
 
   > **強制先**: review 観点 — types / harness-policy scope

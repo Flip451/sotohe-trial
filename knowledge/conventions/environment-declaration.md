@@ -9,7 +9,7 @@
 
 - 対応する platform、architecture、runtime: Linux (kernel 5.x+), `x86_64-unknown-linux-gnu`, Rust edition 2024 / rust-toolchain channel `1.94.0`, host process (no WASM / no bare-metal). OS CSPRNG via `getrandom`/`OsRng` must be available for Argon2 salt and opaque-token issuance.
 - 対応外または条件付きの範囲: Windows / macOS / non-x86_64 / no-std / browser Wasm は未検証。コンテナは上記 Linux ABI と同等の CSPRNG を提供する場合に限り可。
-- platform 差が入力、ファイル、時刻、プロセス、または終了処理に与える条件: 認証アダプタは時刻やファイル I/O に依存しない。CSPRNG 失敗は hashing / token issuance を fail-closed (`Unavailable`) にする。HTTP サーバ既定 bind は loopback `127.0.0.1:3000`（`AuthHttpApi::serve` / `HTTP_BIND_ADDRESS`）。当該アドレス・ポートが利用できない場合は `HttpServerOutcome::Failed`。本番公開面や別ポートは後続設定導入まで対象外。
+- platform 差が入力、ファイル、時刻、プロセス、または終了処理に与える条件: 認証アダプタは時刻やファイル I/O に依存しない。CSPRNG 失敗は hashing / token issuance を fail-closed (`Unavailable`) にする。HTTP サーバ既定 bind は loopback `127.0.0.1:3000`（`frameworks::http::HttpServer::serve` / `HTTP_BIND_ADDRESS`）。当該アドレス・ポートが利用できない場合は `HttpServerOutcome::Failed`。本番公開面や別ポートは後続設定導入まで対象外。
 
 ## Input-Encoding Policy
 
@@ -25,6 +25,6 @@
 
 ## Concurrency Model
 
-- thread、task、process などの実行単位と、同時実行の上限: 同期 API (`Send + Sync` ports)。インメモリリポジトリはプロセス内共有。HTTP 配信は Tokio + axum (`AuthHttpApi::serve`) で単一プロセス内の非同期タスクとして動作する。既定 listen は `127.0.0.1:3000`。汎用ワーカー数・同時接続上限の明示設定は後続。register/login の Argon2 同期実行は `spawn_blocking` へ外し、プロセス全体で同時 8 件 (`AUTH_BLOCKING_CONCURRENCY_LIMIT` / 共有 `Semaphore`) に制限する。飽和時の queue/saturation 挙動は許可取得まで待機（HTTP ステータス変更なし）。Argon2 `p` は 1 に固定。
+- thread、task、process などの実行単位と、同時実行の上限: 同期 API (`Send + Sync` ports)。インメモリリポジトリはプロセス内共有。HTTP 配信は Tokio + axum (`frameworks::http::HttpServer::serve`) で単一プロセス内の非同期タスクとして動作する。既定 listen は `127.0.0.1:3000`。汎用ワーカー数・同時接続上限の明示設定は後続。register/login の Argon2 同期実行は `spawn_blocking` へ外し、プロセス全体で同時 8 件 (`AUTH_BLOCKING_CONCURRENCY_LIMIT` / 共有 `Semaphore`) に制限する。飽和時の queue/saturation 挙動は許可取得まで待機（HTTP ステータス変更なし）。Argon2 `p` は 1 に固定。
 - shared state の所有、同期、順序、再入可能性: `InMemoryUserRepository` / `InMemoryAccessTokenRepository` は `std::sync::RwLock` で HashMap を保護。ロック毒は repository `Unavailable`。同一 username の二重 save は `DuplicateUser`。順序保証はリポジトリ操作単位。HTTP ハンドラは usecase ports を `Arc` 共有する。
-- cancellation、shutdown、失敗時の処理: usecase 同期呼び出しに協調 cancellation なし。`AuthHttpApi::serve` は既定 bind `127.0.0.1:3000` の後、`axum::serve(...).with_graceful_shutdown` で Ctrl-C (`tokio::signal::ctrl_c`) を待つ。Ctrl-C 受信でグレースフル停止し `HttpServerOutcome::Stopped` → `CommandOutcome { success: true }`。`ctrl_c` の handler インストール失敗は shutdown 完了後に検出し `Failed("failed to install Ctrl-C handler: …")` → `CommandOutcome { success: false }`。bind 失敗も `Failed`。axum 0.8 の graceful-shutdown 経路では accept ループが正常終了するため、serve 本体の `Err` は通常到達しない（到達した場合のみ `Failed`）。Ctrl-C 以外の強制プロセス終了では future が drop され outcome は返らない。インメモリ状態はプロセス終了で消える。部分失敗は型付きエラーで fail-closed（トークン発行後の persist 失敗は `LoginError::Persistence`）。
+- cancellation、shutdown、失敗時の処理: usecase 同期呼び出しに協調 cancellation なし。`frameworks::http::HttpServer::serve` は既定 bind `127.0.0.1:3000` の後、`axum::serve(...).with_graceful_shutdown` で Ctrl-C (`tokio::signal::ctrl_c`) を待つ。Ctrl-C 受信でグレースフル停止し `HttpServerOutcome::Stopped`（web presenter が success exit に写像）。`ctrl_c` の handler インストール失敗は shutdown 完了後に検出し `Failed("failed to install Ctrl-C handler: …")`（web presenter が failure exit に写像）。bind 失敗も `Failed`。axum 0.8 の graceful-shutdown 経路では accept ループが正常終了するため、serve 本体の `Err` は通常到達しない（到達した場合のみ `Failed`）。Ctrl-C 以外の強制プロセス終了では future が drop され outcome は返らない。インメモリ状態はプロセス終了で消える。部分失敗は型付きエラーで fail-closed（トークン発行後の persist 失敗は `LoginError::Persistence`）。

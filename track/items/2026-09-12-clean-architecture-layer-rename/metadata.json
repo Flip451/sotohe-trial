@@ -1,0 +1,13 @@
+{
+  "schema_version": 6,
+  "id": "2026-09-12-clean-architecture-layer-rename",
+  "title": "クリーンアーキテクチャ層へのリネーム",
+  "branch": "track/2026-09-12-clean-architecture-layer-rename",
+  "created_at": "2026-09-12T01:44:48Z",
+  "updated_at": "2026-09-12T01:44:48Z",
+  "branch_strategy_snapshot": {
+    "base_branch": "main",
+    "merge_target": "main",
+    "merge_method": "merge"
+  }
+}

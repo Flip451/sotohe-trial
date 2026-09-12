@@ -31,11 +31,11 @@ dependencies = ["prepare-local-cache-dirs"]
 command = "docker"
 args = ["compose", "run", "--rm", "-e", "SOTP_TELEMETRY=0", "tools", "cargo", "nextest", "run", "--all-targets", "--all-features", "--no-tests=warn"]
 
-[tasks.test-cli-feature-off]
-description = "[gate] Run feature-off CLI tests through Docker Compose"
+[tasks.test-web-feature-off]
+description = "[gate] Run feature-off web tests through Docker Compose"
 dependencies = ["prepare-local-cache-dirs"]
 command = "docker"
-args = ["compose", "run", "--rm", "-e", "SOTP_TELEMETRY=0", "tools", "cargo", "nextest", "run", "--no-default-features", "-p", "cli", "--no-tests=warn"]
+args = ["compose", "run", "--rm", "-e", "SOTP_TELEMETRY=0", "tools", "cargo", "nextest", "run", "--no-default-features", "-p", "web", "--no-tests=warn"]
 
 [tasks.test-doc]
 description = "[gate] Run documentation tests through Docker Compose"

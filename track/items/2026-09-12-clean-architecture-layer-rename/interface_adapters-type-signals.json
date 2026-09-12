@@ -1,0 +1,67 @@
+{
+  "baseline_hash": "ef404be995cdd067328c7997e745e3fe592ddb8cb173cd4bd4c759a67dfb47c0",
+  "declaration_hash": "745e317156abf5d0b25f2ce1200519184c6c484cf48e652dfcfab00ac6d8c8c6",
+  "generated_at": "2026-09-12T10:57:09Z",
+  "head_commit": "4e2e1b013d442eaf5993f7348a74fbaa0aeb512f",
+  "implementation_fingerprint": "7b948e72e4d69cd332b23e48dea226f966ba45ab5d508f637dcfda110f2259c3",
+  "resolution_fingerprint": "6fccee7cd47aa61e59a0c97c4b03a757b2c660ce136f8ae39583111008d5705c",
+  "rustdoc_execution_identity": {
+    "crate_name": "interface_adapters",
+    "expected_json_path": "target/.sotp-rustdoc/e191bb9fa1757f17f5aa4bb8536fcba5522b98c0de1cf014f2a37eeb9bfc3aac/doc/interface_adapters.json",
+    "features": [],
+    "profile": "dev",
+    "target_directory": "target/.sotp-rustdoc/e191bb9fa1757f17f5aa4bb8536fcba5522b98c0de1cf014f2a37eeb9bfc3aac"
+  },
+  "schema_version": 6,
+  "signals": [
+    {
+      "found_type": true,
+      "kind_tag": "primary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::AuthHttpApi"
+    },
+    {
+      "found_type": false,
+      "kind_tag": "unknown",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::HttpServerOutcome"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "dto",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "interface_adapters::CommandOutcome"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "primary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "interface_adapters::GreetDriver"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "dto",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::AccessTokenResponse"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "dto",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::LoginRequest"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "dto",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::RegisterRequest"
+    }
+  ]
+}

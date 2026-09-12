@@ -56,7 +56,7 @@ Define which crates may depend on which crates.
 4. Synchronize the live architecture-document set: `CLAUDE.md`, `AGENTS.md`,
    this skill,
    `.harness/capabilities/{implementer,dry-fix-lead,review-fix-lead,rollback-diagnoser}.md`,
-   `.harness/custom/review-prompts/{cli,cli_composition,cli_driver,domain,infrastructure,types,usecase}.md`,
+   `.harness/custom/review-prompts/{web,web_composition,interface_adapters,entities,frameworks,types,use_cases}.md`,
    and applicable `knowledge/conventions/` references (especially
    `coding-principles.md` and `type-designer-kind-selection.md`).
 

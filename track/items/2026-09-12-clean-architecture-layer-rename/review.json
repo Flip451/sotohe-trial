@@ -1,0 +1,705 @@
+{
+  "schema_version": 2,
+  "scopes": {
+    "adr": {
+      "rounds": [
+        {
+          "at": "2026-09-12T01:47:27Z",
+          "findings": [],
+          "hash": "rvw1:sha256:64c64393cd53ac7fd99a52d9a7f96dc9873644380d8af97e9d5a927b8852f022",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T01:52:04Z",
+          "findings": [],
+          "hash": "rvw1:sha256:64c64393cd53ac7fd99a52d9a7f96dc9873644380d8af97e9d5a927b8852f022",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:55:45Z",
+          "findings": [
+            {
+              "category": "Reassess When trigger missing or vacuous",
+              "file": "knowledge/adr/2026-09-12-0845-clean-architecture-aggregate-repository-placement.md",
+              "line": 37,
+              "message": "The ADR has no `## Reassess When` section, so it records no operational signal for revisiting this exception to parent D3. Add at least one concrete trigger, such as a change to aggregate-repository classification or its entities-only placement authority.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:814e69cb86613551fcfbdc79f01e28ffbc48918f09b31b2c0b7e05477986f1f8",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T08:58:05Z",
+          "findings": [],
+          "hash": "rvw1:sha256:02b8183d12afa0ecb459c3e30d39bb78d1f60b03ac563469d12a50f9e9bd211d",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:56:42Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ea1d16693e2092d289f695658ad6b6313bce51b9a8d72809df43dcd4ed17dbd8",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "entities": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:19:38Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/entities/src/lib.rs",
+              "line": 134,
+              "message": "Argon2 の PHC は modified Base64 (`./0-9A-Za-z`) を使うが、検証が `.` を拒否し `+` と `/` を許可しているため、正しい argon2id ハッシュを拒否し、誤った表現を受け入れる。",
+              "severity": "medium"
+            },
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/entities/src/lib.rs",
+              "line": 152,
+              "message": "`parse_phc_params` が `m=0,t=0,p=0` などの無効なコスト値を受け入れるため、`PasswordHash` が「validated argon2id」を保証しない。",
+              "severity": "medium"
+            }
+          ],
+          "hash": "rvw1:sha256:0f1478253cfc6c9873bbfa5900966e0c67097a064619d1f089cf2e1001a91752",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T07:26:32Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2f1b0806a21a289edfbeef2a030a871a29ea0d97c10eff1904f4e1e1a23e3b98",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:22:00Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bf3038d51ebf5fc3c77cba833c46fbc8c0d0be6e3b067645a3c226bef4212846",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:27:35Z",
+          "findings": [],
+          "hash": "rvw1:sha256:92ae699f828bbbf9bf7f90ae18acc9d03bd6fa85058da82df1cde7fc063e6e45",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:47:07Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/entities/src/lib.rs",
+              "line": 146,
+              "message": "`is_base64_unpadded_alphabet` checks only character membership, not whether the field is a valid canonical Base64Unpadded encoding. For example, `PasswordHash::new(\"$argon2id$v=19$m=19456,t=2,p=1$A$dmFsaWQ\")` succeeds, but the verifier's `Base64Unpadded::decode_vec(\"A\")` rejects it because a one-character remainder is invalid. Thus construction can still accept hashes the verifier cannot decode; validate Base64 length and canonical trailing bits as well.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:53553c3e7aa86baed23a76a9fa6216ad4d0ee21d953c36b9b73b3bfcc41c36e2",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:49:38Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/entities/src/lib.rs",
+              "line": 148,
+              "message": "The new `len % 4 != 1` check rejects incomplete quanta but still does not enforce Base64Unpadded's canonical trailing-bit rules. For example, the salt `Mi` passes this helper, so `PasswordHash::new(\"$argon2id$v=19$m=19456,t=2,p=1$Mi$dmFsaWQ\")` succeeds, while the verifier's `Base64Unpadded::decode_vec(\"Mi\")` rejects it as non-canonical. Construction can therefore still accept an encoding the verifier cannot decode.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:467da5c302326babce1526017a4a3c8dbdb7718a4f5e8f00893f68e9998e4b66",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:53:32Z",
+          "findings": [
+            {
+              "category": "resource limit violation",
+              "file": "libs/entities/src/lib.rs",
+              "line": 147,
+              "message": "`decode_vec` allocates a decoded buffer proportional to the caller-controlled salt/digest length, but `PasswordHash::new` applies no length bound before reaching it. This bypasses the declared 256-byte PHC resource boundary and can turn validation of a very large input into a second large allocation and process-level OOM. Enforce the declared bound before decoding or validate canonical Base64 syntax without allocation.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:6e389c64944723dfe4c11f022edc68defa1a9fe79438145765db2d7ae8e19fd7",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:57:02Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7b0c2877a3e0fc59049afa293abeae534e0804eff505572fbcf9305089a74944",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:02:56Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7b0c2877a3e0fc59049afa293abeae534e0804eff505572fbcf9305089a74944",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "frameworks": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:35:13Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bea7ff148be3257b0fa78a9984196837ed55b7130dcce231785087694fda8093",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:25:17Z",
+          "findings": [
+            {
+              "category": "unbounded I/O boundary",
+              "file": "libs/frameworks/src/lib.rs",
+              "line": 204,
+              "message": "The live-socket test awaits `stream.read` in an unbounded loop and later awaits the server task without any deadline. If the server stalls, never emits the header terminator, or graceful shutdown does not complete, the test hangs indefinitely; `response` can also grow without limit. Add a byte cap and wrap the exchange/shutdown in a timeout (enabling Tokio's `time` feature if needed).",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:879b340f2bc3d2b9fbaf118dbf7399ce9486c1439ab46e5adaf9e6b9d32ab37a",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:30:07Z",
+          "findings": [
+            {
+              "category": "clippy gate failure",
+              "file": "libs/frameworks/src/lib.rs",
+              "line": 229,
+              "message": "This `expect` is inside a test module that only allows `clippy::unwrap_used`. The workspace sets `clippy::expect_used = \"deny\"`, and CI runs Clippy with `--all-targets`, so this change fails the mandatory lint gate. Replace it with an allowed assertion/`unwrap`, or add a test-scoped `clippy::expect_used` allowance.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:0840e06daecfc2193a4c1d43e31dcf4cd97bd213a32cd01b5cb0059216ab77b2",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:32:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:484b7f53fe4f7b3ccaacbc2ec9dc692736c8e2d622a6cfb0ca0113b94df96bb0",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:05:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:47ab93ec62362dbd5ac33736f920dd55c5fabee33005b42f28cc80b9c4809e7c",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "harness-policy": {
+      "rounds": [
+        {
+          "at": "2026-09-12T08:02:23Z",
+          "findings": [
+            {
+              "category": "template-distribution reference leak",
+              "file": ".harness/capabilities/implementer.md",
+              "line": 236,
+              "message": "The architecture guard still points implementers at the deleted `apps/cli` crate and preserves its argument-parsing/dispatch contract. The live entry point is `apps/web`, which obtains and serves the composed HTTP server and presents its lifecycle outcome. Update this authoritative capability guidance so future work is not directed to a nonexistent path and obsolete responsibility.",
+              "severity": "P1"
+            },
+            {
+              "category": "command wiring breakage",
+              "file": "knowledge/conventions/coding-principles.md",
+              "line": 116,
+              "message": "`bin/sotp verify use_cases-purity` is not a valid subcommand; it exits with “unrecognized subcommand,” while the surrounding text and `Makefile.toml` correctly invoke `usecase-purity`. Keep the renamed cargo-make task if desired, but restore the actual CLI command at both enforcement references.",
+              "severity": "P1"
+            },
+            {
+              "category": "convention contradiction",
+              "file": ".harness/briefings/review-fix-lead-codex.md",
+              "line": 176,
+              "message": "The renamed guard narrows the placement rule to “Entity types” and omits aggregate `Repository` ports, unlike the provider-agnostic capability contracts and catalogue policy, which keep `UserRepository` and `AccessTokenRepository` in `libs/entities`. Add aggregate Repository ports here and replace the remaining “domain scope” wording so Codex fixers receive the same boundary as other providers.",
+              "severity": "P1"
+            },
+            {
+              "category": "convention contradiction",
+              "file": ".harness/custom/review-prompts/entities.md",
+              "line": 33,
+              "message": "The new rule says any trait abstracting an external capability belongs in `use_cases`, which also describes persistence repositories. That conflicts with the explicit aggregate-Repository tie-break and the entities-only `Repository` lint constraint, making `UserRepository` and `AccessTokenRepository` appear misplaced. Exclude aggregate Repository ports and limit this rule to non-domain technical capabilities.",
+              "severity": "P1"
+            },
+            {
+              "category": "review-scope or briefing wiring inconsistency",
+              "file": ".harness/custom/review-prompts/interface_adapters.md",
+              "line": 31,
+              "message": "This scope now includes HTTP controllers, but the inherited rule still treats every public adapter operation as a CLI-style `handle` that must return `CommandOutcome`. The sanctioned `AuthHttpApi::router()` returns an Axum `Router`, and its handlers render HTTP responses. Narrow the `CommandOutcome` requirement to command-driver operations and define the HTTP controller boundary separately to avoid false findings.",
+              "severity": "P1"
+            },
+            {
+              "category": "review-scope or briefing wiring inconsistency",
+              "file": ".harness/custom/review-prompts/web.md",
+              "line": 23,
+              "message": "The permitted-I/O guidance still references a Driver, `emit(outcome)`, and nonexistent `CommandOutcome.stdout`/`.stderr` fields. The migrated type has `message`/`success`, and `apps/web` uses a presenter for the server lifecycle result. Update this rule to the actual web presenter contract; otherwise correct web code can be rejected against the old CLI API.",
+              "severity": "P1"
+            },
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/type-designer-kind-selection.md",
+              "line": 156,
+              "message": "The rewritten boundary rule says the `web` driving path performs Command/Query parsing and calls the input boundary. The adopted HTTP architecture assigns request extraction and DTO-to-command conversion entirely to `interface_adapters`; the thin `web` binary only starts the server obtained from `web_composition` and presents its terminal outcome. Rewrite this paragraph so type design does not place request parsing in `web`.",
+              "severity": "P1"
+            },
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/testing.md",
+              "line": 72,
+              "message": "The renamed `interface_adapters`/`web` test section retains the old CLI contract—Command/Query dispatch, display, and exit-code testing—and the composition section is still headed `cli-composition`. It therefore omits the HTTP controller obligations introduced by the new boundaries, such as route, status, body, and media-type behavior. Update the layer-responsibility descriptions to the web architecture.",
+              "severity": "P2"
+            },
+            {
+              "category": "template-distribution reference leak",
+              "file": ".harness/custom/review-prompts/harness-policy.md",
+              "line": 172,
+              "message": "This accepted-deviation record says the matching note lives in `domain.md`, but that briefing is deleted and the note now lives in `entities.md`. Update the reference so the distributed policy does not point readers at a removed file.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:58becb197ae8c082ec1e524cdfcb585c933df20cdcd56f75441aece99a1bf0af",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T08:10:51Z",
+          "findings": [
+            {
+              "category": "review-scope or briefing wiring inconsistency",
+              "file": ".harness/briefings/review-fix-lead-codex.md",
+              "line": 48,
+              "message": "The scope-ownership example is only half-renamed: it points to `libs/entities/**` but still calls the assignment the `domain` scope. `.harness/config/review-scope.json` defines `entities` and no `domain` group, so this can misstate the Codex fixer's write boundary. Rename it to the `entities` scope.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:ef137070a41bd00082200fb88cbe7ca0dc47e35e8f10c567b8ab88e15f6a1046",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T08:12:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:1fb3aa7c2e06575449a1a308e8c2143ae11f29227be0bd5fd8d0aee6468887be",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:23:20Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7b9d0fb6d74cc3285840e5858d3bd4f4886ed79309832b1788310e4c1967ec41",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:16:13Z",
+          "findings": [],
+          "hash": "rvw1:sha256:401804ebf340859cf625ebd49a42a57431a679ea5fd667c86e096ac79e1a8eb0",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:52:38Z",
+          "findings": [
+            {
+              "category": "convention contradiction",
+              "file": ".harness/config/sotp-version.json",
+              "line": 4,
+              "message": "The `sotp` pin is bumped without the required version-baseline research record. `.claude/rules/dev-environment.md` requires researching and recording new baselines under `knowledge/research/` before changing pinned tool versions, but the current worktree contains no such record. Add the research artifact documenting tag availability/compatibility, or revert the bump.",
+              "severity": "medium"
+            }
+          ],
+          "hash": "rvw1:sha256:2a3cb474da40cea2cce9e745ea12d9743da8cfd30978842ba22a080f30310d6f",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T10:54:34Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2a3cb474da40cea2cce9e745ea12d9743da8cfd30978842ba22a080f30310d6f",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "impl-plan": {
+      "rounds": [
+        {
+          "at": "2026-09-12T03:41:44Z",
+          "findings": [
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 16,
+              "message": "`crate-migration` restates upstream contracts in prose: “retaining the catalogued ... contracts,” “the decided split between HTTP controller/DTO handling and axum server wiring,” and “the thin web binary.” Keep only target + operation + anchor cite.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 50,
+              "message": "T001 includes upstream rationale/contract prose: “so the decided ... layout and dependency ring are enforced before crates move.” Reduce this to the configuration targets, operation, and anchors.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 59,
+              "message": "T002 restates upstream placement and catalogue contracts in “retaining every catalogued entity/value/error contract and keeping aggregate Repository ports in the innermost crate.”",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 69,
+              "message": "T003 restates upstream behavior and constraints in “retain the catalogued ... ports ... and registration/login behavior without direct runtime I/O.”",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 92,
+              "message": "T005 restates the HTTP behavior contract in “preserve the existing registration/login routes, JSON behavior, empty-password rejection, and opaque-token response contract.” Reference AC-004/CN-005 instead.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 105,
+              "message": "T006 restates upstream composition-boundary behavior in “retain the catalogued ... composition roots without moving product logic into assembly.”",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 116,
+              "message": "T007 restates AC-003 in “keep main as a thin process entry point that delegates assembly and delivery behavior.”",
+              "severity": "P2"
+            },
+            {
+              "category": "pre-implementation split proposal",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 92,
+              "message": "T005 bundles independently verifiable units: moving the HTTP controller/DTO crate to `interface_adapters` and relocating axum server lifecycle/wiring to `frameworks`. Split these into separate pre-implementation tasks with distinct AC-003 coverage.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:48f932b5b0fec3fd126fcf7b14504bc0bda47c39612cdd70bb84f141a4c7212b",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T03:47:38Z",
+          "findings": [
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 6,
+              "message": "The `enforcement-first` plan section restates upstream design in “the decided Clean Architecture layer vocabulary and dependency ring enforceable before any source relocation.” Keep the section to target + operation + anchor cite; cite `.harness/policies/no-upstream-restatement.md`.",
+              "severity": "P2"
+            },
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 58,
+              "message": "T004 restates upstream catalogue/behavior contracts in “retain the catalogued persistence, password-crypto, token-issuance, and salutation adapters with their focused tests.” Use the target, operation, and anchors without repeating the contract prose.",
+              "severity": "P2"
+            },
+            {
+              "category": "pre-implementation split proposal",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 69,
+              "message": "T005 still bundles two independently verifiable behavior units: updating the HTTP controller/DTO implementation in `interface_adapters` and relocating axum server lifecycle/wiring into `frameworks`. Split these before implementation, with separate AC-003 coverage.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:7fd5a8e6ec11b57da841c61628d06f94c7697bc3c59196baae9e94a89f5673ec",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T03:55:09Z",
+          "findings": [
+            {
+              "category": "task-contract attribution mismatch",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/task-contract.json",
+              "line": 59,
+              "message": "T009 is attributed to `AuthHttpApi` and `HttpServerOutcome`, but its operation moves axum server lifecycle/wiring out of the interface-adapter crate. `AuthHttpApi`'s catalogue shape owns `serve`/`router`, while `HttpServerOutcome` is the delivery-lifecycle DTO; after T009 they cannot both converge to the declared `cli_driver` entries. Keep these entries owned by the task that preserves their interface-adapter shape, or update the catalogue ownership/shape consistently.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:1377a159766dac57b7d700c0de55b1006d57af443a1bb35bf96b690d26c043e1",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T03:59:47Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4d6e4c4038ec093afefc5f515ebb5319abdfd79c7e25d12b9e69f5e4a4926c59",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T04:07:32Z",
+          "findings": [
+            {
+              "category": "task-coverage gap",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/task-coverage.json",
+              "line": 126,
+              "message": "AC-003 is only nominally covered for the repository ports. T002 moves `libs/domain` wholesale to `libs/entities`, and `task-contract.json` attributes `UserRepository` and `AccessTokenRepository` to T002; T003 only moves the existing use-case crate, and no later task relocates those ports into `use_cases`. Therefore the T002 mapping cannot discharge AC-003’s placement requirement. Add an executable relocation operation/task and reconcile its catalogue attribution through the owning phase.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:4d6e4c4038ec093afefc5f515ebb5319abdfd79c7e25d12b9e69f5e4a4926c59",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T05:17:38Z",
+          "findings": [
+            {
+              "category": "upstream restatement",
+              "file": "track/items/2026-09-12-clean-architecture-layer-rename/impl-plan.json",
+              "line": 68,
+              "message": "T003 restates the upstream placement contract in “retain its catalogued application ports in that crate.” Keep the operation and anchor cite, but remove the contract prose per `.harness/policies/no-upstream-restatement.md`.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:02d90ea0ed45ea7a9647e79d4d55fce275503b1f00d30173424ed930ace90d23",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T05:19:09Z",
+          "findings": [],
+          "hash": "rvw1:sha256:38d9dad338b40a623e8e86d4f4138da46a35e9e091b9a2a563a4023959e1032c",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T05:28:43Z",
+          "findings": [],
+          "hash": "rvw1:sha256:38d9dad338b40a623e8e86d4f4138da46a35e9e091b9a2a563a4023959e1032c",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T05:35:48Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ef1ce05660a0532ac46f6ef9813d95a4d311b88685ac5471a613c14d3dfb7e9a",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T05:44:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ef1ce05660a0532ac46f6ef9813d95a4d311b88685ac5471a613c14d3dfb7e9a",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:03:00Z",
+          "findings": [],
+          "hash": "rvw1:sha256:41bdb26c7873dc0f9f77de50a756245af2338be25d55e3712af26d17d079f73d",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:42:17Z",
+          "findings": [],
+          "hash": "rvw1:sha256:49dd910d1f9b33819538e25064cf43a5bc374c003e9a7ec14f3a3c57b4fd6955",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "interface_adapters": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:38:46Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f0ecb556a121f419ff389d5e5239126b65e8933c84ff86d9878b89eea00c49f9",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "other": {
+      "rounds": [
+        {
+          "at": "2026-09-12T03:40:33Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6a7fefe61ec507d6148a8c69033276b4fb18b5b7522efae3d3f9410812f74e30",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T03:47:31Z",
+          "findings": [],
+          "hash": "rvw1:sha256:6a7fefe61ec507d6148a8c69033276b4fb18b5b7522efae3d3f9410812f74e30",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:05:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9f3e7b263fb723db89d0ff879051133067285ad5474487c8482028522d9a21e1",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:17:31Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4a9a9b231ea058c328aca229edcb98ac822367ba520ed54f298a20f04b8b4bfd",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:24:01Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b1d49264a6a64d859a558fb4f7c99710c217ab7149a9479f1d2d0ce9e94bd6b9",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:09:19Z",
+          "findings": [],
+          "hash": "rvw1:sha256:fc4f630b9423313948cd4059d77d2af46271dedf5b765e30f09f17321c593531",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:26:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f640cf52ca093b43d929cf0d3166d7c2dc4cbb08c508439afa90e9d60840dec9",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:58:23Z",
+          "findings": [],
+          "hash": "rvw1:sha256:df91f3d7391d52f5c45af7f10f1a01156c8d9088ed81a61ca047567afa7c189e",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:06:12Z",
+          "findings": [],
+          "hash": "rvw1:sha256:df91f3d7391d52f5c45af7f10f1a01156c8d9088ed81a61ca047567afa7c189e",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "spec": {
+      "rounds": [
+        {
+          "at": "2026-09-12T02:02:23Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5842823384b363f2721c50712ce182bbed0955af4f5beb2025b157615cdeb2df",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T02:04:43Z",
+          "findings": [],
+          "hash": "rvw1:sha256:5842823384b363f2721c50712ce182bbed0955af4f5beb2025b157615cdeb2df",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:57:13Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2e502d81ef2f112f13713dfe7001c1a8923c91f43ac3ba136f11034bb56ba463",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "types": {
+      "rounds": [
+        {
+          "at": "2026-09-12T03:19:36Z",
+          "findings": [],
+          "hash": "rvw1:sha256:36d2df466b44cfc41ff688472cd9e37b807d015a2fd83e97f7cb2fc12cfc685b",
+          "type": "fast",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T03:27:22Z",
+          "findings": [],
+          "hash": "rvw1:sha256:36d2df466b44cfc41ff688472cd9e37b807d015a2fd83e97f7cb2fc12cfc685b",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:38:08Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3d53b00c96cff9cf2fea925295dfaee8d92db8b064c37ffc9bbdaad1ea72dbeb",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:07:56Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e954d53cffaf22f3a6db5c6cedf4b0a3fcec3aea16d430b762b28037d49da09f",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "use_cases": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:30:53Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b755c5f4847d30c2982b16dc7977003dffc14a668b48b603d1cd25e634218a15",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "web": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:47:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:abfb1b6755a9f7ef575f91c3d99e25721e2f869053521fe6fabfe1ffbccfbe56",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "web_composition": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:43:32Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f33e4db87662bc2cc48dfb99ef6750840d0bceb74b58df7e7274a306995a4e76",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    }
+  }
+}

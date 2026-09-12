@@ -2,41 +2,41 @@
   "version": 2,
   "default_diff_ceiling_lines": 500,
   "groups": {
-    "domain": {
+    "entities": {
       "patterns": [
-        "libs/domain/**"
+        "libs/entities/**"
       ],
-      "briefing_file": ".harness/custom/review-prompts/domain.md"
+      "briefing_file": ".harness/custom/review-prompts/entities.md"
     },
-    "usecase": {
+    "use_cases": {
       "patterns": [
-        "libs/usecase/**"
+        "libs/use_cases/**"
       ],
-      "briefing_file": ".harness/custom/review-prompts/usecase.md"
+      "briefing_file": ".harness/custom/review-prompts/use_cases.md"
     },
-    "infrastructure": {
+    "frameworks": {
       "patterns": [
-        "libs/infrastructure/**"
+        "libs/frameworks/**"
       ],
-      "briefing_file": ".harness/custom/review-prompts/infrastructure.md"
+      "briefing_file": ".harness/custom/review-prompts/frameworks.md"
     },
-    "cli": {
+    "web": {
       "patterns": [
-        "apps/cli/**"
+        "apps/web/**"
       ],
-      "briefing_file": ".harness/custom/review-prompts/cli.md"
+      "briefing_file": ".harness/custom/review-prompts/web.md"
     },
-    "cli_composition": {
+    "web_composition": {
       "patterns": [
-        "apps/cli-composition/**"
+        "apps/web-composition/**"
       ],
-      "briefing_file": ".harness/custom/review-prompts/cli_composition.md"
+      "briefing_file": ".harness/custom/review-prompts/web_composition.md"
     },
-    "cli_driver": {
+    "interface_adapters": {
       "patterns": [
-        "apps/cli-driver/**"
+        "libs/interface_adapters/**"
       ],
-      "briefing_file": ".harness/custom/review-prompts/cli_driver.md"
+      "briefing_file": ".harness/custom/review-prompts/interface_adapters.md"
     },
     "adr": {
       "patterns": [

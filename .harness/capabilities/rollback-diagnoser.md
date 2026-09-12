@@ -133,7 +133,7 @@ no surrounding prose, no markdown framing.
 |-------|------|---------|
 | `routing_target` | enum string — one of `adr` / `spec` / `type` / `impl_plan` / `impl` | The phase the orchestrator should rollback to. |
 | `reason` | non-empty string (Japanese for human-readable diagnostic, English identifiers in code references) | Which signal / finding / artifact inspection led to this routing. Cite specific element ids (e.g., spec `<acceptance-criterion-id>`, catalogue entry `usecase:PreReviewGateInteractor`, ADR `D-anchor`). |
-| `recommended_next_action` | non-empty string (Japanese) | The concrete next step the orchestrator should take (e.g., "adr-editor で `D-anchor` を改訂し ... を明示する", "type-designer で `usecase-types.json` の `X` エントリを `action: add` で追加", "T-XXX の description に Y を追加して /track:impl-plan を再走", "apps/cli/src/foo.rs の Z 関数を修正"). |
+| `recommended_next_action` | non-empty string (Japanese) | The concrete next step the orchestrator should take (e.g., "adr-editor で `D-anchor` を改訂し ... を明示する", "type-designer で `use_cases-types.json` の `X` エントリを `action: add` で追加", "T-XXX の description に Y を追加して /track:impl-plan を再走", "apps/web/src/foo.rs の Z 関数を修正"). |
 
 All three fields are required on every invocation. Empty `reason` or `recommended_next_action`
 is a contract violation.

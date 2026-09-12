@@ -1,0 +1,165 @@
+{
+  "baseline_hash": "f1fe9b94eee26ad9bdc20ec433ddbc697c7a14dad4218719cc0c40a48d6d9d70",
+  "declaration_hash": "148f5e0b536046823476617f593447abe2ff4df9f977fe935e16a7fdbde47303",
+  "generated_at": "2026-09-12T10:57:07Z",
+  "head_commit": "4e2e1b013d442eaf5993f7348a74fbaa0aeb512f",
+  "implementation_fingerprint": "7b948e72e4d69cd332b23e48dea226f966ba45ab5d508f637dcfda110f2259c3",
+  "resolution_fingerprint": "6fccee7cd47aa61e59a0c97c4b03a757b2c660ce136f8ae39583111008d5705c",
+  "rustdoc_execution_identity": {
+    "crate_name": "use_cases",
+    "expected_json_path": "target/.sotp-rustdoc/d12530049e7e3969122f069b32a44c5dcb2422105115f3853cb862ed69dc3752/doc/use_cases.json",
+    "features": [],
+    "profile": "dev",
+    "target_directory": "target/.sotp-rustdoc/d12530049e7e3969122f069b32a44c5dcb2422105115f3853cb862ed69dc3752"
+  },
+  "schema_version": 6,
+  "signals": [
+    {
+      "found_type": true,
+      "kind_tag": "application_service",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "LoginService"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_port",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "OpaqueTokenIssuer"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_port",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "PasswordHasher"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_port",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "PasswordVerifier"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "application_service",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "RegisterUserService"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_port",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "SalutationProvider"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::GreetError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "use_case",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::GreetUser"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::CredentialParseError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "dto",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::IssuedAccessToken"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "command",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::LoginCommand"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::LoginError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "interactor",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::LoginInteractor"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::PasswordHashingError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::PasswordInputError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::PasswordVerificationError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "value_object",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::PlaintextPassword"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "command",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::RegisterUserCommand"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::RegisterUserError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "interactor",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::RegisterUserInteractor"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "use_cases::auth::TokenIssuanceError"
+    }
+  ]
+}

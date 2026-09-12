@@ -1,0 +1,77 @@
+{
+  "entries": [
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-003",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        "entry_key": "interface_adapters::auth::AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "dadf6998fab62ec1ff763abfb35e1fb90e547166d87ee78215387f83fc642992",
+        "declaration_hash": "c1747016a8383746100077e0b036d4a4d1110aa7fa4905f7c09aaaa4103be027",
+        "waived_reason_hash": "d1b4298605e9555ba29d9bb92c0b626bbef93a78d72d90e0d1d8830a2c5259d8"
+      },
+      "obligation_id": {
+        "entry_key": "interface_adapters::auth::AuthHttpApi",
+        "item_identifier": "voluntary:IN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "\"HTTP primary adapter retained as the controller boundary; server lifecycle execution is delegated to the frameworks layer.\"",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-003",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        "entry_key": "frameworks::http::HttpServer"
+      },
+      "key": {
+        "anchor_text_hash": "dadf6998fab62ec1ff763abfb35e1fb90e547166d87ee78215387f83fc642992",
+        "declaration_hash": "07bacca392f4e906ee16ea4c7ba21d0ff3d9ff335f22a1011f278baa0bbbf436",
+        "waived_reason_hash": "caac624cad1f575588d35f5bb60d95e82ab81077ed8420559c6e6a0270f9e65a"
+      },
+      "obligation_id": {
+        "entry_key": "frameworks::http::HttpServer",
+        "item_identifier": "voluntary:IN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-003",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        "entry_key": "frameworks::http::HttpServerOutcome"
+      },
+      "key": {
+        "anchor_text_hash": "dadf6998fab62ec1ff763abfb35e1fb90e547166d87ee78215387f83fc642992",
+        "declaration_hash": "746c5ae052f6919e6dea0faf4d7ed1e125dccaf9d1d1fb0ff4e3679fdea80b6e",
+        "waived_reason_hash": "98da443a34ac651e77f994d6424a81ec06a31f35111d8590461f986c5194f9b7"
+      },
+      "obligation_id": {
+        "entry_key": "frameworks::http::HttpServerOutcome",
+        "item_identifier": "voluntary:IN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Framework-owned HTTP server lifecycle outcome; Failed carries an opaque diagnostic for the outer presenter.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    }
+  ],
+  "track_id": "2026-09-12-clean-architecture-layer-rename"
+}

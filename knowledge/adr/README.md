@@ -70,3 +70,4 @@ ADR を作成したらこの索引に追記する。テーマ別にセクショ�
 | [2026-09-10-1126-minimal-auth-api.md](./2026-09-10-1126-minimal-auth-api.md) 最小認証API | proposed | 2026-09-10 |
 | [2026-09-10-1238-minimal-auth-registration-capability.md](./2026-09-10-1238-minimal-auth-registration-capability.md) 最小認証 API のユーザー登録能力 | proposed | 2026-09-10 |
 | [2026-09-10-1716-minimal-auth-empty-password-rejection.md](./2026-09-10-1716-minimal-auth-empty-password-rejection.md) 最小認証 API の空パスワード拒否 | proposed | 2026-09-10 |
+| [2026-09-12-0139-clean-architecture-layer-rename.md](./2026-09-12-0139-clean-architecture-layer-rename.md) クリーンアーキテクチャ層へのリネーム | proposed | 2026-09-12 |
