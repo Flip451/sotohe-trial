@@ -2,143 +2,394 @@
   "schema_version": 1,
   "rules": [
     {
-      "target_roles": ["Entity", "AggregateRoot", "ValueObject"],
-      "kind": { "MethodReferenceSignature": { "target_field": "invariants" } }
+      "target_roles": [
+        "Entity",
+        "AggregateRoot",
+        "ValueObject"
+      ],
+      "kind": {
+        "MethodReferenceSignature": {
+          "target_field": "invariants"
+        }
+      }
     },
     {
-      "target_roles": ["Entity", "AggregateRoot"],
-      "kind": { "AccessorSignatureRequired": { "target_field": "identity" } }
+      "target_roles": [
+        "Entity",
+        "AggregateRoot"
+      ],
+      "kind": {
+        "AccessorSignatureRequired": {
+          "target_field": "identity"
+        }
+      }
     },
     {
-      "target_roles": ["Entity", "AggregateRoot"],
-      "kind": { "TraitImplRequired": { "required_traits": ["PartialEq", "Eq"] } }
+      "target_roles": [
+        "Entity",
+        "AggregateRoot"
+      ],
+      "kind": {
+        "TraitImplRequired": {
+          "required_traits": [
+            "PartialEq",
+            "Eq"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["AggregateRoot"],
-      "kind": { "ReferencedRoleConstraint": { "target_field": "exclusive_members", "expected_role": "Entity" } }
+      "target_roles": [
+        "AggregateRoot"
+      ],
+      "kind": {
+        "ReferencedRoleConstraint": {
+          "target_field": "exclusive_members",
+          "expected_role": "Entity"
+        }
+      }
     },
     {
-      "target_roles": ["AggregateRoot"],
-      "kind": { "ReferencedRoleConstraint": { "target_field": "shared_value_objects", "expected_role": "ValueObject" } }
+      "target_roles": [
+        "AggregateRoot"
+      ],
+      "kind": {
+        "ReferencedRoleConstraint": {
+          "target_field": "shared_value_objects",
+          "expected_role": "ValueObject"
+        }
+      }
     },
     {
-      "target_roles": ["AggregateRoot", "DomainService"],
-      "kind": { "ReferencedRoleConstraint": { "target_field": "emits", "expected_role": "DomainEvent" } }
+      "target_roles": [
+        "AggregateRoot",
+        "DomainService"
+      ],
+      "kind": {
+        "ReferencedRoleConstraint": {
+          "target_field": "emits",
+          "expected_role": "DomainEvent"
+        }
+      }
     },
     {
-      "target_roles": ["UseCase"],
-      "kind": { "ReferencedRoleConstraint": { "target_field": "handles", "expected_role": "DomainEvent" } }
+      "target_roles": [
+        "UseCase"
+      ],
+      "kind": {
+        "ReferencedRoleConstraint": {
+          "target_field": "handles",
+          "expected_role": "DomainEvent"
+        }
+      }
     },
     {
-      "target_roles": ["DomainEvent"],
-      "kind": { "ForbiddenMethodReceiver": { "forbidden_receiver": "&mut self" } }
+      "target_roles": [
+        "DomainEvent"
+      ],
+      "kind": {
+        "ForbiddenMethodReceiver": {
+          "forbidden_receiver": "&mut self"
+        }
+      }
     },
     {
-      "target_roles": ["DomainEvent"],
+      "target_roles": [
+        "DomainEvent"
+      ],
       "kind": "NoPublicField"
     },
     {
-      "target_roles": ["Repository"],
-      "kind": { "ReferencedRoleConstraint": { "target_field": "aggregate", "expected_role": "AggregateRoot" } }
+      "target_roles": [
+        "Repository"
+      ],
+      "kind": {
+        "ReferencedRoleConstraint": {
+          "target_field": "aggregate",
+          "expected_role": "AggregateRoot"
+        }
+      }
     },
     {
-      "target_roles": ["AggregateRoot"],
-      "kind": { "FieldElementUniqueAcrossEntries": { "target_field": "exclusive_members" } }
+      "target_roles": [
+        "AggregateRoot"
+      ],
+      "kind": {
+        "FieldElementUniqueAcrossEntries": {
+          "target_field": "exclusive_members"
+        }
+      }
     },
     {
-      "target_roles": ["AggregateRoot"],
-      "kind": { "NoExternalReferenceInMethods": { "target_field": "exclusive_members" } }
+      "target_roles": [
+        "AggregateRoot"
+      ],
+      "kind": {
+        "NoExternalReferenceInMethods": {
+          "target_field": "exclusive_members"
+        }
+      }
     },
     {
-      "target_roles": ["ValueObject"],
-      "kind": { "NoRoleInMethodSignature": { "forbidden_roles": ["Entity", "AggregateRoot"] } }
+      "target_roles": [
+        "ValueObject"
+      ],
+      "kind": {
+        "NoRoleInMethodSignature": {
+          "forbidden_roles": [
+            "Entity",
+            "AggregateRoot"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["ValueObject"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain", "usecase", "infrastructure"] } }
+      "target_roles": [
+        "ValueObject"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities",
+            "use_cases",
+            "frameworks"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["Entity"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain"] } }
+      "target_roles": [
+        "Entity"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["AggregateRoot"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain"] } }
+      "target_roles": [
+        "AggregateRoot"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["DomainService"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain", "usecase"] } }
+      "target_roles": [
+        "DomainService"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities",
+            "use_cases"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["EventPolicy"],
-      "kind": { "ReferencedRoleConstraint": { "target_field": "reacts_to", "expected_role": "DomainEvent" } }
+      "target_roles": [
+        "EventPolicy"
+      ],
+      "kind": {
+        "ReferencedRoleConstraint": {
+          "target_field": "reacts_to",
+          "expected_role": "DomainEvent"
+        }
+      }
     },
     {
-      "target_roles": ["EventPolicy"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain"] } }
+      "target_roles": [
+        "EventPolicy"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["EventPolicy"],
-      "kind": { "ForbiddenMethodReceiver": { "forbidden_receiver": "&mut self" } }
+      "target_roles": [
+        "EventPolicy"
+      ],
+      "kind": {
+        "ForbiddenMethodReceiver": {
+          "forbidden_receiver": "&mut self"
+        }
+      }
     },
     {
-      "target_roles": ["EventPolicy"],
-      "kind": { "NoRoleInMethodSignature": { "forbidden_roles": ["Repository", "UseCase"] } }
+      "target_roles": [
+        "EventPolicy"
+      ],
+      "kind": {
+        "NoRoleInMethodSignature": {
+          "forbidden_roles": [
+            "Repository",
+            "UseCase"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["DomainEvent"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain"] } }
+      "target_roles": [
+        "DomainEvent"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["Specification"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain"] } }
+      "target_roles": [
+        "Specification"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["Factory"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain", "usecase", "infrastructure"] } }
+      "target_roles": [
+        "Factory"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities",
+            "use_cases",
+            "frameworks"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["UseCase"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["usecase"] } }
+      "target_roles": [
+        "UseCase"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "use_cases"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["Interactor"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["usecase"] } }
+      "target_roles": [
+        "Interactor"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "use_cases"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["Command"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["usecase"] } }
+      "target_roles": [
+        "Command"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "use_cases"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["Query"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["usecase"] } }
+      "target_roles": [
+        "Query"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "use_cases"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["ValueObject"],
-      "kind": { "TraitImplRequired": { "required_traits": ["PartialEq", "Eq"] } }
+      "target_roles": [
+        "ValueObject"
+      ],
+      "kind": {
+        "TraitImplRequired": {
+          "required_traits": [
+            "PartialEq",
+            "Eq"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["ValueObject"],
-      "kind": { "ForbiddenMethodReceiver": { "forbidden_receiver": "&mut self" } }
+      "target_roles": [
+        "ValueObject"
+      ],
+      "kind": {
+        "ForbiddenMethodReceiver": {
+          "forbidden_receiver": "&mut self"
+        }
+      }
     },
     {
-      "target_roles": ["ValueObject"],
+      "target_roles": [
+        "ValueObject"
+      ],
       "kind": "NoPublicField"
     },
     {
-      "target_roles": ["CompositionRoot"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["cli_composition"] } }
+      "target_roles": [
+        "CompositionRoot"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "web_composition"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["CompositionRoot"],
+      "target_roles": [
+        "CompositionRoot"
+      ],
       "kind": "CompositionRootPureDi"
     },
     {
-      "target_roles": ["PrimaryAdapter"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["cli_driver"] } }
+      "target_roles": [
+        "PrimaryAdapter"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "interface_adapters",
+            "frameworks"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["PrimaryAdapter"],
+      "target_roles": [
+        "PrimaryAdapter"
+      ],
       "kind": {
         "NoRoleInMethodSignature": {
           "forbidden_roles": [
@@ -152,52 +403,155 @@
       }
     },
     {
-      "target_roles": ["PrimaryAdapter"],
-      "kind": { "NoLayerInMethodSignature": { "forbidden_layers": ["infrastructure"] } }
+      "target_roles": [
+        "PrimaryAdapter"
+      ],
+      "kind": {
+        "NoLayerInMethodSignature": {
+          "forbidden_layers": [
+            "frameworks"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["Dto"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["usecase", "infrastructure", "cli", "cli_driver"] } }
+      "target_roles": [
+        "Dto"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "use_cases",
+            "frameworks",
+            "web",
+            "interface_adapters"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["FreeFunction"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain", "usecase", "infrastructure", "cli", "cli_driver"] } }
+      "target_roles": [
+        "FreeFunction"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities",
+            "use_cases",
+            "frameworks",
+            "web",
+            "interface_adapters"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["ErrorType"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain", "usecase", "infrastructure", "cli", "cli_composition"] } }
+      "target_roles": [
+        "ErrorType"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities",
+            "use_cases",
+            "frameworks",
+            "web",
+            "web_composition"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["SecondaryAdapter"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["infrastructure"] } }
+      "target_roles": [
+        "SecondaryAdapter"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "frameworks"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["SpecificationPort"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain"] } }
+      "target_roles": [
+        "SpecificationPort"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["SecondaryPort"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain", "usecase"] } }
+      "target_roles": [
+        "SecondaryPort"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities",
+            "use_cases"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["ApplicationService"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["usecase"] } }
+      "target_roles": [
+        "ApplicationService"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "use_cases"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["Repository"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["domain"] } }
+      "target_roles": [
+        "Repository"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "entities"
+          ]
+        }
+      }
     },
     {
-      "target_roles": ["UseCaseFunction"],
-      "kind": { "KindLayerConstraint": { "permitted_layers": ["usecase"] } }
+      "target_roles": [
+        "UseCaseFunction"
+      ],
+      "kind": {
+        "KindLayerConstraint": {
+          "permitted_layers": [
+            "use_cases"
+          ]
+        }
+      }
     },
     {
       "target_roles": [],
       "kind": {
         "ForbidPrimitiveInTypes": {
-          "primitives": ["String"],
-          "layers": ["domain", "usecase", "infrastructure", "cli_driver", "cli", "cli_composition"],
-          "positions": ["result_err"]
+          "primitives": [
+            "String"
+          ],
+          "layers": [
+            "entities",
+            "use_cases",
+            "frameworks",
+            "interface_adapters",
+            "web",
+            "web_composition"
+          ],
+          "positions": [
+            "result_err"
+          ]
         }
       }
     },
@@ -227,9 +581,21 @@
       ],
       "kind": {
         "ForbidPrimitiveInTypes": {
-          "primitives": ["String"],
-          "layers": ["domain", "usecase", "infrastructure", "cli_driver", "cli", "cli_composition"],
-          "positions": ["named_field", "variant_field"]
+          "primitives": [
+            "String"
+          ],
+          "layers": [
+            "entities",
+            "use_cases",
+            "frameworks",
+            "interface_adapters",
+            "web",
+            "web_composition"
+          ],
+          "positions": [
+            "named_field",
+            "variant_field"
+          ]
         }
       }
     }

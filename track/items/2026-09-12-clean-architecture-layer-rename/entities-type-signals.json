@@ -1,10 +1,10 @@
 {
   "baseline_hash": "809e206697afa9b066320301d7030fdd629fbdbcdae3e94a5a5eb509550f8909",
   "declaration_hash": "7a9970c789a241c4b0980d1d4a993cb63cc2eb7240e7b23d98235416bf9e103c",
-  "generated_at": "2026-09-12T07:06:59Z",
-  "head_commit": "da585bd7d31726792bf853f097163b9c7695c863",
-  "implementation_fingerprint": "4229fd56fd69c318fb99bf320cd00a26687e22b462237a105f97a68262eddbe4",
-  "resolution_fingerprint": "7f1bcebfc4e92e48379a54059c4089a620b8bcbf2e28d10399ee824093ff0745",
+  "generated_at": "2026-09-12T08:39:00Z",
+  "head_commit": "10de799e3b0d5ca33bf291743c083f95f0123bf4",
+  "implementation_fingerprint": "e193cf528bc93b338bafc1eaded252641870d01c4155531fb0030b57f5954da5",
+  "resolution_fingerprint": "91e1eab5cf5710adb72b7973454e9c8a5a2681f8b0193f0f73752e693d78d036",
   "rustdoc_execution_identity": {
     "crate_name": "entities",
     "expected_json_path": "target/.sotp-rustdoc/858f962afb7bc1b418b2ebe87619969d3417a1e77fa58b049f85b3f2be5d27e1/doc/entities.json",

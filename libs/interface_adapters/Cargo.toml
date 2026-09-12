@@ -1,0 +1,21 @@
+[package]
+name = "interface_adapters"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+axum = "0.8"
+mime = "0.3"
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["macros", "rt", "sync"] }
+use_cases = { path = "../use_cases" }
+serde_json = "1"
+
+[dev-dependencies]
+serde_json = "1"
+tower = { version = "0.5", features = ["util"] }

@@ -36,9 +36,9 @@ skip = [
 # Enforce layered architecture boundaries for this template workspace.
 # Crate names can be changed, but wrappers must reflect your composition root.
 deny = [
-    { crate = "infrastructure", wrappers = ["cli_composition"], reason = "Infrastructure implements usecase ports and domain ports; wired at composition root." },
-    { crate = "usecase", wrappers = ["cli_composition", "cli_driver", "infrastructure"], reason = "Usecase crate must only be consumed by the cli layer." },
-    { crate = "domain", wrappers = ["cli_composition", "infrastructure", "usecase"], reason = "Domain dependencies are controlled by layer boundaries." },
-    { crate = "cli_composition", wrappers = ["cli"], reason = "CLI composition root owns domain/usecase/infrastructure wiring for the CLI delivery adapter." },
-    { crate = "cli_driver", wrappers = ["cli", "cli_composition"], reason = "CLI primary adapter holds injected use cases, invokes them and renders the result into CommandOutcome." },
+    { crate = "frameworks", wrappers = ["web_composition"], reason = "Frameworks provide persistence, cryptography, and server-runtime adapters." },
+    { crate = "use_cases", wrappers = ["web_composition", "interface_adapters", "frameworks"], reason = "Use_cases crate must only be consumed by the outer layers." },
+    { crate = "entities", wrappers = ["web_composition", "frameworks", "use_cases"], reason = "Entities dependencies are controlled by layer boundaries." },
+    { crate = "web_composition", wrappers = ["web"], reason = "Web composition owns the complete object graph and server assembly." },
+    { crate = "interface_adapters", wrappers = ["web", "web_composition"], reason = "Interface adapters translate delivery inputs and invoke use-case ports." },
 ]

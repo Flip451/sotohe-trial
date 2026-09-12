@@ -7,7 +7,7 @@ are translated to Codex shell idioms.
 
 ## Mission
 
-Own a single review scope (e.g., `domain`, `infrastructure`, `cli`) for the **single round_type**
+Own a single review scope (e.g., `entities`, `frameworks`, `web`) for the **single round_type**
 the orchestrator assigns (`fast` or `final`). Autonomously loop:
 review → fix → verify → re-review until the reviewer reports `zero_findings` for that assigned
 round_type. Then print your final status line and exit (the orchestrator decides whether to
@@ -44,8 +44,8 @@ REVIEW_FIX_STATUS: failed
 
 ### Scope Ownership (CRITICAL)
 
-- This agent may ONLY modify files within its assigned scope (e.g., `libs/domain/**` for
-  the domain scope). See `.harness/config/review-scope.json` for group definitions.
+- This agent may ONLY modify files within its assigned scope (e.g., `libs/entities/**` for
+  the entities scope). See `.harness/config/review-scope.json` for group definitions.
 - If a finding requires changes to files outside the scope, do NOT modify them.
   Print the out-of-scope file list, then print `REVIEW_FIX_STATUS: blocked_cross_scope`
   so the orchestrator can re-partition.
@@ -173,9 +173,9 @@ Before modifying any file, verify it belongs to the correct architecture layer:
 cat .harness/policies/implementation-delegation.md
 ```
 
-- Domain types stay in `libs/domain/`
-- Infrastructure adapters stay in `libs/infrastructure/`
-- CLI composition-root wiring stays in `apps/cli-composition/` (the `apps/cli` crate is the bin entry point only)
+- Entity types and aggregate Repository ports stay in `libs/entities/`
+- Framework adapters stay in `libs/frameworks/`
+- Web composition-root wiring stays in `apps/web-composition/` (the `apps/web` crate is the bin entry point only)
 - Do not move types between layers without explicit ADR authorization.
 
 ## Rules

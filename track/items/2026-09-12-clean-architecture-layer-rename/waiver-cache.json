@@ -1,4 +1,125 @@
 {
-  "entries": [],
+  "entries": [
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-003",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        "entry_key": "interface_adapters::auth::AuthHttpApi"
+      },
+      "key": {
+        "anchor_text_hash": "dadf6998fab62ec1ff763abfb35e1fb90e547166d87ee78215387f83fc642992",
+        "declaration_hash": "c1747016a8383746100077e0b036d4a4d1110aa7fa4905f7c09aaaa4103be027",
+        "waived_reason_hash": "d1b4298605e9555ba29d9bb92c0b626bbef93a78d72d90e0d1d8830a2c5259d8"
+      },
+      "obligation_id": {
+        "entry_key": "interface_adapters::auth::AuthHttpApi",
+        "item_identifier": "voluntary:IN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "\"HTTP primary adapter retained as the controller boundary; server lifecycle execution is delegated to the frameworks layer.\"",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-003",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        "entry_key": "frameworks::http::HttpServer"
+      },
+      "key": {
+        "anchor_text_hash": "dadf6998fab62ec1ff763abfb35e1fb90e547166d87ee78215387f83fc642992",
+        "declaration_hash": "54c361206527f27d50221afaff85b4367fb5fa4c1691d55b61d63a9e34b18798",
+        "waived_reason_hash": "caac624cad1f575588d35f5bb60d95e82ab81077ed8420559c6e6a0270f9e65a"
+      },
+      "obligation_id": {
+        "entry_key": "frameworks::http::HttpServer",
+        "item_identifier": "voluntary:IN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-003",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        "entry_key": "frameworks::http::HttpServer"
+      },
+      "key": {
+        "anchor_text_hash": "bf26c68048695fe5e927ae11e422b8f854597135d4558e4a38f496db25322275",
+        "declaration_hash": "3a43a8a5f33cbdb92a16d793f6642e3e1f7990edfc557a066def8eb15deb54fb",
+        "waived_reason_hash": "64bd2335b9bf38f7696de52c3c2e72070a185e58d9fe16272f9cf9a4c8866dcc"
+      },
+      "obligation_id": {
+        "entry_key": "frameworks::http::HttpServer",
+        "item_identifier": "voluntary:AC-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "axum server wiring are located in frameworks",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "IN-003",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        "entry_key": "frameworks::http::HttpServerOutcome"
+      },
+      "key": {
+        "anchor_text_hash": "dadf6998fab62ec1ff763abfb35e1fb90e547166d87ee78215387f83fc642992",
+        "declaration_hash": "d1857d534e5e752f44005da6e52c52518b3efdc41b852e1dea16c0bbb3fb1335",
+        "waived_reason_hash": "e6670d7b0dc99dd4eae7d9bae35937be1d62607c90f965c590ec0fcd57bf48a5"
+      },
+      "obligation_id": {
+        "entry_key": "frameworks::http::HttpServerOutcome",
+        "item_identifier": "voluntary:IN-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "module_path: Some(ModulePath([Identifier(\"http\")]))",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    },
+    {
+      "edge_id": {
+        "anchor_id": {
+          "element_id": "AC-003",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        "entry_key": "frameworks::http::HttpServerOutcome"
+      },
+      "key": {
+        "anchor_text_hash": "bf26c68048695fe5e927ae11e422b8f854597135d4558e4a38f496db25322275",
+        "declaration_hash": "4fa81e710954f9d6daa3bc9c49780dddbafe0020b6042d15080c6d6ce26a6f23",
+        "waived_reason_hash": "a4c76d7a1594d7e76bf8e410e9763da107346a63c174b72abf8fbd2ecff9b358"
+      },
+      "obligation_id": {
+        "entry_key": "frameworks::http::HttpServerOutcome",
+        "item_identifier": "voluntary:AC-003",
+        "obligation_kind": "logic"
+      },
+      "verdict": {
+        "citation": "\"HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks\"",
+        "kind": "waived"
+      },
+      "verifier_fingerprint": "ca5a11c64dff611fe679d3ed1a555adc5f435007a2ca5f1f94504538820990f5"
+    }
+  ],
   "track_id": "2026-09-12-clean-architecture-layer-rename"
 }

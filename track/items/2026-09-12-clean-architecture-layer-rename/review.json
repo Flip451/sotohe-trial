@@ -19,6 +19,168 @@
         }
       ]
     },
+    "entities": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:19:38Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/entities/src/lib.rs",
+              "line": 134,
+              "message": "Argon2 の PHC は modified Base64 (`./0-9A-Za-z`) を使うが、検証が `.` を拒否し `+` と `/` を許可しているため、正しい argon2id ハッシュを拒否し、誤った表現を受け入れる。",
+              "severity": "medium"
+            },
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/entities/src/lib.rs",
+              "line": 152,
+              "message": "`parse_phc_params` が `m=0,t=0,p=0` などの無効なコスト値を受け入れるため、`PasswordHash` が「validated argon2id」を保証しない。",
+              "severity": "medium"
+            }
+          ],
+          "hash": "rvw1:sha256:0f1478253cfc6c9873bbfa5900966e0c67097a064619d1f089cf2e1001a91752",
+          "type": "fast",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T07:26:32Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2f1b0806a21a289edfbeef2a030a871a29ea0d97c10eff1904f4e1e1a23e3b98",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:22:00Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bf3038d51ebf5fc3c77cba833c46fbc8c0d0be6e3b067645a3c226bef4212846",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:27:35Z",
+          "findings": [],
+          "hash": "rvw1:sha256:92ae699f828bbbf9bf7f90ae18acc9d03bd6fa85058da82df1cde7fc063e6e45",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "frameworks": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:35:13Z",
+          "findings": [],
+          "hash": "rvw1:sha256:bea7ff148be3257b0fa78a9984196837ed55b7130dcce231785087694fda8093",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "harness-policy": {
+      "rounds": [
+        {
+          "at": "2026-09-12T08:02:23Z",
+          "findings": [
+            {
+              "category": "template-distribution reference leak",
+              "file": ".harness/capabilities/implementer.md",
+              "line": 236,
+              "message": "The architecture guard still points implementers at the deleted `apps/cli` crate and preserves its argument-parsing/dispatch contract. The live entry point is `apps/web`, which obtains and serves the composed HTTP server and presents its lifecycle outcome. Update this authoritative capability guidance so future work is not directed to a nonexistent path and obsolete responsibility.",
+              "severity": "P1"
+            },
+            {
+              "category": "command wiring breakage",
+              "file": "knowledge/conventions/coding-principles.md",
+              "line": 116,
+              "message": "`bin/sotp verify use_cases-purity` is not a valid subcommand; it exits with “unrecognized subcommand,” while the surrounding text and `Makefile.toml` correctly invoke `usecase-purity`. Keep the renamed cargo-make task if desired, but restore the actual CLI command at both enforcement references.",
+              "severity": "P1"
+            },
+            {
+              "category": "convention contradiction",
+              "file": ".harness/briefings/review-fix-lead-codex.md",
+              "line": 176,
+              "message": "The renamed guard narrows the placement rule to “Entity types” and omits aggregate `Repository` ports, unlike the provider-agnostic capability contracts and catalogue policy, which keep `UserRepository` and `AccessTokenRepository` in `libs/entities`. Add aggregate Repository ports here and replace the remaining “domain scope” wording so Codex fixers receive the same boundary as other providers.",
+              "severity": "P1"
+            },
+            {
+              "category": "convention contradiction",
+              "file": ".harness/custom/review-prompts/entities.md",
+              "line": 33,
+              "message": "The new rule says any trait abstracting an external capability belongs in `use_cases`, which also describes persistence repositories. That conflicts with the explicit aggregate-Repository tie-break and the entities-only `Repository` lint constraint, making `UserRepository` and `AccessTokenRepository` appear misplaced. Exclude aggregate Repository ports and limit this rule to non-domain technical capabilities.",
+              "severity": "P1"
+            },
+            {
+              "category": "review-scope or briefing wiring inconsistency",
+              "file": ".harness/custom/review-prompts/interface_adapters.md",
+              "line": 31,
+              "message": "This scope now includes HTTP controllers, but the inherited rule still treats every public adapter operation as a CLI-style `handle` that must return `CommandOutcome`. The sanctioned `AuthHttpApi::router()` returns an Axum `Router`, and its handlers render HTTP responses. Narrow the `CommandOutcome` requirement to command-driver operations and define the HTTP controller boundary separately to avoid false findings.",
+              "severity": "P1"
+            },
+            {
+              "category": "review-scope or briefing wiring inconsistency",
+              "file": ".harness/custom/review-prompts/web.md",
+              "line": 23,
+              "message": "The permitted-I/O guidance still references a Driver, `emit(outcome)`, and nonexistent `CommandOutcome.stdout`/`.stderr` fields. The migrated type has `message`/`success`, and `apps/web` uses a presenter for the server lifecycle result. Update this rule to the actual web presenter contract; otherwise correct web code can be rejected against the old CLI API.",
+              "severity": "P1"
+            },
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/type-designer-kind-selection.md",
+              "line": 156,
+              "message": "The rewritten boundary rule says the `web` driving path performs Command/Query parsing and calls the input boundary. The adopted HTTP architecture assigns request extraction and DTO-to-command conversion entirely to `interface_adapters`; the thin `web` binary only starts the server obtained from `web_composition` and presents its terminal outcome. Rewrite this paragraph so type design does not place request parsing in `web`.",
+              "severity": "P1"
+            },
+            {
+              "category": "convention contradiction",
+              "file": "knowledge/conventions/testing.md",
+              "line": 72,
+              "message": "The renamed `interface_adapters`/`web` test section retains the old CLI contract—Command/Query dispatch, display, and exit-code testing—and the composition section is still headed `cli-composition`. It therefore omits the HTTP controller obligations introduced by the new boundaries, such as route, status, body, and media-type behavior. Update the layer-responsibility descriptions to the web architecture.",
+              "severity": "P2"
+            },
+            {
+              "category": "template-distribution reference leak",
+              "file": ".harness/custom/review-prompts/harness-policy.md",
+              "line": 172,
+              "message": "This accepted-deviation record says the matching note lives in `domain.md`, but that briefing is deleted and the note now lives in `entities.md`. Update the reference so the distributed policy does not point readers at a removed file.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:58becb197ae8c082ec1e524cdfcb585c933df20cdcd56f75441aece99a1bf0af",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T08:10:51Z",
+          "findings": [
+            {
+              "category": "review-scope or briefing wiring inconsistency",
+              "file": ".harness/briefings/review-fix-lead-codex.md",
+              "line": 48,
+              "message": "The scope-ownership example is only half-renamed: it points to `libs/entities/**` but still calls the assignment the `domain` scope. `.harness/config/review-scope.json` defines `entities` and no `domain` group, so this can misstate the Codex fixer's write boundary. Rename it to the `entities` scope.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:ef137070a41bd00082200fb88cbe7ca0dc47e35e8f10c567b8ab88e15f6a1046",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T08:12:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:1fb3aa7c2e06575449a1a308e8c2143ae11f29227be0bd5fd8d0aee6468887be",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:23:20Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7b9d0fb6d74cc3285840e5858d3bd4f4886ed79309832b1788310e4c1967ec41",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
     "impl-plan": {
       "rounds": [
         {
@@ -193,6 +355,24 @@
           "hash": "rvw1:sha256:ef1ce05660a0532ac46f6ef9813d95a4d311b88685ac5471a613c14d3dfb7e9a",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:03:00Z",
+          "findings": [],
+          "hash": "rvw1:sha256:41bdb26c7873dc0f9f77de50a756245af2338be25d55e3712af26d17d079f73d",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "interface_adapters": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:38:46Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f0ecb556a121f419ff389d5e5239126b65e8933c84ff86d9878b89eea00c49f9",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -209,6 +389,27 @@
           "at": "2026-09-12T03:47:31Z",
           "findings": [],
           "hash": "rvw1:sha256:6a7fefe61ec507d6148a8c69033276b4fb18b5b7522efae3d3f9410812f74e30",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:05:29Z",
+          "findings": [],
+          "hash": "rvw1:sha256:9f3e7b263fb723db89d0ff879051133067285ad5474487c8482028522d9a21e1",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:17:31Z",
+          "findings": [],
+          "hash": "rvw1:sha256:4a9a9b231ea058c328aca229edcb98ac822367ba520ed54f298a20f04b8b4bfd",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:24:01Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b1d49264a6a64d859a558fb4f7c99710c217ab7149a9479f1d2d0ce9e94bd6b9",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -245,6 +446,46 @@
           "at": "2026-09-12T03:27:22Z",
           "findings": [],
           "hash": "rvw1:sha256:36d2df466b44cfc41ff688472cd9e37b807d015a2fd83e97f7cb2fc12cfc685b",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:38:08Z",
+          "findings": [],
+          "hash": "rvw1:sha256:3d53b00c96cff9cf2fea925295dfaee8d92db8b064c37ffc9bbdaad1ea72dbeb",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "use_cases": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:30:53Z",
+          "findings": [],
+          "hash": "rvw1:sha256:b755c5f4847d30c2982b16dc7977003dffc14a668b48b603d1cd25e634218a15",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "web": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:47:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:abfb1b6755a9f7ef575f91c3d99e25721e2f869053521fe6fabfe1ffbccfbe56",
+          "type": "final",
+          "verdict": "zero_findings"
+        }
+      ]
+    },
+    "web_composition": {
+      "rounds": [
+        {
+          "at": "2026-09-12T07:43:32Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f33e4db87662bc2cc48dfb99ef6750840d0bceb74b58df7e7274a306995a4e76",
           "type": "final",
           "verdict": "zero_findings"
         }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "scopes": [
     {
-      "scope": "domain",
+      "scope": "entities",
       "commands": [
         {"argv": ["bin/sotp", "signal", "calc-impl-catalog"], "timeout_seconds": 3600},
         {"argv": ["bin/sotp", "signal", "check-impl-catalog", "--gate", "commit"], "timeout_seconds": 3600},
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "scope": "usecase",
+      "scope": "use_cases",
       "commands": [
         {"argv": ["bin/sotp", "signal", "calc-impl-catalog"], "timeout_seconds": 3600},
         {"argv": ["bin/sotp", "signal", "check-impl-catalog", "--gate", "commit"], "timeout_seconds": 3600},
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "scope": "infrastructure",
+      "scope": "frameworks",
       "commands": [
         {"argv": ["bin/sotp", "signal", "calc-impl-catalog"], "timeout_seconds": 3600},
         {"argv": ["bin/sotp", "signal", "check-impl-catalog", "--gate", "commit"], "timeout_seconds": 3600},
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "scope": "cli_driver",
+      "scope": "interface_adapters",
       "commands": [
         {"argv": ["bin/sotp", "signal", "calc-impl-catalog"], "timeout_seconds": 3600},
         {"argv": ["bin/sotp", "signal", "check-impl-catalog", "--gate", "commit"], "timeout_seconds": 3600},
@@ -38,7 +38,7 @@
       ]
     },
     {
-      "scope": "cli",
+      "scope": "web",
       "commands": [
         {"argv": ["bin/sotp", "signal", "calc-impl-catalog"], "timeout_seconds": 3600},
         {"argv": ["bin/sotp", "signal", "check-impl-catalog", "--gate", "commit"], "timeout_seconds": 3600},
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "scope": "cli_composition",
+      "scope": "web_composition",
       "commands": [
         {"argv": ["bin/sotp", "signal", "calc-impl-catalog"], "timeout_seconds": 3600},
         {"argv": ["bin/sotp", "signal", "check-impl-catalog", "--gate", "commit"], "timeout_seconds": 3600},

@@ -108,42 +108,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
 
 [[package]]
-name = "cli"
-version = "0.1.0"
-dependencies = [
- "cli_composition",
- "cli_driver",
- "tokio",
-]
-
-[[package]]
-name = "cli_composition"
-version = "0.1.0"
-dependencies = [
- "axum",
- "cli_driver",
- "domain",
- "infrastructure",
- "serde_json",
- "tokio",
- "tower",
- "usecase",
-]
-
-[[package]]
-name = "cli_driver"
-version = "0.1.0"
-dependencies = [
- "axum",
- "mime",
- "serde",
- "serde_json",
- "tokio",
- "tower",
- "usecase",
-]
-
-[[package]]
 name = "cpufeatures"
 version = "0.2.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -174,7 +138,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "domain"
+name = "entities"
 version = "0.1.0"
 dependencies = [
  "thiserror",
@@ -197,6 +161,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cb4cb245038516f5f85277875cdaa4f7d2c9a0fa0468de06ed190163b1581fcf"
 dependencies = [
  "percent-encoding",
+]
+
+[[package]]
+name = "frameworks"
+version = "0.1.0"
+dependencies = [
+ "argon2",
+ "axum",
+ "base64ct",
+ "entities",
+ "rand",
+ "tokio",
+ "use_cases",
 ]
 
 [[package]]
@@ -337,14 +314,16 @@ dependencies = [
 ]
 
 [[package]]
-name = "infrastructure"
+name = "interface_adapters"
 version = "0.1.0"
 dependencies = [
- "argon2",
- "base64ct",
- "domain",
- "rand",
- "usecase",
+ "axum",
+ "mime",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tower",
+ "use_cases",
 ]
 
 [[package]]
@@ -644,7 +623,6 @@ version = "1.52.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8fc7f01b389ac15039e4dc9531aa973a135d7a4135281b12d7c1bc79fd57fffe"
 dependencies = [
- "bytes",
  "libc",
  "mio",
  "pin-project-lite",
@@ -726,10 +704,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
 
 [[package]]
-name = "usecase"
+name = "use_cases"
 version = "0.1.0"
 dependencies = [
- "domain",
+ "entities",
  "thiserror",
 ]
 
@@ -752,6 +730,29 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b67efb37e106e55ce722a510d6b5f9c17f083e5fc79afc2badeb12cc313d9487"
 dependencies = [
  "wit-bindgen",
+]
+
+[[package]]
+name = "web"
+version = "0.1.0"
+dependencies = [
+ "interface_adapters",
+ "tokio",
+ "web_composition",
+]
+
+[[package]]
+name = "web_composition"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "entities",
+ "frameworks",
+ "interface_adapters",
+ "serde_json",
+ "tokio",
+ "tower",
+ "use_cases",
 ]
 
 [[package]]

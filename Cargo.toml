@@ -1,11 +1,11 @@
 [workspace]
 members = [
-  "libs/domain",
-  "libs/usecase",
-  "libs/infrastructure",
-  "apps/cli-driver",
-  "apps/cli",
-  "apps/cli-composition",
+  "libs/entities",
+  "libs/use_cases",
+  "libs/frameworks",
+  "libs/interface_adapters",
+  "apps/web",
+  "apps/web-composition",
 ]
 resolver = "2"
 

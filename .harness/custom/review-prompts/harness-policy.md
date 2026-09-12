@@ -131,16 +131,16 @@ Violations of the role statement above are always reportable. The following prio
   and execution path landed with task T042, and the driver dispatch / aggregate wiring
   landed earlier; the former cli.md suppression note has been removed. The follow-on
   attribution-semantics note has also EXPIRED — the T043 implementation landed, the
-  attributed cli_driver review entries converged with their declarations, and the
-  corresponding cli_driver.md note has been removed. No suppression remains under this
+  attributed interface_adapters review entries converged with their declarations, and the
+  corresponding interface_adapters.md note has been removed. No suppression remains under this
   entry for any track or consumer.
 - **Conditional allowance — apply only when the review run's resolved Track ID is
   exactly `scope-conditional-pre-review-gates-2026-07-31`; otherwise ignore.**
-  **Unit-variant match premise error (cli_driver)**: a rollback-diagnoser adjudication
+  **Unit-variant match premise error (interface_adapters)**: a rollback-diagnoser adjudication
   recorded that the review-results renderer's `match scope.state` /
   `matches!(round.round_type, ...)` on borrowed places with unit-variant patterns binds
   no payload and performs no move; the workspace passes `cargo make clippy`
-  (`-D warnings`) and `cargo make ci-rust` with this code. The cli_driver.md briefing
+  (`-D warnings`) and `cargo make ci-rust` with this code. The interface_adapters.md briefing
   carries the matching track-limited note dismissing the repeated compile-error claim.
   It is factual only and expires with this track.
 - **Conditional allowance — apply only when the review run's resolved Track ID is
@@ -152,8 +152,8 @@ Violations of the role statement above are always reportable. The following prio
   transport-only and does not void the deferral; the run-lane findings
   (`render_verdict_payload` rendering, composition-built `[WARN]` text / typed
   diagnostic condition, `FindingsCountReviewer` placement) transfer to that deferred
-  remediation track. The cli_composition.md note carries the matching record.
-  The cli_composition briefing carries a matching track-limited note: invoke-leak
+  remediation track. The web_composition.md note carries the matching record.
+  The web_composition briefing carries a matching track-limited note: invoke-leak
   findings on the PRE-EXISTING review_v2 gated-entry surface
   (`ReviewCompositionRoot::review_run_local`, the interim `ReviewServiceImpl` shim) are
   not reported when this track's diff makes no semantic change to that surface;
@@ -164,12 +164,12 @@ Violations of the role statement above are always reportable. The following prio
   exactly `scope-conditional-pre-review-gates-2026-07-31`; otherwise ignore.**
   **Pre-existing CommitHashReader / CommitHashWriter domain placement**: a
   rollback-diagnoser verdict (2026-08-09) adjudicated the layer relocation of these
-  pre-existing ports (`libs/domain/src/review_v2/ports.rs`, introduced by an earlier
+  pre-existing ports (`libs/entities/src/review_v2/ports.rs`, introduced by an earlier
   track under the review-system-v2 redesign ADR; see the ADR index) as out-of-diff for
   this track; the
   placement-rule conflict is to be resolved by a dedicated ADR-routed track (adr-editor
   reconciling the ADR with the current Port-placement tie-break, then a migration track).
-  The domain.md briefing carries a matching track-limited note. The allowance expires
+  The entities.md briefing carries a matching track-limited note. The allowance expires
   when that ADR track lands. It is not an accepted deviation for any other track or
   consumer.
 

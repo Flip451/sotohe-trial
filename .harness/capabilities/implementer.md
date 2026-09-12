@@ -228,13 +228,14 @@ task-state transition; do not stage, commit, or transition tasks.
 
 ## Architecture Guard
 
-- Domain types and domain ports stay in `libs/domain/`.
-- Usecase interactors and usecase ports stay in `libs/usecase/`.
-- Infrastructure adapters stay in `libs/infrastructure/`.
-- CLI composition-root wiring stays in `apps/cli-composition/`.
-- `apps/cli-driver` is the primary adapter layer.
-- The `apps/cli` crate is the bin entry point and should stay thin: parse args, build/dispatch
-  through composition, print results, return exit codes.
+- Entity types and aggregate Repository ports stay in `libs/entities/`.
+- Use-case interactors and application ports stay in `libs/use_cases/`.
+- Framework adapters stay in `libs/frameworks/`.
+- Web composition-root wiring stays in `apps/web-composition/`.
+- `libs/interface_adapters` is the HTTP/controller primary-adapter layer.
+- The `apps/web` crate is the thin bin entry point: obtain the assembled server from
+  `web_composition`, present its lifecycle outcome, and return an exit code. Request parsing
+  and HTTP controller work stay in `libs/interface_adapters`.
 - Non-code review-scope artifacts may be edited only when they are named by the assigned task or
   delegated PR-finding briefing; they do not authorize unrelated upstream changes.
 

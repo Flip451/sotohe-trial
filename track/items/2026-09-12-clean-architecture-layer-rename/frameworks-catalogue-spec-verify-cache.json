@@ -1,0 +1,222 @@
+{
+  "entries": [
+    {
+      "claim_hash": "941642fed97331c0c333de218996aacb1c3f5d3b4bee977a07e9ba5925b61560",
+      "claim_origin": {
+        "data": {
+          "entry_key": "frameworks::StaticSalutation",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/frameworks-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "da92f17c4b98ed613f1fac3ccd208fc5e7161024ec4bd7d38653c909d281b506",
+      "claim_origin": {
+        "data": {
+          "entry_key": "frameworks::auth::Argon2PasswordAdapter",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/frameworks-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "7bf51d51e788b380b2ba31badd3247f8cfae2ec558d2d6eade3dcd1b9ae7ee5d",
+      "claim_origin": {
+        "data": {
+          "entry_key": "frameworks::auth::InMemoryAccessTokenRepository",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/frameworks-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "dbd3b25dc8f9552defc287bd7fe05b18d1edb0046fca67fc7fb6377d06fe17ba",
+      "claim_origin": {
+        "data": {
+          "entry_key": "frameworks::auth::InMemoryUserRepository",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/frameworks-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "5ea8bb005f90cac9dbab983081bb2dfd6b3d49930b70baf12f421aad7d7e8b45",
+      "claim_origin": {
+        "data": {
+          "entry_key": "frameworks::auth::RandomOpaqueTokenIssuer",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/frameworks-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "05ba25c73148656bb37c9a2036aaed75b87402e63cc63bf7b23f42772eef53d4",
+      "claim_origin": {
+        "data": {
+          "entry_key": "frameworks::http::HttpServer",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/frameworks-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "05ba25c73148656bb37c9a2036aaed75b87402e63cc63bf7b23f42772eef53d4",
+      "claim_origin": {
+        "data": {
+          "entry_key": "frameworks::http::HttpServer",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/frameworks-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "0f53e69b29e766f6d9d86968f27e19554e8fe2a3cc7e76ffc879cfc23e25834e",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-003",
+          "section": "acceptance_criteria",
+          "text_label": "Ports are located in use_cases; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "persistence, cryptography, and axum server wiring are located in frameworks",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "1ed4765040d46b85404d3700b0829e1ccf7845d935a4b7d27ba8cb29a284c48b",
+      "claim_origin": {
+        "data": {
+          "entry_key": "frameworks::http::HttpServerOutcome",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/frameworks-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "1ed4765040d46b85404d3700b0829e1ccf7845d935a4b7d27ba8cb29a284c48b",
+      "claim_origin": {
+        "data": {
+          "entry_key": "frameworks::http::HttpServerOutcome",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/frameworks-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "0f53e69b29e766f6d9d86968f27e19554e8fe2a3cc7e76ffc879cfc23e25834e",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-003",
+          "section": "acceptance_criteria",
+          "text_label": "Ports are located in use_cases; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "persistence, cryptography, and axum server wiring are located in frameworks",
+        "kind": "pass"
+      }
+    }
+  ],
+  "layer": "frameworks",
+  "schema_version": 1
+}

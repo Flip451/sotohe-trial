@@ -1,5 +1,5 @@
 {
-  "catalogue_declaration_hash": "6761f41db628c6489efdf8fc07f970e2e4e57a4543f4e4ae9e3a70fe616887fc",
+  "catalogue_declaration_hash": "148f5e0b536046823476617f593447abe2ff4df9f977fe935e16a7fdbde47303",
   "schema_version": 1,
   "signals": [
     {
@@ -28,7 +28,7 @@
       "type_name": "use_cases::auth::LoginCommand"
     },
     {
-      "entry_hash": "275f8429b959b3ed3c7256a29f0138d7a5195e12f8649da575961bc9e9013834",
+      "entry_hash": "5afea007581499716f5445b4ae713494ba049526ff542d57c7fcf8b9e8e05af4",
       "signal": "blue",
       "type_name": "use_cases::auth::LoginError"
     },
@@ -58,7 +58,7 @@
       "type_name": "use_cases::auth::PlaintextPassword"
     },
     {
-      "entry_hash": "36c61ed33158cc9c86a1aab8c46fa4f117a7dd757b7067e2aa11709a9f5f5c8c",
+      "entry_hash": "a8ef5949ee66c29d457ee50802858ba9062e298b51d9eb5bf2ca5b453b40d0a9",
       "signal": "blue",
       "type_name": "use_cases::auth::RegisterUserCommand"
     },
@@ -83,7 +83,7 @@
       "type_name": "LoginService"
     },
     {
-      "entry_hash": "cba69c20108589df4066c559779e5e75073e038d12d67f62a2d3447b8011271b",
+      "entry_hash": "05193e7a17827144cfaa3652694f8496da9ef60bfadd1ccd7cc4eed0fd105e59",
       "signal": "blue",
       "type_name": "OpaqueTokenIssuer"
     },

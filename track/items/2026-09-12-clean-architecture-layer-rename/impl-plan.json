@@ -47,7 +47,7 @@
     {
       "description": "Update root workspace membership, architecture-rules.json layer ids/paths/dependency permissions, deny.toml wrappers, affected Makefile.toml task names, .harness/catalogue-lint/config.json, presets/ddd-strict.json, and focused enforcement fixtures (IN-001, IN-002, CN-001, CN-002, CN-003, AC-001, AC-002).",
       "id": "T001",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "depends_on": [
@@ -55,7 +55,7 @@
       ],
       "description": "Move libs/domain to libs/entities, rename the Rust crate identifier to entities, and update internal references and tests (IN-001, IN-003, CN-001, CN-002, CN-004, AC-001, AC-002).",
       "id": "T002",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "depends_on": [
@@ -64,7 +64,7 @@
       ],
       "description": "Move libs/usecase to libs/use_cases, rename the Rust crate identifier to use_cases, redirect crate references to entities, and update use-case references and tests (IN-001, IN-003, IN-004, CN-001, CN-002, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
       "id": "T003",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "depends_on": [
@@ -74,7 +74,7 @@
       ],
       "description": "Move libs/infrastructure to libs/frameworks, rename the Rust crate identifier to frameworks, update dependencies to entities and use_cases, and update references and tests (IN-001, IN-002, IN-003, CN-001, CN-002, CN-003, CN-004, AC-001, AC-002, AC-003).",
       "id": "T004",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "depends_on": [
@@ -85,7 +85,7 @@
       ],
       "description": "Move apps/cli-driver to libs/interface_adapters with Rust crate identifier interface_adapters, and update HTTP controller/DTO references and focused tests (IN-001, IN-002, IN-003, IN-004, OS-001, OS-002, CN-001, CN-002, CN-003, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
       "id": "T005",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "depends_on": [
@@ -97,7 +97,7 @@
       ],
       "description": "Move axum server lifecycle/wiring from libs/interface_adapters into libs/frameworks and update focused lifecycle tests (IN-003, IN-004, OS-001, OS-002, CN-004, CN-005, AC-003, AC-004).",
       "id": "T009",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "depends_on": [
@@ -110,7 +110,7 @@
       ],
       "description": "Move apps/cli-composition to apps/web-composition with Rust crate identifier web_composition, and update dependency declarations, references, and composition-root tests (IN-001, IN-002, IN-003, IN-004, OS-003, CN-001, CN-002, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
       "id": "T006",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "depends_on": [
@@ -120,7 +120,7 @@
       ],
       "description": "Move apps/cli to apps/web with Rust crate identifier web, update dependency declarations, and update main to invoke web_composition and interface_adapters (IN-001, IN-002, IN-003, IN-004, OS-003, CN-001, CN-002, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
       "id": "T007",
-      "status": "in_progress"
+      "status": "done"
     },
     {
       "depends_on": [
@@ -135,7 +135,7 @@
       ],
       "description": "After enforcement and crate migration, update architecture-facing documentation and review-scope group ids/patterns/briefing references, rename the six reference catalogue files and their layer/crate ids plus the TDDD feature declaration to the new vocabulary, preserve catalogue-lint config/preset structural equality, and validate the completed migration with formatting, check-layers, verify-arch-docs, cargo deny, and cargo make ci (IN-001, IN-002, IN-003, IN-004, OS-001, OS-002, OS-003, CN-001, CN-002, CN-003, CN-004, CN-005, AC-001, AC-002, AC-003, AC-004).",
       "id": "T008",
-      "status": "in_progress"
+      "status": "done"
     }
   ]
 }

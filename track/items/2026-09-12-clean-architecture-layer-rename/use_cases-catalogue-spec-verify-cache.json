@@ -1,0 +1,702 @@
+{
+  "entries": [
+    {
+      "claim_hash": "1e7d3c63fb744153e84bb612273e4dd5163ad04460da856191d9ec987cd88fb3",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::GreetError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "621ce613c9876839bff992e3f6d596edc2fc4e4a3df555100e7961c24fdde72f",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::GreetUser",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "7cc1e2d3ee740d4f7f168d2e4c76022cfaa48f3c452c3b044ff659ccf07519b7",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::CredentialParseError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "8a5c2a4a72c98826c2334c7a949ee8acb858a90a4e235cfe2924d6f842201ea1",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::IssuedAccessToken",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "51c5903cbf720cf2634c6bb10b9dd637cae677631aafc106a14c009570a84a95",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::LoginCommand",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "5afea007581499716f5445b4ae713494ba049526ff542d57c7fcf8b9e8e05af4",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::LoginError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "170d43590164ac2880d8be78a5c01de0066eec972ee9bc24cc6d10639914a943",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-004",
+          "section": "in_scope",
+          "text_label": "Preserve the existing HTTP registration and login behavior through the internal migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Preserve the existing HTTP registration and login behavior through the internal migration.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "5afea007581499716f5445b4ae713494ba049526ff542d57c7fcf8b9e8e05af4",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::LoginError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "b8e0763aa4503405ed951615925c02b5038443e640bf2e6f3db8633c30322a35",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-004",
+          "section": "acceptance_criteria",
+          "text_label": "The existing registration and login HTTP contracts and authentication behavior, including empty-password rejection, remain unchanged after the migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "The existing registration and login HTTP contracts and authentication behavior, including empty-password rejection, remain unchanged after the migration.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "c7f6e7e451cc5278bcfc27b38e71b72b85f0635afe861e161f4d6c1a65871564",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::LoginInteractor",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "01cb277d1d91f772bb25459cb6551be5653fdb2746c3db2e5666e705ce43f8da",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::PasswordHashingError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "a62a76e97f3c7c886901a58d03da31de497188096264d84e6f57748b2f9af79a",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::PasswordInputError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "2f606ba8f38cde42c0415ad773b6c04e25da8107b39950f1118e5a30d762ab87",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::PasswordVerificationError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "ea50f27fa67fd0c7d04dfec4b4b0586ad5449dde4f73846003882c3fe0465a01",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::PlaintextPassword",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "170d43590164ac2880d8be78a5c01de0066eec972ee9bc24cc6d10639914a943",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-004",
+          "section": "in_scope",
+          "text_label": "Preserve the existing HTTP registration and login behavior through the internal migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Preserve the existing HTTP registration and login behavior through the internal migration.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "ea50f27fa67fd0c7d04dfec4b4b0586ad5449dde4f73846003882c3fe0465a01",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::PlaintextPassword",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "4e1c79be54a6def79048e41b657657da84c8fdbf79bd9c5250307662167d8adf",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-005",
+          "section": "constraint",
+          "text_label": "The migration preserves the existing REST authentication surface and its opaque-token behavior."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "The migration preserves the existing REST authentication surface and its opaque-token behavior.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "ea50f27fa67fd0c7d04dfec4b4b0586ad5449dde4f73846003882c3fe0465a01",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::PlaintextPassword",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "b8e0763aa4503405ed951615925c02b5038443e640bf2e6f3db8633c30322a35",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-004",
+          "section": "acceptance_criteria",
+          "text_label": "The existing registration and login HTTP contracts and authentication behavior, including empty-password rejection, remain unchanged after the migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "including empty-password rejection",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "a8ef5949ee66c29d457ee50802858ba9062e298b51d9eb5bf2ca5b453b40d0a9",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::RegisterUserCommand",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "170d43590164ac2880d8be78a5c01de0066eec972ee9bc24cc6d10639914a943",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-004",
+          "section": "in_scope",
+          "text_label": "Preserve the existing HTTP registration and login behavior through the internal migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Preserve the existing HTTP registration and login behavior through the internal migration.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "a8ef5949ee66c29d457ee50802858ba9062e298b51d9eb5bf2ca5b453b40d0a9",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::RegisterUserCommand",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "b8e0763aa4503405ed951615925c02b5038443e640bf2e6f3db8633c30322a35",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-004",
+          "section": "acceptance_criteria",
+          "text_label": "The existing registration and login HTTP contracts and authentication behavior, including empty-password rejection, remain unchanged after the migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "The existing registration and login HTTP contracts and authentication behavior, including empty-password rejection, remain unchanged after the migration.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "b8bfffeef30cb5cc16d94f5cb4f716348dbcc243d8c3042602d5f1ca02a45a22",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::RegisterUserError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "170d43590164ac2880d8be78a5c01de0066eec972ee9bc24cc6d10639914a943",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-004",
+          "section": "in_scope",
+          "text_label": "Preserve the existing HTTP registration and login behavior through the internal migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Preserve the existing HTTP registration and login behavior through the internal migration.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "b8bfffeef30cb5cc16d94f5cb4f716348dbcc243d8c3042602d5f1ca02a45a22",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::RegisterUserError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "b8e0763aa4503405ed951615925c02b5038443e640bf2e6f3db8633c30322a35",
+      "evidence_origin": {
+        "data": {
+          "element_id": "AC-004",
+          "section": "acceptance_criteria",
+          "text_label": "The existing registration and login HTTP contracts and authentication behavior, including empty-password rejection, remain unchanged after the migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "The existing registration and login HTTP contracts and authentication behavior, including empty-password rejection, remain unchanged after the migration.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "9bcdb43ca02e262a8d86c90b61a5b8cfab89f5ae5c47ca4aad86ca9f00c9611f",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::RegisterUserInteractor",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "6dff60799d52829a30792eebe9eac68625f81dc54a0eeeb10121aae05b1074ca",
+      "claim_origin": {
+        "data": {
+          "entry_key": "use_cases::auth::TokenIssuanceError",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "types"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "ae28a9458461aad5f161d5ee89ace916f54a2c95533996118c48a51834a64609",
+      "claim_origin": {
+        "data": {
+          "entry_key": "LoginService",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "170d43590164ac2880d8be78a5c01de0066eec972ee9bc24cc6d10639914a943",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-004",
+          "section": "in_scope",
+          "text_label": "Preserve the existing HTTP registration and login behavior through the internal migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Preserve the existing HTTP registration and login behavior through the internal migration.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "05193e7a17827144cfaa3652694f8496da9ef60bfadd1ccd7cc4eed0fd105e59",
+      "claim_origin": {
+        "data": {
+          "entry_key": "OpaqueTokenIssuer",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "05193e7a17827144cfaa3652694f8496da9ef60bfadd1ccd7cc4eed0fd105e59",
+      "claim_origin": {
+        "data": {
+          "entry_key": "OpaqueTokenIssuer",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "fa30df90de160fa20cc97d369806b3ea1be5ff3fbbbe6e5e030bc0f230f13f6f",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-004",
+          "section": "constraint",
+          "text_label": "Internal relocation follows the decided textbook Clean Architecture placement boundaries without adding a product capability."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Internal relocation follows the decided textbook Clean Architecture placement boundaries without adding a product capability.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "56a1f865efe34a11897c83382b143c74ef3aa31bdc76835936e8b2da84a9bc22",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordHasher",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "56a1f865efe34a11897c83382b143c74ef3aa31bdc76835936e8b2da84a9bc22",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordHasher",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "fa30df90de160fa20cc97d369806b3ea1be5ff3fbbbe6e5e030bc0f230f13f6f",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-004",
+          "section": "constraint",
+          "text_label": "Internal relocation follows the decided textbook Clean Architecture placement boundaries without adding a product capability."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Internal relocation follows the decided textbook Clean Architecture placement boundaries without adding a product capability.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "0271cd8658126b6be370b77e2ca0bd62c625c881b4df6f707bf28466a63a7748",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordVerifier",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "6765c1160ec94afa06d6dbc2fc8c8848a0f4445c2b9f0ec0e343a90f1af9b75d",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-003",
+          "section": "in_scope",
+          "text_label": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "0271cd8658126b6be370b77e2ca0bd62c625c881b4df6f707bf28466a63a7748",
+      "claim_origin": {
+        "data": {
+          "entry_key": "PasswordVerifier",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "fa30df90de160fa20cc97d369806b3ea1be5ff3fbbbe6e5e030bc0f230f13f6f",
+      "evidence_origin": {
+        "data": {
+          "element_id": "CN-004",
+          "section": "constraint",
+          "text_label": "Internal relocation follows the decided textbook Clean Architecture placement boundaries without adding a product capability."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Internal relocation follows the decided textbook Clean Architecture placement boundaries without adding a product capability.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "4a20c5bfe541ab43a02a8c0d881d3cef39f36ec000f9df1429548e84b7c96746",
+      "claim_origin": {
+        "data": {
+          "entry_key": "RegisterUserService",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "170d43590164ac2880d8be78a5c01de0066eec972ee9bc24cc6d10639914a943",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-004",
+          "section": "in_scope",
+          "text_label": "Preserve the existing HTTP registration and login behavior through the internal migration."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Preserve the existing HTTP registration and login behavior through the internal migration.",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "f95f1858479696dd230b230b405452520b390a6e59cc2a1a8db43b4d1016fff4",
+      "claim_origin": {
+        "data": {
+          "entry_key": "SalutationProvider",
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/use_cases-types.json",
+          "section_key": "traits"
+        },
+        "kind": "catalogue_entry"
+      },
+      "evidence_hash": "bf833c0b10354a8e407e02c26daf2ddc2d9f6b7da6ef07c9f5005b8cf5ef5bc2",
+      "evidence_origin": {
+        "data": {
+          "element_id": "IN-001",
+          "section": "in_scope",
+          "text_label": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+        },
+        "kind": "spec_element"
+      },
+      "verdict": {
+        "citation": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names.",
+        "kind": "pass"
+      }
+    }
+  ],
+  "layer": "use_cases",
+  "schema_version": 1
+}

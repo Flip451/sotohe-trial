@@ -1,10 +1,10 @@
 {
   "baseline_hash": "ef404be995cdd067328c7997e745e3fe592ddb8cb173cd4bd4c759a67dfb47c0",
   "declaration_hash": "745e317156abf5d0b25f2ce1200519184c6c484cf48e652dfcfab00ac6d8c8c6",
-  "generated_at": "2026-09-12T07:07:23Z",
-  "head_commit": "da585bd7d31726792bf853f097163b9c7695c863",
-  "implementation_fingerprint": "4229fd56fd69c318fb99bf320cd00a26687e22b462237a105f97a68262eddbe4",
-  "resolution_fingerprint": "7f1bcebfc4e92e48379a54059c4089a620b8bcbf2e28d10399ee824093ff0745",
+  "generated_at": "2026-09-12T08:39:23Z",
+  "head_commit": "10de799e3b0d5ca33bf291743c083f95f0123bf4",
+  "implementation_fingerprint": "e193cf528bc93b338bafc1eaded252641870d01c4155531fb0030b57f5954da5",
+  "resolution_fingerprint": "91e1eab5cf5710adb72b7973454e9c8a5a2681f8b0193f0f73752e693d78d036",
   "rustdoc_execution_identity": {
     "crate_name": "interface_adapters",
     "expected_json_path": "target/.sotp-rustdoc/e191bb9fa1757f17f5aa4bb8536fcba5522b98c0de1cf014f2a37eeb9bfc3aac/doc/interface_adapters.json",

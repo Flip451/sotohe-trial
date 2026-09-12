@@ -1,1 +1,60 @@
-{"track_id":"2026-09-12-clean-architecture-layer-rename","records":[]}
+{
+  "track_id": "2026-09-12-clean-architecture-layer-rename",
+  "records": [
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "interface_adapters::auth::AuthHttpApi",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
+          "element_id": "IN-003"
+        }
+      },
+      "reason": "IN-003 is a structural relocation criterion (HTTP delivery stays in interface_adapters). Placement is enforced by architecture-rules/check-layers and the catalogue layer file; existing AuthHttpApi route tests cover HTTP behavior independently of this rename anchor."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "frameworks::http::HttpServer",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
+          "element_id": "IN-003"
+        }
+      },
+      "reason": "IN-003 relocates the axum server lifecycle adapter into frameworks. That placement is enforced by architecture-rules/check-layers and frameworks-types.json ownership; HttpServer lifecycle tests cover runtime behavior independently of this rename anchor."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "frameworks::http::HttpServer",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
+          "element_id": "AC-003"
+        }
+      },
+      "reason": "AC-003 asserts Clean Architecture placement (frameworks owns axum server wiring). Verified by architecture-rules/check-layers and catalogue ownership rather than a unit test on HttpServer."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "frameworks::http::HttpServerOutcome",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
+          "element_id": "IN-003"
+        }
+      },
+      "reason": "HttpServerOutcome is a delivery-bound lifecycle DTO relocated with HttpServer into frameworks. IN-003 placement is enforced structurally; the outcome type has no independent behavioral obligation beyond Failed/Stopped mapping already covered by frameworks HTTP tests."
+    },
+    {
+      "kind": "waiver",
+      "edge_id": {
+        "entry_key": "frameworks::http::HttpServerOutcome",
+        "anchor_id": {
+          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
+          "element_id": "AC-003"
+        }
+      },
+      "reason": "AC-003 placement for frameworks DTOs is enforced by architecture-rules/check-layers and catalogue ownership. HttpServerOutcome exposes only Stopped/Failed and needs no separate AC-003 behavioral binding."
+    }
+  ]
+}

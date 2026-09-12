@@ -1,10 +1,10 @@
 {
   "baseline_hash": "e210debc3d2dc0dffc584010bec2cceaacc315a212538015abb72b4989a82cb4",
   "declaration_hash": "75e955264cab4b7408693ca0855eb487891fda79985202fc63932f74c3d97ad3",
-  "generated_at": "2026-09-12T07:07:32Z",
-  "head_commit": "da585bd7d31726792bf853f097163b9c7695c863",
-  "implementation_fingerprint": "4229fd56fd69c318fb99bf320cd00a26687e22b462237a105f97a68262eddbe4",
-  "resolution_fingerprint": "7f1bcebfc4e92e48379a54059c4089a620b8bcbf2e28d10399ee824093ff0745",
+  "generated_at": "2026-09-12T08:39:32Z",
+  "head_commit": "10de799e3b0d5ca33bf291743c083f95f0123bf4",
+  "implementation_fingerprint": "e193cf528bc93b338bafc1eaded252641870d01c4155531fb0030b57f5954da5",
+  "resolution_fingerprint": "91e1eab5cf5710adb72b7973454e9c8a5a2681f8b0193f0f73752e693d78d036",
   "rustdoc_execution_identity": {
     "crate_name": "frameworks",
     "expected_json_path": "target/.sotp-rustdoc/c2ecfc464c2248710c4ad9c6adb5af8de600245c4540662eb7887cb34c00c74b/doc/frameworks.json",

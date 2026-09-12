@@ -254,13 +254,13 @@ shape (including planned renames whose old-named source type transitionally pers
 
 - Only for track `scope-conditional-pre-review-gates-2026-07-31`:
   `FsRefVerifyAggregateAdapter` IS present in the frozen rustdoc baseline
-  (`infrastructure-types-baseline.json` index 4721; it exists in the track-init source
+  (`frameworks-types-baseline.json` index 4721; it exists in the track-init source
   commit `16f5699d`). Its declaration `action: modify` — with the pre-existing `Default` /
   `RefVerifyAggregateService` impls as `reference` and only the new
   `RefVerifyCheckApprovedDriverService` impl as `add` — is the adjudicated correct
   decomposition (rollback-diagnoser, 2026-08-04). Do not report it as needing `action: add`.
 - Only for track `scope-conditional-pre-review-gates-2026-07-31`: the
-  `cli:ReviewCheckRoundArg` / `cli_driver:ReviewCheckRoundSelect` two-entry mirror is the
+  `web:ReviewCheckRoundArg` / `interface_adapters:ReviewCheckRoundSelect` two-entry mirror is the
   ADJUDICATED conforming delivery-layer pattern (rollback-diagnoser, 2026-08-09): the
   former is the clap-facing transport type, the latter the clap-free driver-boundary
   mirror, and `cli::commands::review::execute_check_zero_findings`'s exhaustive match is
@@ -271,7 +271,7 @@ shape (including planned renames whose old-named source type transitionally pers
   constructors ARE declared and implemented with the narrow
   `ReviewCheckZeroFindingsValidationError` return type
   (`ReviewCheckZeroFindingsQuery::try_new` and
-  `cli_driver:ReviewCheckZeroFindingsInput::try_new`); the evaluation-level
+  `interface_adapters:ReviewCheckZeroFindingsInput::try_new`); the evaluation-level
   `ReviewCheckZeroFindingsEvaluationError::EvaluationFailed` exists ONLY on the
   post-constructor `ReviewCheckZeroFindingsService::check_zero_findings` surface, where
   it is reachable
