@@ -1,3 +1,6 @@
 {"hash":"157c652f422575928019661ca3819c3ad06f558f6be2ca454f11d8f365a52b49","kind":"init","source":"2026-09-12-0139-clean-architecture-layer-rename.md","timestamp":"2026-09-12T01:44:49Z"}
 {"hash":"49c88692bfee8a4a5a4148be401dfdb10fc9a02626d5b5f1fffde4c882275979","kind":"cite","source":"2026-09-10-1126-minimal-auth-api.md","timestamp":"2026-09-12T05:29:26Z"}
 {"hash":"3a5ba4737a1a855011a72b0bc689a05e575c12fe381417ba497a5b4ed73603ad","kind":"cite","source":"2026-09-10-1238-minimal-auth-registration-capability.md","timestamp":"2026-09-12T05:29:26Z"}
+{"hash":"1fdacb1344a80802457b79472104dea688e4a43f0cae7fe802e14b73cd1ecb83","kind":"new-adr","reason":"Refine D3: aggregate Repository ports stay in entities per binding adjudication; aligns AC-003 with catalogue-lint.","source":"2026-09-12-0845-clean-architecture-aggregate-repository-placement.md","timestamp":"2026-09-12T08:51:38Z"}
+{"hash":"9023cd594c2133a41338f78930a7c541465cfc6c559906e32132e9f8cdf3b30c","kind":"non-semantic-fix","source":"2026-09-12-0845-clean-architecture-aggregate-repository-placement.md","timestamp":"2026-09-12T08:51:43Z"}
+{"hash":"6e1e079b1addea603f222defe90d9fecc8fa080a32c98c91f8b2687f5f16f7a8","kind":"non-semantic-fix","source":"2026-09-12-0845-clean-architecture-aggregate-repository-placement.md","timestamp":"2026-09-12T08:57:19Z"}

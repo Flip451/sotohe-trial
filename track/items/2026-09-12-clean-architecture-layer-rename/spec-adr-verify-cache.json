@@ -415,12 +415,12 @@
       }
     },
     {
-      "claim_hash": "0f53e69b29e766f6d9d86968f27e19554e8fe2a3cc7e76ffc879cfc23e25834e",
+      "claim_hash": "4d2c776de5ac3363ddbc83145b246559e2afc7be2b9653ae2a1afbac5ef03aeb",
       "claim_origin": {
         "data": {
           "element_id": "AC-003",
           "section": "acceptance_criteria",
-          "text_label": "Ports are located in use_cases; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
+          "text_label": "Application ports are located in use_cases; aggregate Repository ports remain in entities with their aggregates; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
         },
         "kind": "spec_element"
       },
@@ -434,6 +434,29 @@
       },
       "verdict": {
         "citation": "1. Port / インターフェースは `use_cases` に置く\n2. HTTP コントローラと DTO 変換は `interface_adapters` のみ\n3. 永続化・暗号・axum サーバ配線などの実装は `frameworks`\n4. 組み立ては `web_composition` のみ。`web` bin は薄い入口に留める",
+        "kind": "pass"
+      }
+    },
+    {
+      "claim_hash": "4d2c776de5ac3363ddbc83145b246559e2afc7be2b9653ae2a1afbac5ef03aeb",
+      "claim_origin": {
+        "data": {
+          "element_id": "AC-003",
+          "section": "acceptance_criteria",
+          "text_label": "Application ports are located in use_cases; aggregate Repository ports remain in entities with their aggregates; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
+        },
+        "kind": "spec_element"
+      },
+      "evidence_hash": "fba1c314af1676f0b5187a114ea4dae0ae2fb807e03b11f01b82db8dc2023b26",
+      "evidence_origin": {
+        "data": {
+          "decision_id": "D1",
+          "file_path": "knowledge/adr/2026-09-12-0845-clean-architecture-aggregate-repository-placement.md"
+        },
+        "kind": "adr_decision"
+      },
+      "verdict": {
+        "citation": "Application ports (use-case facing secondary ports such as hashing, verification, token issuance, and application services) live in `use_cases`.\n2. Aggregate `Repository` ports remain in `entities` beside their aggregates (`UserRepository`, `AccessTokenRepository`).",
         "kind": "pass"
       }
     },

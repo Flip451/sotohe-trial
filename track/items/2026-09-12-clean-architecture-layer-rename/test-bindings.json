@@ -26,35 +26,13 @@
     {
       "kind": "waiver",
       "edge_id": {
-        "entry_key": "frameworks::http::HttpServer",
-        "anchor_id": {
-          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
-          "element_id": "AC-003"
-        }
-      },
-      "reason": "AC-003 asserts Clean Architecture placement (frameworks owns axum server wiring). Verified by architecture-rules/check-layers and catalogue ownership rather than a unit test on HttpServer."
-    },
-    {
-      "kind": "waiver",
-      "edge_id": {
         "entry_key": "frameworks::http::HttpServerOutcome",
         "anchor_id": {
           "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
           "element_id": "IN-003"
         }
       },
-      "reason": "HttpServerOutcome is a delivery-bound lifecycle DTO relocated with HttpServer into frameworks. IN-003 placement is enforced structurally; the outcome type has no independent behavioral obligation beyond Failed/Stopped mapping already covered by frameworks HTTP tests."
-    },
-    {
-      "kind": "waiver",
-      "edge_id": {
-        "entry_key": "frameworks::http::HttpServerOutcome",
-        "anchor_id": {
-          "file_path": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json",
-          "element_id": "AC-003"
-        }
-      },
-      "reason": "AC-003 placement for frameworks DTOs is enforced by architecture-rules/check-layers and catalogue ownership. HttpServerOutcome exposes only Stopped/Failed and needs no separate AC-003 behavioral binding."
+      "reason": "HttpServerOutcome is the frameworks-local Stopped/Failed DTO relocated with HttpServer (frameworks-types.json add). IN-003 placement is discharged by that catalogue ownership and the frameworks crate path; no independent IN-003 behavior exists on the DTO alone."
     }
   ]
 }

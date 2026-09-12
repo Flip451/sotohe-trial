@@ -25,10 +25,14 @@
         {
           "anchor": "D3",
           "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        {
+          "file": "knowledge/adr/2026-09-12-0845-clean-architecture-aggregate-repository-placement.md",
+          "anchor": "D1"
         }
       ],
       "id": "AC-003",
-      "text": "Ports are located in use_cases; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
+      "text": "Application ports are located in use_cases; aggregate Repository ports remain in entities with their aggregates; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
     },
     {
       "adr_refs": [

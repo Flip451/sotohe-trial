@@ -267,10 +267,6 @@
         {
           "anchor": "IN-003",
           "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
-        },
-        {
-          "anchor": "AC-003",
-          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
         }
       ]
     },
@@ -325,10 +321,6 @@
       "spec_refs": [
         {
           "anchor": "IN-003",
-          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
-        },
-        {
-          "anchor": "AC-003",
           "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
         }
       ]

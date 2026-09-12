@@ -16,6 +16,28 @@
           "hash": "rvw1:sha256:64c64393cd53ac7fd99a52d9a7f96dc9873644380d8af97e9d5a927b8852f022",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:55:45Z",
+          "findings": [
+            {
+              "category": "Reassess When trigger missing or vacuous",
+              "file": "knowledge/adr/2026-09-12-0845-clean-architecture-aggregate-repository-placement.md",
+              "line": 37,
+              "message": "The ADR has no `## Reassess When` section, so it records no operational signal for revisiting this exception to parent D3. Add at least one concrete trigger, such as a change to aggregate-repository classification or its entities-only placement authority.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:814e69cb86613551fcfbdc79f01e28ffbc48918f09b31b2c0b7e05477986f1f8",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T08:58:05Z",
+          "findings": [],
+          "hash": "rvw1:sha256:02b8183d12afa0ecb459c3e30d39bb78d1f60b03ac563469d12a50f9e9bd211d",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -419,6 +441,13 @@
           "hash": "rvw1:sha256:b1d49264a6a64d859a558fb4f7c99710c217ab7149a9479f1d2d0ce9e94bd6b9",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:09:19Z",
+          "findings": [],
+          "hash": "rvw1:sha256:fc4f630b9423313948cd4059d77d2af46271dedf5b765e30f09f17321c593531",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -435,6 +464,13 @@
           "at": "2026-09-12T02:04:43Z",
           "findings": [],
           "hash": "rvw1:sha256:5842823384b363f2721c50712ce182bbed0955af4f5beb2025b157615cdeb2df",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T08:57:13Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2e502d81ef2f112f13713dfe7001c1a8923c91f43ac3ba136f11034bb56ba463",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -460,6 +496,13 @@
           "at": "2026-09-12T08:38:08Z",
           "findings": [],
           "hash": "rvw1:sha256:3d53b00c96cff9cf2fea925295dfaee8d92db8b064c37ffc9bbdaad1ea72dbeb",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:07:56Z",
+          "findings": [],
+          "hash": "rvw1:sha256:e954d53cffaf22f3a6db5c6cedf4b0a3fcec3aea16d430b762b28037d49da09f",
           "type": "final",
           "verdict": "zero_findings"
         }

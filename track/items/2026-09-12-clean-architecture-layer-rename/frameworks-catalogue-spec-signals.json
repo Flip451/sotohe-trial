@@ -1,5 +1,5 @@
 {
-  "catalogue_declaration_hash": "75e955264cab4b7408693ca0855eb487891fda79985202fc63932f74c3d97ad3",
+  "catalogue_declaration_hash": "6260a3190ccbfaf59fa72122f60cabff7851b71b85f49393970398341b96491f",
   "schema_version": 1,
   "signals": [
     {
@@ -28,12 +28,12 @@
       "type_name": "frameworks::auth::RandomOpaqueTokenIssuer"
     },
     {
-      "entry_hash": "05ba25c73148656bb37c9a2036aaed75b87402e63cc63bf7b23f42772eef53d4",
+      "entry_hash": "980e1aa3b4be59d8a3388f9ed90642a2d1ff6fbd1e89d45b91332e3c7ef985d3",
       "signal": "blue",
       "type_name": "frameworks::http::HttpServer"
     },
     {
-      "entry_hash": "1ed4765040d46b85404d3700b0829e1ccf7845d935a4b7d27ba8cb29a284c48b",
+      "entry_hash": "c61306b556f0df63d2008d10f4aadbfc543d17b9b7defdd5b233e369f5f9a496",
       "signal": "blue",
       "type_name": "frameworks::http::HttpServerOutcome"
     }
