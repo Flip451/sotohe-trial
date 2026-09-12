@@ -96,6 +96,43 @@
           "hash": "rvw1:sha256:bea7ff148be3257b0fa78a9984196837ed55b7130dcce231785087694fda8093",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:25:17Z",
+          "findings": [
+            {
+              "category": "unbounded I/O boundary",
+              "file": "libs/frameworks/src/lib.rs",
+              "line": 204,
+              "message": "The live-socket test awaits `stream.read` in an unbounded loop and later awaits the server task without any deadline. If the server stalls, never emits the header terminator, or graceful shutdown does not complete, the test hangs indefinitely; `response` can also grow without limit. Add a byte cap and wrap the exchange/shutdown in a timeout (enabling Tokio's `time` feature if needed).",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:879b340f2bc3d2b9fbaf118dbf7399ce9486c1439ab46e5adaf9e6b9d32ab37a",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:30:07Z",
+          "findings": [
+            {
+              "category": "clippy gate failure",
+              "file": "libs/frameworks/src/lib.rs",
+              "line": 229,
+              "message": "This `expect` is inside a test module that only allows `clippy::unwrap_used`. The workspace sets `clippy::expect_used = \"deny\"`, and CI runs Clippy with `--all-targets`, so this change fails the mandatory lint gate. Replace it with an allowed assertion/`unwrap`, or add a test-scoped `clippy::expect_used` allowance.",
+              "severity": "P1"
+            }
+          ],
+          "hash": "rvw1:sha256:0840e06daecfc2193a4c1d43e31dcf4cd97bd213a32cd01b5cb0059216ab77b2",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:32:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:484b7f53fe4f7b3ccaacbc2ec9dc692736c8e2d622a6cfb0ca0113b94df96bb0",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -446,6 +483,13 @@
           "at": "2026-09-12T09:09:19Z",
           "findings": [],
           "hash": "rvw1:sha256:fc4f630b9423313948cd4059d77d2af46271dedf5b765e30f09f17321c593531",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:26:14Z",
+          "findings": [],
+          "hash": "rvw1:sha256:f640cf52ca093b43d929cf0d3166d7c2dc4cbb08c508439afa90e9d60840dec9",
           "type": "final",
           "verdict": "zero_findings"
         }

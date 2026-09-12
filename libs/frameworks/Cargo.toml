@@ -14,5 +14,5 @@ axum = "0.8"
 base64ct = { version = "1", features = ["alloc"] }
 entities = { path = "../entities" }
 rand = "0.9"
-tokio = { version = "1", features = ["macros", "net", "rt", "signal"] }
+tokio = { version = "1", features = ["macros", "net", "rt", "signal", "io-util", "sync", "time"] }
 use_cases = { path = "../use_cases" }

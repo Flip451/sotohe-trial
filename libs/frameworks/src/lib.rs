@@ -179,6 +179,60 @@ pub mod http {
         }
 
         #[tokio::test]
+        async fn test_http_server_serve_listener_happy_path_exchanges_then_stops() {
+            use tokio::io::{AsyncReadExt, AsyncWriteExt};
+            use tokio::sync::oneshot;
+            use tokio::time::{Duration, timeout};
+
+            let exchange = async {
+                let listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
+                let addr = listener.local_addr().unwrap();
+                let (shutdown_tx, shutdown_rx) = oneshot::channel::<()>();
+                let serve = tokio::spawn(async move {
+                    HttpServer::new(Router::new())
+                        .serve_listener(listener, async {
+                            let _ = shutdown_rx.await;
+                        })
+                        .await
+                });
+
+                let mut stream = tokio::net::TcpStream::connect(addr).await.unwrap();
+                stream
+                    .write_all(b"GET / HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n")
+                    .await
+                    .unwrap();
+                let mut response = Vec::new();
+                let mut buf = [0_u8; 64];
+                loop {
+                    let n = stream.read(&mut buf).await.unwrap();
+                    if n == 0 {
+                        break;
+                    }
+                    if let Some(chunk) = buf.get(..n) {
+                        response.extend_from_slice(chunk);
+                    }
+                    assert!(response.len() <= 4096, "HTTP response exceeded byte cap");
+                    if response.windows(4).any(|window| window == b"\r\n\r\n") {
+                        break;
+                    }
+                }
+                assert!(!response.is_empty(), "expected an HTTP response from axum");
+                let response = std::str::from_utf8(&response).unwrap();
+                assert!(response.starts_with("HTTP/1.1"), "unexpected response: {response:?}");
+
+                shutdown_tx.send(()).unwrap();
+                let outcome = serve.await.unwrap();
+                assert!(matches!(outcome, HttpServerOutcome::Stopped));
+                assert!(outcome.is_success());
+            };
+
+            assert!(
+                timeout(Duration::from_secs(5), exchange).await.is_ok(),
+                "happy-path exchange timed out",
+            );
+        }
+
+        #[tokio::test]
         async fn test_http_server_serve_maps_bind_failure() {
             let outcome =
                 HttpServer::new(Router::new()).serve_on("127.0.0.1:65536", async {}).await;
