@@ -1,16 +1,16 @@
 {
-  "baseline_hash": "3ad25ec800ab91060646ddc7c6168129141dd606350a4d47505d378a0fcdeb34",
-  "declaration_hash": "5c78a113ff76c3bd75809e60e8b7a7fd45c2353990208464d0092ad4fedfedfa",
-  "generated_at": "2026-09-12T05:45:45Z",
-  "head_commit": "2a3f637583849743c36afb61720d2b1d5cd746b1",
-  "implementation_fingerprint": "f49f77839a00dc85c680c33b8a7d0f3435dd7c5c7be8619ef6628dc41ad7e919",
-  "resolution_fingerprint": "096076e5bd3a1d6916cde94d16126defc0506521431e6acccf1e8b7dcb6c3bd8",
+  "baseline_hash": "f1fe9b94eee26ad9bdc20ec433ddbc697c7a14dad4218719cc0c40a48d6d9d70",
+  "declaration_hash": "6761f41db628c6489efdf8fc07f970e2e4e57a4543f4e4ae9e3a70fe616887fc",
+  "generated_at": "2026-09-12T07:07:16Z",
+  "head_commit": "da585bd7d31726792bf853f097163b9c7695c863",
+  "implementation_fingerprint": "4229fd56fd69c318fb99bf320cd00a26687e22b462237a105f97a68262eddbe4",
+  "resolution_fingerprint": "7f1bcebfc4e92e48379a54059c4089a620b8bcbf2e28d10399ee824093ff0745",
   "rustdoc_execution_identity": {
-    "crate_name": "usecase",
-    "expected_json_path": "target/.sotp-rustdoc/e628769f9a4ea87a1f5d8e3f944995bd645c18ef405a9158ed78355225fd68af/doc/usecase.json",
+    "crate_name": "use_cases",
+    "expected_json_path": "target/.sotp-rustdoc/d12530049e7e3969122f069b32a44c5dcb2422105115f3853cb862ed69dc3752/doc/use_cases.json",
     "features": [],
     "profile": "dev",
-    "target_directory": "target/.sotp-rustdoc/e628769f9a4ea87a1f5d8e3f944995bd645c18ef405a9158ed78355225fd68af"
+    "target_directory": "target/.sotp-rustdoc/d12530049e7e3969122f069b32a44c5dcb2422105115f3853cb862ed69dc3752"
   },
   "schema_version": 6,
   "signals": [
@@ -61,105 +61,105 @@
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::GreetError"
+      "type_name": "use_cases::GreetError"
     },
     {
       "found_type": true,
       "kind_tag": "use_case",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::GreetUser"
+      "type_name": "use_cases::GreetUser"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::CredentialParseError"
+      "type_name": "use_cases::auth::CredentialParseError"
     },
     {
       "found_type": true,
       "kind_tag": "dto",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::IssuedAccessToken"
+      "type_name": "use_cases::auth::IssuedAccessToken"
     },
     {
       "found_type": true,
       "kind_tag": "command",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::LoginCommand"
+      "type_name": "use_cases::auth::LoginCommand"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::LoginError"
+      "type_name": "use_cases::auth::LoginError"
     },
     {
       "found_type": true,
       "kind_tag": "interactor",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::LoginInteractor"
+      "type_name": "use_cases::auth::LoginInteractor"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::PasswordHashingError"
+      "type_name": "use_cases::auth::PasswordHashingError"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::PasswordInputError"
+      "type_name": "use_cases::auth::PasswordInputError"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::PasswordVerificationError"
+      "type_name": "use_cases::auth::PasswordVerificationError"
     },
     {
       "found_type": true,
       "kind_tag": "value_object",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::PlaintextPassword"
+      "type_name": "use_cases::auth::PlaintextPassword"
     },
     {
       "found_type": true,
       "kind_tag": "command",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::RegisterUserCommand"
+      "type_name": "use_cases::auth::RegisterUserCommand"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::RegisterUserError"
+      "type_name": "use_cases::auth::RegisterUserError"
     },
     {
       "found_type": true,
       "kind_tag": "interactor",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::RegisterUserInteractor"
+      "type_name": "use_cases::auth::RegisterUserInteractor"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "usecase::auth::TokenIssuanceError"
+      "type_name": "use_cases::auth::TokenIssuanceError"
     }
   ]
 }

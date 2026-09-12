@@ -1,7 +1,7 @@
 {
-  "crate_name": "domain",
+  "crate_name": "entities",
   "functions": {},
-  "layer": "domain",
+  "layer": "entities",
   "schema_version": 5,
   "trait_impls": [
     {
@@ -340,7 +340,7 @@
     }
   },
   "types": {
-    "domain::Username": {
+    "entities::Username": {
       "action": "reference",
       "docs": "Validated username value object retained across the crate rename; its private string is constrained by construction.",
       "informal_grounds": [],
@@ -387,7 +387,7 @@
         }
       ]
     },
-    "domain::UsernameError": {
+    "entities::UsernameError": {
       "action": "reference",
       "docs": "Username validation failure retained unchanged across the crate rename.",
       "informal_grounds": [],
@@ -414,7 +414,7 @@
         }
       ]
     },
-    "domain::auth::AccessTokenRecord": {
+    "entities::auth::AccessTokenRecord": {
       "action": "reference",
       "docs": "Opaque-token aggregate retained across the crate rename; token and subject remain stable domain concepts.",
       "informal_grounds": [],
@@ -482,7 +482,7 @@
         }
       ]
     },
-    "domain::auth::AccessTokenRepositoryError": {
+    "entities::auth::AccessTokenRepositoryError": {
       "action": "reference",
       "docs": "Access-token repository failure retained unchanged across the crate rename.",
       "informal_grounds": [],
@@ -509,7 +509,7 @@
         }
       ]
     },
-    "domain::auth::OpaqueAccessToken": {
+    "entities::auth::OpaqueAccessToken": {
       "action": "reference",
       "docs": "Opaque access-token value object retained across the crate rename; String is its opaque representation and construction enforces non-empty input.",
       "informal_grounds": [],
@@ -574,7 +574,7 @@
         }
       ]
     },
-    "domain::auth::OpaqueAccessTokenError": {
+    "entities::auth::OpaqueAccessTokenError": {
       "action": "reference",
       "docs": "Opaque-token validation failure retained unchanged across the crate rename.",
       "informal_grounds": [],
@@ -601,7 +601,7 @@
         }
       ]
     },
-    "domain::auth::PasswordHash": {
+    "entities::auth::PasswordHash": {
       "action": "reference",
       "docs": "Password-hash value object retained across the crate rename; String is an opaque encoding and construction enforces argon2id.",
       "informal_grounds": [],
@@ -666,7 +666,7 @@
         }
       ]
     },
-    "domain::auth::PasswordHashError": {
+    "entities::auth::PasswordHashError": {
       "action": "reference",
       "docs": "Password-hash validation failure retained unchanged across the crate rename.",
       "informal_grounds": [],
@@ -693,7 +693,7 @@
         }
       ]
     },
-    "domain::auth::User": {
+    "entities::auth::User": {
       "action": "reference",
       "docs": "User aggregate retained across the crate rename with stable username identity and validated password hash.",
       "informal_grounds": [],
@@ -761,7 +761,7 @@
         }
       ]
     },
-    "domain::auth::UserLookupError": {
+    "entities::auth::UserLookupError": {
       "action": "reference",
       "docs": "User lookup failure retained unchanged across the crate rename.",
       "informal_grounds": [],
@@ -788,7 +788,7 @@
         }
       ]
     },
-    "domain::auth::UserRepositoryError": {
+    "entities::auth::UserRepositoryError": {
       "action": "reference",
       "docs": "User repository failure retained unchanged across the crate rename.",
       "informal_grounds": [],

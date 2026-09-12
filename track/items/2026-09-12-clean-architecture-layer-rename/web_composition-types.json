@@ -1,7 +1,7 @@
 {
-  "crate_name": "cli_composition",
+  "crate_name": "web_composition",
   "functions": {},
-  "layer": "cli_composition",
+  "layer": "web_composition",
   "schema_version": 5,
   "trait_impls": [
     {
@@ -17,7 +17,7 @@
   ],
   "traits": {},
   "types": {
-    "cli_composition::GreetingCompositionRoot": {
+    "web_composition::GreetingCompositionRoot": {
       "action": "reference",
       "docs": "Existing greeting composition root retained for relocation to web_composition; it owns only object-graph assembly.",
       "informal_grounds": [],
@@ -43,7 +43,7 @@
           "name": "greeting_driver",
           "params": [],
           "receiver": "&self",
-          "returns": "cli_driver::GreetDriver"
+          "returns": "interface_adapters::GreetDriver"
         }
       ],
       "module_path": "",
@@ -57,9 +57,9 @@
         }
       ]
     },
-    "cli_composition::auth::AuthCompositionRoot": {
+    "web_composition::auth::AuthCompositionRoot": {
       "action": "reference",
-      "docs": "Authentication composition root retained for relocation to web_composition; it owns only repository, crypto, interactor, and HTTP-adapter assembly.",
+      "docs": "Pure DI composition root for the minimal auth HTTP API.",
       "informal_grounds": [],
       "kind": {
         "kind": "struct",
@@ -83,7 +83,16 @@
           "name": "auth_http_api",
           "params": [],
           "receiver": "&self",
-          "returns": "cli_driver::auth::AuthHttpApi"
+          "returns": "interface_adapters::auth::AuthHttpApi"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "auth_server",
+          "params": [],
+          "receiver": "&self",
+          "returns": "frameworks::http::HttpServer"
         }
       ],
       "module_path": "auth",

@@ -1,18 +1,18 @@
 {
-  "crate_name": "infrastructure",
+  "crate_name": "frameworks",
   "functions": {},
-  "layer": "infrastructure",
+  "layer": "frameworks",
   "schema_version": 5,
   "trait_impls": [
     {
       "action": "reference",
       "for_type": "StaticSalutation",
-      "trait_ref": "usecase::SalutationProvider"
+      "trait_ref": "use_cases::SalutationProvider"
     },
     {
       "action": "reference",
       "for_type": "InMemoryUserRepository",
-      "trait_ref": "domain::auth::UserRepository"
+      "trait_ref": "entities::auth::UserRepository"
     },
     {
       "action": "reference",
@@ -22,7 +22,7 @@
     {
       "action": "reference",
       "for_type": "InMemoryAccessTokenRepository",
-      "trait_ref": "domain::auth::AccessTokenRepository"
+      "trait_ref": "entities::auth::AccessTokenRepository"
     },
     {
       "action": "reference",
@@ -32,12 +32,12 @@
     {
       "action": "reference",
       "for_type": "Argon2PasswordAdapter",
-      "trait_ref": "usecase::auth::PasswordHasher"
+      "trait_ref": "use_cases::auth::PasswordHasher"
     },
     {
       "action": "reference",
       "for_type": "Argon2PasswordAdapter",
-      "trait_ref": "usecase::auth::PasswordVerifier"
+      "trait_ref": "use_cases::auth::PasswordVerifier"
     },
     {
       "action": "reference",
@@ -47,7 +47,7 @@
     {
       "action": "reference",
       "for_type": "RandomOpaqueTokenIssuer",
-      "trait_ref": "usecase::auth::OpaqueTokenIssuer"
+      "trait_ref": "use_cases::auth::OpaqueTokenIssuer"
     },
     {
       "action": "reference",
@@ -57,7 +57,7 @@
   ],
   "traits": {},
   "types": {
-    "infrastructure::StaticSalutation": {
+    "frameworks::StaticSalutation": {
       "action": "reference",
       "docs": "Existing fixed-salutation secondary adapter retained for the framework crate rename; its private String is unconstrained adapter configuration text.",
       "informal_grounds": [],
@@ -95,7 +95,7 @@
         }
       ]
     },
-    "infrastructure::auth::Argon2PasswordAdapter": {
+    "frameworks::auth::Argon2PasswordAdapter": {
       "action": "reference",
       "docs": "Argon2 password hashing and verification adapter retained for relocation into frameworks.",
       "informal_grounds": [],
@@ -126,7 +126,7 @@
         }
       ]
     },
-    "infrastructure::auth::InMemoryAccessTokenRepository": {
+    "frameworks::auth::InMemoryAccessTokenRepository": {
       "action": "reference",
       "docs": "In-memory access-token repository adapter retained for relocation into frameworks.",
       "informal_grounds": [],
@@ -159,7 +159,7 @@
         }
       ]
     },
-    "infrastructure::auth::InMemoryUserRepository": {
+    "frameworks::auth::InMemoryUserRepository": {
       "action": "reference",
       "docs": "In-memory user repository adapter retained for relocation into frameworks.",
       "informal_grounds": [],
@@ -192,7 +192,7 @@
         }
       ]
     },
-    "infrastructure::auth::RandomOpaqueTokenIssuer": {
+    "frameworks::auth::RandomOpaqueTokenIssuer": {
       "action": "reference",
       "docs": "Random opaque-token issuer adapter retained for relocation into frameworks.",
       "informal_grounds": [],
@@ -219,6 +219,116 @@
       "spec_refs": [
         {
           "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "frameworks::http::HttpServer": {
+      "action": "add",
+      "docs": "Axum server lifecycle adapter; it accepts a router assembled by interface_adapters and owns bind, shutdown, and serve execution.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "add",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "router",
+              "ty": "axum::routing::Router"
+            }
+          ],
+          "returns": "Self"
+        },
+        {
+          "action": "add",
+          "has_default_impl": false,
+          "is_async": true,
+          "name": "serve",
+          "params": [],
+          "receiver": "self",
+          "returns": "HttpServerOutcome"
+        }
+      ],
+      "module_path": "http",
+      "role": {
+        "PrimaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        {
+          "anchor": "AC-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "frameworks::http::HttpServerOutcome": {
+      "action": "add",
+      "docs": "Framework-owned HTTP server lifecycle outcome; Failed carries an opaque diagnostic for the outer presenter.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Stopped",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "Failed",
+            "payload": {
+              "fields": [
+                "String"
+              ],
+              "kind": "tuple"
+            }
+          }
+        ]
+      },
+      "methods": [
+        {
+          "action": "add",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "is_success",
+          "params": [],
+          "receiver": "&self",
+          "returns": "bool"
+        },
+        {
+          "action": "add",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "message",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&str"
+        }
+      ],
+      "module_path": "http",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        {
+          "anchor": "AC-003",
           "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
         }
       ]

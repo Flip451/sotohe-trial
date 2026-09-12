@@ -1,7 +1,7 @@
 {
-  "crate_name": "cli_driver",
+  "crate_name": "interface_adapters",
   "functions": {},
-  "layer": "cli_driver",
+  "layer": "interface_adapters",
   "schema_version": 5,
   "trait_impls": [
     {
@@ -27,7 +27,7 @@
   ],
   "traits": {},
   "types": {
-    "cli_driver::CommandOutcome": {
+    "interface_adapters::CommandOutcome": {
       "action": "reference",
       "docs": "Existing delivery outcome retained for the interface-adapter rename; message is unconstrained presentation text and success is a process rendering flag, not domain vocabulary.",
       "informal_grounds": [],
@@ -60,7 +60,7 @@
         }
       ]
     },
-    "cli_driver::GreetDriver": {
+    "interface_adapters::GreetDriver": {
       "action": "reference",
       "docs": "Existing greeting primary adapter retained for the interface-adapter rename; raw_name is transport input parsed once into the application-owned Username boundary.",
       "informal_grounds": [],
@@ -81,13 +81,13 @@
           "params": [
             {
               "name": "interactor",
-              "ty": "usecase::GreetUser<P>"
+              "ty": "use_cases::GreetUser<P>"
             }
           ],
           "generics": [
             {
               "bounds": [
-                "usecase::SalutationProvider",
+                "use_cases::SalutationProvider",
                 "'static"
               ],
               "name": "P"
@@ -121,7 +121,7 @@
         }
       ]
     },
-    "cli_driver::auth::AccessTokenResponse": {
+    "interface_adapters::auth::AccessTokenResponse": {
       "action": "reference",
       "docs": "Typed HTTP access-token response retained; private wire encoding obtains opaque token text only at final presentation.",
       "informal_grounds": [],
@@ -142,7 +142,7 @@
           "params": [
             {
               "name": "access_token",
-              "ty": "usecase::auth::IssuedAccessToken"
+              "ty": "use_cases::auth::IssuedAccessToken"
             }
           ],
           "returns": "Self"
@@ -159,9 +159,9 @@
         }
       ]
     },
-    "cli_driver::auth::AuthHttpApi": {
-      "action": "reference",
-      "docs": "Existing HTTP primary adapter retained as the controller boundary for migration; its baseline public declaration remains unchanged in Phase 2.",
+    "interface_adapters::auth::AuthHttpApi": {
+      "action": "modify",
+      "docs": "HTTP primary adapter retained as the controller boundary; server lifecycle execution is delegated to the frameworks layer.",
       "informal_grounds": [],
       "kind": {
         "kind": "struct",
@@ -180,23 +180,14 @@
           "params": [
             {
               "name": "register",
-              "ty": "std::sync::Arc<dyn usecase::auth::RegisterUserService>"
+              "ty": "std::sync::Arc<dyn use_cases::auth::RegisterUserService>"
             },
             {
               "name": "login",
-              "ty": "std::sync::Arc<dyn usecase::auth::LoginService>"
+              "ty": "std::sync::Arc<dyn use_cases::auth::LoginService>"
             }
           ],
           "returns": "Self"
-        },
-        {
-          "action": "reference",
-          "has_default_impl": false,
-          "is_async": true,
-          "name": "serve",
-          "params": [],
-          "receiver": "self",
-          "returns": "CommandOutcome"
         },
         {
           "action": "reference",
@@ -219,35 +210,10 @@
         }
       ]
     },
-    "cli_driver::auth::HttpServerOutcome": {
-      "action": "reference",
-      "docs": "Delivery server lifecycle DTO retained; Failed String is an unconstrained opaque diagnostic for process presentation, not a domain concept.",
+    "interface_adapters::auth::HttpServerOutcome": {
+      "action": "delete",
       "informal_grounds": [],
-      "kind": {
-        "kind": "enum",
-        "variants": [
-          {
-            "name": "Stopped",
-            "payload": {
-              "kind": "unit"
-            }
-          },
-          {
-            "name": "Failed",
-            "payload": {
-              "fields": [
-                "String"
-              ],
-              "kind": "tuple"
-            }
-          }
-        ]
-      },
-      "methods": [],
       "module_path": "auth",
-      "role": {
-        "Dto": {}
-      },
       "spec_refs": [
         {
           "anchor": "IN-003",
@@ -255,7 +221,7 @@
         }
       ]
     },
-    "cli_driver::auth::LoginRequest": {
+    "interface_adapters::auth::LoginRequest": {
       "action": "reference",
       "docs": "Typed login request retained; private JSON extraction validates directly into the application-owned LoginCommand without storing raw credential strings.",
       "informal_grounds": [],
@@ -275,7 +241,7 @@
           "name": "into_command",
           "params": [],
           "receiver": "self",
-          "returns": "usecase::auth::LoginCommand"
+          "returns": "use_cases::auth::LoginCommand"
         }
       ],
       "module_path": "auth",
@@ -289,7 +255,7 @@
         }
       ]
     },
-    "cli_driver::auth::RegisterRequest": {
+    "interface_adapters::auth::RegisterRequest": {
       "action": "reference",
       "docs": "Typed registration request retained; private JSON extraction validates directly into the application-owned RegisterUserCommand without storing raw credential strings.",
       "informal_grounds": [],
@@ -309,7 +275,7 @@
           "name": "into_command",
           "params": [],
           "receiver": "self",
-          "returns": "usecase::auth::RegisterUserCommand"
+          "returns": "use_cases::auth::RegisterUserCommand"
         }
       ],
       "module_path": "auth",

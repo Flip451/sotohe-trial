@@ -1,0 +1,41 @@
+{
+  "catalogue_declaration_hash": "75e955264cab4b7408693ca0855eb487891fda79985202fc63932f74c3d97ad3",
+  "schema_version": 1,
+  "signals": [
+    {
+      "entry_hash": "941642fed97331c0c333de218996aacb1c3f5d3b4bee977a07e9ba5925b61560",
+      "signal": "blue",
+      "type_name": "frameworks::StaticSalutation"
+    },
+    {
+      "entry_hash": "da92f17c4b98ed613f1fac3ccd208fc5e7161024ec4bd7d38653c909d281b506",
+      "signal": "blue",
+      "type_name": "frameworks::auth::Argon2PasswordAdapter"
+    },
+    {
+      "entry_hash": "7bf51d51e788b380b2ba31badd3247f8cfae2ec558d2d6eade3dcd1b9ae7ee5d",
+      "signal": "blue",
+      "type_name": "frameworks::auth::InMemoryAccessTokenRepository"
+    },
+    {
+      "entry_hash": "dbd3b25dc8f9552defc287bd7fe05b18d1edb0046fca67fc7fb6377d06fe17ba",
+      "signal": "blue",
+      "type_name": "frameworks::auth::InMemoryUserRepository"
+    },
+    {
+      "entry_hash": "5ea8bb005f90cac9dbab983081bb2dfd6b3d49930b70baf12f421aad7d7e8b45",
+      "signal": "blue",
+      "type_name": "frameworks::auth::RandomOpaqueTokenIssuer"
+    },
+    {
+      "entry_hash": "05ba25c73148656bb37c9a2036aaed75b87402e63cc63bf7b23f42772eef53d4",
+      "signal": "blue",
+      "type_name": "frameworks::http::HttpServer"
+    },
+    {
+      "entry_hash": "1ed4765040d46b85404d3700b0829e1ccf7845d935a4b7d27ba8cb29a284c48b",
+      "signal": "blue",
+      "type_name": "frameworks::http::HttpServerOutcome"
+    }
+  ]
+}

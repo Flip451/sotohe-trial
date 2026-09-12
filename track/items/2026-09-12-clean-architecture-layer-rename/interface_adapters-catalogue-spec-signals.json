@@ -1,0 +1,41 @@
+{
+  "catalogue_declaration_hash": "745e317156abf5d0b25f2ce1200519184c6c484cf48e652dfcfab00ac6d8c8c6",
+  "schema_version": 1,
+  "signals": [
+    {
+      "entry_hash": "19e48d7709c07740d6373e202549bfa9409ec91118b2cf1f413ff234b85a29bd",
+      "signal": "blue",
+      "type_name": "interface_adapters::CommandOutcome"
+    },
+    {
+      "entry_hash": "a968a7ae3be912b8c127079334edb3be54370f15af75d24a4fe7fe592e45bb0c",
+      "signal": "blue",
+      "type_name": "interface_adapters::GreetDriver"
+    },
+    {
+      "entry_hash": "65a754b9c22757abfd5ead6ec359523eb76c2be7b07fea547966e8be627523d5",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::AccessTokenResponse"
+    },
+    {
+      "entry_hash": "580964eadec5ff8e47a8ae48b9119149f193037077dda0c1f711271b1c6554ed",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::AuthHttpApi"
+    },
+    {
+      "entry_hash": "03dce8e3e1042bfcefa2142bceba851872b1a65d8e57051317c5183b5b29ffd5",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::LoginRequest"
+    },
+    {
+      "entry_hash": "dd9baa583b7fbca71adb472a23efe3d476d8844832a1db0bd66fe99fb65c08c2",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::RegisterRequest"
+    },
+    {
+      "entry_hash": "490802f168b93b1e1ba1fa562e21b18ab6dfb0fb2e8a91dce5359ca386e06164",
+      "signal": "blue",
+      "type_name": "interface_adapters::auth::HttpServerOutcome"
+    }
+  ]
+}

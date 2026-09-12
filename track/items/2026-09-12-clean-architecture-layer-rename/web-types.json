@@ -1,7 +1,7 @@
 {
-  "crate_name": "cli",
+  "crate_name": "web",
   "functions": {},
-  "layer": "cli",
+  "layer": "web",
   "schema_version": 5,
   "traits": {},
   "types": {}

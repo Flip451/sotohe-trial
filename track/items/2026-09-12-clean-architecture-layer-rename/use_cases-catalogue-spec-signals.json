@@ -1,0 +1,111 @@
+{
+  "catalogue_declaration_hash": "6761f41db628c6489efdf8fc07f970e2e4e57a4543f4e4ae9e3a70fe616887fc",
+  "schema_version": 1,
+  "signals": [
+    {
+      "entry_hash": "1e7d3c63fb744153e84bb612273e4dd5163ad04460da856191d9ec987cd88fb3",
+      "signal": "blue",
+      "type_name": "use_cases::GreetError"
+    },
+    {
+      "entry_hash": "621ce613c9876839bff992e3f6d596edc2fc4e4a3df555100e7961c24fdde72f",
+      "signal": "blue",
+      "type_name": "use_cases::GreetUser"
+    },
+    {
+      "entry_hash": "7cc1e2d3ee740d4f7f168d2e4c76022cfaa48f3c452c3b044ff659ccf07519b7",
+      "signal": "blue",
+      "type_name": "use_cases::auth::CredentialParseError"
+    },
+    {
+      "entry_hash": "8a5c2a4a72c98826c2334c7a949ee8acb858a90a4e235cfe2924d6f842201ea1",
+      "signal": "blue",
+      "type_name": "use_cases::auth::IssuedAccessToken"
+    },
+    {
+      "entry_hash": "51c5903cbf720cf2634c6bb10b9dd637cae677631aafc106a14c009570a84a95",
+      "signal": "blue",
+      "type_name": "use_cases::auth::LoginCommand"
+    },
+    {
+      "entry_hash": "275f8429b959b3ed3c7256a29f0138d7a5195e12f8649da575961bc9e9013834",
+      "signal": "blue",
+      "type_name": "use_cases::auth::LoginError"
+    },
+    {
+      "entry_hash": "c7f6e7e451cc5278bcfc27b38e71b72b85f0635afe861e161f4d6c1a65871564",
+      "signal": "blue",
+      "type_name": "use_cases::auth::LoginInteractor"
+    },
+    {
+      "entry_hash": "01cb277d1d91f772bb25459cb6551be5653fdb2746c3db2e5666e705ce43f8da",
+      "signal": "blue",
+      "type_name": "use_cases::auth::PasswordHashingError"
+    },
+    {
+      "entry_hash": "a62a76e97f3c7c886901a58d03da31de497188096264d84e6f57748b2f9af79a",
+      "signal": "blue",
+      "type_name": "use_cases::auth::PasswordInputError"
+    },
+    {
+      "entry_hash": "2f606ba8f38cde42c0415ad773b6c04e25da8107b39950f1118e5a30d762ab87",
+      "signal": "blue",
+      "type_name": "use_cases::auth::PasswordVerificationError"
+    },
+    {
+      "entry_hash": "ea50f27fa67fd0c7d04dfec4b4b0586ad5449dde4f73846003882c3fe0465a01",
+      "signal": "blue",
+      "type_name": "use_cases::auth::PlaintextPassword"
+    },
+    {
+      "entry_hash": "36c61ed33158cc9c86a1aab8c46fa4f117a7dd757b7067e2aa11709a9f5f5c8c",
+      "signal": "blue",
+      "type_name": "use_cases::auth::RegisterUserCommand"
+    },
+    {
+      "entry_hash": "b8bfffeef30cb5cc16d94f5cb4f716348dbcc243d8c3042602d5f1ca02a45a22",
+      "signal": "blue",
+      "type_name": "use_cases::auth::RegisterUserError"
+    },
+    {
+      "entry_hash": "9bcdb43ca02e262a8d86c90b61a5b8cfab89f5ae5c47ca4aad86ca9f00c9611f",
+      "signal": "blue",
+      "type_name": "use_cases::auth::RegisterUserInteractor"
+    },
+    {
+      "entry_hash": "6dff60799d52829a30792eebe9eac68625f81dc54a0eeeb10121aae05b1074ca",
+      "signal": "blue",
+      "type_name": "use_cases::auth::TokenIssuanceError"
+    },
+    {
+      "entry_hash": "ae28a9458461aad5f161d5ee89ace916f54a2c95533996118c48a51834a64609",
+      "signal": "blue",
+      "type_name": "LoginService"
+    },
+    {
+      "entry_hash": "cba69c20108589df4066c559779e5e75073e038d12d67f62a2d3447b8011271b",
+      "signal": "blue",
+      "type_name": "OpaqueTokenIssuer"
+    },
+    {
+      "entry_hash": "56a1f865efe34a11897c83382b143c74ef3aa31bdc76835936e8b2da84a9bc22",
+      "signal": "blue",
+      "type_name": "PasswordHasher"
+    },
+    {
+      "entry_hash": "0271cd8658126b6be370b77e2ca0bd62c625c881b4df6f707bf28466a63a7748",
+      "signal": "blue",
+      "type_name": "PasswordVerifier"
+    },
+    {
+      "entry_hash": "4a20c5bfe541ab43a02a8c0d881d3cef39f36ec000f9df1429548e84b7c96746",
+      "signal": "blue",
+      "type_name": "RegisterUserService"
+    },
+    {
+      "entry_hash": "f95f1858479696dd230b230b405452520b390a6e59cc2a1a8db43b4d1016fff4",
+      "signal": "blue",
+      "type_name": "SalutationProvider"
+    }
+  ]
+}

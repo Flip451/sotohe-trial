@@ -1,7 +1,7 @@
 {
-  "crate_name": "usecase",
+  "crate_name": "use_cases",
   "functions": {},
-  "layer": "usecase",
+  "layer": "use_cases",
   "schema_version": 5,
   "trait_impls": [
     {
@@ -212,12 +212,12 @@
     {
       "action": "reference",
       "for_type": "RegisterUserError",
-      "trait_ref": "core::convert::From<domain::auth::UserRepositoryError>"
+      "trait_ref": "core::convert::From<entities::auth::UserRepositoryError>"
     },
     {
       "action": "reference",
       "for_type": "RegisterUserError",
-      "trait_ref": "core::convert::From<domain::auth::UserLookupError>"
+      "trait_ref": "core::convert::From<entities::auth::UserLookupError>"
     },
     {
       "action": "reference",
@@ -262,12 +262,12 @@
     {
       "action": "reference",
       "for_type": "LoginError",
-      "trait_ref": "core::convert::From<domain::auth::AccessTokenRepositoryError>"
+      "trait_ref": "core::convert::From<entities::auth::AccessTokenRepositoryError>"
     },
     {
       "action": "reference",
       "for_type": "LoginError",
-      "trait_ref": "core::convert::From<domain::auth::UserLookupError>"
+      "trait_ref": "core::convert::From<entities::auth::UserLookupError>"
     },
     {
       "action": "reference",
@@ -297,7 +297,7 @@
     {
       "action": "reference",
       "for_type": "CredentialParseError",
-      "trait_ref": "core::convert::From<domain::UsernameError>"
+      "trait_ref": "core::convert::From<entities::UsernameError>"
     },
     {
       "action": "reference",
@@ -353,7 +353,7 @@
           "name": "issue",
           "params": [],
           "receiver": "&self",
-          "returns": "Result<domain::auth::OpaqueAccessToken, TokenIssuanceError>"
+          "returns": "Result<entities::auth::OpaqueAccessToken, TokenIssuanceError>"
         }
       ],
       "module_path": "auth",
@@ -388,7 +388,7 @@
             }
           ],
           "receiver": "&self",
-          "returns": "Result<domain::auth::PasswordHash, PasswordHashingError>"
+          "returns": "Result<entities::auth::PasswordHash, PasswordHashingError>"
         }
       ],
       "module_path": "auth",
@@ -427,7 +427,7 @@
             },
             {
               "name": "hash",
-              "ty": "&domain::auth::PasswordHash"
+              "ty": "&entities::auth::PasswordHash"
             }
           ],
           "receiver": "&self",
@@ -516,7 +516,7 @@
     }
   },
   "types": {
-    "usecase::GreetError": {
+    "use_cases::GreetError": {
       "action": "reference",
       "docs": "Existing greeting failure retained unchanged as part of the application crate rename.",
       "informal_grounds": [],
@@ -543,7 +543,7 @@
         }
       ]
     },
-    "usecase::GreetUser": {
+    "use_cases::GreetUser": {
       "action": "reference",
       "docs": "Existing concrete greeting use case retained unchanged; returned String is unconstrained presentation text, not a domain concept.",
       "generics": [
@@ -585,7 +585,7 @@
           "params": [
             {
               "name": "user",
-              "ty": "&domain::Username"
+              "ty": "&entities::Username"
             }
           ],
           "receiver": "&self",
@@ -603,7 +603,7 @@
         }
       ]
     },
-    "usecase::auth::CredentialParseError": {
+    "use_cases::auth::CredentialParseError": {
       "action": "reference",
       "docs": "Typed credential parsing failure retained unchanged at the application boundary.",
       "informal_grounds": [],
@@ -614,7 +614,7 @@
             "name": "InvalidUsername",
             "payload": {
               "fields": [
-                "domain::UsernameError"
+                "entities::UsernameError"
               ],
               "kind": "tuple"
             }
@@ -642,7 +642,7 @@
         }
       ]
     },
-    "usecase::auth::IssuedAccessToken": {
+    "use_cases::auth::IssuedAccessToken": {
       "action": "reference",
       "docs": "Application response DTO retained unchanged; private String and &str accessor are only the opaque token's presentation encoding.",
       "informal_grounds": [],
@@ -663,7 +663,7 @@
           "params": [
             {
               "name": "token",
-              "ty": "domain::auth::OpaqueAccessToken"
+              "ty": "entities::auth::OpaqueAccessToken"
             }
           ],
           "returns": "Self"
@@ -689,7 +689,7 @@
         }
       ]
     },
-    "usecase::auth::LoginCommand": {
+    "use_cases::auth::LoginCommand": {
       "action": "reference",
       "docs": "Validated login command retained unchanged; raw &str values exist only during parsing into typed credentials.",
       "informal_grounds": [],
@@ -726,7 +726,7 @@
           "name": "username",
           "params": [],
           "receiver": "&self",
-          "returns": "&domain::Username"
+          "returns": "&entities::Username"
         },
         {
           "action": "reference",
@@ -749,7 +749,7 @@
         }
       ]
     },
-    "usecase::auth::LoginError": {
+    "use_cases::auth::LoginError": {
       "action": "reference",
       "docs": "Typed login failure retaining repository, verification, issuance, and persistence causes.",
       "informal_grounds": [],
@@ -772,7 +772,7 @@
             "name": "Lookup",
             "payload": {
               "fields": [
-                "domain::auth::UserLookupError"
+                "entities::auth::UserLookupError"
               ],
               "kind": "tuple"
             }
@@ -799,7 +799,7 @@
             "name": "Persistence",
             "payload": {
               "fields": [
-                "domain::auth::AccessTokenRepositoryError"
+                "entities::auth::AccessTokenRepositoryError"
               ],
               "kind": "tuple"
             }
@@ -818,7 +818,7 @@
         }
       ]
     },
-    "usecase::auth::LoginInteractor": {
+    "use_cases::auth::LoginInteractor": {
       "action": "reference",
       "docs": "Existing login interactor retained unchanged with its structure-required application input port.",
       "informal_grounds": [],
@@ -839,7 +839,7 @@
           "params": [
             {
               "name": "users",
-              "ty": "std::sync::Arc<dyn domain::auth::UserRepository>"
+              "ty": "std::sync::Arc<dyn entities::auth::UserRepository>"
             },
             {
               "name": "verifier",
@@ -851,7 +851,7 @@
             },
             {
               "name": "tokens",
-              "ty": "std::sync::Arc<dyn domain::auth::AccessTokenRepository>"
+              "ty": "std::sync::Arc<dyn entities::auth::AccessTokenRepository>"
             }
           ],
           "returns": "Self"
@@ -868,7 +868,7 @@
         }
       ]
     },
-    "usecase::auth::PasswordHashingError": {
+    "use_cases::auth::PasswordHashingError": {
       "action": "reference",
       "docs": "Typed password-hashing port failure retained unchanged.",
       "informal_grounds": [],
@@ -895,7 +895,7 @@
         }
       ]
     },
-    "usecase::auth::PasswordInputError": {
+    "use_cases::auth::PasswordInputError": {
       "action": "reference",
       "docs": "Typed application-boundary password validation failure retained unchanged.",
       "informal_grounds": [],
@@ -928,7 +928,7 @@
         }
       ]
     },
-    "usecase::auth::PasswordVerificationError": {
+    "use_cases::auth::PasswordVerificationError": {
       "action": "reference",
       "docs": "Typed password-verification port failure retained unchanged.",
       "informal_grounds": [],
@@ -955,7 +955,7 @@
         }
       ]
     },
-    "usecase::auth::PlaintextPassword": {
+    "use_cases::auth::PlaintextPassword": {
       "action": "reference",
       "docs": "Application-boundary credential value retained unchanged; raw &str is only constructor input and the private value enforces non-empty input.",
       "informal_grounds": [],
@@ -1028,7 +1028,7 @@
         }
       ]
     },
-    "usecase::auth::RegisterUserCommand": {
+    "use_cases::auth::RegisterUserCommand": {
       "action": "reference",
       "docs": "Validated registration command retained unchanged; raw &str values exist only during parsing into typed credentials.",
       "informal_grounds": [],
@@ -1065,7 +1065,7 @@
           "name": "username",
           "params": [],
           "receiver": "&self",
-          "returns": "&domain::Username"
+          "returns": "&entities::Username"
         },
         {
           "action": "reference",
@@ -1088,7 +1088,7 @@
         }
       ]
     },
-    "usecase::auth::RegisterUserError": {
+    "use_cases::auth::RegisterUserError": {
       "action": "reference",
       "docs": "Typed registration failure retaining lookup, hashing, and persistence causes.",
       "informal_grounds": [],
@@ -1105,7 +1105,7 @@
             "name": "Lookup",
             "payload": {
               "fields": [
-                "domain::auth::UserLookupError"
+                "entities::auth::UserLookupError"
               ],
               "kind": "tuple"
             }
@@ -1123,7 +1123,7 @@
             "name": "Persistence",
             "payload": {
               "fields": [
-                "domain::auth::UserRepositoryError"
+                "entities::auth::UserRepositoryError"
               ],
               "kind": "tuple"
             }
@@ -1146,7 +1146,7 @@
         }
       ]
     },
-    "usecase::auth::RegisterUserInteractor": {
+    "use_cases::auth::RegisterUserInteractor": {
       "action": "reference",
       "docs": "Existing registration interactor retained unchanged with its structure-required application input port.",
       "informal_grounds": [],
@@ -1167,7 +1167,7 @@
           "params": [
             {
               "name": "users",
-              "ty": "std::sync::Arc<dyn domain::auth::UserRepository>"
+              "ty": "std::sync::Arc<dyn entities::auth::UserRepository>"
             },
             {
               "name": "hasher",
@@ -1188,7 +1188,7 @@
         }
       ]
     },
-    "usecase::auth::TokenIssuanceError": {
+    "use_cases::auth::TokenIssuanceError": {
       "action": "reference",
       "docs": "Typed opaque-token issuance port failure retained unchanged.",
       "informal_grounds": [],

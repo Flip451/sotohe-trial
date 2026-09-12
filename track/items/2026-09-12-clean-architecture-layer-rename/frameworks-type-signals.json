@@ -1,0 +1,67 @@
+{
+  "baseline_hash": "e210debc3d2dc0dffc584010bec2cceaacc315a212538015abb72b4989a82cb4",
+  "declaration_hash": "75e955264cab4b7408693ca0855eb487891fda79985202fc63932f74c3d97ad3",
+  "generated_at": "2026-09-12T07:07:32Z",
+  "head_commit": "da585bd7d31726792bf853f097163b9c7695c863",
+  "implementation_fingerprint": "4229fd56fd69c318fb99bf320cd00a26687e22b462237a105f97a68262eddbe4",
+  "resolution_fingerprint": "7f1bcebfc4e92e48379a54059c4089a620b8bcbf2e28d10399ee824093ff0745",
+  "rustdoc_execution_identity": {
+    "crate_name": "frameworks",
+    "expected_json_path": "target/.sotp-rustdoc/c2ecfc464c2248710c4ad9c6adb5af8de600245c4540662eb7887cb34c00c74b/doc/frameworks.json",
+    "features": [],
+    "profile": "dev",
+    "target_directory": "target/.sotp-rustdoc/c2ecfc464c2248710c4ad9c6adb5af8de600245c4540662eb7887cb34c00c74b"
+  },
+  "schema_version": 6,
+  "signals": [
+    {
+      "found_type": true,
+      "kind_tag": "primary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "frameworks::http::HttpServer"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "enum",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "frameworks::http::HttpServerOutcome"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "frameworks::StaticSalutation"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "frameworks::auth::Argon2PasswordAdapter"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "frameworks::auth::InMemoryAccessTokenRepository"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "frameworks::auth::InMemoryUserRepository"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_adapter",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "frameworks::auth::RandomOpaqueTokenIssuer"
+    }
+  ]
+}

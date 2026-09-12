@@ -1,16 +1,16 @@
 {
-  "baseline_hash": "fbd94aa3d391e68878579a70d66fc900ae6c80468959fb5d90ab3ad03c374c65",
-  "declaration_hash": "a8ba58ba63db8855e0ad7359bf89457758860629703f8896564b5aec3502d863",
-  "generated_at": "2026-09-12T05:45:29Z",
-  "head_commit": "2a3f637583849743c36afb61720d2b1d5cd746b1",
-  "implementation_fingerprint": "f49f77839a00dc85c680c33b8a7d0f3435dd7c5c7be8619ef6628dc41ad7e919",
-  "resolution_fingerprint": "096076e5bd3a1d6916cde94d16126defc0506521431e6acccf1e8b7dcb6c3bd8",
+  "baseline_hash": "809e206697afa9b066320301d7030fdd629fbdbcdae3e94a5a5eb509550f8909",
+  "declaration_hash": "7a9970c789a241c4b0980d1d4a993cb63cc2eb7240e7b23d98235416bf9e103c",
+  "generated_at": "2026-09-12T07:06:59Z",
+  "head_commit": "da585bd7d31726792bf853f097163b9c7695c863",
+  "implementation_fingerprint": "4229fd56fd69c318fb99bf320cd00a26687e22b462237a105f97a68262eddbe4",
+  "resolution_fingerprint": "7f1bcebfc4e92e48379a54059c4089a620b8bcbf2e28d10399ee824093ff0745",
   "rustdoc_execution_identity": {
-    "crate_name": "domain",
-    "expected_json_path": "target/.sotp-rustdoc/8fc3fc37b933fc99a0351936fa4f365a9cd7e3f8517138bbb2389a99a0c40502/doc/domain.json",
+    "crate_name": "entities",
+    "expected_json_path": "target/.sotp-rustdoc/858f962afb7bc1b418b2ebe87619969d3417a1e77fa58b049f85b3f2be5d27e1/doc/entities.json",
     "features": [],
     "profile": "dev",
-    "target_directory": "target/.sotp-rustdoc/8fc3fc37b933fc99a0351936fa4f365a9cd7e3f8517138bbb2389a99a0c40502"
+    "target_directory": "target/.sotp-rustdoc/858f962afb7bc1b418b2ebe87619969d3417a1e77fa58b049f85b3f2be5d27e1"
   },
   "schema_version": 6,
   "signals": [
@@ -33,77 +33,77 @@
       "kind_tag": "value_object",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::Username"
+      "type_name": "entities::Username"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::UsernameError"
+      "type_name": "entities::UsernameError"
     },
     {
       "found_type": true,
       "kind_tag": "value_object",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::auth::AccessTokenRecord"
+      "type_name": "entities::auth::AccessTokenRecord"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::auth::AccessTokenRepositoryError"
+      "type_name": "entities::auth::AccessTokenRepositoryError"
     },
     {
       "found_type": true,
       "kind_tag": "value_object",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::auth::OpaqueAccessToken"
+      "type_name": "entities::auth::OpaqueAccessToken"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::auth::OpaqueAccessTokenError"
+      "type_name": "entities::auth::OpaqueAccessTokenError"
     },
     {
       "found_type": true,
       "kind_tag": "value_object",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::auth::PasswordHash"
+      "type_name": "entities::auth::PasswordHash"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::auth::PasswordHashError"
+      "type_name": "entities::auth::PasswordHashError"
     },
     {
       "found_type": true,
       "kind_tag": "value_object",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::auth::User"
+      "type_name": "entities::auth::User"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::auth::UserLookupError"
+      "type_name": "entities::auth::UserLookupError"
     },
     {
       "found_type": true,
       "kind_tag": "error_type",
       "namespace": "type",
       "signal": "blue",
-      "type_name": "domain::auth::UserRepositoryError"
+      "type_name": "entities::auth::UserRepositoryError"
     }
   ]
 }
