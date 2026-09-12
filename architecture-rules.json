@@ -26,127 +26,127 @@
   ],
   "layers": [
     {
-      "crate": "domain",
-      "path": "libs/domain",
+      "crate": "entities",
+      "path": "libs/entities",
       "may_depend_on": [],
-      "deny_reason": "Domain dependencies are controlled by layer boundaries.",
+      "deny_reason": "Entities dependencies are controlled by layer boundaries.",
       "verify": {
         "domain_purity": true,
         "domain_strings": true
       },
       "tddd": {
         "enabled": true,
-        "catalogue_file": "domain-types.json",
+        "catalogue_file": "entities-types.json",
         "catalogue_spec_signal": {
           "enabled": true
         },
         "schema_export": {
           "method": "rustdoc",
-          "targets": ["domain"]
+          "targets": ["entities"]
         }
       }
     },
     {
-      "crate": "usecase",
-      "path": "libs/usecase",
+      "crate": "use_cases",
+      "path": "libs/use_cases",
       "may_depend_on": [
-        "domain"
+        "entities"
       ],
       "verify": {
         "usecase_purity": true
       },
-      "deny_reason": "Usecase crate must only be consumed by the cli layer.",
+      "deny_reason": "Use_cases crate must only be consumed by the outer layers.",
       "tddd": {
         "enabled": true,
-        "catalogue_file": "usecase-types.json",
+        "catalogue_file": "use_cases-types.json",
         "catalogue_spec_signal": {
           "enabled": true
         },
         "schema_export": {
           "method": "rustdoc",
-          "targets": ["usecase"]
+          "targets": ["use_cases"]
         }
       }
     },
     {
-      "crate": "infrastructure",
-      "path": "libs/infrastructure",
+      "crate": "interface_adapters",
+      "path": "libs/interface_adapters",
       "may_depend_on": [
-        "domain",
-        "usecase"
+        "use_cases"
       ],
-      "deny_reason": "Infrastructure implements usecase ports and domain ports; wired at composition root.",
+      "deny_reason": "Interface adapters translate delivery inputs and invoke use-case ports.",
       "tddd": {
         "enabled": true,
-        "catalogue_file": "infrastructure-types.json",
+        "catalogue_file": "interface_adapters-types.json",
         "catalogue_spec_signal": {
           "enabled": true
         },
         "schema_export": {
           "method": "rustdoc",
-          "targets": ["infrastructure"]
+          "targets": ["interface_adapters"]
         }
       }
     },
     {
-      "crate": "cli_driver",
-      "path": "apps/cli-driver",
+      "crate": "frameworks",
+      "path": "libs/frameworks",
       "may_depend_on": [
-        "usecase"
+        "entities",
+        "use_cases"
       ],
-      "deny_reason": "CLI primary adapter holds injected use cases, invokes them and renders the result into CommandOutcome.",
+      "deny_reason": "Frameworks provide persistence, cryptography, and server-runtime adapters.",
       "tddd": {
         "enabled": true,
-        "catalogue_file": "cli_driver-types.json",
+        "catalogue_file": "frameworks-types.json",
         "catalogue_spec_signal": {
           "enabled": true
         },
         "schema_export": {
           "method": "rustdoc",
-          "targets": ["cli_driver"]
+          "targets": ["frameworks"]
         }
       }
     },
     {
-      "crate": "cli",
-      "path": "apps/cli",
+      "crate": "web_composition",
+      "path": "apps/web-composition",
       "may_depend_on": [
-        "cli_composition",
-        "cli_driver"
+        "entities",
+        "use_cases",
+        "frameworks",
+        "interface_adapters"
       ],
-      "deny_reason": "",
+      "deny_reason": "Web composition owns the complete object graph and server assembly.",
       "tddd": {
         "enabled": true,
-        "catalogue_file": "cli-types.json",
+        "catalogue_file": "web_composition-types.json",
         "catalogue_spec_signal": {
           "enabled": true
         },
         "schema_export": {
           "method": "rustdoc",
-          "targets": ["cli"],
+          "targets": ["web_composition"],
           "notes": "[[bin]] target (crate-type bin); bin-target schema export is routed through the infrastructure schema_export path before invoking nightly rustdoc --output-format json"
         }
       }
     },
     {
-      "crate": "cli_composition",
-      "path": "apps/cli-composition",
+      "crate": "web",
+      "path": "apps/web",
       "may_depend_on": [
-        "domain",
-        "infrastructure",
-        "usecase",
-        "cli_driver"
+        "web_composition",
+        "interface_adapters"
       ],
-      "deny_reason": "CLI composition root owns domain/usecase/infrastructure wiring for the CLI delivery adapter.",
+      "deny_reason": "Web is a thin binary entry point over web composition and interface adapters.",
       "tddd": {
         "enabled": true,
-        "catalogue_file": "cli_composition-types.json",
+        "catalogue_file": "web-types.json",
         "catalogue_spec_signal": {
           "enabled": true
         },
         "schema_export": {
           "method": "rustdoc",
-          "targets": ["cli_composition"]
+          "targets": ["web"]
         }
       }
     }
