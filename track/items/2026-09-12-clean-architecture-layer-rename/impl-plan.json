@@ -45,11 +45,13 @@
   "schema_version": 2,
   "tasks": [
     {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
       "description": "Update root workspace membership, architecture-rules.json layer ids/paths/dependency permissions, deny.toml wrappers, affected Makefile.toml task names, .harness/catalogue-lint/config.json, presets/ddd-strict.json, and focused enforcement fixtures (IN-001, IN-002, CN-001, CN-002, CN-003, AC-001, AC-002).",
       "id": "T001",
       "status": "done"
     },
     {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
       "depends_on": [
         "T001"
       ],
@@ -58,6 +60,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
       "depends_on": [
         "T001",
         "T002"
@@ -67,6 +70,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
       "depends_on": [
         "T001",
         "T002",
@@ -77,6 +81,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
       "depends_on": [
         "T001",
         "T002",
@@ -88,6 +93,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
       "depends_on": [
         "T001",
         "T002",
@@ -100,6 +106,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
       "depends_on": [
         "T001",
         "T002",
@@ -113,6 +120,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
       "depends_on": [
         "T001",
         "T005",
@@ -123,6 +131,7 @@
       "status": "done"
     },
     {
+      "commit_hash": "b00602f4e1b2e330231208d58d83bff34e6cac8d",
       "depends_on": [
         "T001",
         "T002",
