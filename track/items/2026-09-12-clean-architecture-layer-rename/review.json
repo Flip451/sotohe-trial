@@ -38,6 +38,13 @@
           "hash": "rvw1:sha256:02b8183d12afa0ecb459c3e30d39bb78d1f60b03ac563469d12a50f9e9bd211d",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:56:42Z",
+          "findings": [],
+          "hash": "rvw1:sha256:ea1d16693e2092d289f695658ad6b6313bce51b9a8d72809df43dcd4ed17dbd8",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -308,6 +315,28 @@
           "at": "2026-09-12T10:16:13Z",
           "findings": [],
           "hash": "rvw1:sha256:401804ebf340859cf625ebd49a42a57431a679ea5fd667c86e096ac79e1a8eb0",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:52:38Z",
+          "findings": [
+            {
+              "category": "convention contradiction",
+              "file": ".harness/config/sotp-version.json",
+              "line": 4,
+              "message": "The `sotp` pin is bumped without the required version-baseline research record. `.claude/rules/dev-environment.md` requires researching and recording new baselines under `knowledge/research/` before changing pinned tool versions, but the current worktree contains no such record. Add the research artifact documenting tag availability/compatibility, or revert the bump.",
+              "severity": "medium"
+            }
+          ],
+          "hash": "rvw1:sha256:2a3cb474da40cea2cce9e745ea12d9743da8cfd30978842ba22a080f30310d6f",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T10:54:34Z",
+          "findings": [],
+          "hash": "rvw1:sha256:2a3cb474da40cea2cce9e745ea12d9743da8cfd30978842ba22a080f30310d6f",
           "type": "final",
           "verdict": "zero_findings"
         }
