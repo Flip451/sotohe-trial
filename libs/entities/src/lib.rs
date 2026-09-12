@@ -63,6 +63,8 @@ mod tests {
 
 /// Authentication-domain values, aggregates, and replaceable persistence ports.
 pub mod auth {
+    use base64ct::{Base64Unpadded, Encoding};
+
     use thiserror::Error;
 
     use super::Username;
@@ -111,6 +113,12 @@ pub mod auth {
     }
 
     fn is_complete_argon2id_phc(encoded: &str) -> bool {
+        // Match frameworks::auth::MAX_PHC_ENCODED_BYTES so validation stays within the
+        // same resource envelope before any Base64 decode allocation.
+        const MAX_PHC_ENCODED_BYTES: usize = 256;
+        if encoded.len() > MAX_PHC_ENCODED_BYTES {
+            return false;
+        }
         if !encoded.starts_with(ARGON2ID_PREFIX) {
             return false;
         }
@@ -140,15 +148,13 @@ pub mod auth {
     }
 
     fn is_base64_unpadded_alphabet(value: &str) -> bool {
-        // Accept PHC modified Base64 (`.`) and the standard unpadded alphabet (`+/`)
-        // used by this workspace's frameworks encoder (`base64ct::Base64Unpadded`).
+        // Decode with the same codec frameworks uses so construction cannot
+        // accept encodings `parse_encoded_hash` would reject. Cap field size to
+        // the frameworks salt/digest char limits before allocating a decode buffer.
+        const MAX_SALT_OR_DIGEST_CHARS: usize = 43;
         !value.is_empty()
-            && value.bytes().all(|byte| {
-                matches!(
-                    byte,
-                    b'A'..=b'Z' | b'a'..=b'z' | b'0'..=b'9' | b'+' | b'/' | b'.'
-                )
-            })
+            && value.len() <= MAX_SALT_OR_DIGEST_CHARS
+            && Base64Unpadded::decode_vec(value).is_ok()
     }
 
     fn parse_phc_params(params: &str) -> Option<(u32, u32, u32)> {
@@ -389,11 +395,17 @@ pub mod auth {
                 PasswordHash::new("$argon2id$v=19$m=0,t=2,p=1$salt$hash".to_owned()),
                 Err(PasswordHashError::InvalidEncoding)
             ));
+            assert!(matches!(
+                PasswordHash::new("$argon2id$v=19$m=19456,t=2,p=1$c2Fs.A$dmFsaWQ".to_owned()),
+                Err(PasswordHashError::InvalidEncoding)
+            ));
+            assert!(matches!(
+                PasswordHash::new("$argon2id$v=19$m=19456,t=2,p=1$A$dmFsaWQ".to_owned()),
+                Err(PasswordHashError::InvalidEncoding)
+            ));
             assert!(
-                PasswordHash::new(
-                    "$argon2id$v=19$m=19456,t=2,p=1$c2FsdA$dmFsaWQuYmFzZTY0LmRpZ2VzdC4".to_owned()
-                )
-                .is_ok()
+                PasswordHash::new("$argon2id$v=19$m=19456,t=2,p=1$c2FsdA$dmFsaWQ".to_owned())
+                    .is_ok()
             );
 
             let hash = valid_hash();

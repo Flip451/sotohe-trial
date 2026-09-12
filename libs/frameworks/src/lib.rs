@@ -661,60 +661,47 @@ pub mod auth {
 
         #[test]
         fn test_argon2_password_adapter_verify_rejects_oversized_digest_field() {
-            let adapter = Argon2PasswordAdapter::new();
-            let password = PlaintextPassword::parse("correct horse").unwrap();
+            // Shared with entities PasswordHash construction (43-char digest cap).
             let oversized = "A".repeat(128);
             let encoded = format!("$argon2id$v=19$m=19456,t=2,p=1$c2FsdA${oversized}");
-            let hash = PasswordHash::new(encoded).unwrap();
-
-            assert_eq!(
-                adapter.verify(&password, &hash),
-                Err(PasswordVerificationError::Unavailable)
-            );
+            assert!(PasswordHash::new(encoded).is_err());
         }
 
         #[test]
         fn test_argon2_password_adapter_verify_rejects_oversized_phc_encoding() {
-            let adapter = Argon2PasswordAdapter::new();
-            let password = PlaintextPassword::parse("correct horse").unwrap();
-            // Entities accepts long base64-alphabet salt segments; frameworks rejects PHC encodings
-            // longer than MAX_PHC_ENCODED_BYTES before decode/scan work.
+            // Shared with entities PasswordHash construction (256-byte PHC cap).
             let long_salt = "A".repeat(220);
             let encoded = format!(
                 "$argon2id$v=19$m=19456,t=2,p=1${long_salt}$aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
             );
             assert!(encoded.len() > 256);
-            let hash = PasswordHash::new(encoded).unwrap();
-            assert_eq!(
-                adapter.verify(&password, &hash),
-                Err(PasswordVerificationError::Unavailable)
-            );
+            assert!(PasswordHash::new(encoded).is_err());
         }
 
         #[test]
         fn test_argon2_password_adapter_verify_rejects_unpadded_length_boundary_overflows() {
+            use base64ct::{Base64Unpadded, Encoding};
+
             let adapter = Argon2PasswordAdapter::new();
             let password = PlaintextPassword::parse("correct horse").unwrap();
-            // 23-char salt decodes to 17 bytes under unpadded Base64; must fail before decode alloc.
-            let long_salt = "A".repeat(23);
-            let hash = PasswordHash::new(format!(
-                "$argon2id$v=19$m=19456,t=2,p=1${long_salt}$aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-            ))
-            .unwrap();
+            // 17-byte salt is accepted by PasswordHash construction but rejected by frameworks.
+            let long_salt = Base64Unpadded::encode_string(&[0_u8; 17]);
+            let digest = Base64Unpadded::encode_string(&[0_u8; 32]);
+            let hash =
+                PasswordHash::new(format!("$argon2id$v=19$m=19456,t=2,p=1${long_salt}${digest}"))
+                    .unwrap();
             assert_eq!(
                 adapter.verify(&password, &hash),
                 Err(PasswordVerificationError::Unavailable)
             );
 
-            // 44-char digest decodes to 33 bytes; must fail the unpadded 43-char guard.
+            // 44-char digest exceeds the shared 43-char construction guard.
             let long_digest = "A".repeat(44);
-            let hash = PasswordHash::new(format!(
-                "$argon2id$v=19$m=19456,t=2,p=1$c2FsdGhlc2FsdHZhbA${long_digest}"
-            ))
-            .unwrap();
-            assert_eq!(
-                adapter.verify(&password, &hash),
-                Err(PasswordVerificationError::Unavailable)
+            assert!(
+                PasswordHash::new(format!(
+                    "$argon2id$v=19$m=19456,t=2,p=1$c2FsdGhlc2FsdHZhbA${long_digest}"
+                ))
+                .is_err()
             );
         }
 

@@ -85,6 +85,65 @@
           "hash": "rvw1:sha256:92ae699f828bbbf9bf7f90ae18acc9d03bd6fa85058da82df1cde7fc063e6e45",
           "type": "final",
           "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:47:07Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/entities/src/lib.rs",
+              "line": 146,
+              "message": "`is_base64_unpadded_alphabet` checks only character membership, not whether the field is a valid canonical Base64Unpadded encoding. For example, `PasswordHash::new(\"$argon2id$v=19$m=19456,t=2,p=1$A$dmFsaWQ\")` succeeds, but the verifier's `Base64Unpadded::decode_vec(\"A\")` rejects it because a one-character remainder is invalid. Thus construction can still accept hashes the verifier cannot decode; validate Base64 length and canonical trailing bits as well.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:53553c3e7aa86baed23a76a9fa6216ad4d0ee21d953c36b9b73b3bfcc41c36e2",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:49:38Z",
+          "findings": [
+            {
+              "category": "broken invariant in newtype constructor",
+              "file": "libs/entities/src/lib.rs",
+              "line": 148,
+              "message": "The new `len % 4 != 1` check rejects incomplete quanta but still does not enforce Base64Unpadded's canonical trailing-bit rules. For example, the salt `Mi` passes this helper, so `PasswordHash::new(\"$argon2id$v=19$m=19456,t=2,p=1$Mi$dmFsaWQ\")` succeeds, while the verifier's `Base64Unpadded::decode_vec(\"Mi\")` rejects it as non-canonical. Construction can therefore still accept an encoding the verifier cannot decode.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:467da5c302326babce1526017a4a3c8dbdb7718a4f5e8f00893f68e9998e4b66",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:53:32Z",
+          "findings": [
+            {
+              "category": "resource limit violation",
+              "file": "libs/entities/src/lib.rs",
+              "line": 147,
+              "message": "`decode_vec` allocates a decoded buffer proportional to the caller-controlled salt/digest length, but `PasswordHash::new` applies no length bound before reaching it. This bypasses the declared 256-byte PHC resource boundary and can turn validation of a very large input into a second large allocation and process-level OOM. Enforce the declared bound before decoding or validate canonical Base64 syntax without allocation.",
+              "severity": "P2"
+            }
+          ],
+          "hash": "rvw1:sha256:6e389c64944723dfe4c11f022edc68defa1a9fe79438145765db2d7ae8e19fd7",
+          "type": "final",
+          "verdict": "findings_remain"
+        },
+        {
+          "at": "2026-09-12T09:57:02Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7b0c2877a3e0fc59049afa293abeae534e0804eff505572fbcf9305089a74944",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:02:56Z",
+          "findings": [],
+          "hash": "rvw1:sha256:7b0c2877a3e0fc59049afa293abeae534e0804eff505572fbcf9305089a74944",
+          "type": "final",
+          "verdict": "zero_findings"
         }
       ]
     },
@@ -131,6 +190,13 @@
           "at": "2026-09-12T09:32:37Z",
           "findings": [],
           "hash": "rvw1:sha256:484b7f53fe4f7b3ccaacbc2ec9dc692736c8e2d622a6cfb0ca0113b94df96bb0",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:05:37Z",
+          "findings": [],
+          "hash": "rvw1:sha256:47ab93ec62362dbd5ac33736f920dd55c5fabee33005b42f28cc80b9c4809e7c",
           "type": "final",
           "verdict": "zero_findings"
         }
@@ -490,6 +556,20 @@
           "at": "2026-09-12T09:26:14Z",
           "findings": [],
           "hash": "rvw1:sha256:f640cf52ca093b43d929cf0d3166d7c2dc4cbb08c508439afa90e9d60840dec9",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T09:58:23Z",
+          "findings": [],
+          "hash": "rvw1:sha256:df91f3d7391d52f5c45af7f10f1a01156c8d9088ed81a61ca047567afa7c189e",
+          "type": "final",
+          "verdict": "zero_findings"
+        },
+        {
+          "at": "2026-09-12T10:06:12Z",
+          "findings": [],
+          "hash": "rvw1:sha256:df91f3d7391d52f5c45af7f10f1a01156c8d9088ed81a61ca047567afa7c189e",
           "type": "final",
           "verdict": "zero_findings"
         }

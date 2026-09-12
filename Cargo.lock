@@ -141,6 +141,7 @@ dependencies = [
 name = "entities"
 version = "0.1.0"
 dependencies = [
+ "base64ct",
  "thiserror",
 ]
 

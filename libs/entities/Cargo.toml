@@ -9,4 +9,5 @@ publish.workspace = true
 workspace = true
 
 [dependencies]
+base64ct = { version = "1", features = ["alloc"] }
 thiserror = { workspace = true }
