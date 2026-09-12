@@ -1,0 +1,101 @@
+{
+  "crate_name": "cli_composition",
+  "functions": {},
+  "layer": "cli_composition",
+  "schema_version": 5,
+  "trait_impls": [
+    {
+      "action": "reference",
+      "for_type": "GreetingCompositionRoot",
+      "trait_ref": "core::default::Default"
+    },
+    {
+      "action": "reference",
+      "for_type": "AuthCompositionRoot",
+      "trait_ref": "core::default::Default"
+    }
+  ],
+  "traits": {},
+  "types": {
+    "cli_composition::GreetingCompositionRoot": {
+      "action": "reference",
+      "docs": "Existing greeting composition root retained for relocation to web_composition; it owns only object-graph assembly.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "kind": "unit"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "greeting_driver",
+          "params": [],
+          "receiver": "&self",
+          "returns": "cli_driver::GreetDriver"
+        }
+      ],
+      "module_path": "",
+      "role": {
+        "CompositionRoot": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "cli_composition::auth::AuthCompositionRoot": {
+      "action": "reference",
+      "docs": "Authentication composition root retained for relocation to web_composition; it owns only repository, crypto, interactor, and HTTP-adapter assembly.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "kind": "unit"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "auth_http_api",
+          "params": [],
+          "receiver": "&self",
+          "returns": "cli_driver::auth::AuthHttpApi"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "CompositionRoot": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    }
+  }
+}

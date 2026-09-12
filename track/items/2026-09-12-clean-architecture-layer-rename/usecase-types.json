@@ -1,0 +1,1219 @@
+{
+  "crate_name": "usecase",
+  "functions": {},
+  "layer": "usecase",
+  "schema_version": 5,
+  "trait_impls": [
+    {
+      "action": "reference",
+      "for_type": "GreetError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "GreetError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "action": "reference",
+      "for_type": "GreetError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "action": "reference",
+      "for_type": "GreetError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "GreetError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "PlaintextPassword",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "PlaintextPassword",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordInputError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserCommand",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserCommand",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginCommand",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginCommand",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "IssuedAccessToken",
+      "trait_ref": "core::clone::Clone"
+    },
+    {
+      "action": "reference",
+      "for_type": "IssuedAccessToken",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "IssuedAccessToken",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordHashingError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "PasswordVerificationError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "action": "reference",
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "action": "reference",
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "TokenIssuanceError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserInteractor",
+      "trait_ref": "RegisterUserService"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::convert::From<PasswordHashingError>"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::convert::From<domain::auth::UserRepositoryError>"
+    },
+    {
+      "action": "reference",
+      "for_type": "RegisterUserError",
+      "trait_ref": "core::convert::From<domain::auth::UserLookupError>"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginInteractor",
+      "trait_ref": "LoginService"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginError",
+      "trait_ref": "core::convert::From<PasswordVerificationError>"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginError",
+      "trait_ref": "core::convert::From<TokenIssuanceError>"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginError",
+      "trait_ref": "core::convert::From<domain::auth::AccessTokenRepositoryError>"
+    },
+    {
+      "action": "reference",
+      "for_type": "LoginError",
+      "trait_ref": "core::convert::From<domain::auth::UserLookupError>"
+    },
+    {
+      "action": "reference",
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::fmt::Display"
+    },
+    {
+      "action": "reference",
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::error::Error"
+    },
+    {
+      "action": "reference",
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::cmp::Eq"
+    },
+    {
+      "action": "reference",
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::convert::From<domain::UsernameError>"
+    },
+    {
+      "action": "reference",
+      "for_type": "CredentialParseError",
+      "trait_ref": "core::convert::From<PasswordInputError>"
+    }
+  ],
+  "traits": {
+    "LoginService": {
+      "action": "reference",
+      "docs": "Baseline single-operation login input port retained unchanged during the migration.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "execute",
+          "params": [
+            {
+              "name": "command",
+              "ty": "LoginCommand"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<IssuedAccessToken, LoginError>"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "ApplicationService": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "OpaqueTokenIssuer": {
+      "action": "reference",
+      "docs": "Baseline driven port for issuing opaque access tokens retained unchanged.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "issue",
+          "params": [],
+          "receiver": "&self",
+          "returns": "Result<domain::auth::OpaqueAccessToken, TokenIssuanceError>"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryPort": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "PasswordHasher": {
+      "action": "reference",
+      "docs": "Baseline driven password-hashing port retained unchanged.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "hash",
+          "params": [
+            {
+              "name": "password",
+              "ty": "&PlaintextPassword"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<domain::auth::PasswordHash, PasswordHashingError>"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryPort": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        {
+          "anchor": "CN-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "PasswordVerifier": {
+      "action": "reference",
+      "docs": "Baseline driven password-verification port retained unchanged.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "verify",
+          "params": [
+            {
+              "name": "password",
+              "ty": "&PlaintextPassword"
+            },
+            {
+              "name": "hash",
+              "ty": "&domain::auth::PasswordHash"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<bool, PasswordVerificationError>"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryPort": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        {
+          "anchor": "CN-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "RegisterUserService": {
+      "action": "reference",
+      "docs": "Baseline single-operation registration input port retained unchanged during the migration.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "execute",
+          "params": [
+            {
+              "name": "command",
+              "ty": "RegisterUserCommand"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<(), RegisterUserError>"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "ApplicationService": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ],
+      "supertrait_bounds": [
+        "Send",
+        "Sync"
+      ]
+    },
+    "SalutationProvider": {
+      "action": "reference",
+      "docs": "Existing greeting driven port retained as part of the renamed application crate; returned String is unconstrained salutation presentation text, not a domain concept.",
+      "informal_grounds": [],
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "salutation",
+          "params": [],
+          "receiver": "&self",
+          "returns": "Result<String, GreetError>"
+        }
+      ],
+      "module_path": "",
+      "role": {
+        "SecondaryPort": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    }
+  },
+  "types": {
+    "usecase::GreetError": {
+      "action": "reference",
+      "docs": "Existing greeting failure retained unchanged as part of the application crate rename.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::GreetUser": {
+      "action": "reference",
+      "docs": "Existing concrete greeting use case retained unchanged; returned String is unconstrained presentation text, not a domain concept.",
+      "generics": [
+        {
+          "bounds": [
+            "SalutationProvider"
+          ],
+          "name": "P"
+        }
+      ],
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "provider",
+              "ty": "P"
+            }
+          ],
+          "returns": "Self"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "execute",
+          "params": [
+            {
+              "name": "user",
+              "ty": "&domain::Username"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "Result<String, GreetError>"
+        }
+      ],
+      "module_path": "",
+      "role": {
+        "UseCase": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::CredentialParseError": {
+      "action": "reference",
+      "docs": "Typed credential parsing failure retained unchanged at the application boundary.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "InvalidUsername",
+            "payload": {
+              "fields": [
+                "domain::UsernameError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "InvalidPassword",
+            "payload": {
+              "fields": [
+                "PasswordInputError"
+              ],
+              "kind": "tuple"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::IssuedAccessToken": {
+      "action": "reference",
+      "docs": "Application response DTO retained unchanged; private String and &str accessor are only the opaque token's presentation encoding.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "from_domain",
+          "params": [
+            {
+              "name": "token",
+              "ty": "domain::auth::OpaqueAccessToken"
+            }
+          ],
+          "returns": "Self"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "as_str",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&str"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::LoginCommand": {
+      "action": "reference",
+      "docs": "Validated login command retained unchanged; raw &str values exist only during parsing into typed credentials.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "parse",
+          "params": [
+            {
+              "name": "username",
+              "ty": "&str"
+            },
+            {
+              "name": "password",
+              "ty": "&str"
+            }
+          ],
+          "returns": "Result<Self, CredentialParseError>"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "username",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&domain::Username"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "password",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&PlaintextPassword"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Command": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::LoginError": {
+      "action": "reference",
+      "docs": "Typed login failure retaining repository, verification, issuance, and persistence causes.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "UserNotFound",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "InvalidCredentials",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "Lookup",
+            "payload": {
+              "fields": [
+                "domain::auth::UserLookupError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "Verification",
+            "payload": {
+              "fields": [
+                "PasswordVerificationError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "TokenIssuance",
+            "payload": {
+              "fields": [
+                "TokenIssuanceError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "Persistence",
+            "payload": {
+              "fields": [
+                "domain::auth::AccessTokenRepositoryError"
+              ],
+              "kind": "tuple"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::LoginInteractor": {
+      "action": "reference",
+      "docs": "Existing login interactor retained unchanged with its structure-required application input port.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "users",
+              "ty": "std::sync::Arc<dyn domain::auth::UserRepository>"
+            },
+            {
+              "name": "verifier",
+              "ty": "std::sync::Arc<dyn PasswordVerifier>"
+            },
+            {
+              "name": "token_issuer",
+              "ty": "std::sync::Arc<dyn OpaqueTokenIssuer>"
+            },
+            {
+              "name": "tokens",
+              "ty": "std::sync::Arc<dyn domain::auth::AccessTokenRepository>"
+            }
+          ],
+          "returns": "Self"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Interactor": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::PasswordHashingError": {
+      "action": "reference",
+      "docs": "Typed password-hashing port failure retained unchanged.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::PasswordInputError": {
+      "action": "reference",
+      "docs": "Typed application-boundary password validation failure retained unchanged.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Empty",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "TooLong",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::PasswordVerificationError": {
+      "action": "reference",
+      "docs": "Typed password-verification port failure retained unchanged.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::PlaintextPassword": {
+      "action": "reference",
+      "docs": "Application-boundary credential value retained unchanged; raw &str is only constructor input and the private value enforces non-empty input.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "parse",
+          "params": [
+            {
+              "name": "raw",
+              "ty": "&str"
+            }
+          ],
+          "returns": "Result<Self, PasswordInputError>"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "expose_secret",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&str"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "is_non_empty",
+          "params": [],
+          "receiver": "&self",
+          "returns": "bool"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "ValueObject": {
+          "invariants": [
+            {
+              "name": "non_empty",
+              "predicate": {
+                "SelfMethod": "is_non_empty"
+              }
+            }
+          ]
+        }
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        {
+          "anchor": "CN-005",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        {
+          "anchor": "AC-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::RegisterUserCommand": {
+      "action": "reference",
+      "docs": "Validated registration command retained unchanged; raw &str values exist only during parsing into typed credentials.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "parse",
+          "params": [
+            {
+              "name": "username",
+              "ty": "&str"
+            },
+            {
+              "name": "password",
+              "ty": "&str"
+            }
+          ],
+          "returns": "Result<Self, CredentialParseError>"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "username",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&domain::Username"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "password",
+          "params": [],
+          "receiver": "&self",
+          "returns": "&PlaintextPassword"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Command": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::RegisterUserError": {
+      "action": "reference",
+      "docs": "Typed registration failure retaining lookup, hashing, and persistence causes.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "UserAlreadyExists",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "Lookup",
+            "payload": {
+              "fields": [
+                "domain::auth::UserLookupError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "Hashing",
+            "payload": {
+              "fields": [
+                "PasswordHashingError"
+              ],
+              "kind": "tuple"
+            }
+          },
+          {
+            "name": "Persistence",
+            "payload": {
+              "fields": [
+                "domain::auth::UserRepositoryError"
+              ],
+              "kind": "tuple"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        },
+        {
+          "anchor": "AC-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::RegisterUserInteractor": {
+      "action": "reference",
+      "docs": "Existing registration interactor retained unchanged with its structure-required application input port.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "users",
+              "ty": "std::sync::Arc<dyn domain::auth::UserRepository>"
+            },
+            {
+              "name": "hasher",
+              "ty": "std::sync::Arc<dyn PasswordHasher>"
+            }
+          ],
+          "returns": "Self"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Interactor": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "usecase::auth::TokenIssuanceError": {
+      "action": "reference",
+      "docs": "Typed opaque-token issuance port failure retained unchanged.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Unavailable",
+            "payload": {
+              "kind": "unit"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "ErrorType": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    }
+  }
+}

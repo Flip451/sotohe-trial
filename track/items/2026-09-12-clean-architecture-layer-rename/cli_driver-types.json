@@ -1,0 +1,327 @@
+{
+  "crate_name": "cli_driver",
+  "functions": {},
+  "layer": "cli_driver",
+  "schema_version": 5,
+  "trait_impls": [
+    {
+      "action": "reference",
+      "for_type": "CommandOutcome",
+      "trait_ref": "core::fmt::Debug"
+    },
+    {
+      "action": "reference",
+      "for_type": "CommandOutcome",
+      "trait_ref": "core::clone::Clone"
+    },
+    {
+      "action": "reference",
+      "for_type": "CommandOutcome",
+      "trait_ref": "core::cmp::PartialEq"
+    },
+    {
+      "action": "reference",
+      "for_type": "CommandOutcome",
+      "trait_ref": "core::cmp::Eq"
+    }
+  ],
+  "traits": {},
+  "types": {
+    "cli_driver::CommandOutcome": {
+      "action": "reference",
+      "docs": "Existing delivery outcome retained for the interface-adapter rename; message is unconstrained presentation text and success is a process rendering flag, not domain vocabulary.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [
+            {
+              "name": "message",
+              "ty": "String"
+            },
+            {
+              "name": "success",
+              "ty": "bool"
+            }
+          ],
+          "has_stripped_fields": false,
+          "kind": "plain"
+        }
+      },
+      "methods": [],
+      "module_path": "",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "cli_driver::GreetDriver": {
+      "action": "reference",
+      "docs": "Existing greeting primary adapter retained for the interface-adapter rename; raw_name is transport input parsed once into the application-owned Username boundary.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "interactor",
+              "ty": "usecase::GreetUser<P>"
+            }
+          ],
+          "generics": [
+            {
+              "bounds": [
+                "usecase::SalutationProvider",
+                "'static"
+              ],
+              "name": "P"
+            }
+          ],
+          "returns": "Self"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "handle",
+          "params": [
+            {
+              "name": "raw_name",
+              "ty": "&str"
+            }
+          ],
+          "receiver": "&self",
+          "returns": "CommandOutcome"
+        }
+      ],
+      "module_path": "",
+      "role": {
+        "PrimaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "cli_driver::auth::AccessTokenResponse": {
+      "action": "reference",
+      "docs": "Typed HTTP access-token response retained; private wire encoding obtains opaque token text only at final presentation.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "access_token",
+              "ty": "usecase::auth::IssuedAccessToken"
+            }
+          ],
+          "returns": "Self"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "cli_driver::auth::AuthHttpApi": {
+      "action": "reference",
+      "docs": "Existing HTTP primary adapter retained as the controller boundary for migration; its baseline public declaration remains unchanged in Phase 2.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "register",
+              "ty": "std::sync::Arc<dyn usecase::auth::RegisterUserService>"
+            },
+            {
+              "name": "login",
+              "ty": "std::sync::Arc<dyn usecase::auth::LoginService>"
+            }
+          ],
+          "returns": "Self"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": true,
+          "name": "serve",
+          "params": [],
+          "receiver": "self",
+          "returns": "CommandOutcome"
+        },
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "router",
+          "params": [],
+          "receiver": "&self",
+          "returns": "axum::routing::Router"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "PrimaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "cli_driver::auth::HttpServerOutcome": {
+      "action": "reference",
+      "docs": "Delivery server lifecycle DTO retained; Failed String is an unconstrained opaque diagnostic for process presentation, not a domain concept.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Stopped",
+            "payload": {
+              "kind": "unit"
+            }
+          },
+          {
+            "name": "Failed",
+            "payload": {
+              "fields": [
+                "String"
+              ],
+              "kind": "tuple"
+            }
+          }
+        ]
+      },
+      "methods": [],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "cli_driver::auth::LoginRequest": {
+      "action": "reference",
+      "docs": "Typed login request retained; private JSON extraction validates directly into the application-owned LoginCommand without storing raw credential strings.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "into_command",
+          "params": [],
+          "receiver": "self",
+          "returns": "usecase::auth::LoginCommand"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "cli_driver::auth::RegisterRequest": {
+      "action": "reference",
+      "docs": "Typed registration request retained; private JSON extraction validates directly into the application-owned RegisterUserCommand without storing raw credential strings.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "into_command",
+          "params": [],
+          "receiver": "self",
+          "returns": "usecase::auth::RegisterUserCommand"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "Dto": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-004",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    }
+  }
+}

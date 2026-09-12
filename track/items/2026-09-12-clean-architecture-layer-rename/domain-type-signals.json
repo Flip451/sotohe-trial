@@ -1,0 +1,109 @@
+{
+  "baseline_hash": "fbd94aa3d391e68878579a70d66fc900ae6c80468959fb5d90ab3ad03c374c65",
+  "declaration_hash": "a8ba58ba63db8855e0ad7359bf89457758860629703f8896564b5aec3502d863",
+  "generated_at": "2026-09-12T05:45:29Z",
+  "head_commit": "2a3f637583849743c36afb61720d2b1d5cd746b1",
+  "implementation_fingerprint": "f49f77839a00dc85c680c33b8a7d0f3435dd7c5c7be8619ef6628dc41ad7e919",
+  "resolution_fingerprint": "096076e5bd3a1d6916cde94d16126defc0506521431e6acccf1e8b7dcb6c3bd8",
+  "rustdoc_execution_identity": {
+    "crate_name": "domain",
+    "expected_json_path": "target/.sotp-rustdoc/8fc3fc37b933fc99a0351936fa4f365a9cd7e3f8517138bbb2389a99a0c40502/doc/domain.json",
+    "features": [],
+    "profile": "dev",
+    "target_directory": "target/.sotp-rustdoc/8fc3fc37b933fc99a0351936fa4f365a9cd7e3f8517138bbb2389a99a0c40502"
+  },
+  "schema_version": 6,
+  "signals": [
+    {
+      "found_type": true,
+      "kind_tag": "secondary_port",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "AccessTokenRepository"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "secondary_port",
+      "namespace": "trait",
+      "signal": "blue",
+      "type_name": "UserRepository"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "value_object",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::Username"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::UsernameError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "value_object",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::auth::AccessTokenRecord"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::auth::AccessTokenRepositoryError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "value_object",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::auth::OpaqueAccessToken"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::auth::OpaqueAccessTokenError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "value_object",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::auth::PasswordHash"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::auth::PasswordHashError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "value_object",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::auth::User"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::auth::UserLookupError"
+    },
+    {
+      "found_type": true,
+      "kind_tag": "error_type",
+      "namespace": "type",
+      "signal": "blue",
+      "type_name": "domain::auth::UserRepositoryError"
+    }
+  ]
+}

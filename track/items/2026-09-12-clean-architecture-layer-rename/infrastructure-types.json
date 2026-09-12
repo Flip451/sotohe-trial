@@ -1,0 +1,227 @@
+{
+  "crate_name": "infrastructure",
+  "functions": {},
+  "layer": "infrastructure",
+  "schema_version": 5,
+  "trait_impls": [
+    {
+      "action": "reference",
+      "for_type": "StaticSalutation",
+      "trait_ref": "usecase::SalutationProvider"
+    },
+    {
+      "action": "reference",
+      "for_type": "InMemoryUserRepository",
+      "trait_ref": "domain::auth::UserRepository"
+    },
+    {
+      "action": "reference",
+      "for_type": "InMemoryUserRepository",
+      "trait_ref": "core::default::Default"
+    },
+    {
+      "action": "reference",
+      "for_type": "InMemoryAccessTokenRepository",
+      "trait_ref": "domain::auth::AccessTokenRepository"
+    },
+    {
+      "action": "reference",
+      "for_type": "InMemoryAccessTokenRepository",
+      "trait_ref": "core::default::Default"
+    },
+    {
+      "action": "reference",
+      "for_type": "Argon2PasswordAdapter",
+      "trait_ref": "usecase::auth::PasswordHasher"
+    },
+    {
+      "action": "reference",
+      "for_type": "Argon2PasswordAdapter",
+      "trait_ref": "usecase::auth::PasswordVerifier"
+    },
+    {
+      "action": "reference",
+      "for_type": "Argon2PasswordAdapter",
+      "trait_ref": "core::default::Default"
+    },
+    {
+      "action": "reference",
+      "for_type": "RandomOpaqueTokenIssuer",
+      "trait_ref": "usecase::auth::OpaqueTokenIssuer"
+    },
+    {
+      "action": "reference",
+      "for_type": "RandomOpaqueTokenIssuer",
+      "trait_ref": "core::default::Default"
+    }
+  ],
+  "traits": {},
+  "types": {
+    "infrastructure::StaticSalutation": {
+      "action": "reference",
+      "docs": "Existing fixed-salutation secondary adapter retained for the framework crate rename; its private String is unconstrained adapter configuration text.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [
+            {
+              "name": "word",
+              "ty": "impl Into<String>"
+            }
+          ],
+          "returns": "Self"
+        }
+      ],
+      "module_path": "",
+      "role": {
+        "SecondaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-001",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "infrastructure::auth::Argon2PasswordAdapter": {
+      "action": "reference",
+      "docs": "Argon2 password hashing and verification adapter retained for relocation into frameworks.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "kind": "unit"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "infrastructure::auth::InMemoryAccessTokenRepository": {
+      "action": "reference",
+      "docs": "In-memory access-token repository adapter retained for relocation into frameworks.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "infrastructure::auth::InMemoryUserRepository": {
+      "action": "reference",
+      "docs": "In-memory user repository adapter retained for relocation into frameworks.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "fields": [],
+          "has_stripped_fields": true,
+          "kind": "plain"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    },
+    "infrastructure::auth::RandomOpaqueTokenIssuer": {
+      "action": "reference",
+      "docs": "Random opaque-token issuer adapter retained for relocation into frameworks.",
+      "informal_grounds": [],
+      "kind": {
+        "kind": "struct",
+        "shape": {
+          "kind": "unit"
+        }
+      },
+      "methods": [
+        {
+          "action": "reference",
+          "has_default_impl": false,
+          "is_async": false,
+          "name": "new",
+          "params": [],
+          "returns": "Self"
+        }
+      ],
+      "module_path": "auth",
+      "role": {
+        "SecondaryAdapter": {}
+      },
+      "spec_refs": [
+        {
+          "anchor": "IN-003",
+          "file": "track/items/2026-09-12-clean-architecture-layer-rename/spec.json"
+        }
+      ]
+    }
+  }
+}

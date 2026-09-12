@@ -1,0 +1,214 @@
+{
+  "acceptance_criteria": [
+    {
+      "adr_refs": [
+        {
+          "anchor": "D1",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        }
+      ],
+      "id": "AC-001",
+      "text": "The workspace exposes the six Clean Architecture crates at the decided paths and with the decided Rust crate identifiers."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D2",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        }
+      ],
+      "id": "AC-002",
+      "text": "Declared workspace dependencies and their architecture-rule and dependency-denial enforcement admit only the decided dependency ring."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D3",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        }
+      ],
+      "id": "AC-003",
+      "text": "Ports are located in use_cases; HTTP controllers and DTO conversion are located in interface_adapters; persistence, cryptography, and axum server wiring are located in frameworks; assembly is located only in web_composition; and web remains a thin binary entry point."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D3",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        }
+      ],
+      "id": "AC-004",
+      "text": "The existing registration and login HTTP contracts and authentication behavior, including empty-password rejection, remain unchanged after the migration."
+    }
+  ],
+  "constraints": [
+    {
+      "adr_refs": [
+        {
+          "anchor": "D1",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        }
+      ],
+      "id": "CN-001",
+      "text": "The layer vocabulary is entities, use_cases, interface_adapters, frameworks, web_composition, and web, mapped to the decided library and application paths."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D2",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        }
+      ],
+      "id": "CN-002",
+      "text": "entities has no workspace-layer dependency; use_cases depends only on entities; interface_adapters depends only on use_cases; frameworks depends only on entities and use_cases; web_composition depends only on entities, use_cases, frameworks, and interface_adapters; and web depends only on web_composition and interface_adapters."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D2",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        }
+      ],
+      "id": "CN-003",
+      "text": "architecture-rules.json and deny.toml remain synchronized with the renamed crates and the decided dependency direction."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D3",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        }
+      ],
+      "id": "CN-004",
+      "text": "Internal relocation follows the decided textbook Clean Architecture placement boundaries without adding a product capability."
+    },
+    {
+      "adr_refs": [
+        {
+          "anchor": "D3",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        {
+          "anchor": "D1",
+          "file": "knowledge/adr/2026-09-10-1126-minimal-auth-api.md"
+        }
+      ],
+      "id": "CN-005",
+      "text": "The migration preserves the existing REST authentication surface and its opaque-token behavior."
+    }
+  ],
+  "goal": [
+    {
+      "adr_refs": [
+        {
+          "anchor": "D1",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        },
+        {
+          "anchor": "D3",
+          "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+        }
+      ],
+      "id": "GO-001",
+      "text": "Migrate the existing consumer workspace to the textbook Clean Architecture layer vocabulary and placement while preserving its authentication product behavior."
+    }
+  ],
+  "related_conventions": [
+    {
+      "anchor": "purpose",
+      "file": "knowledge/conventions/coding-principles.md"
+    },
+    {
+      "anchor": "rule",
+      "file": "knowledge/conventions/prefer-type-safe-abstractions.md"
+    }
+  ],
+  "schema_version": 2,
+  "scope": {
+    "in_scope": [
+      {
+        "adr_refs": [
+          {
+            "anchor": "D1",
+            "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+          }
+        ],
+        "id": "IN-001",
+        "text": "Rename the existing six workspace crates and their Rust crate identifiers to the decided Clean Architecture layer names."
+      },
+      {
+        "adr_refs": [
+          {
+            "anchor": "D2",
+            "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+          }
+        ],
+        "id": "IN-002",
+        "text": "Maintain the decided dependency ring and update its enforcement configuration for the renamed crates."
+      },
+      {
+        "adr_refs": [
+          {
+            "anchor": "D3",
+            "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+          }
+        ],
+        "id": "IN-003",
+        "text": "Relocate the existing ports, HTTP delivery components, infrastructure implementations, composition root, and binary entry point to their decided Clean Architecture boundaries."
+      },
+      {
+        "adr_refs": [
+          {
+            "anchor": "D3",
+            "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+          },
+          {
+            "anchor": "D1",
+            "file": "knowledge/adr/2026-09-10-1238-minimal-auth-registration-capability.md"
+          }
+        ],
+        "id": "IN-004",
+        "text": "Preserve the existing HTTP registration and login behavior through the internal migration."
+      }
+    ],
+    "out_of_scope": [
+      {
+        "adr_refs": [
+          {
+            "anchor": "D3",
+            "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+          }
+        ],
+        "id": "OS-001",
+        "text": "Changing the existing registration or login HTTP contract or authentication behavior is out of scope."
+      },
+      {
+        "adr_refs": [
+          {
+            "anchor": "D3",
+            "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+          }
+        ],
+        "id": "OS-002",
+        "text": "Adding a new authentication product capability is out of scope."
+      },
+      {
+        "adr_refs": [
+          {
+            "anchor": "D3",
+            "file": "knowledge/adr/2026-09-12-0139-clean-architecture-layer-rename.md"
+          }
+        ],
+        "id": "OS-003",
+        "text": "Collapsing composition and the binary entry point into a four-layer architecture is out of scope."
+      }
+    ]
+  },
+  "signals": {
+    "blue": 17,
+    "red": 0,
+    "yellow": 0
+  },
+  "title": "クリーンアーキテクチャ層へのリネーム",
+  "version": "1.0.0"
+}
